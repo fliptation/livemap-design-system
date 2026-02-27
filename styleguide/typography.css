@@ -1,0 +1,467 @@
+/* ==========================================================================
+   Livemap Design System — Typography Tokens
+   Font: SF Pro (iOS system font)
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Font Family Stack
+   --------------------------------------------------------------------------
+   SF Pro is available natively on Apple devices. The fallback stack ensures
+   graceful degradation: -apple-system and BlinkMacSystemFont trigger the
+   system font on Safari and Chrome/macOS respectively.
+
+   SF Pro has two optical sizes baked in:
+     - SF Pro Display: optimized for 20pt and above
+     - SF Pro Text: optimized for 19pt and below
+   The variable font (SF Pro) handles this automatically via the `opsz` axis.
+   We expose all three families for explicit control when needed.
+   -------------------------------------------------------------------------- */
+
+:root {
+  /* Primary — variable font with automatic optical sizing */
+  --font-family:          "SF Pro", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+
+  /* Explicit optical variants */
+  --font-family-display:  "SF Pro Display", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --font-family-text:     "SF Pro Text", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+
+  /* Rounded variant — used for softer UI moments (badges, chips, friendly CTAs) */
+  --font-family-rounded:  "SF Pro Rounded", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+
+
+  /* --------------------------------------------------------------------------
+     2. Font Weights — Livemap uses 4 of SF Pro's 9 weights
+     --------------------------------------------------------------------------
+     Regular:  body text, descriptions, secondary info
+     Medium:   tab labels, chips, tinted links, status tags
+     Semibold: card titles, nav titles, buttons, headlines
+     Bold:     large titles, sheet headers, turn-by-turn primary
+     -------------------------------------------------------------------------- */
+
+  --font-weight-regular:    400;
+  --font-weight-medium:     500;
+  --font-weight-semibold:   600;
+  --font-weight-bold:       700;
+
+
+  /* --------------------------------------------------------------------------
+     3. iOS Type Scale — Size
+     --------------------------------------------------------------------------
+     Apple Human Interface Guidelines, default Dynamic Type size (Large).
+     Sizes in px (1pt = 1px at 1x).
+     -------------------------------------------------------------------------- */
+
+  --font-size-large-title: 34px;
+  --font-size-title1:      28px;
+  --font-size-title2:      22px;
+  --font-size-title3:      20px;
+  --font-size-headline:    17px;
+  --font-size-body:        17px;
+  --font-size-callout:     16px;
+  --font-size-subheadline: 15px;
+  --font-size-footnote:    13px;
+  --font-size-caption1:    12px;
+  --font-size-caption2:    11px;
+
+
+  /* --------------------------------------------------------------------------
+     4. iOS Type Scale — Line Height (Leading)
+     -------------------------------------------------------------------------- */
+
+  --line-height-large-title: 41px;
+  --line-height-title1:      34px;
+  --line-height-title2:      28px;
+  --line-height-title3:      25px;
+  --line-height-headline:    22px;
+  --line-height-body:        22px;
+  --line-height-callout:     21px;
+  --line-height-subheadline: 20px;
+  --line-height-footnote:    18px;
+  --line-height-caption1:    16px;
+  --line-height-caption2:    13px;
+
+
+  /* --------------------------------------------------------------------------
+     5. iOS Type Scale — Tracking (Letter Spacing)
+     --------------------------------------------------------------------------
+     Apple specifies tracking in points at the given font size.
+     Converted to em: tracking_pt / font_size_pt
+     -------------------------------------------------------------------------- */
+
+  --tracking-large-title:  0.011em;
+  --tracking-title1:       0.013em;
+  --tracking-title2:       0.016em;
+  --tracking-title3:       0.019em;
+  --tracking-headline:    -0.024em;
+  --tracking-body:        -0.024em;
+  --tracking-callout:     -0.020em;
+  --tracking-subheadline: -0.016em;
+  --tracking-footnote:    -0.006em;
+  --tracking-caption1:     0;
+  --tracking-caption2:     0.006em;
+
+
+  /* --------------------------------------------------------------------------
+     6. iOS Type Scale — Weight per Style
+     -------------------------------------------------------------------------- */
+
+  --font-weight-large-title: var(--font-weight-regular);
+  --font-weight-title1:      var(--font-weight-regular);
+  --font-weight-title2:      var(--font-weight-regular);
+  --font-weight-title3:      var(--font-weight-regular);
+  --font-weight-headline:    var(--font-weight-semibold);
+  --font-weight-body:        var(--font-weight-regular);
+  --font-weight-callout:     var(--font-weight-regular);
+  --font-weight-subheadline: var(--font-weight-regular);
+  --font-weight-footnote:    var(--font-weight-regular);
+  --font-weight-caption1:    var(--font-weight-regular);
+  --font-weight-caption2:    var(--font-weight-regular);
+}
+
+
+/* ==========================================================================
+   7. Utility Classes — iOS Type Styles
+   ========================================================================== */
+
+.type-large-title {
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-large-title);
+  font-weight: var(--font-weight-large-title);
+  line-height: var(--line-height-large-title);
+  letter-spacing: var(--tracking-large-title);
+}
+
+.type-title1 {
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-title1);
+  font-weight: var(--font-weight-title1);
+  line-height: var(--line-height-title1);
+  letter-spacing: var(--tracking-title1);
+}
+
+.type-title2 {
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-title2);
+  font-weight: var(--font-weight-title2);
+  line-height: var(--line-height-title2);
+  letter-spacing: var(--tracking-title2);
+}
+
+.type-title3 {
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-title3);
+  font-weight: var(--font-weight-title3);
+  line-height: var(--line-height-title3);
+  letter-spacing: var(--tracking-title3);
+}
+
+.type-headline {
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-headline);
+  font-weight: var(--font-weight-headline);
+  line-height: var(--line-height-headline);
+  letter-spacing: var(--tracking-headline);
+}
+
+.type-body {
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-body);
+  line-height: var(--line-height-body);
+  letter-spacing: var(--tracking-body);
+}
+
+.type-callout {
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-callout);
+  font-weight: var(--font-weight-callout);
+  line-height: var(--line-height-callout);
+  letter-spacing: var(--tracking-callout);
+}
+
+.type-subheadline {
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-subheadline);
+  font-weight: var(--font-weight-subheadline);
+  line-height: var(--line-height-subheadline);
+  letter-spacing: var(--tracking-subheadline);
+}
+
+.type-footnote {
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-footnote);
+  font-weight: var(--font-weight-footnote);
+  line-height: var(--line-height-footnote);
+  letter-spacing: var(--tracking-footnote);
+}
+
+.type-caption1 {
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-caption1);
+  font-weight: var(--font-weight-caption1);
+  line-height: var(--line-height-caption1);
+  letter-spacing: var(--tracking-caption1);
+}
+
+.type-caption2 {
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-caption2);
+  font-weight: var(--font-weight-caption2);
+  line-height: var(--line-height-caption2);
+  letter-spacing: var(--tracking-caption2);
+}
+
+
+/* ==========================================================================
+   8. Weight Modifier Classes
+   --------------------------------------------------------------------------
+   Apply on top of any type class to override weight.
+   e.g. <p class="type-body weight-semibold">
+   ========================================================================== */
+
+.weight-regular    { font-weight: var(--font-weight-regular); }
+.weight-medium     { font-weight: var(--font-weight-medium); }
+.weight-semibold   { font-weight: var(--font-weight-semibold); }
+.weight-bold       { font-weight: var(--font-weight-bold); }
+
+
+/* ==========================================================================
+   9. Font Family Modifier Classes
+   ========================================================================== */
+
+.font-display { font-family: var(--font-family-display); }
+.font-text    { font-family: var(--font-family-text); }
+.font-rounded { font-family: var(--font-family-rounded); }
+
+
+/* ==========================================================================
+   10. Emphasis Styles — Bold & Italic per Type Style
+   --------------------------------------------------------------------------
+   Each type style steps up one weight when emphasized.
+   Constrained to Livemap's 4-weight system (Regular → Medium → Semibold → Bold).
+   ========================================================================== */
+
+.type-large-title.emphasized { font-weight: var(--font-weight-bold); }
+.type-title1.emphasized      { font-weight: var(--font-weight-bold); }
+.type-title2.emphasized      { font-weight: var(--font-weight-bold); }
+.type-title3.emphasized      { font-weight: var(--font-weight-semibold); }
+.type-headline.emphasized    { font-weight: var(--font-weight-bold); }
+.type-body.emphasized        { font-weight: var(--font-weight-semibold); }
+.type-callout.emphasized     { font-weight: var(--font-weight-medium); }
+.type-subheadline.emphasized { font-weight: var(--font-weight-medium); }
+.type-footnote.emphasized    { font-weight: var(--font-weight-semibold); }
+.type-caption1.emphasized    { font-weight: var(--font-weight-medium); }
+.type-caption2.emphasized    { font-weight: var(--font-weight-semibold); }
+
+.italic { font-style: italic; }
+
+
+/* ==========================================================================
+   11. Text Colors — iOS Semantic Label Colors
+   --------------------------------------------------------------------------
+   iOS defines four semantic label colors that adapt to light/dark mode.
+   Plus tinted colors from the Livemap palette for status and actions.
+   ========================================================================== */
+
+:root {
+  /* Label hierarchy — Light mode */
+  --color-label:            #1c1c1e;
+  --color-label-secondary:  rgba(60, 60, 67, 0.60);
+  --color-label-tertiary:   rgba(60, 60, 67, 0.30);
+  --color-label-quaternary: rgba(60, 60, 67, 0.18);
+
+  /* Tinted text colors — Livemap palette */
+  --color-tint-destructive: #ff3b30;
+  --color-tint-positive:    #34c759;
+  --color-tint-action:      #007aff;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-label:            #ffffff;
+    --color-label-secondary:  rgba(235, 235, 245, 0.60);
+    --color-label-tertiary:   rgba(235, 235, 245, 0.30);
+    --color-label-quaternary: rgba(235, 235, 245, 0.18);
+
+    --color-tint-destructive: #ff453a;
+    --color-tint-positive:    #30d158;
+    --color-tint-action:      #0a84ff;
+  }
+}
+
+/* Color utility classes */
+.color-primary    { color: var(--color-label); }
+.color-secondary  { color: var(--color-label-secondary); }
+.color-tertiary   { color: var(--color-label-tertiary); }
+.color-quaternary { color: var(--color-label-quaternary); }
+.color-tint-destructive { color: var(--color-tint-destructive); }
+.color-tint-positive    { color: var(--color-tint-positive); }
+.color-tint-action      { color: var(--color-tint-action); }
+
+
+/* ==========================================================================
+   12. Numbers & Tabular Figures
+   --------------------------------------------------------------------------
+   Tabular figures give every digit equal width for column alignment.
+   Proportional figures (default) are better for running text.
+   ========================================================================== */
+
+.tabular-nums       { font-variant-numeric: tabular-nums; }
+.proportional-nums  { font-variant-numeric: proportional-nums; }
+.oldstyle-nums      { font-variant-numeric: oldstyle-nums; }
+
+/* Composite data style: medium weight, subheadline size, tabular figures */
+.type-data {
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-subheadline);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-subheadline);
+  letter-spacing: var(--tracking-subheadline);
+  font-variant-numeric: tabular-nums;
+}
+
+
+/* ==========================================================================
+   13. SF Mono — Monospace Pairing
+   --------------------------------------------------------------------------
+   SF Mono pairs naturally with SF Pro for technical data: coordinates,
+   IDs, code snippets, timestamps. Available natively on macOS/iOS.
+   ========================================================================== */
+
+:root {
+  --font-family-mono:      "SF Mono", SFMono-Regular, ui-monospace, Menlo, monospace;
+  --font-size-mono-body:   15px;
+  --font-size-mono-caption: 12px;
+}
+
+.type-mono {
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-mono-body);
+  font-weight: var(--font-weight-regular);
+  line-height: 22px;
+}
+
+.type-mono-caption {
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-mono-caption);
+  font-weight: var(--font-weight-regular);
+  line-height: 16px;
+}
+
+
+/* ==========================================================================
+   14. Uppercase & Small Caps
+   --------------------------------------------------------------------------
+   Overline labels and small caps for section markers, metadata, categories.
+   Uppercase always needs extra tracking for readability.
+   ========================================================================== */
+
+.type-overline {
+  font-family: var(--font-family-text);
+  font-size: 11px;
+  font-weight: var(--font-weight-medium);
+  line-height: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.type-small-caps {
+  font-family: var(--font-family-text);
+  font-variant-caps: all-small-caps;
+  letter-spacing: 0.05em;
+}
+
+
+/* ==========================================================================
+   15. Truncation & Line Length
+   --------------------------------------------------------------------------
+   Single-line ellipsis, multi-line clamping, and max-width measure tokens.
+   ========================================================================== */
+
+:root {
+  --measure-narrow:  280px;
+  --measure-default: 480px;
+  --measure-wide:    640px;
+}
+
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+
+/* ==========================================================================
+   16. Map Label Typography
+   --------------------------------------------------------------------------
+   Abstract presets for map label rendering. These are spec-level tokens —
+   implementation depends on MapKit / Mapbox / CSS overlay.
+   All map labels should use Condensed width when space is tight.
+   Halo/outline: 1–2px white halo for legibility over terrain.
+   ========================================================================== */
+
+:root {
+  /* Map label — City */
+  --map-label-city-size:     14px;
+  --map-label-city-weight:   var(--font-weight-semibold);
+  --map-label-city-tracking: 0.02em;
+
+  /* Map label — District */
+  --map-label-district-size:     12px;
+  --map-label-district-weight:   var(--font-weight-medium);
+  --map-label-district-tracking: 0.04em;
+
+  /* Map label — Street */
+  --map-label-street-size:     11px;
+  --map-label-street-weight:   var(--font-weight-regular);
+  --map-label-street-tracking: 0.02em;
+
+  /* Map label — POI */
+  --map-label-poi-size:   12px;
+  --map-label-poi-weight: var(--font-weight-medium);
+
+  /* Map label — Distance badge */
+  --map-label-distance-size:   13px;
+  --map-label-distance-weight: var(--font-weight-medium);
+}
+
+
+/* ==========================================================================
+   17. Minimum Sizes & Accessibility
+   --------------------------------------------------------------------------
+   Absolute minimums and touch target sizes per Apple HIG.
+   Dynamic Type support: xSmall → AX5 (accessibility sizes).
+   ========================================================================== */
+
+:root {
+  --font-size-minimum:             11px;  /* Caption 2 — absolute floor */
+  --font-size-minimum-interactive: 13px;  /* Footnote — minimum for tappable text */
+  --touch-target-minimum:          44px;  /* iOS HIG minimum touch target */
+}
+
+/*
+   Dynamic Type Support Range
+   ──────────────────────────────────────────────────────
+   Category        Sizes
+   ──────────────────────────────────────────────────────
+   Standard        xSmall, Small, Medium, Large (default),
+                   xLarge, xxLarge, xxxLarge
+   Accessibility   AX1, AX2, AX3, AX4, AX5
+   ──────────────────────────────────────────────────────
+   All type styles in this file use the "Large" default.
+   Native apps must support the full range via Dynamic Type.
+*/

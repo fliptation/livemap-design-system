@@ -1,0 +1,2262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Livemap — Typography</title>
+  <link rel="stylesheet" href="typography.css">
+  <style>
+    /* ---- Page chrome (not part of the design system) ---- */
+    html { scroll-behavior: smooth; }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: var(--font-family);
+      background: #fff;
+      color: #1c1c1e;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    .page {
+      display: flex;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 80px 40px 120px;
+      gap: 0;
+    }
+
+    /* ---- Sidebar ---- */
+    .sidebar {
+      flex: 0 0 180px;
+      position: sticky;
+      top: 40px;
+      align-self: flex-start;
+      padding-right: 32px;
+      max-height: calc(100vh - 80px);
+      overflow-y: auto;
+    }
+
+    .sidebar__logo {
+      width: 44px;
+      height: 44px;
+      margin: 0 10px 16px;
+      opacity: 0.85;
+    }
+
+    .sidebar__nav {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      list-style: none;
+    }
+
+    .sidebar__link {
+      font-family: var(--font-family-text);
+      font-size: 12px;
+      font-weight: var(--font-weight-regular);
+      color: #8e8e93;
+      text-decoration: none;
+      padding: 5px 10px;
+      border-radius: 6px;
+      transition: color 0.15s, background 0.15s;
+      line-height: 16px;
+    }
+
+    .sidebar__link:hover {
+      color: #1c1c1e;
+    }
+
+    .sidebar__link.is-active {
+      color: #1c1c1e;
+      font-weight: var(--font-weight-medium);
+    }
+
+    .sidebar__divider {
+      height: 1px;
+      background: #e5e5ea;
+      margin: 8px 10px;
+    }
+
+    .main-content {
+      flex: 1;
+      min-width: 0;
+    }
+
+    /* Section spacing */
+    section { margin-top: 80px; scroll-margin-top: 32px; }
+    section:first-of-type { margin-top: 60px; }
+
+    /* Page header */
+    .page-header {
+      padding-bottom: 40px;
+      border-bottom: 1px solid #e5e5ea;
+    }
+
+    .page-title {
+      font-family: var(--font-family-display);
+      font-size: 11px;
+      font-weight: var(--font-weight-semibold);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #8e8e93;
+      margin-bottom: 8px;
+    }
+
+    .page-heading {
+      font-family: var(--font-family-display);
+      font-size: 48px;
+      font-weight: var(--font-weight-bold);
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      color: #1c1c1e;
+    }
+
+    .page-heading span {
+      color: #8e8e93;
+      font-weight: var(--font-weight-light);
+    }
+
+    /* Section titles */
+    .section-label {
+      font-family: var(--font-family-text);
+      font-size: 11px;
+      font-weight: var(--font-weight-semibold);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #8e8e93;
+      margin-bottom: 24px;
+    }
+
+    .section-note {
+      font-family: var(--font-family-text);
+      font-size: 15px;
+      font-weight: var(--font-weight-regular);
+      line-height: 22px;
+      letter-spacing: -0.016em;
+      color: #8e8e93;
+      max-width: 560px;
+      margin-bottom: 40px;
+    }
+
+    /* ---- Type scale table ---- */
+    .type-row {
+      display: flex;
+      align-items: baseline;
+      padding: 20px 0;
+      border-bottom: 1px solid #f2f2f7;
+      gap: 24px;
+    }
+
+    .type-row:last-child { border-bottom: none; }
+
+    .type-row__meta {
+      flex: 0 0 200px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .type-row__name {
+      font-family: var(--font-family-text);
+      font-size: 13px;
+      font-weight: var(--font-weight-semibold);
+      color: #1c1c1e;
+    }
+
+    .type-row__spec {
+      font-family: var(--font-family-text);
+      font-size: 11px;
+      font-weight: var(--font-weight-regular);
+      color: #aeaeb2;
+      letter-spacing: 0.01em;
+    }
+
+    .type-row__sample {
+      flex: 1;
+      min-width: 0;
+    }
+
+    /* ---- Weight cards ---- */
+    .weight-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .weight-card {
+      padding: 32px 0;
+      border-bottom: 1px solid #f2f2f7;
+    }
+
+    .weight-card:last-child { border-bottom: none; }
+
+    .weight-card__header {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      margin-bottom: 6px;
+    }
+
+    .weight-card__name {
+      font-family: var(--font-family-text);
+      font-size: 13px;
+      font-weight: var(--font-weight-semibold);
+      color: #1c1c1e;
+    }
+
+    .weight-card__value {
+      font-family: var(--font-family-text);
+      font-size: 11px;
+      color: #aeaeb2;
+    }
+
+    .weight-card__role {
+      font-family: var(--font-family-text);
+      font-size: 13px;
+      color: #8e8e93;
+      line-height: 18px;
+      margin-bottom: 20px;
+    }
+
+    .weight-card__sample {
+      font-family: var(--font-family);
+      font-size: 40px;
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+      color: #1c1c1e;
+      margin-bottom: 12px;
+    }
+
+    .weight-card__context {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .weight-card__tag {
+      font-family: var(--font-family-text);
+      font-size: 12px;
+      font-weight: var(--font-weight-medium);
+      color: #8e8e93;
+      background: #f2f2f7;
+      padding: 4px 10px;
+      border-radius: 6px;
+    }
+
+    /* ---- Width variants ---- */
+    .width-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .width-row {
+      display: flex;
+      align-items: baseline;
+      padding: 20px 0;
+      border-bottom: 1px solid #f2f2f7;
+      gap: 24px;
+    }
+
+    .width-row:last-child { border-bottom: none; }
+
+    .width-row__label {
+      flex: 0 0 200px;
+    }
+
+    .width-row__name {
+      font-family: var(--font-family-text);
+      font-size: 13px;
+      font-weight: var(--font-weight-semibold);
+      color: #1c1c1e;
+    }
+
+    .width-row__note {
+      font-family: var(--font-family-text);
+      font-size: 11px;
+      color: #aeaeb2;
+      margin-top: 2px;
+    }
+
+    .width-row__sample {
+      flex: 1;
+      font-size: 36px;
+      font-weight: 600;
+      line-height: 1.2;
+      color: #1c1c1e;
+    }
+
+    /* ---- Family variants ---- */
+    .family-card {
+      padding: 32px 0;
+      border-bottom: 1px solid #f2f2f7;
+    }
+
+    .family-card:last-child { border-bottom: none; }
+
+    .family-card__header {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .family-card__name {
+      font-family: var(--font-family-text);
+      font-size: 13px;
+      font-weight: var(--font-weight-semibold);
+      color: #1c1c1e;
+    }
+
+    .family-card__usage {
+      font-family: var(--font-family-text);
+      font-size: 11px;
+      color: #aeaeb2;
+    }
+
+    .family-card__sample {
+      font-size: 28px;
+      line-height: 1.3;
+      color: #1c1c1e;
+    }
+
+    .family-card__sample-small {
+      font-size: 15px;
+      line-height: 22px;
+      color: #3a3a3c;
+      margin-top: 12px;
+      max-width: 600px;
+    }
+
+    /* ---- Emphasis demo ---- */
+    .emphasis-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px 48px;
+    }
+
+    .emphasis-pair__label {
+      font-family: var(--font-family-text);
+      font-size: 11px;
+      font-weight: var(--font-weight-semibold);
+      color: #aeaeb2;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 8px;
+    }
+
+    .emphasis-pair__default {
+      color: #1c1c1e;
+      margin-bottom: 4px;
+    }
+
+    .emphasis-pair__emphasized {
+      color: #1c1c1e;
+    }
+
+    .tag {
+      display: inline-block;
+      font-family: var(--font-family-text);
+      font-size: 10px;
+      font-weight: var(--font-weight-medium);
+      color: #aeaeb2;
+      margin-left: 8px;
+      vertical-align: middle;
+    }
+
+    /* ---- Code reference table ---- */
+    .ref-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .ref-table th {
+      font-family: var(--font-family-text);
+      font-size: 11px;
+      font-weight: var(--font-weight-semibold);
+      color: #aeaeb2;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      text-align: left;
+      padding: 0 0 12px;
+      border-bottom: 1px solid #e5e5ea;
+    }
+
+    .ref-table td {
+      font-family: var(--font-family-text);
+      font-size: 13px;
+      font-weight: var(--font-weight-regular);
+      color: #3a3a3c;
+      padding: 10px 0;
+      border-bottom: 1px solid #f2f2f7;
+      vertical-align: top;
+    }
+
+    .ref-table td:first-child {
+      font-weight: var(--font-weight-medium);
+      color: #1c1c1e;
+    }
+
+    .ref-table code {
+      font-family: "SF Mono", SFMono-Regular, ui-monospace, Menlo, monospace;
+      font-size: 12px;
+      color: #636366;
+      background: #f2f2f7;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+
+    /* ---- Text Colors ---- */
+    .color-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .color-row {
+      display: flex;
+      align-items: center;
+      padding: 16px 0;
+      border-bottom: 1px solid #f2f2f7;
+      gap: 24px;
+    }
+
+    .color-row:last-child { border-bottom: none; }
+
+    .color-row__swatch {
+      flex: 0 0 40px;
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      border: 1px solid rgba(0,0,0,0.06);
+    }
+
+    .color-row__info {
+      flex: 0 0 200px;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .color-row__name {
+      font-family: var(--font-family-text);
+      font-size: 13px;
+      font-weight: var(--font-weight-semibold);
+      color: #1c1c1e;
+    }
+
+    .color-row__hex {
+      font-family: "SF Mono", SFMono-Regular, ui-monospace, Menlo, monospace;
+      font-size: 11px;
+      color: #aeaeb2;
+    }
+
+    .color-row__sample {
+      flex: 1;
+      font-family: var(--font-family-text);
+      font-size: 17px;
+      line-height: 22px;
+    }
+
+    .dark-strip {
+      background: #1c1c1e;
+      border-radius: 16px;
+      padding: 32px;
+      margin-top: 32px;
+    }
+
+    .dark-strip .color-row {
+      border-bottom-color: rgba(255,255,255,0.08);
+    }
+
+    .dark-strip .color-row__name {
+      color: #fff;
+    }
+
+    .dark-strip .color-row__hex {
+      color: rgba(235, 235, 245, 0.40);
+    }
+
+    .tint-grid {
+      display: flex;
+      gap: 32px;
+      margin-top: 32px;
+    }
+
+    .tint-card {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .tint-card__sample {
+      font-family: var(--font-family-text);
+      font-size: 22px;
+      font-weight: var(--font-weight-semibold);
+      line-height: 28px;
+    }
+
+    .tint-card__meta {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .tint-card__name {
+      font-family: var(--font-family-text);
+      font-size: 13px;
+      font-weight: var(--font-weight-semibold);
+      color: #1c1c1e;
+    }
+
+    .tint-card__hex {
+      font-family: "SF Mono", SFMono-Regular, ui-monospace, Menlo, monospace;
+      font-size: 11px;
+      color: #aeaeb2;
+    }
+
+    .tint-card__tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 4px;
+    }
+
+    /* ---- Numbers & Tabular Figures ---- */
+    .num-compare {
+      display: flex;
+      gap: 64px;
+      margin-bottom: 40px;
+    }
+
+    .num-column {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .num-column__title {
+      font-family: var(--font-family-text);
+      font-size: 11px;
+      font-weight: var(--font-weight-semibold);
+      color: #aeaeb2;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 12px;
+    }
+
+    .num-column__value {
+      font-family: var(--font-family-text);
+      font-size: 28px;
+      font-weight: var(--font-weight-medium);
+      line-height: 40px;
+      color: #1c1c1e;
+      text-align: right;
+      padding-right: 16px;
+      border-right: 2px solid #f2f2f7;
+    }
+
+    .num-examples {
+      display: flex;
+      gap: 48px;
+    }
+
+    .num-example {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .num-example__label {
+      font-family: var(--font-family-text);
+      font-size: 11px;
+      font-weight: var(--font-weight-semibold);
+      color: #aeaeb2;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .num-example__values {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .num-example__row {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+    }
+
+    .num-example__row-name {
+      font-family: var(--font-family-text);
+      font-size: 15px;
+      color: #636366;
+      flex: 0 0 120px;
+    }
+
+    .num-example__row-value {
+      font-family: var(--font-family-text);
+      font-size: 15px;
+      font-weight: var(--font-weight-medium);
+      color: #1c1c1e;
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* ---- SF Mono ---- */
+    .mono-specimen {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin-bottom: 32px;
+    }
+
+    .mono-specimen__row {
+      display: flex;
+      align-items: baseline;
+      padding: 16px 0;
+      border-bottom: 1px solid #f2f2f7;
+      gap: 24px;
+    }
+
+    .mono-specimen__row:last-child { border-bottom: none; }
+
+    .mono-specimen__label {
+      flex: 0 0 200px;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .mono-specimen__name {
+      font-family: var(--font-family-text);
+      font-size: 13px;
+      font-weight: var(--font-weight-semibold);
+      color: #1c1c1e;
+    }
+
+    .mono-specimen__spec {
+      font-family: var(--font-family-text);
+      font-size: 11px;
+      color: #aeaeb2;
+    }
+
+    .mono-specimen__sample {
+      flex: 1;
+      color: #1c1c1e;
+    }
+
+    .mono-pairing {
+      font-family: var(--font-family-text);
+      font-size: 17px;
+      line-height: 28px;
+      color: #3a3a3c;
+      max-width: 600px;
+    }
+
+    .mono-pairing code {
+      font-family: "SF Mono", SFMono-Regular, ui-monospace, Menlo, monospace;
+      font-size: 15px;
+      color: #1c1c1e;
+      background: #f2f2f7;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+
+    /* ---- Uppercase & Small Caps ---- */
+    .overline-demos {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      margin-bottom: 32px;
+    }
+
+    .overline-demo {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .overline-demo__context {
+      font-family: var(--font-family-text);
+      font-size: 11px;
+      color: #aeaeb2;
+    }
+
+    /* ---- Truncation ---- */
+    .truncation-demos {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      margin-bottom: 40px;
+    }
+
+    .truncation-demo {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .truncation-demo__label {
+      font-family: var(--font-family-text);
+      font-size: 11px;
+      font-weight: var(--font-weight-semibold);
+      color: #aeaeb2;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .truncation-demo__box {
+      background: #f9f9fb;
+      border-radius: 12px;
+      padding: 16px 20px;
+    }
+
+    .measure-demo {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .measure-bar {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .measure-bar__label {
+      font-family: var(--font-family-text);
+      font-size: 11px;
+      font-weight: var(--font-weight-medium);
+      color: #8e8e93;
+    }
+
+    .measure-bar__track {
+      height: 8px;
+      background: #e5e5ea;
+      border-radius: 4px;
+      position: relative;
+    }
+
+    .measure-bar__fill {
+      height: 100%;
+      border-radius: 4px;
+      background: #007aff;
+    }
+
+    /* ---- Map Labels ---- */
+    .map-label-hierarchy {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin-bottom: 32px;
+    }
+
+    .map-label-row {
+      display: flex;
+      align-items: center;
+      padding: 14px 0;
+      border-bottom: 1px solid #f2f2f7;
+      gap: 24px;
+    }
+
+    .map-label-row:last-child { border-bottom: none; }
+
+    .map-label-row__meta {
+      flex: 0 0 200px;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .map-label-row__name {
+      font-family: var(--font-family-text);
+      font-size: 13px;
+      font-weight: var(--font-weight-semibold);
+      color: #1c1c1e;
+    }
+
+    .map-label-row__spec {
+      font-family: var(--font-family-text);
+      font-size: 11px;
+      color: #aeaeb2;
+    }
+
+    .map-label-row__sample {
+      flex: 1;
+      color: #1c1c1e;
+    }
+
+    .map-context {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    .map-surface {
+      flex: 1;
+      border-radius: 16px;
+      padding: 40px 32px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .map-surface--light {
+      background: #f0ece1;
+      background-image:
+        radial-gradient(ellipse at 30% 40%, #dce8d0 0%, transparent 60%),
+        radial-gradient(ellipse at 70% 70%, #d6dce8 0%, transparent 50%);
+    }
+
+    .map-surface--dark {
+      background: #1a1a2e;
+      background-image:
+        radial-gradient(ellipse at 30% 40%, #1e2a1e 0%, transparent 60%),
+        radial-gradient(ellipse at 70% 70%, #1e1e2e 0%, transparent 50%);
+    }
+
+    .map-halo {
+      text-shadow:
+        -1px -1px 0 rgba(255,255,255,0.9),
+         1px -1px 0 rgba(255,255,255,0.9),
+        -1px  1px 0 rgba(255,255,255,0.9),
+         1px  1px 0 rgba(255,255,255,0.9),
+         0    2px 4px rgba(0,0,0,0.08);
+    }
+
+    .map-halo--dark {
+      text-shadow:
+        -1px -1px 0 rgba(0,0,0,0.7),
+         1px -1px 0 rgba(0,0,0,0.7),
+        -1px  1px 0 rgba(0,0,0,0.7),
+         1px  1px 0 rgba(0,0,0,0.7),
+         0    2px 4px rgba(0,0,0,0.3);
+    }
+
+    /* ---- Accessibility ---- */
+    .size-check {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin-bottom: 32px;
+    }
+
+    .size-check__row {
+      display: flex;
+      align-items: center;
+      padding: 12px 0;
+      border-bottom: 1px solid #f2f2f7;
+      gap: 24px;
+    }
+
+    .size-check__row:last-child { border-bottom: none; }
+
+    .size-check__meta {
+      flex: 0 0 120px;
+      font-family: var(--font-family-text);
+      font-size: 13px;
+      font-weight: var(--font-weight-medium);
+      color: #1c1c1e;
+    }
+
+    .size-check__sample {
+      flex: 1;
+      color: #1c1c1e;
+    }
+
+    .size-check__status {
+      flex: 0 0 80px;
+      font-family: var(--font-family-text);
+      font-size: 12px;
+      font-weight: var(--font-weight-medium);
+      text-align: right;
+    }
+
+    .touch-target-demo {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+      margin-bottom: 32px;
+    }
+
+    .touch-target-box {
+      width: 44px;
+      height: 44px;
+      border: 2px dashed #007aff;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .touch-target-box__label {
+      font-family: "SF Mono", SFMono-Regular, ui-monospace, Menlo, monospace;
+      font-size: 10px;
+      color: #007aff;
+      white-space: nowrap;
+    }
+
+    .touch-target-demo__text {
+      font-family: var(--font-family-text);
+      font-size: 15px;
+      color: #636366;
+      line-height: 22px;
+    }
+
+    .contrast-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    .contrast-card {
+      border-radius: 12px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .contrast-card__label-name {
+      font-family: var(--font-family-text);
+      font-size: 11px;
+      font-weight: var(--font-weight-semibold);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .contrast-card__sample {
+      font-family: var(--font-family-text);
+      font-size: 17px;
+      line-height: 22px;
+    }
+
+    .contrast-card__ratio {
+      font-family: "SF Mono", SFMono-Regular, ui-monospace, Menlo, monospace;
+      font-size: 11px;
+    }
+
+    .dt-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .dt-table th {
+      font-family: var(--font-family-text);
+      font-size: 11px;
+      font-weight: var(--font-weight-semibold);
+      color: #aeaeb2;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      text-align: left;
+      padding: 0 0 12px;
+      border-bottom: 1px solid #e5e5ea;
+    }
+
+    .dt-table td {
+      font-family: "SF Mono", SFMono-Regular, ui-monospace, Menlo, monospace;
+      font-size: 12px;
+      color: #3a3a3c;
+      padding: 8px 12px 8px 0;
+      border-bottom: 1px solid #f2f2f7;
+    }
+
+    .dt-table td:first-child {
+      font-family: var(--font-family-text);
+      font-size: 13px;
+      font-weight: var(--font-weight-medium);
+      color: #1c1c1e;
+    }
+
+    .rule-box {
+      background: #f9f9fb;
+      border-radius: 12px;
+      padding: 20px 24px;
+      font-family: var(--font-family-text);
+      font-size: 15px;
+      line-height: 22px;
+      color: #636366;
+      max-width: 640px;
+    }
+
+    .rule-box strong {
+      color: #1c1c1e;
+      font-weight: var(--font-weight-semibold);
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <!-- ============================================================
+         Sidebar Navigation
+         ============================================================ -->
+    <nav class="sidebar">
+      <a href="#"><img src="livemap-logomark.png" alt="Livemap" class="sidebar__logo"></a>
+      <ul class="sidebar__nav">
+        <li><a class="sidebar__link" href="#font-families">Font Families</a></li>
+        <li><a class="sidebar__link" href="#weight-scale">Weight Scale</a></li>
+        <li><a class="sidebar__link" href="#width-variants">Width Variants</a></li>
+        <li><a class="sidebar__link" href="#type-scale">iOS Type Scale</a></li>
+        <li><a class="sidebar__link" href="#emphasis">Emphasis</a></li>
+        <li><div class="sidebar__divider"></div></li>
+        <li><a class="sidebar__link" href="#text-colors">Text Colors</a></li>
+        <li><a class="sidebar__link" href="#tabular-figures">Numbers</a></li>
+        <li><a class="sidebar__link" href="#sf-mono">SF Mono</a></li>
+        <li><a class="sidebar__link" href="#uppercase">Uppercase</a></li>
+        <li><a class="sidebar__link" href="#truncation">Truncation</a></li>
+        <li><a class="sidebar__link" href="#map-labels">Map Labels</a></li>
+        <li><a class="sidebar__link" href="#accessibility">Accessibility</a></li>
+        <li><div class="sidebar__divider"></div></li>
+        <li><a class="sidebar__link" href="#token-reference">Token Reference</a></li>
+        <li><a class="sidebar__link" href="#usage-notes">Usage Notes</a></li>
+      </ul>
+    </nav>
+
+    <div class="main-content">
+
+    <!-- ============================================================
+         Header
+         ============================================================ -->
+    <header class="page-header">
+      <p class="page-title">Livemap Design System</p>
+      <h1 class="page-heading">Typography <span>/ SF Pro</span></h1>
+    </header>
+
+
+    <!-- ============================================================
+         1. Font Families
+         ============================================================ -->
+    <section id="font-families">
+      <p class="section-label">Font Families</p>
+      <p class="section-note">
+        SF Pro is Apple's system typeface. It includes three variants: the default variable-width family, a Display cut for large sizes, a Text cut for small sizes, and a Rounded variant.
+      </p>
+
+      <div class="family-card">
+        <div class="family-card__header">
+          <span class="family-card__name">SF Pro</span>
+          <span class="family-card__usage">Variable font with automatic optical sizing (opsz 17-28)</span>
+        </div>
+        <div class="family-card__sample" style="font-family: var(--font-family);">
+          The quick brown fox jumps over the lazy dog
+        </div>
+        <div class="family-card__sample-small" style="font-family: var(--font-family);">
+          Maps reveal what matters. Every pin, every route, every boundary tells a story about the world and how we move through it.
+        </div>
+      </div>
+
+      <div class="family-card">
+        <div class="family-card__header">
+          <span class="family-card__name">SF Pro Display</span>
+          <span class="family-card__usage">Optimized for 20pt and above</span>
+        </div>
+        <div class="family-card__sample" style="font-family: var(--font-family-display);">
+          The quick brown fox jumps over the lazy dog
+        </div>
+      </div>
+
+      <div class="family-card">
+        <div class="family-card__header">
+          <span class="family-card__name">SF Pro Text</span>
+          <span class="family-card__usage">Optimized for 19pt and below</span>
+        </div>
+        <div class="family-card__sample-small" style="font-family: var(--font-family-text); margin-top: 0;">
+          Maps reveal what matters. Every pin, every route, every boundary tells a story about the world and how we move through it. Livemap brings location to life.
+        </div>
+      </div>
+
+      <div class="family-card">
+        <div class="family-card__header">
+          <span class="family-card__name">SF Pro Rounded</span>
+          <span class="family-card__usage">Softer terminals for badges, chips, friendly UI moments</span>
+        </div>
+        <div class="family-card__sample" style="font-family: var(--font-family-rounded);">
+          The quick brown fox jumps over the lazy dog
+        </div>
+        <div class="family-card__sample-small" style="font-family: var(--font-family-rounded);">
+          Maps reveal what matters. Every pin, every route, every boundary tells a story about the world and how we move through it.
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         2. Weight Scale — Livemap uses 4 weights
+         ============================================================ -->
+    <section id="weight-scale">
+      <p class="section-label">Weight Scale</p>
+      <p class="section-note">
+        SF Pro ships 9 weights. Livemap uses four. Each has a clear role &mdash; if you're reaching for a weight not listed here, reconsider the hierarchy.
+      </p>
+
+      <div class="weight-grid">
+        <div class="weight-card">
+          <div class="weight-card__header">
+            <span class="weight-card__name">Regular</span>
+            <span class="weight-card__value">400</span>
+          </div>
+          <p class="weight-card__role">The default. Most text in the app is Regular.</p>
+          <div class="weight-card__sample" style="font-weight: 400;">Explore late-night options</div>
+          <div class="weight-card__context">
+            <span class="weight-card__tag">Body text</span>
+            <span class="weight-card__tag">Descriptions</span>
+            <span class="weight-card__tag">Directions prose</span>
+            <span class="weight-card__tag">Input fields</span>
+            <span class="weight-card__tag">Placeholders</span>
+            <span class="weight-card__tag">Secondary metadata</span>
+          </div>
+        </div>
+
+        <div class="weight-card">
+          <div class="weight-card__header">
+            <span class="weight-card__name">Medium</span>
+            <span class="weight-card__value">500</span>
+          </div>
+          <p class="weight-card__role">Subtle emphasis. Present but never loud.</p>
+          <div class="weight-card__sample" style="font-weight: 500;">Wiiter schwätze...</div>
+          <div class="weight-card__context">
+            <span class="weight-card__tag">Tab bar labels</span>
+            <span class="weight-card__tag">Filter chips</span>
+            <span class="weight-card__tag">Tinted action links</span>
+            <span class="weight-card__tag">Status tags</span>
+            <span class="weight-card__tag">Small caps labels</span>
+            <span class="weight-card__tag">Inactive navigation</span>
+          </div>
+        </div>
+
+        <div class="weight-card">
+          <div class="weight-card__header">
+            <span class="weight-card__name">Semibold</span>
+            <span class="weight-card__value">600</span>
+          </div>
+          <p class="weight-card__role">Primary emphasis. The workhorse for titles and actions.</p>
+          <div class="weight-card__sample" style="font-weight: 600;">Ristorante Da Mario</div>
+          <div class="weight-card__context">
+            <span class="weight-card__tag">Card titles</span>
+            <span class="weight-card__tag">Nav bar titles</span>
+            <span class="weight-card__tag">List item names</span>
+            <span class="weight-card__tag">Button labels</span>
+            <span class="weight-card__tag">Notification headlines</span>
+            <span class="weight-card__tag">Active chip states</span>
+          </div>
+        </div>
+
+        <div class="weight-card">
+          <div class="weight-card__header">
+            <span class="weight-card__name">Bold</span>
+            <span class="weight-card__value">700</span>
+          </div>
+          <p class="weight-card__role">Reserved for large type only. Sheet headers, section titles, turn-by-turn.</p>
+          <div class="weight-card__sample" style="font-weight: 700;">Food</div>
+          <div class="weight-card__context">
+            <span class="weight-card__tag">Large Title</span>
+            <span class="weight-card__tag">Sheet headers</span>
+            <span class="weight-card__tag">Section titles</span>
+            <span class="weight-card__tag">Turn-by-turn primary</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         3. Width Variants
+         ============================================================ -->
+    <section id="width-variants">
+      <p class="section-label">Width Variants</p>
+      <p class="section-note">
+        SF Pro's variable font includes a width axis (wdth 30-150). Four named widths are available as static cuts. Useful for space-constrained UI like map labels and compact data views.
+      </p>
+
+      <div class="width-grid">
+        <div class="width-row">
+          <div class="width-row__label">
+            <div class="width-row__name">Compressed</div>
+            <div class="width-row__note">wdth: 47</div>
+          </div>
+          <div class="width-row__sample" style="font-family: 'SF Pro'; font-stretch: 47%;">Livemap Navigation</div>
+        </div>
+        <div class="width-row">
+          <div class="width-row__label">
+            <div class="width-row__name">Condensed</div>
+            <div class="width-row__note">wdth: 60</div>
+          </div>
+          <div class="width-row__sample" style="font-family: 'SF Pro'; font-stretch: 60%;">Livemap Navigation</div>
+        </div>
+        <div class="width-row">
+          <div class="width-row__label">
+            <div class="width-row__name">Normal</div>
+            <div class="width-row__note">wdth: 100</div>
+          </div>
+          <div class="width-row__sample" style="font-family: 'SF Pro'; font-stretch: 100%;">Livemap Navigation</div>
+        </div>
+        <div class="width-row">
+          <div class="width-row__label">
+            <div class="width-row__name">Expanded</div>
+            <div class="width-row__note">wdth: 132</div>
+          </div>
+          <div class="width-row__sample" style="font-family: 'SF Pro'; font-stretch: 132%;">Livemap Navigation</div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         4. iOS Type Scale
+         ============================================================ -->
+    <section id="type-scale">
+      <p class="section-label">iOS Type Scale</p>
+      <p class="section-note">
+        Apple's Dynamic Type scale at the default Large size. Display styles (20pt+) use SF Pro Display; text styles (19pt and below) use SF Pro Text.
+      </p>
+
+      <div class="type-row">
+        <div class="type-row__meta">
+          <span class="type-row__name">Large Title</span>
+          <span class="type-row__spec">34 / 41 / Regular / +0.011em</span>
+        </div>
+        <div class="type-row__sample type-large-title">Explore the map</div>
+      </div>
+
+      <div class="type-row">
+        <div class="type-row__meta">
+          <span class="type-row__name">Title 1</span>
+          <span class="type-row__spec">28 / 34 / Regular / +0.013em</span>
+        </div>
+        <div class="type-row__sample type-title1">Nearby places</div>
+      </div>
+
+      <div class="type-row">
+        <div class="type-row__meta">
+          <span class="type-row__name">Title 2</span>
+          <span class="type-row__spec">22 / 28 / Regular / +0.016em</span>
+        </div>
+        <div class="type-row__sample type-title2">Saved locations</div>
+      </div>
+
+      <div class="type-row">
+        <div class="type-row__meta">
+          <span class="type-row__name">Title 3</span>
+          <span class="type-row__spec">20 / 25 / Regular / +0.019em</span>
+        </div>
+        <div class="type-row__sample type-title3">Route details</div>
+      </div>
+
+      <div class="type-row">
+        <div class="type-row__meta">
+          <span class="type-row__name">Headline</span>
+          <span class="type-row__spec">17 / 22 / Semibold / -0.024em</span>
+        </div>
+        <div class="type-row__sample type-headline">Current location</div>
+      </div>
+
+      <div class="type-row">
+        <div class="type-row__meta">
+          <span class="type-row__name">Body</span>
+          <span class="type-row__spec">17 / 22 / Regular / -0.024em</span>
+        </div>
+        <div class="type-row__sample type-body">Turn right on Market Street, then continue for 200 meters until you reach the intersection.</div>
+      </div>
+
+      <div class="type-row">
+        <div class="type-row__meta">
+          <span class="type-row__name">Callout</span>
+          <span class="type-row__spec">16 / 21 / Regular / -0.020em</span>
+        </div>
+        <div class="type-row__sample type-callout">Estimated arrival in 12 minutes</div>
+      </div>
+
+      <div class="type-row">
+        <div class="type-row__meta">
+          <span class="type-row__name">Subheadline</span>
+          <span class="type-row__spec">15 / 20 / Regular / -0.016em</span>
+        </div>
+        <div class="type-row__sample type-subheadline">3.2 km away</div>
+      </div>
+
+      <div class="type-row">
+        <div class="type-row__meta">
+          <span class="type-row__name">Footnote</span>
+          <span class="type-row__spec">13 / 18 / Regular / -0.006em</span>
+        </div>
+        <div class="type-row__sample type-footnote">Last updated 2 minutes ago</div>
+      </div>
+
+      <div class="type-row">
+        <div class="type-row__meta">
+          <span class="type-row__name">Caption 1</span>
+          <span class="type-row__spec">12 / 16 / Regular / 0</span>
+        </div>
+        <div class="type-row__sample type-caption1">Map data provided by OpenStreetMap contributors</div>
+      </div>
+
+      <div class="type-row">
+        <div class="type-row__meta">
+          <span class="type-row__name">Caption 2</span>
+          <span class="type-row__spec">11 / 13 / Regular / +0.006em</span>
+        </div>
+        <div class="type-row__sample type-caption2">Coordinates: 40.7128, -74.0060</div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         5. Emphasis
+         ============================================================ -->
+    <section id="emphasis">
+      <p class="section-label">Emphasis</p>
+      <p class="section-note">
+        Each type style steps up one weight when emphasized. Constrained to the 4-weight system &mdash; each style moves to the next available weight.
+      </p>
+
+      <div class="emphasis-grid">
+        <div class="emphasis-pair">
+          <div class="emphasis-pair__label">Large Title</div>
+          <div class="emphasis-pair__default type-large-title">Explore <span class="tag">Regular 400</span></div>
+          <div class="emphasis-pair__emphasized type-large-title emphasized">Explore <span class="tag">Bold 700</span></div>
+        </div>
+        <div class="emphasis-pair">
+          <div class="emphasis-pair__label">Headline</div>
+          <div class="emphasis-pair__default type-headline">Location <span class="tag">Semibold 600</span></div>
+          <div class="emphasis-pair__emphasized type-headline emphasized">Location <span class="tag">Bold 700</span></div>
+        </div>
+        <div class="emphasis-pair">
+          <div class="emphasis-pair__label">Body</div>
+          <div class="emphasis-pair__default type-body">Directions <span class="tag">Regular 400</span></div>
+          <div class="emphasis-pair__emphasized type-body emphasized">Directions <span class="tag">Semibold 600</span></div>
+        </div>
+        <div class="emphasis-pair">
+          <div class="emphasis-pair__label">Callout</div>
+          <div class="emphasis-pair__default type-callout">Arrival <span class="tag">Regular 400</span></div>
+          <div class="emphasis-pair__emphasized type-callout emphasized">Arrival <span class="tag">Medium 500</span></div>
+        </div>
+        <div class="emphasis-pair">
+          <div class="emphasis-pair__label">Footnote</div>
+          <div class="emphasis-pair__default type-footnote">Updated <span class="tag">Regular 400</span></div>
+          <div class="emphasis-pair__emphasized type-footnote emphasized">Updated <span class="tag">Semibold 600</span></div>
+        </div>
+        <div class="emphasis-pair">
+          <div class="emphasis-pair__label">Caption 1</div>
+          <div class="emphasis-pair__default type-caption1">Source <span class="tag">Regular 400</span></div>
+          <div class="emphasis-pair__emphasized type-caption1 emphasized">Source <span class="tag">Medium 500</span></div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         6. Text Colors
+         ============================================================ -->
+    <section id="text-colors">
+      <p class="section-label">Text Colors</p>
+      <p class="section-note">
+        iOS defines four semantic label colors that form a text hierarchy. Each level reduces opacity to establish visual weight. Livemap adds three tinted colors for actions and status.
+      </p>
+
+      <div class="color-grid">
+        <div class="color-row">
+          <div class="color-row__swatch" style="background: #1c1c1e;"></div>
+          <div class="color-row__info">
+            <span class="color-row__name">Label (Primary)</span>
+            <span class="color-row__hex">#1c1c1e</span>
+          </div>
+          <div class="color-row__sample" style="color: #1c1c1e;">Ristorante Da Mario</div>
+        </div>
+        <div class="color-row">
+          <div class="color-row__swatch" style="background: rgba(60, 60, 67, 0.60);"></div>
+          <div class="color-row__info">
+            <span class="color-row__name">Secondary</span>
+            <span class="color-row__hex">#3c3c43 / 60%</span>
+          </div>
+          <div class="color-row__sample" style="color: rgba(60, 60, 67, 0.60);">Italian &middot; $$$ &middot; 1.2 km</div>
+        </div>
+        <div class="color-row">
+          <div class="color-row__swatch" style="background: rgba(60, 60, 67, 0.30);"></div>
+          <div class="color-row__info">
+            <span class="color-row__name">Tertiary</span>
+            <span class="color-row__hex">#3c3c43 / 30%</span>
+          </div>
+          <div class="color-row__sample" style="color: rgba(60, 60, 67, 0.30);">Placeholder text</div>
+        </div>
+        <div class="color-row">
+          <div class="color-row__swatch" style="background: rgba(60, 60, 67, 0.18);"></div>
+          <div class="color-row__info">
+            <span class="color-row__name">Quaternary</span>
+            <span class="color-row__hex">#3c3c43 / 18%</span>
+          </div>
+          <div class="color-row__sample" style="color: rgba(60, 60, 67, 0.18);">Disabled or decorative</div>
+        </div>
+      </div>
+
+      <!-- Dark mode preview -->
+      <div class="dark-strip">
+        <div class="color-grid">
+          <div class="color-row">
+            <div class="color-row__swatch" style="background: #fff; border-color: rgba(255,255,255,0.1);"></div>
+            <div class="color-row__info">
+              <span class="color-row__name">Label (Primary)</span>
+              <span class="color-row__hex">#ffffff</span>
+            </div>
+            <div class="color-row__sample" style="color: #fff;">Ristorante Da Mario</div>
+          </div>
+          <div class="color-row">
+            <div class="color-row__swatch" style="background: rgba(235, 235, 245, 0.60); border-color: rgba(255,255,255,0.1);"></div>
+            <div class="color-row__info">
+              <span class="color-row__name">Secondary</span>
+              <span class="color-row__hex">#ebebf5 / 60%</span>
+            </div>
+            <div class="color-row__sample" style="color: rgba(235, 235, 245, 0.60);">Italian &middot; $$$ &middot; 1.2 km</div>
+          </div>
+          <div class="color-row">
+            <div class="color-row__swatch" style="background: rgba(235, 235, 245, 0.30); border-color: rgba(255,255,255,0.1);"></div>
+            <div class="color-row__info">
+              <span class="color-row__name">Tertiary</span>
+              <span class="color-row__hex">#ebebf5 / 30%</span>
+            </div>
+            <div class="color-row__sample" style="color: rgba(235, 235, 245, 0.30);">Placeholder text</div>
+          </div>
+          <div class="color-row">
+            <div class="color-row__swatch" style="background: rgba(235, 235, 245, 0.18); border-color: rgba(255,255,255,0.1);"></div>
+            <div class="color-row__info">
+              <span class="color-row__name">Quaternary</span>
+              <span class="color-row__hex">#ebebf5 / 18%</span>
+            </div>
+            <div class="color-row__sample" style="color: rgba(235, 235, 245, 0.18);">Disabled or decorative</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tinted text colors -->
+      <div class="tint-grid">
+        <div class="tint-card">
+          <div class="tint-card__sample" style="color: #ff3b30;">Closed</div>
+          <div class="tint-card__meta">
+            <span class="tint-card__name">Destructive</span>
+            <span class="tint-card__hex">#ff3b30</span>
+          </div>
+          <div class="tint-card__tags">
+            <span class="weight-card__tag">Closed status</span>
+            <span class="weight-card__tag">Errors</span>
+            <span class="weight-card__tag">Delete actions</span>
+          </div>
+        </div>
+        <div class="tint-card">
+          <div class="tint-card__sample" style="color: #34c759;">Open now</div>
+          <div class="tint-card__meta">
+            <span class="tint-card__name">Positive</span>
+            <span class="tint-card__hex">#34c759</span>
+          </div>
+          <div class="tint-card__tags">
+            <span class="weight-card__tag">Open status</span>
+            <span class="weight-card__tag">Success</span>
+            <span class="weight-card__tag">Confirmations</span>
+          </div>
+        </div>
+        <div class="tint-card">
+          <div class="tint-card__sample" style="color: #007aff;">Directions</div>
+          <div class="tint-card__meta">
+            <span class="tint-card__name">Action</span>
+            <span class="tint-card__hex">#007aff</span>
+          </div>
+          <div class="tint-card__tags">
+            <span class="weight-card__tag">Links</span>
+            <span class="weight-card__tag">Actions</span>
+            <span class="weight-card__tag">Interactive text</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         7. Numbers & Tabular Figures
+         ============================================================ -->
+    <section id="tabular-figures">
+      <p class="section-label">Numbers &amp; Tabular Figures</p>
+      <p class="section-note">
+        Tabular figures give every digit equal width, making columns of numbers align vertically. Use them for distances, times, prices, and ratings. Proportional figures (the default) are better for numbers in running text.
+      </p>
+
+      <div class="num-compare">
+        <div class="num-column">
+          <div class="num-column__title">Tabular Figures</div>
+          <div class="num-column__value" style="font-variant-numeric: tabular-nums;">1,234</div>
+          <div class="num-column__value" style="font-variant-numeric: tabular-nums;">56,789</div>
+          <div class="num-column__value" style="font-variant-numeric: tabular-nums;">10</div>
+          <div class="num-column__value" style="font-variant-numeric: tabular-nums;">999,999</div>
+        </div>
+        <div class="num-column">
+          <div class="num-column__title">Proportional Figures</div>
+          <div class="num-column__value" style="font-variant-numeric: proportional-nums; border-right-color: transparent;">1,234</div>
+          <div class="num-column__value" style="font-variant-numeric: proportional-nums; border-right-color: transparent;">56,789</div>
+          <div class="num-column__value" style="font-variant-numeric: proportional-nums; border-right-color: transparent;">10</div>
+          <div class="num-column__value" style="font-variant-numeric: proportional-nums; border-right-color: transparent;">999,999</div>
+        </div>
+      </div>
+
+      <div class="num-examples">
+        <div class="num-example">
+          <div class="num-example__label">Distances</div>
+          <div class="num-example__values">
+            <div class="num-example__row">
+              <span class="num-example__row-name">3 Fründe</span>
+              <span class="num-example__row-value">3.2 km</span>
+            </div>
+            <div class="num-example__row">
+              <span class="num-example__row-name">Rosengarten</span>
+              <span class="num-example__row-value">12.7 km</span>
+            </div>
+            <div class="num-example__row">
+              <span class="num-example__row-name">Münsterplatz</span>
+              <span class="num-example__row-value">0.8 km</span>
+            </div>
+          </div>
+        </div>
+        <div class="num-example">
+          <div class="num-example__label">Ratings</div>
+          <div class="num-example__values">
+            <div class="num-example__row">
+              <span class="num-example__row-name">Food</span>
+              <span class="num-example__row-value">4.5</span>
+            </div>
+            <div class="num-example__row">
+              <span class="num-example__row-name">Service</span>
+              <span class="num-example__row-value">3.8</span>
+            </div>
+            <div class="num-example__row">
+              <span class="num-example__row-name">Atmosphere</span>
+              <span class="num-example__row-value">5.0</span>
+            </div>
+          </div>
+        </div>
+        <div class="num-example">
+          <div class="num-example__label">Price Range</div>
+          <div class="num-example__values">
+            <div class="num-example__row">
+              <span class="num-example__row-name">Budget</span>
+              <span class="num-example__row-value">$</span>
+            </div>
+            <div class="num-example__row">
+              <span class="num-example__row-name">Mid-range</span>
+              <span class="num-example__row-value">$$</span>
+            </div>
+            <div class="num-example__row">
+              <span class="num-example__row-name">Fine dining</span>
+              <span class="num-example__row-value">$$$</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         8. SF Mono
+         ============================================================ -->
+    <section id="sf-mono">
+      <p class="section-label">SF Mono</p>
+      <p class="section-note">
+        SF Mono is Apple's monospace companion to SF Pro. Use it for coordinates, technical IDs, code snippets, and any data that benefits from fixed-width characters.
+      </p>
+
+      <div class="mono-specimen">
+        <div class="mono-specimen__row">
+          <div class="mono-specimen__label">
+            <span class="mono-specimen__name">Mono Body</span>
+            <span class="mono-specimen__spec">15 / 22 / Regular</span>
+          </div>
+          <div class="mono-specimen__sample type-mono">ABCDEFGHIJKLMNOPQRSTUVWXYZ 0123456789</div>
+        </div>
+        <div class="mono-specimen__row">
+          <div class="mono-specimen__label">
+            <span class="mono-specimen__name">Mono Caption</span>
+            <span class="mono-specimen__spec">12 / 16 / Regular</span>
+          </div>
+          <div class="mono-specimen__sample type-mono-caption">abcdefghijklmnopqrstuvwxyz 0123456789 !@#$%&amp;*</div>
+        </div>
+      </div>
+
+      <p style="font-family: var(--font-family-text); font-size: 11px; font-weight: 600; color: #aeaeb2; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 16px;">Real-world examples</p>
+
+      <div style="display: flex; flex-direction: column; gap: 16px; margin-bottom: 32px;">
+        <div style="display: flex; align-items: baseline; gap: 16px;">
+          <span style="font-family: var(--font-family-text); font-size: 13px; color: #8e8e93; flex: 0 0 100px;">Coordinates</span>
+          <span class="type-mono">47.3769, 8.5417</span>
+        </div>
+        <div style="display: flex; align-items: baseline; gap: 16px;">
+          <span style="font-family: var(--font-family-text); font-size: 13px; color: #8e8e93; flex: 0 0 100px;">Place ID</span>
+          <span class="type-mono">lm_ch_zh_0042</span>
+        </div>
+        <div style="display: flex; align-items: baseline; gap: 16px;">
+          <span style="font-family: var(--font-family-text); font-size: 13px; color: #8e8e93; flex: 0 0 100px;">Timestamp</span>
+          <span class="type-mono">2024-03-15T14:32:00Z</span>
+        </div>
+      </div>
+
+      <p style="font-family: var(--font-family-text); font-size: 11px; font-weight: 600; color: #aeaeb2; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 16px;">Pairing with SF Pro</p>
+      <div class="mono-pairing">
+        The restaurant is located at coordinates <code>47.3769, 8.5417</code> in Zurich's historic Altstadt. The place ID <code>lm_ch_zh_0042</code> was last updated at <code>14:32 UTC</code>.
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         9. Uppercase & Small Caps
+         ============================================================ -->
+    <section id="uppercase">
+      <p class="section-label">Uppercase &amp; Small Caps</p>
+      <p class="section-note">
+        Overline labels and small caps create subtle hierarchical markers. Uppercase text always needs wider tracking for readability. Never use uppercase below 11px.
+      </p>
+
+      <div class="overline-demos">
+        <div class="overline-demo">
+          <div class="overline-demo__context">Section label pattern</div>
+          <div class="type-overline" style="color: #8e8e93;">Livemap Design System</div>
+          <div class="type-title2" style="font-weight: 600; margin-top: 4px;">Typography</div>
+        </div>
+        <div class="overline-demo">
+          <div class="overline-demo__context">Category tag</div>
+          <div class="type-overline" style="color: #007aff;">3 Fründe</div>
+        </div>
+        <div class="overline-demo">
+          <div class="overline-demo__context">Metadata label</div>
+          <div style="display: flex; align-items: baseline; gap: 16px;">
+            <div class="type-overline" style="color: #aeaeb2;">Distance</div>
+            <div class="type-overline" style="color: #aeaeb2;">Rating</div>
+            <div class="type-overline" style="color: #aeaeb2;">Price</div>
+          </div>
+        </div>
+      </div>
+
+      <p style="font-family: var(--font-family-text); font-size: 11px; font-weight: 600; color: #aeaeb2; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 16px;">Small Caps</p>
+      <div style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px;">
+        <div class="type-body type-small-caps" style="font-size: 17px;">Open Monday through Saturday</div>
+        <div class="type-subheadline type-small-caps">Zurich &middot; Basel &middot; Bern &middot; Luzern</div>
+      </div>
+
+      <div class="rule-box">
+        <strong>Rule:</strong> Uppercase text at any size should add +0.05&ndash;0.08em tracking. Never use uppercase below 11px. The <code>.type-overline</code> class (11px / Medium / 0.06em) is the standard pattern.
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         10. Truncation & Line Length
+         ============================================================ -->
+    <section id="truncation">
+      <p class="section-label">Truncation &amp; Line Length</p>
+      <p class="section-note">
+        Control how text overflows and set maximum line widths for comfortable reading. Swiss German compound words are long &mdash; be generous with truncation widths.
+      </p>
+
+      <div class="truncation-demos">
+        <div class="truncation-demo">
+          <div class="truncation-demo__label">Single-line truncation</div>
+          <div class="truncation-demo__box" style="max-width: 320px;">
+            <div class="type-headline truncate">Schweizerisches Landesmuseum Zürich — Museumstrasse</div>
+          </div>
+        </div>
+        <div class="truncation-demo">
+          <div class="truncation-demo__label">Multi-line clamp (2 lines)</div>
+          <div class="truncation-demo__box" style="max-width: 360px;">
+            <div class="type-body line-clamp-2">Das Schweizerische Landesmuseum beherbergt die grösste kulturgeschichtliche Sammlung der Schweiz und befindet sich direkt neben dem Hauptbahnhof Zürich in einem märchenhaften Bau aus dem 19. Jahrhundert.</div>
+          </div>
+        </div>
+        <div class="truncation-demo">
+          <div class="truncation-demo__label">Multi-line clamp (3 lines)</div>
+          <div class="truncation-demo__box" style="max-width: 360px;">
+            <div class="type-body line-clamp-3">Das Schweizerische Landesmuseum beherbergt die grösste kulturgeschichtliche Sammlung der Schweiz und befindet sich direkt neben dem Hauptbahnhof Zürich in einem märchenhaften Bau aus dem 19. Jahrhundert.</div>
+          </div>
+        </div>
+      </div>
+
+      <p style="font-family: var(--font-family-text); font-size: 11px; font-weight: 600; color: #aeaeb2; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 16px;">Line Length (Measure)</p>
+      <p class="section-note" style="margin-bottom: 24px;">
+        Optimal reading width is 45&ndash;75 characters per line. Three measure tokens cover common use cases.
+      </p>
+
+      <div class="measure-demo">
+        <div class="measure-bar">
+          <div class="measure-bar__label">Narrow &mdash; 280px (card descriptions)</div>
+          <div class="measure-bar__track" style="max-width: 640px;">
+            <div class="measure-bar__fill" style="width: 43.75%; opacity: 0.5;"></div>
+          </div>
+        </div>
+        <div class="measure-bar">
+          <div class="measure-bar__label">Default &mdash; 480px (body text)</div>
+          <div class="measure-bar__track" style="max-width: 640px;">
+            <div class="measure-bar__fill" style="width: 75%; opacity: 0.7;"></div>
+          </div>
+        </div>
+        <div class="measure-bar">
+          <div class="measure-bar__label">Wide &mdash; 640px (long-form content)</div>
+          <div class="measure-bar__track" style="max-width: 640px;">
+            <div class="measure-bar__fill" style="width: 100%;"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         11. Map Labels
+         ============================================================ -->
+    <section id="map-labels">
+      <p class="section-label">Map Label Typography</p>
+      <p class="section-note">
+        Abstract presets for map label rendering. These are spec-level tokens &mdash; implementation depends on MapKit, Mapbox, or CSS overlays. Use Condensed width when space is tight. Apply a 1&ndash;2px white halo for legibility over terrain.
+      </p>
+
+      <div class="map-label-hierarchy">
+        <div class="map-label-row">
+          <div class="map-label-row__meta">
+            <span class="map-label-row__name">City</span>
+            <span class="map-label-row__spec">14px / Semibold / +0.02em</span>
+          </div>
+          <div class="map-label-row__sample" style="font-size: 14px; font-weight: 600; letter-spacing: 0.02em;">Zürich</div>
+        </div>
+        <div class="map-label-row">
+          <div class="map-label-row__meta">
+            <span class="map-label-row__name">District</span>
+            <span class="map-label-row__spec">12px / Medium / +0.04em</span>
+          </div>
+          <div class="map-label-row__sample" style="font-size: 12px; font-weight: 500; letter-spacing: 0.04em;">Altstadt</div>
+        </div>
+        <div class="map-label-row">
+          <div class="map-label-row__meta">
+            <span class="map-label-row__name">Street</span>
+            <span class="map-label-row__spec">11px / Regular / +0.02em</span>
+          </div>
+          <div class="map-label-row__sample" style="font-size: 11px; font-weight: 400; letter-spacing: 0.02em;">Bahnhofstrasse</div>
+        </div>
+        <div class="map-label-row">
+          <div class="map-label-row__meta">
+            <span class="map-label-row__name">POI</span>
+            <span class="map-label-row__spec">12px / Medium</span>
+          </div>
+          <div class="map-label-row__sample" style="font-size: 12px; font-weight: 500;">Confiserie Sprüngli</div>
+        </div>
+        <div class="map-label-row">
+          <div class="map-label-row__meta">
+            <span class="map-label-row__name">Distance</span>
+            <span class="map-label-row__spec">13px / Medium / tabular</span>
+          </div>
+          <div class="map-label-row__sample" style="font-size: 13px; font-weight: 500; font-variant-numeric: tabular-nums;">350 m</div>
+        </div>
+      </div>
+
+      <!-- Simulated map context -->
+      <p style="font-family: var(--font-family-text); font-size: 11px; font-weight: 600; color: #aeaeb2; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 16px;">Halo effect on map surfaces</p>
+      <div class="map-context">
+        <div class="map-surface map-surface--light">
+          <div class="map-halo" style="font-size: 14px; font-weight: 600; letter-spacing: 0.02em; color: #1c1c1e;">Zürich</div>
+          <div class="map-halo" style="font-size: 12px; font-weight: 500; letter-spacing: 0.04em; color: #3a3a3c;">Altstadt</div>
+          <div class="map-halo" style="font-size: 11px; font-weight: 400; letter-spacing: 0.02em; color: #636366;">Bahnhofstrasse</div>
+          <div class="map-halo" style="font-size: 12px; font-weight: 500; color: #007aff;">Confiserie Sprüngli</div>
+        </div>
+        <div class="map-surface map-surface--dark">
+          <div class="map-halo--dark" style="font-size: 14px; font-weight: 600; letter-spacing: 0.02em; color: #e8e8ed;">Zürich</div>
+          <div class="map-halo--dark" style="font-size: 12px; font-weight: 500; letter-spacing: 0.04em; color: #a0a0b0;">Altstadt</div>
+          <div class="map-halo--dark" style="font-size: 11px; font-weight: 400; letter-spacing: 0.02em; color: #70708a;">Bahnhofstrasse</div>
+          <div class="map-halo--dark" style="font-size: 12px; font-weight: 500; color: #5ac8fa;">Confiserie Sprüngli</div>
+        </div>
+      </div>
+
+      <!-- Condensed comparison -->
+      <p style="font-family: var(--font-family-text); font-size: 11px; font-weight: 600; color: #aeaeb2; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 16px; margin-top: 32px;">Normal vs Condensed width</p>
+      <div style="display: flex; gap: 48px; margin-bottom: 24px;">
+        <div>
+          <div style="font-family: var(--font-family-text); font-size: 11px; color: #aeaeb2; margin-bottom: 8px;">Normal (wdth: 100)</div>
+          <div style="font-size: 12px; font-weight: 500; letter-spacing: 0.04em; color: #1c1c1e; font-stretch: 100%;">Schweizerisches Landesmuseum</div>
+        </div>
+        <div>
+          <div style="font-family: var(--font-family-text); font-size: 11px; color: #aeaeb2; margin-bottom: 8px;">Condensed (wdth: 60)</div>
+          <div style="font-size: 12px; font-weight: 500; letter-spacing: 0.04em; color: #1c1c1e; font-stretch: 60%;">Schweizerisches Landesmuseum</div>
+        </div>
+      </div>
+
+      <div class="rule-box">
+        These are <strong>spec-level tokens</strong> &mdash; implementation depends on MapKit, Mapbox, or CSS overlays. Native map SDKs handle font rendering differently from CSS.
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         12. Accessibility
+         ============================================================ -->
+    <section id="accessibility">
+      <p class="section-label">Minimum Sizes &amp; Accessibility</p>
+      <p class="section-note">
+        Typography must remain legible and tappable. These are the absolute minimums from Apple's Human Interface Guidelines.
+      </p>
+
+      <!-- Minimum size demo -->
+      <p style="font-family: var(--font-family-text); font-size: 11px; font-weight: 600; color: #aeaeb2; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 16px;">Minimum size readability</p>
+      <div class="size-check">
+        <div class="size-check__row">
+          <div class="size-check__meta">11px (Caption 2)</div>
+          <div class="size-check__sample" style="font-size: 11px; line-height: 13px;">Map data &copy; OpenStreetMap contributors</div>
+          <div class="size-check__status" style="color: #ff9500;">Floor</div>
+        </div>
+        <div class="size-check__row">
+          <div class="size-check__meta">12px (Caption 1)</div>
+          <div class="size-check__sample" style="font-size: 12px; line-height: 16px;">Last updated 5 minutes ago</div>
+          <div class="size-check__status" style="color: #34c759;">Good</div>
+        </div>
+        <div class="size-check__row">
+          <div class="size-check__meta">13px (Footnote)</div>
+          <div class="size-check__sample" style="font-size: 13px; line-height: 18px;">Tap to view full directions to this location</div>
+          <div class="size-check__status" style="color: #34c759;">Interactive min</div>
+        </div>
+        <div class="size-check__row">
+          <div class="size-check__meta">15px (Subheadline)</div>
+          <div class="size-check__sample" style="font-size: 15px; line-height: 20px;">Comfortable reading size for secondary text</div>
+          <div class="size-check__status" style="color: #34c759;">Good</div>
+        </div>
+        <div class="size-check__row">
+          <div class="size-check__meta">17px (Body)</div>
+          <div class="size-check__sample" style="font-size: 17px; line-height: 22px;">Primary body text &mdash; the standard reading size</div>
+          <div class="size-check__status" style="color: #34c759;">Default</div>
+        </div>
+      </div>
+
+      <!-- Touch target -->
+      <p style="font-family: var(--font-family-text); font-size: 11px; font-weight: 600; color: #aeaeb2; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 16px;">Touch target minimum</p>
+      <div class="touch-target-demo">
+        <div class="touch-target-box">
+          <span class="touch-target-box__label">44px</span>
+        </div>
+        <div class="touch-target-demo__text">
+          All interactive elements must have a minimum touch target of 44&times;44 points (iOS HIG). Text inside tappable areas must be at least 13px.
+        </div>
+      </div>
+
+      <!-- Contrast check -->
+      <p style="font-family: var(--font-family-text); font-size: 11px; font-weight: 600; color: #aeaeb2; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 16px;">Contrast check</p>
+      <div class="contrast-grid">
+        <div class="contrast-card" style="background: #fff; border: 1px solid #e5e5ea;">
+          <div class="contrast-card__label-name" style="color: #aeaeb2;">On white</div>
+          <div class="contrast-card__sample" style="color: #1c1c1e;">Primary &mdash; #1c1c1e</div>
+          <div class="contrast-card__ratio" style="color: #34c759;">~16.5:1</div>
+          <div class="contrast-card__sample" style="color: rgba(60, 60, 67, 0.60);">Secondary &mdash; 60% opacity</div>
+          <div class="contrast-card__ratio" style="color: #34c759;">~5.5:1</div>
+          <div class="contrast-card__sample" style="color: rgba(60, 60, 67, 0.30);">Tertiary &mdash; 30% opacity</div>
+          <div class="contrast-card__ratio" style="color: #ff9500;">~2.4:1</div>
+        </div>
+        <div class="contrast-card" style="background: #1c1c1e;">
+          <div class="contrast-card__label-name" style="color: rgba(255,255,255,0.4);">On dark</div>
+          <div class="contrast-card__sample" style="color: #fff;">Primary &mdash; #ffffff</div>
+          <div class="contrast-card__ratio" style="color: #30d158;">~16.5:1</div>
+          <div class="contrast-card__sample" style="color: rgba(235, 235, 245, 0.60);">Secondary &mdash; 60% opacity</div>
+          <div class="contrast-card__ratio" style="color: #30d158;">~6.8:1</div>
+          <div class="contrast-card__sample" style="color: rgba(235, 235, 245, 0.30);">Tertiary &mdash; 30% opacity</div>
+          <div class="contrast-card__ratio" style="color: #ff9f0a;">~2.9:1</div>
+        </div>
+      </div>
+
+      <!-- Dynamic Type table -->
+      <p style="font-family: var(--font-family-text); font-size: 11px; font-weight: 600; color: #aeaeb2; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 16px;">Dynamic Type scaling</p>
+      <div style="overflow-x: auto; margin-bottom: 32px;">
+        <table class="dt-table">
+          <thead>
+            <tr>
+              <th style="width: 120px;">Style</th>
+              <th>xSmall</th>
+              <th>Small</th>
+              <th>Medium</th>
+              <th>Large</th>
+              <th>xLarge</th>
+              <th>xxLarge</th>
+              <th>xxxLarge</th>
+              <th>AX1</th>
+              <th>AX5</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Large Title</td>
+              <td>31</td>
+              <td>32</td>
+              <td>33</td>
+              <td>34</td>
+              <td>36</td>
+              <td>38</td>
+              <td>40</td>
+              <td>44</td>
+              <td>60</td>
+            </tr>
+            <tr>
+              <td>Body</td>
+              <td>14</td>
+              <td>15</td>
+              <td>16</td>
+              <td>17</td>
+              <td>19</td>
+              <td>21</td>
+              <td>23</td>
+              <td>28</td>
+              <td>53</td>
+            </tr>
+            <tr>
+              <td>Callout</td>
+              <td>13</td>
+              <td>14</td>
+              <td>15</td>
+              <td>16</td>
+              <td>18</td>
+              <td>20</td>
+              <td>22</td>
+              <td>26</td>
+              <td>51</td>
+            </tr>
+            <tr>
+              <td>Footnote</td>
+              <td>12</td>
+              <td>12</td>
+              <td>12</td>
+              <td>13</td>
+              <td>15</td>
+              <td>17</td>
+              <td>19</td>
+              <td>23</td>
+              <td>44</td>
+            </tr>
+            <tr>
+              <td>Caption 2</td>
+              <td>11</td>
+              <td>11</td>
+              <td>11</td>
+              <td>11</td>
+              <td>13</td>
+              <td>15</td>
+              <td>17</td>
+              <td>20</td>
+              <td>40</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="rule-box" style="display: flex; flex-direction: column; gap: 8px;">
+        <div><strong>Rule:</strong> Never go below 11px for any text. Interactive text (tappable labels, links) never below 13px.</div>
+        <div><strong>Rule:</strong> All touch targets must be at least 44&times;44 points, regardless of visible text size.</div>
+        <div><strong>Rule:</strong> Native apps must support the full Dynamic Type range (xSmall through AX5).</div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         13. Token Reference
+         ============================================================ -->
+    <section id="token-reference">
+      <p class="section-label">CSS Token Reference</p>
+      <p class="section-note">
+        All tokens are defined as CSS custom properties in <code>typography.css</code>. Use the utility classes for quick application, or reference tokens directly for custom components.
+      </p>
+
+      <p style="font-family: var(--font-family-text); font-size: 11px; font-weight: 600; color: #aeaeb2; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 16px;">Type Scale</p>
+      <table class="ref-table">
+        <thead>
+          <tr>
+            <th style="width: 160px;">Style</th>
+            <th style="width: 180px;">Class</th>
+            <th style="width: 120px;">Size Token</th>
+            <th style="width: 130px;">Leading Token</th>
+            <th>Tracking Token</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Large Title</td>
+            <td><code>.type-large-title</code></td>
+            <td><code>--font-size-large-title</code></td>
+            <td><code>--line-height-large-title</code></td>
+            <td><code>--tracking-large-title</code></td>
+          </tr>
+          <tr>
+            <td>Title 1</td>
+            <td><code>.type-title1</code></td>
+            <td><code>--font-size-title1</code></td>
+            <td><code>--line-height-title1</code></td>
+            <td><code>--tracking-title1</code></td>
+          </tr>
+          <tr>
+            <td>Title 2</td>
+            <td><code>.type-title2</code></td>
+            <td><code>--font-size-title2</code></td>
+            <td><code>--line-height-title2</code></td>
+            <td><code>--tracking-title2</code></td>
+          </tr>
+          <tr>
+            <td>Title 3</td>
+            <td><code>.type-title3</code></td>
+            <td><code>--font-size-title3</code></td>
+            <td><code>--line-height-title3</code></td>
+            <td><code>--tracking-title3</code></td>
+          </tr>
+          <tr>
+            <td>Headline</td>
+            <td><code>.type-headline</code></td>
+            <td><code>--font-size-headline</code></td>
+            <td><code>--line-height-headline</code></td>
+            <td><code>--tracking-headline</code></td>
+          </tr>
+          <tr>
+            <td>Body</td>
+            <td><code>.type-body</code></td>
+            <td><code>--font-size-body</code></td>
+            <td><code>--line-height-body</code></td>
+            <td><code>--tracking-body</code></td>
+          </tr>
+          <tr>
+            <td>Callout</td>
+            <td><code>.type-callout</code></td>
+            <td><code>--font-size-callout</code></td>
+            <td><code>--line-height-callout</code></td>
+            <td><code>--tracking-callout</code></td>
+          </tr>
+          <tr>
+            <td>Subheadline</td>
+            <td><code>.type-subheadline</code></td>
+            <td><code>--font-size-subheadline</code></td>
+            <td><code>--line-height-subheadline</code></td>
+            <td><code>--tracking-subheadline</code></td>
+          </tr>
+          <tr>
+            <td>Footnote</td>
+            <td><code>.type-footnote</code></td>
+            <td><code>--font-size-footnote</code></td>
+            <td><code>--line-height-footnote</code></td>
+            <td><code>--tracking-footnote</code></td>
+          </tr>
+          <tr>
+            <td>Caption 1</td>
+            <td><code>.type-caption1</code></td>
+            <td><code>--font-size-caption1</code></td>
+            <td><code>--line-height-caption1</code></td>
+            <td><code>--tracking-caption1</code></td>
+          </tr>
+          <tr>
+            <td>Caption 2</td>
+            <td><code>.type-caption2</code></td>
+            <td><code>--font-size-caption2</code></td>
+            <td><code>--line-height-caption2</code></td>
+            <td><code>--tracking-caption2</code></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p style="font-family: var(--font-family-text); font-size: 11px; font-weight: 600; color: #aeaeb2; text-transform: uppercase; letter-spacing: 0.06em; margin: 40px 0 16px;">Colors, Numbers &amp; Utilities</p>
+      <table class="ref-table">
+        <thead>
+          <tr>
+            <th style="width: 160px;">Category</th>
+            <th style="width: 220px;">Token / Class</th>
+            <th>Value</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Label colors</td>
+            <td><code>--color-label</code></td>
+            <td><code>#1c1c1e</code> / <code>#fff</code></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td><code>--color-label-secondary</code></td>
+            <td><code>rgba(60,60,67,0.6)</code></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td><code>--color-label-tertiary</code></td>
+            <td><code>rgba(60,60,67,0.3)</code></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td><code>--color-label-quaternary</code></td>
+            <td><code>rgba(60,60,67,0.18)</code></td>
+          </tr>
+          <tr>
+            <td>Tint colors</td>
+            <td><code>--color-tint-destructive</code></td>
+            <td><code>#ff3b30</code></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td><code>--color-tint-positive</code></td>
+            <td><code>#34c759</code></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td><code>--color-tint-action</code></td>
+            <td><code>#007aff</code></td>
+          </tr>
+          <tr>
+            <td>Monospace</td>
+            <td><code>--font-family-mono</code></td>
+            <td><code>"SF Mono", ui-monospace, Menlo</code></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td><code>.type-mono</code></td>
+            <td>15px / Regular</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td><code>.type-mono-caption</code></td>
+            <td>12px / Regular</td>
+          </tr>
+          <tr>
+            <td>Numeric</td>
+            <td><code>.tabular-nums</code></td>
+            <td>Equal-width digits</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td><code>.type-data</code></td>
+            <td>15px / Medium / tabular</td>
+          </tr>
+          <tr>
+            <td>Uppercase</td>
+            <td><code>.type-overline</code></td>
+            <td>11px / Medium / uppercase / +0.06em</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td><code>.type-small-caps</code></td>
+            <td>all-small-caps / +0.05em</td>
+          </tr>
+          <tr>
+            <td>Truncation</td>
+            <td><code>.truncate</code></td>
+            <td>Single-line ellipsis</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td><code>.line-clamp-2</code></td>
+            <td>2-line clamp</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td><code>.line-clamp-3</code></td>
+            <td>3-line clamp</td>
+          </tr>
+          <tr>
+            <td>Measure</td>
+            <td><code>--measure-narrow</code></td>
+            <td><code>280px</code></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td><code>--measure-default</code></td>
+            <td><code>480px</code></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td><code>--measure-wide</code></td>
+            <td><code>640px</code></td>
+          </tr>
+          <tr>
+            <td>Accessibility</td>
+            <td><code>--font-size-minimum</code></td>
+            <td><code>11px</code></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td><code>--font-size-minimum-interactive</code></td>
+            <td><code>13px</code></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td><code>--touch-target-minimum</code></td>
+            <td><code>44px</code></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+
+    <!-- ============================================================
+         14. Usage Notes
+         ============================================================ -->
+    <section id="usage-notes">
+      <p class="section-label">Usage Notes</p>
+      <div style="display: flex; flex-direction: column; gap: 24px; max-width: 640px;">
+        <div>
+          <p class="type-headline" style="margin-bottom: 4px;">Optical sizing</p>
+          <p class="type-body" style="color: #636366;">
+            SF Pro automatically adjusts letter shapes based on size via the <code>opsz</code> axis. At small sizes, letters are wider with more open counters for legibility. At large sizes, spacing tightens for elegance. Prefer <code>SF Pro</code> over explicit Display/Text cuts to let the browser handle this.
+          </p>
+        </div>
+        <div>
+          <p class="type-headline" style="margin-bottom: 4px;">Tracking matters</p>
+          <p class="type-body" style="color: #636366;">
+            Apple's tracking values are carefully tuned per style. Display sizes use positive tracking (slightly open), while text sizes use negative tracking (slightly tight). Always apply the tracking token alongside size and weight.
+          </p>
+        </div>
+        <div>
+          <p class="type-headline" style="margin-bottom: 4px;">Width variants for maps</p>
+          <p class="type-body" style="color: #636366;">
+            Compressed and Condensed widths are especially useful for map labels, data-dense panels, and compact navigation where horizontal space is limited. Use <code>font-stretch</code> or the named CSS variable to access them.
+          </p>
+        </div>
+        <div>
+          <p class="type-headline" style="margin-bottom: 4px;">Rounded for warmth</p>
+          <p class="type-body" style="color: #636366;">
+            SF Pro Rounded shares identical metrics with SF Pro but has softer stroke terminals. Use it for badges, tags, onboarding text, or any moment where the UI should feel approachable. Avoid mixing Rounded and default in the same text block.
+          </p>
+        </div>
+        <div>
+          <p class="type-headline" style="margin-bottom: 4px;">Platform availability</p>
+          <p class="type-body" style="color: #636366;">
+            SF Pro is pre-installed on macOS, iOS, iPadOS, watchOS, and tvOS. It is not available on Windows or Android. The CSS fallback stack (<code>-apple-system, BlinkMacSystemFont, system-ui, sans-serif</code>) ensures graceful degradation to each platform's system font.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    </div><!-- /.main-content -->
+
+  </div>
+
+  <script>
+    // Highlight active sidebar link on scroll
+    (function () {
+      const links = document.querySelectorAll('.sidebar__link');
+      const sections = [];
+      links.forEach(function (link) {
+        var id = link.getAttribute('href').slice(1);
+        var el = document.getElementById(id);
+        if (el) sections.push({ id: id, el: el, link: link });
+      });
+
+      function update() {
+        var current = '';
+        for (var i = sections.length - 1; i >= 0; i--) {
+          if (sections[i].el.getBoundingClientRect().top <= 80) {
+            current = sections[i].id;
+            break;
+          }
+        }
+        links.forEach(function (l) { l.classList.remove('is-active'); });
+        if (current) {
+          var active = document.querySelector('.sidebar__link[href="#' + current + '"]');
+          if (active) active.classList.add('is-active');
+        }
+      }
+
+      window.addEventListener('scroll', update, { passive: true });
+      update();
+    })();
+  </script>
+</body>
+</html>
