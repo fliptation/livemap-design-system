@@ -7,8 +7,21 @@
   <link rel="stylesheet" href="typography.css">
   <style>
     /* ---- Page chrome (not part of the design system) ---- */
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; color-scheme: light; }
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    /* Force light-mode color tokens — the styleguide always renders on white */
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --color-label:            #1c1c1e;
+        --color-label-secondary:  rgba(60, 60, 67, 0.75);
+        --color-label-tertiary:   rgba(60, 60, 67, 0.30);
+        --color-label-quaternary: rgba(60, 60, 67, 0.18);
+        --color-tint-destructive: #ff3b30;
+        --color-tint-positive:    #34c759;
+        --color-tint-action:      #007aff;
+      }
+    }
 
     body {
       font-family: var(--font-family);
@@ -23,7 +36,6 @@
       max-width: 1120px;
       margin: 0 auto;
       padding: 80px 40px 120px;
-      gap: 0;
     }
 
     /* ---- Sidebar ---- */
@@ -42,6 +54,166 @@
       height: 44px;
       margin: 0 10px 16px;
       opacity: 0.85;
+    }
+
+    /* ---- Search ---- */
+    .sidebar__search {
+      margin: 0 0 12px;
+    }
+
+    .sidebar__search-field {
+      position: relative;
+    }
+
+    .sidebar__search-icon {
+      position: absolute;
+      left: 8px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 14px;
+      height: 14px;
+      color: #aeaeb2;
+      pointer-events: none;
+      transition: color 0.15s;
+    }
+
+    .sidebar__search-input {
+      width: 100%;
+      font-family: var(--font-family-text);
+      font-size: 12px;
+      font-weight: var(--font-weight-regular);
+      color: #1c1c1e;
+      background: #f2f2f7;
+      border: 1.5px solid transparent;
+      border-radius: 8px;
+      padding: 6px 28px 6px 26px;
+      outline: none;
+      transition: border-color 0.15s, background 0.15s;
+      line-height: 16px;
+    }
+
+    .sidebar__search-input::placeholder {
+      color: #aeaeb2;
+    }
+
+    .sidebar__search-input:focus {
+      border-color: #007aff;
+      background: #fff;
+    }
+
+    .sidebar__search-input:focus ~ .sidebar__search-icon {
+      color: #007aff;
+    }
+
+    .sidebar__search-clear {
+      position: absolute;
+      right: 4px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 20px;
+      height: 20px;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      background: none;
+      border: none;
+      color: #aeaeb2;
+      cursor: pointer;
+      padding: 0;
+      border-radius: 50%;
+    }
+
+    .sidebar__search-clear:hover {
+      color: #636366;
+    }
+
+    .sidebar__search-clear svg {
+      width: 12px;
+      height: 12px;
+    }
+
+    .sidebar__search--has-query .sidebar__search-clear {
+      display: flex;
+    }
+
+    .sidebar__search-bar {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      padding: 4px 6px 0;
+      display: none;
+    }
+
+    .sidebar__search--has-query .sidebar__search-bar {
+      display: flex;
+    }
+
+    .sidebar__search-meta {
+      font-family: var(--font-family-text);
+      font-size: 10px;
+      font-weight: var(--font-weight-medium);
+      color: #aeaeb2;
+      line-height: 14px;
+      flex: 1;
+      padding-left: 4px;
+    }
+
+    .sidebar__search-meta kbd {
+      font-family: var(--font-family-text);
+      font-size: 9px;
+      color: #c7c7cc;
+      background: #e5e5ea;
+      padding: 1px 4px;
+      border-radius: 3px;
+      font-weight: var(--font-weight-medium);
+    }
+
+    /* Search highlight marks */
+    mark.search-hl {
+      background: #ffd60a;
+      color: inherit;
+      border-radius: 2px;
+      padding: 0 1px;
+      box-shadow: 0 0 0 1px rgba(255, 214, 10, 0.4);
+    }
+
+    mark.search-hl--current {
+      background: #ff9f0a;
+      box-shadow: 0 0 0 2px rgba(255, 159, 10, 0.5);
+    }
+
+    .sidebar__search-nav {
+      display: flex;
+      gap: 2px;
+    }
+
+    .sidebar__search-nav button {
+      width: 24px;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #f2f2f7;
+      border: none;
+      border-radius: 5px;
+      color: #636366;
+      cursor: pointer;
+      padding: 0;
+      transition: background 0.1s;
+    }
+
+    .sidebar__search-nav button:hover {
+      background: #e5e5ea;
+    }
+
+    .sidebar__search-nav button:disabled {
+      opacity: 0.3;
+      cursor: default;
+    }
+
+    .sidebar__search-nav button svg {
+      width: 12px;
+      height: 12px;
     }
 
     .sidebar__nav {
@@ -91,6 +263,7 @@
     .page-header {
       padding-bottom: 40px;
       border-bottom: 1px solid #e5e5ea;
+      scroll-margin-top: 32px;
     }
 
     .page-title {
@@ -134,7 +307,7 @@
       font-weight: var(--font-weight-regular);
       line-height: 22px;
       letter-spacing: -0.016em;
-      color: #8e8e93;
+      color: #636366;
       max-width: 560px;
       margin-bottom: 40px;
     }
@@ -464,10 +637,15 @@
       border-radius: 16px;
       padding: 32px;
       margin-top: 32px;
+      overflow: visible;
     }
 
     .dark-strip .color-row {
       border-bottom-color: rgba(255,255,255,0.08);
+    }
+
+    .dark-strip .color-row__sample {
+      min-width: 0;
     }
 
     .dark-strip .color-row__name {
@@ -522,6 +700,40 @@
       flex-wrap: wrap;
       gap: 6px;
       margin-top: 4px;
+    }
+
+    .wcag-badge {
+      flex: 0 0 auto;
+      flex-shrink: 0;
+      font-family: var(--font-family-text);
+      font-size: 10px;
+      font-weight: var(--font-weight-semibold);
+      letter-spacing: 0.02em;
+      padding: 3px 8px;
+      border-radius: 4px;
+      line-height: 14px;
+      white-space: nowrap;
+      display: inline-block;
+    }
+
+    .wcag-badge--pass {
+      color: #1a7d36;
+      background: rgba(52, 199, 89, 0.14);
+    }
+
+    .wcag-badge--fail {
+      color: #c43025;
+      background: rgba(255, 59, 48, 0.10);
+    }
+
+    .dark-strip .wcag-badge.wcag-badge--pass {
+      color: #30d158;
+      background: rgba(48, 209, 88, 0.20);
+    }
+
+    .dark-strip .wcag-badge.wcag-badge--fail {
+      color: #ff453a;
+      background: rgba(255, 69, 58, 0.20);
     }
 
     /* ---- Numbers & Tabular Figures ---- */
@@ -975,6 +1187,11 @@
       color: #1c1c1e;
     }
 
+    .usage-hl {
+      color: #1c1c1e;
+      font-weight: var(--font-weight-medium);
+    }
+
     .rule-box {
       background: #f9f9fb;
       border-radius: 12px;
@@ -990,6 +1207,7 @@
       color: #1c1c1e;
       font-weight: var(--font-weight-semibold);
     }
+
   </style>
 </head>
 <body>
@@ -1000,6 +1218,28 @@
          ============================================================ -->
     <nav class="sidebar">
       <a href="#"><img src="livemap-logomark.png" alt="Livemap" class="sidebar__logo"></a>
+
+      <div class="sidebar__search" id="sidebar-search">
+        <div class="sidebar__search-field">
+          <input class="sidebar__search-input" id="search-input" type="text" placeholder="Search…" autocomplete="off" spellcheck="false">
+          <svg class="sidebar__search-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6.5" cy="6.5" r="4.5"/><line x1="10" y1="10" x2="14" y2="14"/></svg>
+          <button class="sidebar__search-clear" id="search-clear" tabindex="-1" aria-label="Clear search">
+            <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="3" y1="3" x2="9" y2="9"/><line x1="9" y1="3" x2="3" y2="9"/></svg>
+          </button>
+        </div>
+        <div class="sidebar__search-bar">
+          <div class="sidebar__search-meta" id="search-meta"></div>
+          <div class="sidebar__search-nav" id="search-nav">
+            <button id="search-prev" aria-label="Previous match" disabled>
+              <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,8 6,4 10,8"/></svg>
+            </button>
+            <button id="search-next" aria-label="Next match" disabled>
+              <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,4 6,8 10,4"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
       <ul class="sidebar__nav">
         <li><a class="sidebar__link" href="#font-families">Font Families</a></li>
         <li><a class="sidebar__link" href="#weight-scale">Weight Scale</a></li>
@@ -1014,6 +1254,14 @@
         <li><a class="sidebar__link" href="#truncation">Truncation</a></li>
         <li><a class="sidebar__link" href="#map-labels">Map Labels</a></li>
         <li><a class="sidebar__link" href="#accessibility">Accessibility</a></li>
+        <li><div class="sidebar__divider"></div></li>
+        <li><a class="sidebar__link" href="#chat-bubbles">Chat Bubbles</a></li>
+        <li><a class="sidebar__link" href="#timestamps">Timestamps</a></li>
+        <li><a class="sidebar__link" href="#navigation">Navigation</a></li>
+        <li><a class="sidebar__link" href="#states">States</a></li>
+        <li><a class="sidebar__link" href="#search">Search</a></li>
+        <li><a class="sidebar__link" href="#multilingual">Multilingual</a></li>
+        <li><a class="sidebar__link" href="#interactive">Interactive</a></li>
         <li><div class="sidebar__divider"></div></li>
         <li><a class="sidebar__link" href="#token-reference">Token Reference</a></li>
         <li><a class="sidebar__link" href="#usage-notes">Usage Notes</a></li>
@@ -1046,10 +1294,10 @@
           <span class="family-card__usage">Variable font with automatic optical sizing (opsz 17-28)</span>
         </div>
         <div class="family-card__sample" style="font-family: var(--font-family);">
-          The quick brown fox jumps over the lazy dog
+          Explore Zürich from Bellevue to Bürkliplatz
         </div>
         <div class="family-card__sample-small" style="font-family: var(--font-family);">
-          Maps reveal what matters. Every pin, every route, every boundary tells a story about the world and how we move through it.
+          Every pin on the map tells a story. From the Altstadt to the lakefront, Livemap helps you discover places worth visiting and people worth meeting.
         </div>
       </div>
 
@@ -1059,7 +1307,7 @@
           <span class="family-card__usage">Optimized for 20pt and above</span>
         </div>
         <div class="family-card__sample" style="font-family: var(--font-family-display);">
-          The quick brown fox jumps over the lazy dog
+          Navigate Basel, Bern, Luzern und beyond
         </div>
       </div>
 
@@ -1069,7 +1317,7 @@
           <span class="family-card__usage">Optimized for 19pt and below</span>
         </div>
         <div class="family-card__sample-small" style="font-family: var(--font-family-text); margin-top: 0;">
-          Maps reveal what matters. Every pin, every route, every boundary tells a story about the world and how we move through it. Livemap brings location to life.
+          Biege rechts ab in die Bahnhofstrasse, dann weiter geradeaus bis zur Quaibrücke. Du erreichst dein Ziel in etwa 12 Minuten zu Fuss.
         </div>
       </div>
 
@@ -1079,10 +1327,10 @@
           <span class="family-card__usage">Softer terminals for badges, chips, friendly UI moments</span>
         </div>
         <div class="family-card__sample" style="font-family: var(--font-family-rounded);">
-          The quick brown fox jumps over the lazy dog
+          3 Fründe in der Nähe gefunden
         </div>
         <div class="family-card__sample-small" style="font-family: var(--font-family-rounded);">
-          Maps reveal what matters. Every pin, every route, every boundary tells a story about the world and how we move through it.
+          Du hast 3 neue Orte in deiner Nähe entdeckt. Schau sie dir an, bevor sie schliessen!
         </div>
       </div>
     </section>
@@ -1173,7 +1421,7 @@
     <section id="width-variants">
       <p class="section-label">Width Variants</p>
       <p class="section-note">
-        SF Pro's variable font includes a width axis (wdth 30-150). Four named widths are available as static cuts. Useful for space-constrained UI like map labels and compact data views.
+        SF Pro's variable font includes a width axis (wdth 30-150). Four named widths are available as static cuts. Useful for <span class="usage-hl">map labels</span>, <span class="usage-hl">compact data views</span>, and space-constrained UI.
       </p>
 
       <div class="width-grid">
@@ -1215,7 +1463,7 @@
     <section id="type-scale">
       <p class="section-label">iOS Type Scale</p>
       <p class="section-note">
-        Apple's Dynamic Type scale at the default Large size. Display styles (20pt+) use SF Pro Display; text styles (19pt and below) use SF Pro Text.
+        Apple's Dynamic Type scale at the default Large size. Display styles (20pt+) use SF Pro Display; text styles (19pt and below) use SF Pro Text. The base size is <span class="usage-hl">17px</span> (Body &amp; Headline) — Apple's default for comfortable one-handed reading at typical phone viewing distance (~25–30 cm). It aligns with UIFont.preferredFont at the "Large" Dynamic Type setting, ensuring text is legible without zooming while leaving room for the scale to grow in accessibility sizes.
       </p>
 
       <div class="type-row">
@@ -1263,7 +1511,7 @@
           <span class="type-row__name">Body</span>
           <span class="type-row__spec">17 / 22 / Regular / -0.024em</span>
         </div>
-        <div class="type-row__sample type-body">Turn right on Market Street, then continue for 200 meters until you reach the intersection.</div>
+        <div class="type-row__sample type-body">Biege rechts ab in die Bahnhofstrasse, dann weiter 200 Meter bis zur Kreuzung.</div>
       </div>
 
       <div class="type-row">
@@ -1303,7 +1551,7 @@
           <span class="type-row__name">Caption 2</span>
           <span class="type-row__spec">11 / 13 / Regular / +0.006em</span>
         </div>
-        <div class="type-row__sample type-caption2">Coordinates: 40.7128, -74.0060</div>
+        <div class="type-row__sample type-caption2">Coordinates: 47.3769, 8.5417</div>
       </div>
     </section>
 
@@ -1358,7 +1606,7 @@
     <section id="text-colors">
       <p class="section-label">Text Colors</p>
       <p class="section-note">
-        iOS defines four semantic label colors that form a text hierarchy. Each level reduces opacity to establish visual weight. Livemap adds three tinted colors for actions and status.
+        iOS defines four semantic label colors. Livemap adjusts Secondary from Apple's default 60% to 75% opacity to meet WCAG AA (4.5:1). Tertiary and Quaternary intentionally fail AA &mdash; use only for <span class="usage-hl">placeholders</span>, <span class="usage-hl">disabled states</span>, or <span class="usage-hl">decorative elements</span>.
       </p>
 
       <div class="color-grid">
@@ -1369,14 +1617,16 @@
             <span class="color-row__hex">#1c1c1e</span>
           </div>
           <div class="color-row__sample" style="color: #1c1c1e;">Ristorante Da Mario</div>
+          <span class="wcag-badge wcag-badge--pass">AA 16.5:1</span>
         </div>
         <div class="color-row">
-          <div class="color-row__swatch" style="background: rgba(60, 60, 67, 0.60);"></div>
+          <div class="color-row__swatch" style="background: rgba(60, 60, 67, 0.75);"></div>
           <div class="color-row__info">
             <span class="color-row__name">Secondary</span>
-            <span class="color-row__hex">#3c3c43 / 60%</span>
+            <span class="color-row__hex">#3c3c43 / 75%</span>
           </div>
-          <div class="color-row__sample" style="color: rgba(60, 60, 67, 0.60);">Italian &middot; $$$ &middot; 1.2 km</div>
+          <div class="color-row__sample" style="color: rgba(60, 60, 67, 0.75);">Italian &middot; $$$ &middot; 1.2 km</div>
+          <span class="wcag-badge wcag-badge--pass">AA 5.0:1</span>
         </div>
         <div class="color-row">
           <div class="color-row__swatch" style="background: rgba(60, 60, 67, 0.30);"></div>
@@ -1384,7 +1634,8 @@
             <span class="color-row__name">Tertiary</span>
             <span class="color-row__hex">#3c3c43 / 30%</span>
           </div>
-          <div class="color-row__sample" style="color: rgba(60, 60, 67, 0.30);">Placeholder text</div>
+          <div class="color-row__sample" style="color: rgba(60, 60, 67, 0.30);">Search places&hellip;</div>
+          <span class="wcag-badge wcag-badge--fail">AA 1.9:1</span>
         </div>
         <div class="color-row">
           <div class="color-row__swatch" style="background: rgba(60, 60, 67, 0.18);"></div>
@@ -1392,7 +1643,8 @@
             <span class="color-row__name">Quaternary</span>
             <span class="color-row__hex">#3c3c43 / 18%</span>
           </div>
-          <div class="color-row__sample" style="color: rgba(60, 60, 67, 0.18);">Disabled or decorative</div>
+          <div class="color-row__sample" style="color: rgba(60, 60, 67, 0.18);">Decorative only</div>
+          <span class="wcag-badge wcag-badge--fail">AA 1.4:1</span>
         </div>
       </div>
 
@@ -1406,6 +1658,7 @@
               <span class="color-row__hex">#ffffff</span>
             </div>
             <div class="color-row__sample" style="color: #fff;">Ristorante Da Mario</div>
+            <span class="wcag-badge wcag-badge--pass">AA 16.5:1</span>
           </div>
           <div class="color-row">
             <div class="color-row__swatch" style="background: rgba(235, 235, 245, 0.60); border-color: rgba(255,255,255,0.1);"></div>
@@ -1414,6 +1667,7 @@
               <span class="color-row__hex">#ebebf5 / 60%</span>
             </div>
             <div class="color-row__sample" style="color: rgba(235, 235, 245, 0.60);">Italian &middot; $$$ &middot; 1.2 km</div>
+            <span class="wcag-badge wcag-badge--pass">AA 6.8:1</span>
           </div>
           <div class="color-row">
             <div class="color-row__swatch" style="background: rgba(235, 235, 245, 0.30); border-color: rgba(255,255,255,0.1);"></div>
@@ -1421,7 +1675,8 @@
               <span class="color-row__name">Tertiary</span>
               <span class="color-row__hex">#ebebf5 / 30%</span>
             </div>
-            <div class="color-row__sample" style="color: rgba(235, 235, 245, 0.30);">Placeholder text</div>
+            <div class="color-row__sample" style="color: rgba(235, 235, 245, 0.30);">Search places&hellip;</div>
+            <span class="wcag-badge wcag-badge--fail">AA 2.8:1</span>
           </div>
           <div class="color-row">
             <div class="color-row__swatch" style="background: rgba(235, 235, 245, 0.18); border-color: rgba(255,255,255,0.1);"></div>
@@ -1429,7 +1684,8 @@
               <span class="color-row__name">Quaternary</span>
               <span class="color-row__hex">#ebebf5 / 18%</span>
             </div>
-            <div class="color-row__sample" style="color: rgba(235, 235, 245, 0.18);">Disabled or decorative</div>
+            <div class="color-row__sample" style="color: rgba(235, 235, 245, 0.18);">Decorative only</div>
+            <span class="wcag-badge wcag-badge--fail">AA 1.9:1</span>
           </div>
         </div>
       </div>
@@ -1482,23 +1738,23 @@
     <section id="tabular-figures">
       <p class="section-label">Numbers &amp; Tabular Figures</p>
       <p class="section-note">
-        Tabular figures give every digit equal width, making columns of numbers align vertically. Use them for distances, times, prices, and ratings. Proportional figures (the default) are better for numbers in running text.
+        Tabular figures give every digit equal width, making columns of numbers align vertically. Use them for <span class="usage-hl">distances</span>, <span class="usage-hl">times</span>, <span class="usage-hl">prices</span>, and <span class="usage-hl">ratings</span>. Proportional figures (the default) are better for numbers in running text.
       </p>
 
       <div class="num-compare">
         <div class="num-column">
           <div class="num-column__title">Tabular Figures</div>
-          <div class="num-column__value" style="font-variant-numeric: tabular-nums;">1,234</div>
-          <div class="num-column__value" style="font-variant-numeric: tabular-nums;">56,789</div>
+          <div class="num-column__value" style="font-variant-numeric: tabular-nums;">1'234</div>
+          <div class="num-column__value" style="font-variant-numeric: tabular-nums;">56'789</div>
           <div class="num-column__value" style="font-variant-numeric: tabular-nums;">10</div>
-          <div class="num-column__value" style="font-variant-numeric: tabular-nums;">999,999</div>
+          <div class="num-column__value" style="font-variant-numeric: tabular-nums;">999'999</div>
         </div>
         <div class="num-column">
           <div class="num-column__title">Proportional Figures</div>
-          <div class="num-column__value" style="font-variant-numeric: proportional-nums; border-right-color: transparent;">1,234</div>
-          <div class="num-column__value" style="font-variant-numeric: proportional-nums; border-right-color: transparent;">56,789</div>
+          <div class="num-column__value" style="font-variant-numeric: proportional-nums; border-right-color: transparent;">1'234</div>
+          <div class="num-column__value" style="font-variant-numeric: proportional-nums; border-right-color: transparent;">56'789</div>
           <div class="num-column__value" style="font-variant-numeric: proportional-nums; border-right-color: transparent;">10</div>
-          <div class="num-column__value" style="font-variant-numeric: proportional-nums; border-right-color: transparent;">999,999</div>
+          <div class="num-column__value" style="font-variant-numeric: proportional-nums; border-right-color: transparent;">999'999</div>
         </div>
       </div>
 
@@ -1542,16 +1798,57 @@
           <div class="num-example__values">
             <div class="num-example__row">
               <span class="num-example__row-name">Budget</span>
-              <span class="num-example__row-value">$</span>
+              <span class="num-example__row-value">CHF 15.&ndash;</span>
             </div>
             <div class="num-example__row">
               <span class="num-example__row-name">Mid-range</span>
-              <span class="num-example__row-value">$$</span>
+              <span class="num-example__row-value">CHF 45.&ndash;</span>
             </div>
             <div class="num-example__row">
               <span class="num-example__row-name">Fine dining</span>
-              <span class="num-example__row-value">$$$</span>
+              <span class="num-example__row-value">CHF 120.&ndash;</span>
             </div>
+          </div>
+        </div>
+      </div>
+
+      <p style="font-family: var(--font-family-text); font-size: 11px; font-weight: 600; color: #aeaeb2; text-transform: uppercase; letter-spacing: 0.06em; margin: 40px 0 16px;">Swiss Number Formatting</p>
+      <div class="rule-box" style="display: flex; flex-direction: column; gap: 12px;">
+        <div>
+          Switzerland uses unique number formatting that differs from both English and most European conventions. Livemap follows the <strong>de_CH</strong> locale throughout.
+        </div>
+        <div style="display: flex; gap: 40px; flex-wrap: wrap;">
+          <div>
+            <div style="font-size: 11px; font-weight: 500; color: #aeaeb2; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px;">Thousands</div>
+            <div style="font-size: 15px; font-weight: 500; color: #1c1c1e;">Apostrophe: 1'000'000</div>
+            <div style="font-size: 13px; color: #8e8e93; margin-top: 2px;">Not comma, not period, not space</div>
+          </div>
+          <div>
+            <div style="font-size: 11px; font-weight: 500; color: #aeaeb2; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px;">Decimals</div>
+            <div style="font-size: 15px; font-weight: 500; color: #1c1c1e;">Period: 3.50</div>
+            <div style="font-size: 13px; color: #8e8e93; margin-top: 2px;">Unlike Germany/France which use comma</div>
+          </div>
+          <div>
+            <div style="font-size: 11px; font-weight: 500; color: #aeaeb2; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px;">Currency</div>
+            <div style="font-size: 15px; font-weight: 500; color: #1c1c1e;">CHF 25.&ndash; or CHF 25.50</div>
+            <div style="font-size: 13px; color: #8e8e93; margin-top: 2px;">Code before amount, .&ndash; for round amounts</div>
+          </div>
+        </div>
+        <div style="display: flex; gap: 40px; flex-wrap: wrap;">
+          <div>
+            <div style="font-size: 11px; font-weight: 500; color: #aeaeb2; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px;">Percentages</div>
+            <div style="font-size: 15px; font-weight: 500; color: #1c1c1e;">12.5 %</div>
+            <div style="font-size: 13px; color: #8e8e93; margin-top: 2px;">Space before % sign</div>
+          </div>
+          <div>
+            <div style="font-size: 11px; font-weight: 500; color: #aeaeb2; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px;">Phone</div>
+            <div style="font-size: 15px; font-weight: 500; color: #1c1c1e;">+41 44 123 45 67</div>
+            <div style="font-size: 13px; color: #8e8e93; margin-top: 2px;">Spaces in groups of 2&ndash;3</div>
+          </div>
+          <div>
+            <div style="font-size: 11px; font-weight: 500; color: #aeaeb2; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px;">Time</div>
+            <div style="font-size: 15px; font-weight: 500; color: #1c1c1e;">14.30 Uhr</div>
+            <div style="font-size: 13px; color: #8e8e93; margin-top: 2px;">Period separator, 24-hour clock</div>
           </div>
         </div>
       </div>
@@ -1564,7 +1861,7 @@
     <section id="sf-mono">
       <p class="section-label">SF Mono</p>
       <p class="section-note">
-        SF Mono is Apple's monospace companion to SF Pro. Use it for coordinates, technical IDs, code snippets, and any data that benefits from fixed-width characters.
+        SF Mono is Apple's monospace companion to SF Pro. Use it for <span class="usage-hl">coordinates</span>, <span class="usage-hl">technical IDs</span>, <span class="usage-hl">code snippets</span>, and any data that benefits from fixed-width characters.
       </p>
 
       <div class="mono-specimen">
@@ -1603,7 +1900,7 @@
 
       <p style="font-family: var(--font-family-text); font-size: 11px; font-weight: 600; color: #aeaeb2; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 16px;">Pairing with SF Pro</p>
       <div class="mono-pairing">
-        The restaurant is located at coordinates <code>47.3769, 8.5417</code> in Zurich's historic Altstadt. The place ID <code>lm_ch_zh_0042</code> was last updated at <code>14:32 UTC</code>.
+        Das Restaurant befindet sich bei <code>47.3769, 8.5417</code> in Zürichs historischer Altstadt. Die Place-ID <code>lm_ch_zh_0042</code> wurde zuletzt um <code>14:32 UTC</code> aktualisiert.
       </div>
     </section>
 
@@ -1614,7 +1911,7 @@
     <section id="uppercase">
       <p class="section-label">Uppercase &amp; Small Caps</p>
       <p class="section-note">
-        Overline labels and small caps create subtle hierarchical markers. Uppercase text always needs wider tracking for readability. Never use uppercase below 11px.
+        Overline labels and small caps create subtle hierarchical markers for <span class="usage-hl">section labels</span>, <span class="usage-hl">category tags</span>, and <span class="usage-hl">metadata headers</span>. Uppercase text always needs wider tracking. Never use below 11px.
       </p>
 
       <div class="overline-demos">
@@ -1640,7 +1937,7 @@
       <p style="font-family: var(--font-family-text); font-size: 11px; font-weight: 600; color: #aeaeb2; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 16px;">Small Caps</p>
       <div style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px;">
         <div class="type-body type-small-caps" style="font-size: 17px;">Open Monday through Saturday</div>
-        <div class="type-subheadline type-small-caps">Zurich &middot; Basel &middot; Bern &middot; Luzern</div>
+        <div class="type-subheadline type-small-caps">Zürich &middot; Basel &middot; Bern &middot; Luzern</div>
       </div>
 
       <div class="rule-box">
@@ -1655,7 +1952,7 @@
     <section id="truncation">
       <p class="section-label">Truncation &amp; Line Length</p>
       <p class="section-note">
-        Control how text overflows and set maximum line widths for comfortable reading. Swiss German compound words are long &mdash; be generous with truncation widths.
+        Control how text overflows and set maximum line widths for comfortable reading. Use for <span class="usage-hl">long place names</span>, <span class="usage-hl">card descriptions</span>, and <span class="usage-hl">list items</span>. Swiss German compound words are long &mdash; be generous with widths.
       </p>
 
       <div class="truncation-demos">
@@ -1713,7 +2010,7 @@
     <section id="map-labels">
       <p class="section-label">Map Label Typography</p>
       <p class="section-note">
-        Abstract presets for map label rendering. These are spec-level tokens &mdash; implementation depends on MapKit, Mapbox, or CSS overlays. Use Condensed width when space is tight. Apply a 1&ndash;2px white halo for legibility over terrain.
+        Abstract presets for <span class="usage-hl">city names</span>, <span class="usage-hl">districts</span>, <span class="usage-hl">streets</span>, <span class="usage-hl">POIs</span>, and <span class="usage-hl">distance badges</span> on the map. Spec-level tokens &mdash; implementation depends on MapKit, Mapbox, or CSS overlays.
       </p>
 
       <div class="map-label-hierarchy">
@@ -1796,7 +2093,7 @@
     <section id="accessibility">
       <p class="section-label">Minimum Sizes &amp; Accessibility</p>
       <p class="section-note">
-        Typography must remain legible and tappable. These are the absolute minimums from Apple's Human Interface Guidelines.
+        Typography must remain legible and tappable. Minimum sizes for <span class="usage-hl">body text</span>, <span class="usage-hl">interactive labels</span>, and <span class="usage-hl">touch targets</span> per Apple's Human Interface Guidelines.
       </p>
 
       <!-- Minimum size demo -->
@@ -1847,10 +2144,10 @@
           <div class="contrast-card__label-name" style="color: #aeaeb2;">On white</div>
           <div class="contrast-card__sample" style="color: #1c1c1e;">Primary &mdash; #1c1c1e</div>
           <div class="contrast-card__ratio" style="color: #34c759;">~16.5:1</div>
-          <div class="contrast-card__sample" style="color: rgba(60, 60, 67, 0.60);">Secondary &mdash; 60% opacity</div>
-          <div class="contrast-card__ratio" style="color: #34c759;">~5.5:1</div>
-          <div class="contrast-card__sample" style="color: rgba(60, 60, 67, 0.30);">Tertiary &mdash; 30% opacity</div>
-          <div class="contrast-card__ratio" style="color: #ff9500;">~2.4:1</div>
+          <div class="contrast-card__sample" style="color: rgba(60, 60, 67, 0.75);">Secondary &mdash; 75% opacity</div>
+          <div class="contrast-card__ratio" style="color: #34c759;">~5.0:1 Pass</div>
+          <div class="contrast-card__sample" style="color: rgba(60, 60, 67, 0.30);">Tertiary &mdash; placeholders only</div>
+          <div class="contrast-card__ratio" style="color: #ff3b30;">~1.9:1 Fail</div>
         </div>
         <div class="contrast-card" style="background: #1c1c1e;">
           <div class="contrast-card__label-name" style="color: rgba(255,255,255,0.4);">On dark</div>
@@ -1858,8 +2155,8 @@
           <div class="contrast-card__ratio" style="color: #30d158;">~16.5:1</div>
           <div class="contrast-card__sample" style="color: rgba(235, 235, 245, 0.60);">Secondary &mdash; 60% opacity</div>
           <div class="contrast-card__ratio" style="color: #30d158;">~6.8:1</div>
-          <div class="contrast-card__sample" style="color: rgba(235, 235, 245, 0.30);">Tertiary &mdash; 30% opacity</div>
-          <div class="contrast-card__ratio" style="color: #ff9f0a;">~2.9:1</div>
+          <div class="contrast-card__sample" style="color: rgba(235, 235, 245, 0.30);">Tertiary &mdash; placeholders only</div>
+          <div class="contrast-card__ratio" style="color: #ff453a;">~2.8:1 Fail</div>
         </div>
       </div>
 
@@ -1950,6 +2247,434 @@
         <div><strong>Rule:</strong> Never go below 11px for any text. Interactive text (tappable labels, links) never below 13px.</div>
         <div><strong>Rule:</strong> All touch targets must be at least 44&times;44 points, regardless of visible text size.</div>
         <div><strong>Rule:</strong> Native apps must support the full Dynamic Type range (xSmall through AX5).</div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         15. Chat Bubbles / Conversational UI
+         ============================================================ -->
+    <section id="chat-bubbles">
+      <p class="section-label">Chat Bubbles / Conversational UI</p>
+      <p class="section-note">
+        Conversational UI for AI assistant interactions. <span class="usage-hl">User bubbles</span> are right-aligned with tinted background, <span class="usage-hl">assistant bubbles</span> left-aligned with neutral background.
+      </p>
+
+      <p style="font-family: var(--font-family-text); font-size: 11px; font-weight: 600; color: #aeaeb2; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 16px;">Conversation pattern</p>
+      <div class="chat-demo">
+        <div class="bubble-system">Heute, 14:32</div>
+
+        <div class="bubble-user">Wo ist der nächste Veloweg zum See?</div>
+        <div class="bubble-time bubble-time--right">14:32</div>
+
+        <div class="bubble-assistant">Der <strong>Seeuferweg</strong> beginnt in 350 m Richtung Norden. Er führt direkt am Zürichsee entlang.</div>
+        <div class="bubble-time bubble-time--left">14:32</div>
+
+        <div class="bubble-user">Zeig mir die Route mit <code>ETA</code></div>
+        <div class="bubble-time bubble-time--right">14:33</div>
+
+        <div class="bubble-assistant" style="padding: 0; background: none;">
+          <div class="bubble-assistant chat-typing">
+            <div class="chat-typing__dot"></div>
+            <div class="chat-typing__dot"></div>
+            <div class="chat-typing__dot"></div>
+          </div>
+        </div>
+
+        <div class="bubble-system">Der Assistent berechnet die Route …</div>
+      </div>
+
+      <div class="rule-box" style="display: flex; flex-direction: column; gap: 8px;">
+        <div><strong>Body 17px</strong> for user and assistant messages. Inline <code>code</code> uses SF Mono 15px.</div>
+        <div><strong>Caption1 12px</strong> for system messages (centered). <strong>Caption2 11px</strong> for timestamps (tertiary color).</div>
+        <div><strong>Rule:</strong> Maximum bubble width ~280px to maintain readable line length on mobile.</div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         16. Timestamps & Live Data
+         ============================================================ -->
+    <section id="timestamps">
+      <p class="section-label">Timestamps &amp; Live Data</p>
+      <p class="section-note">
+        Real-time text patterns for time, distance, and status. Always use <span class="usage-hl">tabular figures</span> for values that update live to prevent layout jumps.
+      </p>
+
+      <p style="font-family: var(--font-family-text); font-size: 11px; font-weight: 600; color: #aeaeb2; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 16px;">Relative time formats</p>
+      <div class="timestamp-grid">
+        <div class="timestamp-row">
+          <div class="timestamp-row__label">&lt; 1 minute</div>
+          <div class="timestamp-row__value type-live-data">Gerade eben</div>
+        </div>
+        <div class="timestamp-row">
+          <div class="timestamp-row__label">Minutes</div>
+          <div class="timestamp-row__value type-live-data">vor 2 Min.</div>
+        </div>
+        <div class="timestamp-row">
+          <div class="timestamp-row__label">Hours</div>
+          <div class="timestamp-row__value type-live-data">vor 1 Std.</div>
+        </div>
+        <div class="timestamp-row">
+          <div class="timestamp-row__label">&gt; 24 hours</div>
+          <div class="timestamp-row__value type-live-data">Gestern</div>
+        </div>
+      </div>
+
+      <p style="font-family: var(--font-family-text); font-size: 11px; font-weight: 600; color: #aeaeb2; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 16px;">Live-updating values</p>
+      <div style="display: flex; flex-direction: column; gap: 16px; margin-bottom: 32px;">
+        <div class="live-pill">
+          <div class="live-pill__dot"></div>
+          <span class="type-live-data">350 m — 4 Min.</span>
+        </div>
+        <div class="live-pill">
+          <span class="type-live-data" style="color: #ff9500;">Schliesst in 23 Min.</span>
+        </div>
+        <div class="live-pill">
+          <span class="type-live-data" style="color: #34c759;">Offen bis 22.00 Uhr</span>
+        </div>
+      </div>
+
+      <div class="rule-box" style="display: flex; flex-direction: column; gap: 8px;">
+        <div><strong>Rule:</strong> Always use <code>.tabular-nums</code> or <code>.type-live-data</code> for numbers that change. This prevents layout shifts as digits update.</div>
+        <div><strong>Rule:</strong> Use relative time for anything under 24 hours. Switch to absolute date for older content.</div>
+        <div><strong>Swiss format:</strong> Use period separator for time (22.00 Uhr), not colon.</div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         17. Navigation & Wayfinding
+         ============================================================ -->
+    <section id="navigation">
+      <p class="section-label">Navigation &amp; Wayfinding</p>
+      <p class="section-note">
+        Turn-by-turn instruction hierarchy for routing. Three distinct levels: <span class="usage-hl">maneuver</span> (what to do), <span class="usage-hl">street</span> (where), and <span class="usage-hl">distance</span> (how far).
+      </p>
+
+      <p style="font-family: var(--font-family-text); font-size: 11px; font-weight: 600; color: #aeaeb2; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 16px;">Turn-by-turn hierarchy</p>
+      <div class="nav-demo">
+        <div class="nav-maneuver">Rechts abbiegen</div>
+        <div class="nav-street">Bahnhofstrasse</div>
+        <div class="nav-distance" style="color: var(--color-label-secondary);">350 m</div>
+      </div>
+
+      <p style="font-family: var(--font-family-text); font-size: 11px; font-weight: 600; color: #aeaeb2; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 16px;">Route summary</p>
+      <div class="nav-summary-bar">
+        <div class="nav-summary-bar__item">
+          <div class="nav-summary-bar__value">12 Min.</div>
+          <div class="nav-summary-bar__label">Dauer</div>
+        </div>
+        <div class="nav-summary-bar__item">
+          <div class="nav-summary-bar__value">2,4 km</div>
+          <div class="nav-summary-bar__label">Distanz</div>
+        </div>
+        <div class="nav-summary-bar__item">
+          <div class="nav-summary-bar__value">Velo</div>
+          <div class="nav-summary-bar__label">Modus</div>
+        </div>
+      </div>
+
+      <p style="font-family: var(--font-family-text); font-size: 11px; font-weight: 600; color: #aeaeb2; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 16px;">Step numbering</p>
+      <div class="nav-demo">
+        <div class="nav-step">
+          <div class="nav-step__number">1</div>
+          <div class="nav-step__text">
+            <div class="type-body">Geradeaus auf <strong>Limmatquai</strong></div>
+            <div class="nav-distance" style="color: var(--color-label-secondary);">200 m</div>
+          </div>
+        </div>
+        <div class="nav-step">
+          <div class="nav-step__number">2</div>
+          <div class="nav-step__text">
+            <div class="type-body">Rechts abbiegen auf <strong>Bahnhofstrasse</strong></div>
+            <div class="nav-distance" style="color: var(--color-label-secondary);">350 m</div>
+          </div>
+        </div>
+        <div class="nav-step">
+          <div class="nav-step__number">3</div>
+          <div class="nav-step__text">
+            <div class="type-body">Ziel erreicht: <strong>Hauptbahnhof</strong></div>
+            <div class="nav-distance" style="color: var(--color-label-secondary);">—</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="rule-box" style="display: flex; flex-direction: column; gap: 8px;">
+        <div><strong>Maneuver:</strong> Title3 20px Semibold — the primary action. <strong>Street:</strong> Headline 17px Semibold — the context.</div>
+        <div><strong>Distance:</strong> Subheadline 15px with tabular figures — always updating.</div>
+        <div><strong>Step numbers:</strong> Caption1 12px Medium in a circle, paired with Body instruction text.</div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         18. States & Feedback
+         ============================================================ -->
+    <section id="states">
+      <p class="section-label">States &amp; Feedback</p>
+      <p class="section-note">
+        Typography for UI states: <span class="usage-hl">empty states</span>, <span class="usage-hl">errors</span>, <span class="usage-hl">success</span>, <span class="usage-hl">loading</span>, and <span class="usage-hl">warnings</span>. Color and weight signal severity.
+      </p>
+
+      <div class="state-demo">
+        <!-- Empty State -->
+        <div>
+          <p style="font-family: var(--font-family-text); font-size: 11px; font-weight: 600; color: #aeaeb2; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 16px;">Empty state</p>
+          <div class="state-card state-card--centered">
+            <div class="type-title2" style="color: var(--color-label-secondary);">Keine Ergebnisse</div>
+            <div class="type-body" style="color: var(--color-label-secondary);">Versuche einen anderen Suchbegriff oder ändere die Filter.</div>
+          </div>
+        </div>
+
+        <!-- Error -->
+        <div>
+          <p style="font-family: var(--font-family-text); font-size: 11px; font-weight: 600; color: #aeaeb2; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 16px;">Error message</p>
+          <div style="max-width: 400px;">
+            <div class="type-body" style="color: var(--color-tint-destructive);">Verbindung fehlgeschlagen. Erneut versuchen?</div>
+          </div>
+        </div>
+
+        <!-- Warning -->
+        <div>
+          <p style="font-family: var(--font-family-text); font-size: 11px; font-weight: 600; color: #aeaeb2; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 16px;">Warning</p>
+          <div style="max-width: 400px;">
+            <div class="type-body" style="color: #ff9500;">GPS-Signal schwach. Position kann ungenau sein.</div>
+          </div>
+        </div>
+
+        <!-- Success toast -->
+        <div>
+          <p style="font-family: var(--font-family-text); font-size: 11px; font-weight: 600; color: #aeaeb2; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 16px;">Success toast</p>
+          <div class="state-toast">
+            <div class="state-toast__icon">✓</div>
+            <span class="type-footnote" style="color: #fff;">Route gespeichert</span>
+          </div>
+        </div>
+
+        <!-- Loading skeleton -->
+        <div>
+          <p style="font-family: var(--font-family-text); font-size: 11px; font-weight: 600; color: #aeaeb2; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 16px;">Loading skeleton</p>
+          <div class="skeleton-lines">
+            <div class="skeleton-line" style="width: 100%;"></div>
+            <div class="skeleton-line"></div>
+            <div class="skeleton-line"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="rule-box" style="display: flex; flex-direction: column; gap: 8px;">
+        <div><strong>Empty state:</strong> Title2 heading + Body description, centered, secondary color.</div>
+        <div><strong>Error:</strong> Body with destructive tint. <strong>Warning:</strong> Body with amber/orange.</div>
+        <div><strong>Success toast:</strong> Footnote on dark pill. <strong>Skeleton:</strong> gray bars matching text line heights.</div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         19. Search Patterns
+         ============================================================ -->
+    <section id="search">
+      <p class="section-label">Search Patterns</p>
+      <p class="section-note">
+        Search input, autocomplete results with <span class="usage-hl">bold matched substrings</span>, recent searches, and category headers.
+      </p>
+
+      <p style="font-family: var(--font-family-text); font-size: 11px; font-weight: 600; color: #aeaeb2; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 16px;">Search input</p>
+      <div class="search-demo-input">
+        <div class="search-demo-input__icon"></div>
+        <span class="type-body" style="color: var(--color-label-secondary);">Orte suchen …</span>
+      </div>
+
+      <p style="font-family: var(--font-family-text); font-size: 11px; font-weight: 600; color: #aeaeb2; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 16px;">Autocomplete results</p>
+      <div class="search-autocomplete">
+        <div class="search-autocomplete__row">
+          <div class="type-headline weight-regular"><span class="search-match">Bahn</span>hofstrasse</div>
+          <div class="type-footnote" style="color: var(--color-label-secondary);">8001 Zürich, Kreis 1</div>
+        </div>
+        <div class="search-autocomplete__row">
+          <div class="type-headline weight-regular"><span class="search-match">Bahn</span>hofplatz</div>
+          <div class="type-footnote" style="color: var(--color-label-secondary);">8001 Zürich, Hauptbahnhof</div>
+        </div>
+        <div class="search-autocomplete__row">
+          <div class="type-headline weight-regular"><span class="search-match">Bahn</span>hofquai</div>
+          <div class="type-footnote" style="color: var(--color-label-secondary);">8001 Zürich, Altstadt</div>
+        </div>
+      </div>
+
+      <p style="font-family: var(--font-family-text); font-size: 11px; font-weight: 600; color: #aeaeb2; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 16px;">Recent searches</p>
+      <div style="display: flex; flex-direction: column; gap: 0; max-width: 400px; margin-bottom: 24px;">
+        <div class="search-recent">
+          <div class="search-recent__icon"></div>
+          <span class="type-subheadline" style="color: var(--color-label-secondary);">Zürich HB</span>
+        </div>
+        <div class="search-recent">
+          <div class="search-recent__icon"></div>
+          <span class="type-subheadline" style="color: var(--color-label-secondary);">Bürkliplatz</span>
+        </div>
+      </div>
+
+      <p style="font-family: var(--font-family-text); font-size: 11px; font-weight: 600; color: #aeaeb2; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 16px;">Category headers &amp; empty state</p>
+      <div style="max-width: 400px; margin-bottom: 32px;">
+        <div class="type-overline" style="margin-bottom: 12px; color: #8e8e93;">Restaurants</div>
+        <div class="type-overline" style="margin-bottom: 12px; color: #8e8e93;">Sehenswürdigkeiten</div>
+        <div class="type-footnote" style="color: var(--color-label-secondary);">Keine Ergebnisse für «Xyz»</div>
+      </div>
+
+      <div class="rule-box" style="display: flex; flex-direction: column; gap: 8px;">
+        <div><strong>Input:</strong> Body 17px with tertiary placeholder. <strong>Results:</strong> Headline for name + Footnote for address.</div>
+        <div><strong>Match highlight:</strong> Use <code>.search-match</code> (bold) on the matched substring. Set the result name to <code>weight-regular</code> so the bold match stands out.</div>
+        <div><strong>Recent:</strong> Subheadline 15px, secondary color. <strong>Categories:</strong> <code>.type-overline</code>.</div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         20. Multilingual (CH)
+         ============================================================ -->
+    <section id="multilingual">
+      <p class="section-label">Multilingual (CH)</p>
+      <p class="section-note">
+        Switzerland has four official languages. German text is typically the longest — always test layouts with <span class="usage-hl">German strings</span> first.
+      </p>
+
+      <p style="font-family: var(--font-family-text); font-size: 11px; font-weight: 600; color: #aeaeb2; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 16px;">Same string — four languages</p>
+      <div class="lang-compare">
+        <div class="lang-compare__row">
+          <div class="lang-compare__lang">DE</div>
+          <div class="lang-compare__text">Wegbeschreibung</div>
+          <div class="lang-compare__bar"><div class="lang-compare__bar-fill" style="width: 100%;"></div></div>
+        </div>
+        <div class="lang-compare__row">
+          <div class="lang-compare__lang">FR</div>
+          <div class="lang-compare__text">Itinéraire</div>
+          <div class="lang-compare__bar"><div class="lang-compare__bar-fill" style="width: 70%;"></div></div>
+        </div>
+        <div class="lang-compare__row">
+          <div class="lang-compare__lang">IT</div>
+          <div class="lang-compare__text">Indicazioni</div>
+          <div class="lang-compare__bar"><div class="lang-compare__bar-fill" style="width: 75%;"></div></div>
+        </div>
+        <div class="lang-compare__row">
+          <div class="lang-compare__lang">EN</div>
+          <div class="lang-compare__text">Directions</div>
+          <div class="lang-compare__bar"><div class="lang-compare__bar-fill" style="width: 65%;"></div></div>
+        </div>
+      </div>
+
+      <p style="font-family: var(--font-family-text); font-size: 11px; font-weight: 600; color: #aeaeb2; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 16px;">Text expansion from English baseline</p>
+      <table class="expansion-table">
+        <thead>
+          <tr>
+            <th style="width: 80px;">Language</th>
+            <th style="width: 120px;">Expansion</th>
+            <th>Example</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>EN</td>
+            <td>Baseline</td>
+            <td>Directions</td>
+          </tr>
+          <tr>
+            <td>DE</td>
+            <td>+30%</td>
+            <td>Wegbeschreibung</td>
+          </tr>
+          <tr>
+            <td>FR</td>
+            <td>+20%</td>
+            <td>Itinéraire</td>
+          </tr>
+          <tr>
+            <td>IT</td>
+            <td>+15%</td>
+            <td>Indicazioni</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p style="font-family: var(--font-family-text); font-size: 11px; font-weight: 600; color: #aeaeb2; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 16px;">Long compound words (German)</p>
+      <div style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px; max-width: 480px;">
+        <div style="display: flex; align-items: baseline; gap: 16px;">
+          <div class="type-headline" style="flex: 1;">Geschwindigkeitsbegrenzung</div>
+          <div class="type-caption1" style="color: #aeaeb2; flex: 0 0 auto;">26 characters</div>
+        </div>
+        <div style="display: flex; align-items: baseline; gap: 16px;">
+          <div class="type-headline" style="flex: 1;">Strassenverkehrsamt</div>
+          <div class="type-caption1" style="color: #aeaeb2; flex: 0 0 auto;">19 characters</div>
+        </div>
+        <div style="display: flex; align-items: baseline; gap: 16px;">
+          <div class="type-headline" style="flex: 1;">Fussgängerübergang</div>
+          <div class="type-caption1" style="color: #aeaeb2; flex: 0 0 auto;">18 characters</div>
+        </div>
+      </div>
+
+      <div class="rule-box" style="display: flex; flex-direction: column; gap: 8px;">
+        <div><strong>Rule:</strong> Always test layouts with German strings first — they are typically 30% longer than English.</div>
+        <div><strong>Rule:</strong> Never hard-code widths for text containers. Use <code>flex</code> and <code>min-width: 0</code>.</div>
+        <div><strong>Rule:</strong> Use truncation (<code>.truncate</code>) as a safety net, not as the primary strategy.</div>
+        <div><strong>Note:</strong> Swiss German (Schwyzerdütsch) uses unique spellings in informal contexts — e.g., «Strasse» not «Straße».</div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         21. Interactive Text
+         ============================================================ -->
+    <section id="interactive">
+      <p class="section-label">Interactive Text</p>
+      <p class="section-note">
+        Tappable and linked text patterns. All interactive text must be at least <span class="usage-hl">13px</span> with a touch target of <span class="usage-hl">44px</span>. Action color signals interactivity.
+      </p>
+
+      <div class="interactive-demos">
+        <div class="interactive-demo">
+          <div class="interactive-demo__label">Inline link</div>
+          <div class="type-body" style="max-width: 480px;">
+            Die vollständige Karte finden Sie unter <span style="color: var(--color-tint-action); cursor: pointer;">Livemap Zürich</span> mit allen aktuellen Routen und Haltestellen.
+          </div>
+        </div>
+
+        <div class="interactive-demo">
+          <div class="interactive-demo__label">Tappable phone number</div>
+          <div class="type-mono" style="color: var(--color-tint-action); cursor: pointer;">+41 44 123 45 67</div>
+        </div>
+
+        <div class="interactive-demo">
+          <div class="interactive-demo__label">Tappable address</div>
+          <div class="type-subheadline" style="color: var(--color-tint-action); cursor: pointer;">Bahnhofstrasse 1, 8001 Zürich</div>
+        </div>
+
+        <div class="interactive-demo">
+          <div class="interactive-demo__label">URL display (truncated middle)</div>
+          <div class="type-mono-caption" style="color: var(--color-tint-action); cursor: pointer;">livemap.ch/…/zh0042</div>
+        </div>
+
+        <div class="interactive-demo">
+          <div class="interactive-demo__label">Badge with count</div>
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <span class="badge-count">3</span>
+            <span class="badge-count">12</span>
+            <span class="badge-count">99+</span>
+          </div>
+        </div>
+
+        <div class="interactive-demo">
+          <div class="interactive-demo__label">Chips / Tags</div>
+          <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+            <span class="chip-tag">Restaurant</span>
+            <span class="chip-tag">Geöffnet</span>
+            <span class="chip-tag">Velo-freundlich</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="rule-box" style="display: flex; flex-direction: column; gap: 8px;">
+        <div><strong>Rule:</strong> All tappable text &ge; 13px (<code>--font-size-minimum-interactive</code>). Touch target &ge; 44px.</div>
+        <div><strong>Rule:</strong> Use <code>--color-tint-action</code> for interactive text. No underline — color alone signals tappability in iOS patterns.</div>
+        <div><strong>Badges:</strong> SF Pro Rounded, Caption1 12px, white on tinted circle. <strong>Chips:</strong> Footnote Medium, tinted background.</div>
       </div>
     </section>
 
@@ -2073,7 +2798,7 @@
           <tr>
             <td></td>
             <td><code>--color-label-secondary</code></td>
-            <td><code>rgba(60,60,67,0.6)</code></td>
+            <td><code>rgba(60,60,67,0.75)</code></td>
           </tr>
           <tr>
             <td></td>
@@ -2256,6 +2981,168 @@
 
       window.addEventListener('scroll', update, { passive: true });
       update();
+    })();
+
+    // ---- Instant search with highlighting ----
+    (function () {
+      var input = document.getElementById('search-input');
+      var clearBtn = document.getElementById('search-clear');
+      var container = document.getElementById('sidebar-search');
+      var meta = document.getElementById('search-meta');
+      var prevBtn = document.getElementById('search-prev');
+      var nextBtn = document.getElementById('search-next');
+      var content = document.querySelector('.main-content');
+
+      var marks = [];
+      var currentIdx = -1;
+      var debounceTimer = null;
+
+      // Remove all existing highlights
+      function clearHighlights() {
+        var existing = content.querySelectorAll('mark.search-hl');
+        for (var i = existing.length - 1; i >= 0; i--) {
+          var m = existing[i];
+          var parent = m.parentNode;
+          parent.replaceChild(document.createTextNode(m.textContent), m);
+          parent.normalize();
+        }
+        marks = [];
+        currentIdx = -1;
+      }
+
+      // Walk text nodes and wrap matches
+      function highlightMatches(query) {
+        clearHighlights();
+        if (!query || query.length < 2) {
+          updateMeta(0);
+          return;
+        }
+
+        var lowerQuery = query.toLowerCase();
+        var walker = document.createTreeWalker(content, NodeFilter.SHOW_TEXT, null);
+        var textNodes = [];
+
+        while (walker.nextNode()) {
+          var parent = walker.currentNode.parentNode;
+          if (parent.closest && parent.closest('script, style, mark.search-hl')) continue;
+          if (walker.currentNode.textContent.toLowerCase().indexOf(lowerQuery) !== -1) {
+            textNodes.push(walker.currentNode);
+          }
+        }
+
+        for (var i = 0; i < textNodes.length; i++) {
+          highlightTextNode(textNodes[i], lowerQuery);
+        }
+
+        marks = Array.from(content.querySelectorAll('mark.search-hl'));
+        updateMeta(marks.length);
+
+        if (marks.length > 0) {
+          goToMatch(0);
+        }
+      }
+
+      function highlightTextNode(textNode, lowerQuery) {
+        var text = textNode.textContent;
+        var lower = text.toLowerCase();
+        var idx = lower.indexOf(lowerQuery);
+        if (idx === -1) return;
+
+        var frag = document.createDocumentFragment();
+        var lastIdx = 0;
+
+        while (idx !== -1) {
+          if (idx > lastIdx) {
+            frag.appendChild(document.createTextNode(text.slice(lastIdx, idx)));
+          }
+          var mark = document.createElement('mark');
+          mark.className = 'search-hl';
+          mark.textContent = text.slice(idx, idx + lowerQuery.length);
+          frag.appendChild(mark);
+          lastIdx = idx + lowerQuery.length;
+          idx = lower.indexOf(lowerQuery, lastIdx);
+        }
+
+        if (lastIdx < text.length) {
+          frag.appendChild(document.createTextNode(text.slice(lastIdx)));
+        }
+
+        textNode.parentNode.replaceChild(frag, textNode);
+      }
+
+      function updateMeta(count) {
+        if (count === 0 && input.value.length >= 2) {
+          meta.textContent = 'No matches';
+        } else if (count > 0) {
+          meta.textContent = (currentIdx + 1) + ' of ' + count;
+        } else {
+          meta.innerHTML = '<kbd>/</kbd> to search';
+        }
+        prevBtn.disabled = count <= 1;
+        nextBtn.disabled = count <= 1;
+      }
+
+      function goToMatch(idx) {
+        if (marks.length === 0) return;
+        if (currentIdx >= 0 && currentIdx < marks.length) {
+          marks[currentIdx].classList.remove('search-hl--current');
+        }
+        currentIdx = ((idx % marks.length) + marks.length) % marks.length;
+        marks[currentIdx].classList.add('search-hl--current');
+        updateMeta(marks.length);
+        marks[currentIdx].scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+
+      input.addEventListener('input', function () {
+        var q = input.value.trim();
+        container.classList.toggle('sidebar__search--has-query', q.length > 0);
+        clearTimeout(debounceTimer);
+        debounceTimer = setTimeout(function () {
+          highlightMatches(q);
+        }, 120);
+      });
+
+      clearBtn.addEventListener('click', function () {
+        input.value = '';
+        container.classList.remove('sidebar__search--has-query');
+        clearHighlights();
+        updateMeta(0);
+        input.focus();
+      });
+
+      prevBtn.addEventListener('click', function () {
+        goToMatch(currentIdx - 1);
+      });
+      nextBtn.addEventListener('click', function () {
+        goToMatch(currentIdx + 1);
+      });
+
+      input.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          goToMatch(e.shiftKey ? currentIdx - 1 : currentIdx + 1);
+        }
+        if (e.key === 'Escape') {
+          input.value = '';
+          container.classList.remove('sidebar__search--has-query');
+          clearHighlights();
+          updateMeta(0);
+          input.blur();
+        }
+      });
+
+      // Global shortcut: "/" to focus search
+      document.addEventListener('keydown', function (e) {
+        if (e.key === '/' && !e.ctrlKey && !e.metaKey && !e.altKey) {
+          var tag = (e.target.tagName || '').toLowerCase();
+          if (tag === 'input' || tag === 'textarea' || e.target.isContentEditable) return;
+          e.preventDefault();
+          input.focus();
+          input.select();
+        }
+      });
+
+      updateMeta(0);
     })();
   </script>
 </body>

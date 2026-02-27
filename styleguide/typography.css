@@ -266,7 +266,7 @@
 :root {
   /* Label hierarchy — Light mode */
   --color-label:            #1c1c1e;
-  --color-label-secondary:  rgba(60, 60, 67, 0.60);
+  --color-label-secondary:  rgba(60, 60, 67, 0.75);
   --color-label-tertiary:   rgba(60, 60, 67, 0.30);
   --color-label-quaternary: rgba(60, 60, 67, 0.18);
 
@@ -453,6 +453,122 @@
   --touch-target-minimum:          44px;  /* iOS HIG minimum touch target */
 }
 
+
+/* ==========================================================================
+   18. Chat Bubble Typography
+   --------------------------------------------------------------------------
+   Conversational UI patterns — user, assistant, and system messages.
+   ========================================================================== */
+
+.bubble-user {
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-body);
+  letter-spacing: var(--tracking-body);
+  color: #fff;
+  background: var(--color-tint-action);
+  padding: 10px 16px;
+  border-radius: 18px 18px 4px 18px;
+  max-width: 280px;
+  align-self: flex-end;
+}
+
+.bubble-assistant {
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-body);
+  letter-spacing: var(--tracking-body);
+  color: var(--color-label);
+  background: #f2f2f7;
+  padding: 10px 16px;
+  border-radius: 18px 18px 18px 4px;
+  max-width: 280px;
+  align-self: flex-start;
+}
+
+.bubble-system {
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-caption1);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-caption1);
+  letter-spacing: var(--tracking-caption1);
+  color: var(--color-label-secondary);
+  text-align: center;
+  align-self: center;
+  padding: 4px 0;
+}
+
+.bubble-time {
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-caption2);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-caption2);
+  letter-spacing: var(--tracking-caption2);
+  color: var(--color-label-tertiary);
+}
+
+
+/* ==========================================================================
+   19. Search Match Highlight
+   --------------------------------------------------------------------------
+   Bold highlight for matched characters in autocomplete results.
+   ========================================================================== */
+
+.search-match {
+  font-weight: var(--font-weight-bold);
+  color: var(--color-label);
+}
+
+
+/* ==========================================================================
+   20. Live Data Typography
+   --------------------------------------------------------------------------
+   Tabular nums + medium weight for real-time updating values.
+   ========================================================================== */
+
+.type-live-data {
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-subheadline);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-subheadline);
+  letter-spacing: var(--tracking-subheadline);
+  font-variant-numeric: tabular-nums;
+}
+
+
+/* ==========================================================================
+   21. Navigation & Wayfinding Typography
+   --------------------------------------------------------------------------
+   Turn-by-turn instruction hierarchy for routing UI.
+   ========================================================================== */
+
+.nav-maneuver {
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-title3);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-title3);
+  letter-spacing: var(--tracking-title3);
+}
+
+.nav-street {
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-headline);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-headline);
+  letter-spacing: var(--tracking-headline);
+}
+
+.nav-distance {
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-subheadline);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-subheadline);
+  letter-spacing: var(--tracking-subheadline);
+  font-variant-numeric: tabular-nums;
+}
+
 /*
    Dynamic Type Support Range
    ──────────────────────────────────────────────────────
@@ -465,3 +581,506 @@
    All type styles in this file use the "Large" default.
    Native apps must support the full range via Dynamic Type.
 */
+
+
+/* ==========================================================================
+   22. Styleguide Demo Components
+   --------------------------------------------------------------------------
+   Layout and visual styles for the pattern showcase sections.
+   These classes are used by the styleguide to demonstrate typography
+   in realistic UI contexts (chat, navigation, search, etc.).
+   ========================================================================== */
+
+/* ---- Chat Bubbles Demo ---- */
+
+.chat-demo {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 400px;
+  margin-bottom: 32px;
+}
+
+.chat-demo .bubble-user,
+.chat-demo .bubble-assistant {
+  word-break: break-word;
+}
+
+.chat-demo .bubble-user code,
+.chat-demo .bubble-assistant code {
+  font-family: var(--font-family-mono);
+  font-size: 15px;
+  background: rgba(0,0,0,0.08);
+  padding: 1px 5px;
+  border-radius: 4px;
+}
+
+.chat-demo .bubble-user code {
+  background: rgba(255,255,255,0.20);
+}
+
+.chat-demo .bubble-time {
+  padding: 0 4px;
+}
+
+.chat-demo .bubble-time--right {
+  align-self: flex-end;
+}
+
+.chat-demo .bubble-time--left {
+  align-self: flex-start;
+}
+
+.chat-typing {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  padding: 12px 16px;
+}
+
+.chat-typing__dot {
+  width: 7px;
+  height: 7px;
+  background: #aeaeb2;
+  border-radius: 50%;
+  animation: typing-pulse 1.4s ease-in-out infinite;
+}
+
+.chat-typing__dot:nth-child(2) { animation-delay: 0.2s; }
+.chat-typing__dot:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes typing-pulse {
+  0%, 60%, 100% { opacity: 0.3; transform: scale(0.85); }
+  30% { opacity: 1; transform: scale(1); }
+}
+
+
+/* ---- Timestamps & Live Data Demo ---- */
+
+.timestamp-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-bottom: 32px;
+}
+
+.timestamp-row {
+  display: flex;
+  align-items: center;
+  padding: 14px 0;
+  border-bottom: 1px solid #f2f2f7;
+  gap: 24px;
+}
+
+.timestamp-row:last-child { border-bottom: none; }
+
+.timestamp-row__label {
+  flex: 0 0 180px;
+  font-family: var(--font-family-text);
+  font-size: 13px;
+  font-weight: var(--font-weight-medium);
+  color: #8e8e93;
+}
+
+.timestamp-row__value {
+  flex: 1;
+  font-family: var(--font-family-text);
+  font-size: 17px;
+  color: #1c1c1e;
+}
+
+.live-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #f2f2f7;
+  border-radius: 10px;
+  padding: 10px 16px;
+}
+
+.live-pill__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #34c759;
+  animation: live-blink 2s ease-in-out infinite;
+}
+
+@keyframes live-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+
+/* ---- Navigation & Wayfinding Demo ---- */
+
+.nav-demo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  background: #f9f9fb;
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 24px;
+  max-width: 360px;
+}
+
+.nav-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid #e5e5ea;
+}
+
+.nav-step:last-child { border-bottom: none; }
+
+.nav-step__number {
+  flex: 0 0 28px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #007aff;
+  color: #fff;
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-caption1);
+  font-weight: var(--font-weight-medium);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-step__text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.nav-summary-bar {
+  display: flex;
+  gap: 24px;
+  background: #007aff;
+  border-radius: 12px;
+  padding: 14px 20px;
+  max-width: 360px;
+  margin-bottom: 32px;
+}
+
+.nav-summary-bar__item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.nav-summary-bar__value {
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-headline);
+  font-weight: var(--font-weight-semibold);
+  color: #fff;
+  font-variant-numeric: tabular-nums;
+}
+
+.nav-summary-bar__label {
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-caption1);
+  color: rgba(255,255,255,0.65);
+}
+
+
+/* ---- States & Feedback Demo ---- */
+
+.state-demo {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  margin-bottom: 32px;
+}
+
+.state-card {
+  background: #f9f9fb;
+  border-radius: 16px;
+  padding: 32px;
+  max-width: 400px;
+}
+
+.state-card--centered {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.state-toast {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #1c1c1e;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 100px;
+}
+
+.state-toast__icon {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #34c759;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  color: #fff;
+  font-weight: 700;
+}
+
+.skeleton-lines {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 320px;
+}
+
+.skeleton-line {
+  height: 14px;
+  background: #e5e5ea;
+  border-radius: 7px;
+  animation: skeleton-shimmer 1.5s ease-in-out infinite;
+}
+
+.skeleton-line:nth-child(2) { width: 85%; animation-delay: 0.1s; }
+.skeleton-line:nth-child(3) { width: 60%; animation-delay: 0.2s; }
+
+@keyframes skeleton-shimmer {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+
+/* ---- Search Patterns Demo ---- */
+
+.search-demo-input {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #f2f2f7;
+  border-radius: 12px;
+  padding: 12px 16px;
+  margin-bottom: 24px;
+  max-width: 400px;
+}
+
+.search-demo-input__icon {
+  flex: 0 0 18px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid #aeaeb2;
+  position: relative;
+}
+
+.search-demo-input__icon::after {
+  content: '';
+  width: 2px;
+  height: 6px;
+  background: #aeaeb2;
+  position: absolute;
+  bottom: -5px;
+  right: -3px;
+  transform: rotate(-45deg);
+  border-radius: 1px;
+}
+
+.search-autocomplete {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  max-width: 400px;
+  margin-bottom: 24px;
+}
+
+.search-autocomplete__row {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 12px 0;
+  border-bottom: 1px solid #f2f2f7;
+}
+
+.search-autocomplete__row:last-child { border-bottom: none; }
+
+.search-recent {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 0;
+}
+
+.search-recent__icon {
+  flex: 0 0 20px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1.5px solid #aeaeb2;
+  position: relative;
+}
+
+.search-recent__icon::after {
+  content: '';
+  position: absolute;
+  width: 1.5px;
+  height: 6px;
+  background: #aeaeb2;
+  top: 3px;
+  left: 50%;
+  transform-origin: bottom center;
+  transform: translateX(-50%);
+}
+
+.search-recent__icon::before {
+  content: '';
+  position: absolute;
+  width: 4px;
+  height: 1.5px;
+  background: #aeaeb2;
+  top: 8px;
+  left: 50%;
+}
+
+
+/* ---- Multilingual Demo ---- */
+
+.lang-compare {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-bottom: 32px;
+}
+
+.lang-compare__row {
+  display: flex;
+  align-items: baseline;
+  padding: 12px 0;
+  border-bottom: 1px solid #f2f2f7;
+  gap: 16px;
+}
+
+.lang-compare__row:last-child { border-bottom: none; }
+
+.lang-compare__lang {
+  flex: 0 0 36px;
+  font-family: var(--font-family-text);
+  font-size: 11px;
+  font-weight: var(--font-weight-semibold);
+  color: #aeaeb2;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.lang-compare__text {
+  flex: 1;
+  font-family: var(--font-family-text);
+  font-size: 17px;
+  color: #1c1c1e;
+}
+
+.lang-compare__bar {
+  flex: 0 0 120px;
+  height: 6px;
+  background: #e5e5ea;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.lang-compare__bar-fill {
+  height: 100%;
+  border-radius: 3px;
+  background: #007aff;
+}
+
+.expansion-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 32px;
+  max-width: 480px;
+}
+
+.expansion-table th {
+  font-family: var(--font-family-text);
+  font-size: 11px;
+  font-weight: var(--font-weight-semibold);
+  color: #aeaeb2;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  text-align: left;
+  padding: 0 0 12px;
+  border-bottom: 1px solid #e5e5ea;
+}
+
+.expansion-table td {
+  font-family: var(--font-family-text);
+  font-size: 13px;
+  color: #3a3a3c;
+  padding: 10px 16px 10px 0;
+  border-bottom: 1px solid #f2f2f7;
+}
+
+.expansion-table td:first-child {
+  font-weight: var(--font-weight-medium);
+  color: #1c1c1e;
+}
+
+
+/* ---- Interactive Text Demo ---- */
+
+.interactive-demos {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.interactive-demo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.interactive-demo__label {
+  font-family: var(--font-family-text);
+  font-size: 11px;
+  font-weight: var(--font-weight-semibold);
+  color: #aeaeb2;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.badge-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 22px;
+  height: 22px;
+  border-radius: 11px;
+  background: #ff3b30;
+  color: #fff;
+  font-family: var(--font-family-rounded);
+  font-size: var(--font-size-caption1);
+  font-weight: var(--font-weight-medium);
+  padding: 0 6px;
+  font-variant-numeric: tabular-nums;
+}
+
+.chip-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(0, 122, 255, 0.10);
+  color: #007aff;
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-footnote);
+  font-weight: var(--font-weight-medium);
+  padding: 6px 12px;
+  border-radius: 100px;
+}
