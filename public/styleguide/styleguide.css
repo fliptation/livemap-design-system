@@ -233,7 +233,7 @@ body {
 
 .nav-subitems.is-expanded {
   max-height: 2000px;
-  padding-top: var(--space-12);
+  padding-top: var(--space-6);
   padding-bottom: var(--space-12);
 }
 
@@ -416,7 +416,6 @@ body {
 
 /* Content pages */
 .content-page {
-  max-width: 1040px;
   margin: 0 auto;
   padding: 0 var(--space-48) 60vh;
 }
