@@ -1,0 +1,9 @@
+{
+  "outputDirectory": "public",
+  "redirects": [
+    { "source": "/", "destination": "/styleguide/", "statusCode": 301 }
+  ],
+  "rewrites": [
+    { "source": "/styleguide/(.*)", "destination": "/styleguide/index.html" }
+  ]
+}
