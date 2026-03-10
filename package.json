@@ -3,7 +3,8 @@
   "version": "0.2.0",
   "private": true,
   "scripts": {
-    "start": "serve public -l $PORT --single"
+    "start": "serve public -l $PORT --single",
+    "validate-tokens": "node scripts/validate-tokens.js"
   },
   "dependencies": {
     "serve": "^14.2.0"

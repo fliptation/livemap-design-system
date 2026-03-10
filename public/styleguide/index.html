@@ -69,6 +69,10 @@
             <button class="platform-toggle__btn" data-platform="ios">iOS</button>
             <button class="platform-toggle__btn" data-platform="android">Android</button>
           </div>
+          <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+            <svg class="theme-toggle__icon theme-toggle__moon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13.5 8.5a5.5 5.5 0 0 1-7-7 5.5 5.5 0 1 0 7 7z"/></svg>
+            <svg class="theme-toggle__icon theme-toggle__sun" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="3"/><line x1="8" y1="1.5" x2="8" y2="3"/><line x1="8" y1="13" x2="8" y2="14.5"/><line x1="1.5" y1="8" x2="3" y2="8"/><line x1="13" y1="8" x2="14.5" y2="8"/><line x1="3.4" y1="3.4" x2="4.5" y2="4.5"/><line x1="11.5" y1="11.5" x2="12.6" y2="12.6"/><line x1="3.4" y1="12.6" x2="4.5" y2="11.5"/><line x1="11.5" y1="4.5" x2="12.6" y2="3.4"/></svg>
+          </button>
           <button class="inspect-toggle" id="inspect-toggle" aria-label="Toggle token inspector" aria-pressed="false">
             <svg class="inspect-toggle__icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="3"/><line x1="8" y1="1" x2="8" y2="4"/><line x1="8" y1="12" x2="8" y2="15"/><line x1="1" y1="8" x2="4" y2="8"/><line x1="12" y1="8" x2="15" y2="8"/></svg>
             Inspect
@@ -2477,6 +2481,28 @@
       </table>
     </section>
 
+    <!-- ============================================================
+         Export Formats
+         ============================================================ -->
+    <section id="tk-export">
+      <p class="section-label">Export Formats</p>
+      <p class="section-note">
+        Copy tokens in the format your platform needs. Values stay in sync with the CSS source of truth.
+      </p>
+
+      <div class="export-tabs" id="export-tabs">
+        <button class="export-tab is-active" data-format="json">JSON</button>
+        <button class="export-tab" data-format="swift">Swift</button>
+        <button class="export-tab" data-format="kotlin">Kotlin</button>
+      </div>
+      <div class="export-block" id="export-block">
+        <button class="export-block__copy" id="export-copy">Copy</button>
+        <pre class="export-block__pre" id="export-json"></pre>
+        <pre class="export-block__pre" id="export-swift" hidden></pre>
+        <pre class="export-block__pre" id="export-kotlin" hidden></pre>
+      </div>
+    </section>
+
         </div>
 
         <div class="content-page" id="page-getting-started" hidden>
@@ -4375,6 +4401,49 @@
         <button class="comp-btn comp-btn--primary comp-btn--lg">Large</button>
         <button class="comp-btn comp-btn--primary" disabled>Disabled</button>
       </div>
+
+      <details class="comp-snippet">
+        <summary>Token usage</summary>
+        <div class="comp-snippet__body">
+          <div class="comp-snippet__tabs">
+            <button class="comp-snippet__tab is-active" data-lang="css">CSS</button>
+            <button class="comp-snippet__tab" data-lang="swift">Swift</button>
+            <button class="comp-snippet__tab" data-lang="kotlin">Kotlin</button>
+          </div>
+          <button class="comp-snippet__copy">Copy</button>
+          <pre class="comp-snippet__pre" data-lang="css"><code>.btn-primary {
+  font: var(--font-weight-semibold) var(--font-size-fine)/var(--line-height-fine)
+       var(--font-family-text);
+  padding: var(--space-10) var(--space-20);
+  border-radius: var(--radius-sm);
+  background: var(--color-label);
+  color: var(--color-surface);
+}</code></pre>
+          <pre class="comp-snippet__pre" data-lang="swift" hidden><code>Button("Primary") { /* action */ }
+  .font(.system(size: FontSize.fine, weight: .semibold))
+  .padding(.horizontal, Spacing.s20)
+  .padding(.vertical, Spacing.s10)
+  .background(Color.label)
+  .foregroundColor(Color.surface)
+  .cornerRadius(Radius.sm)</code></pre>
+          <pre class="comp-snippet__pre" data-lang="kotlin" hidden><code>Button(
+  onClick = { /* action */ },
+  colors = ButtonDefaults.buttonColors(
+    containerColor = LivemapTheme.colors.label,
+    contentColor = LivemapTheme.colors.surface
+  ),
+  shape = RoundedCornerShape(LivemapTheme.radius.sm),
+  contentPadding = PaddingValues(
+    horizontal = LivemapTheme.spacing.s20,
+    vertical = LivemapTheme.spacing.s10
+  )
+) {
+  Text("Primary", style = LivemapTheme.typography.fine.copy(
+    fontWeight = FontWeight.SemiBold
+  ))
+}</code></pre>
+        </div>
+      </details>
     </section>
 
     <!-- ============================================================
@@ -4396,6 +4465,56 @@
           <input class="comp-input comp-input--error" type="text" value="Invalid value">
         </div>
       </div>
+
+      <details class="comp-snippet">
+        <summary>Token usage</summary>
+        <div class="comp-snippet__body">
+          <div class="comp-snippet__tabs">
+            <button class="comp-snippet__tab is-active" data-lang="css">CSS</button>
+            <button class="comp-snippet__tab" data-lang="swift">Swift</button>
+            <button class="comp-snippet__tab" data-lang="kotlin">Kotlin</button>
+          </div>
+          <button class="comp-snippet__copy">Copy</button>
+          <pre class="comp-snippet__pre" data-lang="css"><code>.input {
+  font: var(--font-weight-regular) var(--font-size-fine)/var(--line-height-fine)
+       var(--font-family-text);
+  color: var(--color-label);
+  background: var(--color-surface);
+  border: 1px solid var(--color-separator);
+  border-radius: var(--radius-sm);
+  padding: var(--space-10) var(--space-12);
+}
+.input:focus {
+  border-color: var(--color-tint-action);
+  box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.1);
+}
+.input--error { border-color: var(--color-tint-destructive); }</code></pre>
+          <pre class="comp-snippet__pre" data-lang="swift" hidden><code>TextField("Placeholder", text: $value)
+  .font(.system(size: FontSize.fine))
+  .padding(.horizontal, Spacing.s12)
+  .padding(.vertical, Spacing.s10)
+  .background(Color.surface)
+  .overlay(
+    RoundedRectangle(cornerRadius: Radius.sm)
+      .stroke(isFocused ? Color.tintAction : Color.separator)
+  )</code></pre>
+          <pre class="comp-snippet__pre" data-lang="kotlin" hidden><code>OutlinedTextField(
+  value = value,
+  onValueChange = { value = it },
+  textStyle = LivemapTheme.typography.fine,
+  colors = OutlinedTextFieldDefaults.colors(
+    unfocusedBorderColor = LivemapTheme.colors.separator,
+    focusedBorderColor = LivemapTheme.colors.tintAction,
+    errorBorderColor = LivemapTheme.colors.tintDestructive
+  ),
+  shape = RoundedCornerShape(LivemapTheme.radius.sm),
+  contentPadding = PaddingValues(
+    horizontal = LivemapTheme.spacing.s12,
+    vertical = LivemapTheme.spacing.s10
+  )
+)</code></pre>
+        </div>
+      </details>
     </section>
 
     <!-- ============================================================
@@ -4415,6 +4534,48 @@
           <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 6 5 8.5 9.5 4"/></svg>
         </button>
       </div>
+
+      <details class="comp-snippet">
+        <summary>Token usage</summary>
+        <div class="comp-snippet__body">
+          <div class="comp-snippet__tabs">
+            <button class="comp-snippet__tab is-active" data-lang="css">CSS</button>
+            <button class="comp-snippet__tab" data-lang="swift">Swift</button>
+            <button class="comp-snippet__tab" data-lang="kotlin">Kotlin</button>
+          </div>
+          <button class="comp-snippet__copy">Copy</button>
+          <pre class="comp-snippet__pre" data-lang="css"><code>.toggle {
+  width: 44px;
+  height: 26px;
+  border-radius: var(--radius-full);
+  background: var(--color-gray-4);
+  transition: background var(--duration-normal) var(--ease-default);
+}
+.toggle.is-on { background: var(--color-tint-positive); }
+.toggle__knob {
+  width: 22px; height: 22px;
+  border-radius: var(--radius-full);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-sm);
+}</code></pre>
+          <pre class="comp-snippet__pre" data-lang="swift" hidden><code>Toggle(isOn: $isEnabled) { Text("Setting") }
+  .tint(Color.tintPositive)
+  // Native iOS toggle uses system styling.
+  // Custom: 44x26pt track, 22pt knob,
+  // Radius.full rounding, Shadow.sm on knob.</code></pre>
+          <pre class="comp-snippet__pre" data-lang="kotlin" hidden><code>Switch(
+  checked = isEnabled,
+  onCheckedChange = { isEnabled = it },
+  colors = SwitchDefaults.colors(
+    checkedTrackColor = LivemapTheme.colors.tintPositive,
+    uncheckedTrackColor = LivemapTheme.colors.gray4,
+    checkedThumbColor = LivemapTheme.colors.surface,
+    uncheckedThumbColor = LivemapTheme.colors.surface
+  )
+)
+// Track: 44x26dp, knob: 22dp, radius: full</code></pre>
+        </div>
+      </details>
     </section>
 
     <!-- ============================================================
@@ -4436,6 +4597,72 @@
           <span class="comp-card__desc">Same card with shadow-md applied for more visual prominence.</span>
         </div>
       </div>
+
+      <details class="comp-snippet">
+        <summary>Token usage</summary>
+        <div class="comp-snippet__body">
+          <div class="comp-snippet__tabs">
+            <button class="comp-snippet__tab is-active" data-lang="css">CSS</button>
+            <button class="comp-snippet__tab" data-lang="swift">Swift</button>
+            <button class="comp-snippet__tab" data-lang="kotlin">Kotlin</button>
+          </div>
+          <button class="comp-snippet__copy">Copy</button>
+          <pre class="comp-snippet__pre" data-lang="css"><code>.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-separator);
+  border-radius: var(--radius-lg);
+  padding: var(--space-20);
+  gap: var(--space-8);
+}
+.card--elevated { box-shadow: var(--shadow-md); }
+.card__title {
+  font: var(--font-weight-semibold) var(--font-size-fine)/var(--line-height-fine)
+       var(--font-family-text);
+  color: var(--color-label);
+}
+.card__desc {
+  font-size: var(--font-size-small);
+  color: var(--color-gray);
+}</code></pre>
+          <pre class="comp-snippet__pre" data-lang="swift" hidden><code>VStack(alignment: .leading, spacing: Spacing.s8) {
+  Text("Title")
+    .font(.system(size: FontSize.fine, weight: .semibold))
+    .foregroundColor(.label)
+  Text("Description")
+    .font(.system(size: FontSize.small))
+    .foregroundColor(.gray)
+}
+.padding(Spacing.s20)
+.background(Color.surface)
+.cornerRadius(Radius.lg)
+.overlay(
+  RoundedRectangle(cornerRadius: Radius.lg)
+    .stroke(Color.separator)
+)
+// Elevated: .shadow(Shadow.md)</code></pre>
+          <pre class="comp-snippet__pre" data-lang="kotlin" hidden><code>Card(
+  shape = RoundedCornerShape(LivemapTheme.radius.lg),
+  border = BorderStroke(1.dp, LivemapTheme.colors.separator),
+  colors = CardDefaults.cardColors(
+    containerColor = LivemapTheme.colors.surface
+  ),
+  // Elevated: elevation = CardDefaults.cardElevation(
+  //   defaultElevation = LivemapTheme.shadow.md
+  // )
+) {
+  Column(
+    modifier = Modifier.padding(LivemapTheme.spacing.s20),
+    verticalArrangement = Arrangement.spacedBy(LivemapTheme.spacing.s8)
+  ) {
+    Text("Title", style = LivemapTheme.typography.fine.copy(
+      fontWeight = FontWeight.SemiBold
+    ))
+    Text("Description", style = LivemapTheme.typography.small,
+      color = LivemapTheme.colors.gray)
+  }
+}</code></pre>
+        </div>
+      </details>
     </section>
 
     <!-- ============================================================
@@ -4467,6 +4694,50 @@
         <span class="comp-badge comp-badge--positive">Success</span>
         <span class="comp-badge comp-badge--destructive">Error</span>
       </div>
+
+      <details class="comp-snippet">
+        <summary>Token usage</summary>
+        <div class="comp-snippet__body">
+          <div class="comp-snippet__tabs">
+            <button class="comp-snippet__tab is-active" data-lang="css">CSS</button>
+            <button class="comp-snippet__tab" data-lang="swift">Swift</button>
+            <button class="comp-snippet__tab" data-lang="kotlin">Kotlin</button>
+          </div>
+          <button class="comp-snippet__copy">Copy</button>
+          <pre class="comp-snippet__pre" data-lang="css"><code>.badge {
+  font: var(--font-weight-semibold) var(--font-size-nano)/var(--line-height-nano)
+       var(--font-family-text);
+  padding: var(--space-2) var(--space-8);
+  border-radius: var(--radius-full);
+}
+.badge--action  { background: rgba(0,122,255,0.1); color: var(--color-tint-action); }
+.badge--positive { background: rgba(52,199,89,0.1); color: var(--color-tint-positive); }
+.badge--destructive { background: rgba(255,59,48,0.1); color: var(--color-tint-destructive); }</code></pre>
+          <pre class="comp-snippet__pre" data-lang="swift" hidden><code>Text("Info")
+  .font(.system(size: FontSize.nano, weight: .semibold))
+  .foregroundColor(Color.tintAction)
+  .padding(.horizontal, Spacing.s8)
+  .padding(.vertical, Spacing.s2)
+  .background(Color.tintAction.opacity(0.1))
+  .clipShape(Capsule())
+// Variants: .tintPositive, .tintDestructive</code></pre>
+          <pre class="comp-snippet__pre" data-lang="kotlin" hidden><code>Text(
+  text = "Info",
+  style = LivemapTheme.typography.nano.copy(
+    fontWeight = FontWeight.SemiBold
+  ),
+  color = LivemapTheme.colors.tintAction,
+  modifier = Modifier
+    .background(
+      LivemapTheme.colors.tintAction.copy(alpha = 0.1f),
+      shape = RoundedCornerShape(LivemapTheme.radius.full)
+    )
+    .padding(horizontal = LivemapTheme.spacing.s8,
+             vertical = LivemapTheme.spacing.s2)
+)
+// Variants: tintPositive, tintDestructive</code></pre>
+        </div>
+      </details>
     </section>
 
     <!-- ============================================================

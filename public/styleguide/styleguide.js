@@ -31,6 +31,7 @@
         { id: "tk-motion", label: "Motion" },
         { id: "tk-measures", label: "Measures" },
         { id: "tk-a11y", label: "Accessibility" },
+        { id: "tk-export", label: "Export Formats" },
       ],
     },
     { divider: true },
@@ -463,7 +464,9 @@
     // Show/hide search (typography only) and platform toggle (typography + colors)
     searchContainer.style.display = "";
     platformToggle.style.display =
-      pageId === "typography" || pageId === "colors" ? "" : "none";
+      pageId === "typography" || pageId === "colors" || pageId === "components"
+        ? ""
+        : "none";
 
     // Scroll to top
     appContent.scrollTop = 0;
@@ -981,5 +984,403 @@
 
   input.addEventListener("input", function () {
     sendBtn.disabled = !input.value.trim();
+  });
+})();
+
+// ---- Dark mode toggle ----
+(function () {
+  var toggle = document.getElementById("theme-toggle");
+  var html = document.documentElement;
+
+  // Restore saved preference
+  var saved = localStorage.getItem("livemap-ds-theme");
+  if (saved === "dark") {
+    html.setAttribute("data-theme", "dark");
+  }
+
+  toggle.addEventListener("click", function () {
+    var isDark = html.getAttribute("data-theme") === "dark";
+    if (isDark) {
+      html.removeAttribute("data-theme");
+      localStorage.removeItem("livemap-ds-theme");
+    } else {
+      html.setAttribute("data-theme", "dark");
+      localStorage.setItem("livemap-ds-theme", "dark");
+    }
+  });
+})();
+
+// ---- Component snippet tabs & copy ----
+(function () {
+  document.addEventListener("click", function (e) {
+    // Tab switching
+    var tab = e.target.closest(".comp-snippet__tab");
+    if (tab) {
+      var body = tab.closest(".comp-snippet__body");
+      var tabs = body.querySelectorAll(".comp-snippet__tab");
+      var pres = body.querySelectorAll(".comp-snippet__pre");
+      var lang = tab.getAttribute("data-lang");
+      for (var i = 0; i < tabs.length; i++) {
+        tabs[i].classList.toggle("is-active", tabs[i] === tab);
+      }
+      for (var i = 0; i < pres.length; i++) {
+        pres[i].hidden = pres[i].getAttribute("data-lang") !== lang;
+      }
+      return;
+    }
+
+    // Copy button
+    var copyBtn = e.target.closest(".comp-snippet__copy");
+    if (copyBtn) {
+      var body = copyBtn.closest(".comp-snippet__body");
+      var visible = body.querySelector(".comp-snippet__pre:not([hidden]) code");
+      if (visible) {
+        navigator.clipboard.writeText(visible.textContent).then(function () {
+          var orig = copyBtn.textContent;
+          copyBtn.textContent = "Copied!";
+          setTimeout(function () {
+            copyBtn.textContent = orig;
+          }, 1500);
+        });
+      }
+    }
+  });
+})();
+
+// ---- Token export generation ----
+(function () {
+  var exportTabs = document.getElementById("export-tabs");
+  var exportCopy = document.getElementById("export-copy");
+  var jsonPre = document.getElementById("export-json");
+  var swiftPre = document.getElementById("export-swift");
+  var kotlinPre = document.getElementById("export-kotlin");
+
+  if (!exportTabs) return;
+
+  // Token definitions — mirrors tokens.css
+  var tokens = {
+    spacing: {
+      "space-2": 2,
+      "space-4": 4,
+      "space-6": 6,
+      "space-8": 8,
+      "space-10": 10,
+      "space-12": 12,
+      "space-16": 16,
+      "space-20": 20,
+      "space-24": 24,
+      "space-32": 32,
+      "space-40": 40,
+      "space-48": 48,
+      "space-64": 64,
+      "space-80": 80,
+      "space-96": 96,
+    },
+    radius: {
+      "radius-xs": 6,
+      "radius-sm": 8,
+      "radius-md": 12,
+      "radius-lg": 16,
+      "radius-xl": 20,
+      "radius-full": 9999,
+    },
+    color: {
+      "color-label": "#1c1c1e",
+      "color-label-secondary": "rgba(60, 60, 67, 0.75)",
+      "color-label-tertiary": "rgba(60, 60, 67, 0.30)",
+      "color-label-quaternary": "rgba(60, 60, 67, 0.18)",
+      "color-tint-destructive": "#ff3b30",
+      "color-tint-positive": "#34c759",
+      "color-tint-action": "#007aff",
+      "color-surface": "#ffffff",
+      "color-surface-secondary": "#fafafc",
+      "color-fill": "rgba(0, 0, 0, 0.04)",
+      "color-fill-secondary": "rgba(0, 0, 0, 0.03)",
+      "color-separator": "rgba(0, 0, 0, 0.06)",
+      "color-separator-subtle": "rgba(0, 0, 0, 0.04)",
+      "color-gray": "#8e8e93",
+      "color-gray-2": "#aeaeb2",
+      "color-gray-3": "#c7c7cc",
+      "color-gray-4": "#d1d1d6",
+      "color-gray-5": "#e5e5ea",
+    },
+    colorDark: {
+      "color-label": "#ffffff",
+      "color-label-secondary": "rgba(235, 235, 245, 0.60)",
+      "color-label-tertiary": "rgba(235, 235, 245, 0.30)",
+      "color-label-quaternary": "rgba(235, 235, 245, 0.18)",
+      "color-tint-destructive": "#ff453a",
+      "color-tint-positive": "#30d158",
+      "color-tint-action": "#0a84ff",
+      "color-surface": "#1c1c1e",
+      "color-surface-secondary": "#2c2c2e",
+      "color-fill": "rgba(255, 255, 255, 0.06)",
+      "color-fill-secondary": "rgba(255, 255, 255, 0.04)",
+      "color-separator": "rgba(255, 255, 255, 0.08)",
+      "color-separator-subtle": "rgba(255, 255, 255, 0.05)",
+      "color-gray": "#8e8e93",
+      "color-gray-2": "#636366",
+      "color-gray-3": "#48484a",
+      "color-gray-4": "#3a3a3c",
+      "color-gray-5": "#2c2c2e",
+    },
+    typography: {
+      "font-size-display": 34,
+      "font-size-heading-lg": 28,
+      "font-size-heading-md": 22,
+      "font-size-heading-sm": 20,
+      "font-size-label": 17,
+      "font-size-body": 17,
+      "font-size-detail": 16,
+      "font-size-small": 15,
+      "font-size-fine": 13,
+      "font-size-micro": 12,
+      "font-size-nano": 11,
+    },
+    shadow: {
+      "shadow-xs": "0 1px 2px rgba(0,0,0,0.04), 0 0 0 0.5px rgba(0,0,0,0.03)",
+      "shadow-sm": "0 1px 3px rgba(0,0,0,0.06), 0 0 0 0.5px rgba(0,0,0,0.03)",
+      "shadow-md": "0 4px 12px rgba(0,0,0,0.08), 0 1px 3px rgba(0,0,0,0.04)",
+      "shadow-lg": "0 8px 24px rgba(0,0,0,0.12), 0 2px 6px rgba(0,0,0,0.04)",
+      "shadow-xl": "0 16px 48px rgba(0,0,0,0.16), 0 4px 12px rgba(0,0,0,0.06)",
+    },
+    zIndex: {
+      "z-base": 0,
+      "z-raised": 1,
+      "z-dropdown": 100,
+      "z-sticky": 200,
+      "z-overlay": 300,
+      "z-modal": 400,
+      "z-popover": 500,
+      "z-toast": 600,
+    },
+    duration: {
+      "duration-instant": 0,
+      "duration-fast": 100,
+      "duration-normal": 200,
+      "duration-moderate": 300,
+      "duration-slow": 500,
+    },
+  };
+
+  // ---- JSON output ----
+  function buildJSON() {
+    var obj = {
+      spacing: {},
+      radius: {},
+      color: { light: {}, dark: {} },
+      typography: { fontSize: {} },
+      shadow: {},
+      zIndex: {},
+      duration: {},
+    };
+    var k;
+    for (k in tokens.spacing) obj.spacing[k] = tokens.spacing[k];
+    for (k in tokens.radius) obj.radius[k] = tokens.radius[k];
+    for (k in tokens.color) obj.color.light[k] = tokens.color[k];
+    for (k in tokens.colorDark) obj.color.dark[k] = tokens.colorDark[k];
+    for (k in tokens.typography)
+      obj.typography.fontSize[k] = tokens.typography[k];
+    for (k in tokens.shadow) obj.shadow[k] = tokens.shadow[k];
+    for (k in tokens.zIndex) obj.zIndex[k] = tokens.zIndex[k];
+    for (k in tokens.duration) obj.duration[k] = tokens.duration[k];
+    return JSON.stringify(obj, null, 2);
+  }
+
+  // ---- Swift output ----
+  function toCamel(name) {
+    return name.replace(/-([a-z0-9])/g, function (_, c) {
+      return c.toUpperCase();
+    });
+  }
+
+  function buildSwift() {
+    var lines = ["import SwiftUI", "", "// Auto-generated from tokens.css", ""];
+    lines.push("enum Spacing {");
+    for (var k in tokens.spacing)
+      lines.push(
+        "  static let " +
+          toCamel(k.replace("space-", "s")) +
+          ": CGFloat = " +
+          tokens.spacing[k],
+      );
+    lines.push("}", "");
+    lines.push("enum Radius {");
+    for (var k in tokens.radius)
+      lines.push(
+        "  static let " +
+          toCamel(k.replace("radius-", "")) +
+          ": CGFloat = " +
+          tokens.radius[k],
+      );
+    lines.push("}", "");
+    lines.push("enum FontSize {");
+    for (var k in tokens.typography)
+      lines.push(
+        "  static let " +
+          toCamel(k.replace("font-size-", "")) +
+          ": CGFloat = " +
+          tokens.typography[k],
+      );
+    lines.push("}", "");
+    lines.push("enum ZIndex {");
+    for (var k in tokens.zIndex)
+      lines.push(
+        "  static let " +
+          toCamel(k.replace("z-", "")) +
+          ": CGFloat = " +
+          tokens.zIndex[k],
+      );
+    lines.push("}", "");
+    lines.push("enum Duration {");
+    for (var k in tokens.duration)
+      lines.push(
+        "  static let " +
+          toCamel(k.replace("duration-", "")) +
+          ": Double = " +
+          tokens.duration[k] / 1000,
+      );
+    lines.push("}", "");
+    lines.push("enum ColorToken {");
+    lines.push("  // Light");
+    for (var k in tokens.color)
+      lines.push(
+        "  static let " +
+          toCamel(k.replace("color-", "")) +
+          ' = "' +
+          tokens.color[k] +
+          '"',
+      );
+    lines.push("  // Dark");
+    for (var k in tokens.colorDark)
+      lines.push(
+        "  static let " +
+          toCamel(k.replace("color-", "")) +
+          'Dark = "' +
+          tokens.colorDark[k] +
+          '"',
+      );
+    lines.push("}");
+    return lines.join("\n");
+  }
+
+  // ---- Kotlin output ----
+  function buildKotlin() {
+    var lines = [
+      "package com.livemap.design",
+      "",
+      "import androidx.compose.ui.unit.dp",
+      "import androidx.compose.ui.unit.sp",
+      "",
+      "// Auto-generated from tokens.css",
+      "",
+    ];
+    lines.push("object Spacing {");
+    for (var k in tokens.spacing)
+      lines.push(
+        "  val " +
+          toCamel(k.replace("space-", "s")) +
+          " = " +
+          tokens.spacing[k] +
+          ".dp",
+      );
+    lines.push("}", "");
+    lines.push("object Radius {");
+    for (var k in tokens.radius)
+      lines.push(
+        "  val " +
+          toCamel(k.replace("radius-", "")) +
+          " = " +
+          tokens.radius[k] +
+          ".dp",
+      );
+    lines.push("}", "");
+    lines.push("object FontSize {");
+    for (var k in tokens.typography)
+      lines.push(
+        "  val " +
+          toCamel(k.replace("font-size-", "")) +
+          " = " +
+          tokens.typography[k] +
+          ".sp",
+      );
+    lines.push("}", "");
+    lines.push("object ZIndex {");
+    for (var k in tokens.zIndex)
+      lines.push(
+        "  val " +
+          toCamel(k.replace("z-", "")) +
+          " = " +
+          tokens.zIndex[k] +
+          "f",
+      );
+    lines.push("}", "");
+    lines.push("object Duration {");
+    for (var k in tokens.duration)
+      lines.push(
+        "  val " +
+          toCamel(k.replace("duration-", "")) +
+          " = " +
+          tokens.duration[k] +
+          "L // ms",
+      );
+    lines.push("}", "");
+    lines.push("object ColorToken {");
+    lines.push("  // Light");
+    for (var k in tokens.color)
+      lines.push(
+        "  const val " +
+          toCamel(k.replace("color-", "")) +
+          ' = "' +
+          tokens.color[k] +
+          '"',
+      );
+    lines.push("  // Dark");
+    for (var k in tokens.colorDark)
+      lines.push(
+        "  const val " +
+          toCamel(k.replace("color-", "")) +
+          'Dark = "' +
+          tokens.colorDark[k] +
+          '"',
+      );
+    lines.push("}");
+    return lines.join("\n");
+  }
+
+  // Populate
+  jsonPre.textContent = buildJSON();
+  swiftPre.textContent = buildSwift();
+  kotlinPre.textContent = buildKotlin();
+
+  // Tab switching
+  var allTabs = exportTabs.querySelectorAll(".export-tab");
+  var allPres = [jsonPre, swiftPre, kotlinPre];
+  var formatMap = { json: jsonPre, swift: swiftPre, kotlin: kotlinPre };
+
+  exportTabs.addEventListener("click", function (e) {
+    var tab = e.target.closest(".export-tab");
+    if (!tab) return;
+    var fmt = tab.getAttribute("data-format");
+    for (var i = 0; i < allTabs.length; i++) {
+      allTabs[i].classList.toggle("is-active", allTabs[i] === tab);
+    }
+    for (var i = 0; i < allPres.length; i++) {
+      allPres[i].hidden = allPres[i] !== formatMap[fmt];
+    }
+  });
+
+  // Copy
+  exportCopy.addEventListener("click", function () {
+    var visible = document.querySelector(".export-block__pre:not([hidden])");
+    if (visible) {
+      navigator.clipboard.writeText(visible.textContent).then(function () {
+        var orig = exportCopy.textContent;
+        exportCopy.textContent = "Copied!";
+        setTimeout(function () {
+          exportCopy.textContent = orig;
+        }, 1500);
+      });
+    }
   });
 })();
