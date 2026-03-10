@@ -4,6 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Livemap — Design System</title>
+  <meta name="description" content="Design tokens, typography, colors, spacing, and component patterns for Livemap across iOS, Android, and the web.">
+  <meta property="og:title" content="Livemap — Design System">
+  <meta property="og:description" content="Design tokens, typography, colors, spacing, and component patterns for Livemap.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🗺</text></svg>">
   <link rel="stylesheet" href="../utilities.css">
   <link rel="stylesheet" href="typography.css">
   <link rel="stylesheet" href="styleguide.css">
@@ -2494,25 +2500,37 @@
     <section id="gs-playground">
       <p class="section-label">Try It Out</p>
       <p class="section-note">
-        The fastest way to understand the system is to use it. Open the Livemap kit in Pencil and start designing with real tokens immediately &mdash; no setup required.
+        The fastest way to understand the system is to use it. Follow these steps to start designing with real Livemap tokens in minutes.
       </p>
 
-      <div class="gs-playground-card">
-        <div class="gs-playground-card__icon">
-          <svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="3" y="3" width="22" height="22" rx="5"/>
-            <path d="M9 14l3 3 7-7"/>
-          </svg>
+      <div class="gs-workflow-steps">
+        <div class="gs-workflow-step">
+          <div class="gs-workflow-step__number">1</div>
+          <div class="gs-workflow-step__body">
+            <p class="gs-workflow-step__title">Download Pencil</p>
+            <p class="gs-workflow-step__desc">Pencil is a free design tool with built-in AI collaboration. Download it from <a href="https://pencil.dev" target="_blank" rel="noopener" style="color: var(--color-tint-action); text-decoration: none; font-weight: var(--font-weight-medium);">pencil.dev</a> and install it on your machine.</p>
+          </div>
         </div>
-        <div class="gs-playground-card__body">
-          <p class="gs-playground-card__title">Livemap Design Kit on Pencil</p>
-          <p class="gs-playground-card__desc">Open <code>livemap-kit.pen</code> from the repo root in Pencil. All design tokens (colors, spacing, radii, typography) are preloaded with light/dark theme support.</p>
+        <div class="gs-workflow-step">
+          <div class="gs-workflow-step__number">2</div>
+          <div class="gs-workflow-step__body">
+            <p class="gs-workflow-step__title">Open the Design Kit</p>
+            <p class="gs-workflow-step__desc">Open <code>livemap-kit.pen</code> from the repo root in Pencil. All design tokens &mdash; colors, spacing, radii, typography, shadows, motion, and more &mdash; are preloaded as variables with light/dark theme support.</p>
+          </div>
         </div>
-        <div class="gs-playground-card__action">
-          <a class="gs-playground-card__link" href="https://pencil.dev" target="_blank" rel="noopener">
-            Try Pencil
-            <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 2h7v7"/><path d="M12 2L5 9"/></svg>
-          </a>
+        <div class="gs-workflow-step">
+          <div class="gs-workflow-step__number">3</div>
+          <div class="gs-workflow-step__body">
+            <p class="gs-workflow-step__title">Connect Claude</p>
+            <p class="gs-workflow-step__desc">Pencil works with Claude as an AI design partner. In Pencil&rsquo;s settings, connect either an Anthropic API key or sign in with a Claude Pro/Max subscription to enable AI-assisted design &mdash; Claude can read the kit&rsquo;s tokens, generate layouts, and iterate on designs directly on the canvas.</p>
+          </div>
+        </div>
+        <div class="gs-workflow-step">
+          <div class="gs-workflow-step__number">4</div>
+          <div class="gs-workflow-step__body">
+            <p class="gs-workflow-step__title">Start Designing</p>
+            <p class="gs-workflow-step__desc">Create new frames, reference the token variables (e.g. <code>$--color-tint-action</code>, <code>$--space-16</code>), and use the prebuilt components. Claude can help scaffold screens, apply tokens consistently, and generate production-ready designs that stay on-system.</p>
+          </div>
         </div>
       </div>
     </section>

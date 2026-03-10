@@ -17,90 +17,6 @@
   font-weight: var(--font-weight-semibold);
 }
 
-/* ---- Playground card ---- */
-.gs-playground-card {
-  display: flex;
-  align-items: center;
-  gap: var(--space-32);
-  background: var(--color-surface);
-  border: 1px solid var(--color-separator);
-  border-radius: var(--radius-xl);
-  padding: var(--space-32) var(--space-40);
-  margin-bottom: var(--space-40);
-  transition: border-color 0.2s, box-shadow 0.2s;
-}
-
-.gs-playground-card:hover {
-  border-color: var(--color-gray-4);
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
-}
-
-.gs-playground-card__icon {
-  flex-shrink: 0;
-  width: 56px;
-  height: 56px;
-  border-radius: var(--radius-lg);
-  background: var(--color-fill);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--color-label);
-}
-
-.gs-playground-card__icon svg {
-  width: 28px;
-  height: 28px;
-}
-
-.gs-playground-card__body {
-  flex: 1;
-  min-width: 0;
-}
-
-.gs-playground-card__title {
-  font-family: var(--font-family-text);
-  font-size: var(--font-size-detail);
-  font-weight: var(--font-weight-semibold);
-  color: var(--color-label);
-  margin-bottom: var(--space-4);
-}
-
-.gs-playground-card__desc {
-  font-family: var(--font-family-text);
-  font-size: var(--font-size-small);
-  line-height: var(--line-height-detail);
-  color: var(--color-gray);
-}
-
-.gs-playground-card__action {
-  flex-shrink: 0;
-}
-
-.gs-playground-card__link {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-6);
-  font-family: var(--font-family-text);
-  font-size: var(--font-size-fine);
-  font-weight: var(--font-weight-semibold);
-  color: var(--color-tint-action);
-  text-decoration: none;
-  padding: var(--space-10) var(--space-20);
-  border-radius: var(--radius-sm);
-  background: rgba(0, 122, 255, 0.08);
-  transition: background 0.15s;
-  white-space: nowrap;
-}
-
-.gs-playground-card__link:hover {
-  background: rgba(0, 122, 255, 0.14);
-}
-
-.gs-playground-card__link svg {
-  width: 14px;
-  height: 14px;
-}
-
 /* ---- Principle cards ---- */
 .gs-principles-grid {
   display: grid;
@@ -149,6 +65,14 @@
   margin-bottom: var(--space-40);
 }
 
+@media (min-width: 600px) {
+  .gs-workflow-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-24);
+  }
+}
+
 .gs-workflow-step {
   display: flex;
   align-items: flex-start;
@@ -159,6 +83,15 @@
 
 .gs-workflow-step:last-child {
   border-bottom: none;
+}
+
+@media (min-width: 600px) {
+  .gs-workflow-step {
+    flex-direction: column;
+    gap: var(--space-12);
+    padding: 0;
+    border-bottom: none;
+  }
 }
 
 .gs-workflow-step__number {
