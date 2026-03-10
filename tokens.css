@@ -1,0 +1,328 @@
+/* ==========================================================================
+   Livemap Design System — Typography Tokens
+   Font: SF Pro (iOS system font)
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Font Family Stack
+   --------------------------------------------------------------------------
+   SF Pro is available natively on Apple devices. The fallback stack ensures
+   graceful degradation: -apple-system and BlinkMacSystemFont trigger the
+   system font on Safari and Chrome/macOS respectively.
+
+   SF Pro has two optical sizes baked in:
+     - SF Pro Display: optimized for 20pt and above
+     - SF Pro Text: optimized for 19pt and below
+   The variable font (SF Pro) handles this automatically via the `opsz` axis.
+   We expose all three families for explicit control when needed.
+   -------------------------------------------------------------------------- */
+
+:root {
+  /* Primary — variable font with automatic optical sizing */
+  --font-family:          "SF Pro", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+
+  /* Explicit optical variants */
+  --font-family-display:  "SF Pro Display", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --font-family-text:     "SF Pro Text", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+
+  /* Rounded variant — used for softer UI moments (badges, chips, friendly CTAs) */
+  --font-family-rounded:  "SF Pro Rounded", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+
+
+  /* --------------------------------------------------------------------------
+     2. Font Weights — Livemap uses 4 of SF Pro's 9 weights
+     --------------------------------------------------------------------------
+     Regular:  body text, descriptions, secondary info
+     Medium:   tab labels, chips, tinted links, status tags
+     Semibold: card titles, nav titles, buttons, headlines
+     Bold:     large titles, sheet headers, turn-by-turn primary
+     -------------------------------------------------------------------------- */
+
+  --font-weight-regular:    400;
+  --font-weight-medium:     500;
+  --font-weight-semibold:   600;
+  --font-weight-bold:       700;
+
+
+  /* --------------------------------------------------------------------------
+     3. Type Scale — Size
+     -------------------------------------------------------------------------- */
+
+  --font-size-display:    34px;
+  --font-size-heading-lg: 28px;
+  --font-size-heading-md: 22px;
+  --font-size-heading-sm: 20px;
+  --font-size-label:      17px;
+  --font-size-body:       17px;
+  --font-size-detail:     16px;
+  --font-size-small:      15px;
+  --font-size-fine:       13px;
+  --font-size-micro:      12px;
+  --font-size-nano:       11px;
+
+
+  /* --------------------------------------------------------------------------
+     4. Type Scale — Line Height (Leading)
+     -------------------------------------------------------------------------- */
+
+  --line-height-display:    41px;
+  --line-height-heading-lg: 34px;
+  --line-height-heading-md: 28px;
+  --line-height-heading-sm: 25px;
+  --line-height-label:      22px;
+  --line-height-body:       22px;
+  --line-height-detail:     21px;
+  --line-height-small:      20px;
+  --line-height-fine:       18px;
+  --line-height-micro:      16px;
+  --line-height-nano:       13px;
+
+
+  /* --------------------------------------------------------------------------
+     5. Type Scale — Letter Spacing
+     --------------------------------------------------------------------------
+     Apple specifies tracking in points at the given font size.
+     Converted to em: tracking_pt / font_size_pt
+     -------------------------------------------------------------------------- */
+
+  --letter-spacing-display:     0.011em;
+  --letter-spacing-heading-lg:  0.013em;
+  --letter-spacing-heading-md:  0.016em;
+  --letter-spacing-heading-sm:  0.019em;
+  --letter-spacing-label:      -0.024em;
+  --letter-spacing-body:       -0.024em;
+  --letter-spacing-detail:     -0.020em;
+  --letter-spacing-small:      -0.016em;
+  --letter-spacing-fine:       -0.006em;
+  --letter-spacing-micro:       0;
+  --letter-spacing-nano:        0.006em;
+
+
+  /* --------------------------------------------------------------------------
+     6. Type Scale — Weight per Style
+     -------------------------------------------------------------------------- */
+
+  --font-weight-display:    var(--font-weight-regular);
+  --font-weight-heading-lg: var(--font-weight-regular);
+  --font-weight-heading-md: var(--font-weight-regular);
+  --font-weight-heading-sm: var(--font-weight-regular);
+  --font-weight-label:      var(--font-weight-semibold);
+  --font-weight-body:       var(--font-weight-regular);
+  --font-weight-detail:     var(--font-weight-regular);
+  --font-weight-small:      var(--font-weight-regular);
+  --font-weight-fine:       var(--font-weight-regular);
+  --font-weight-micro:      var(--font-weight-regular);
+  --font-weight-nano:       var(--font-weight-regular);
+}
+
+
+/* ==========================================================================
+   11. Text Colors — Semantic Label Colors
+   --------------------------------------------------------------------------
+   Four semantic label colors that adapt to light/dark mode.
+   Plus tinted colors from the Livemap palette for status and actions.
+   ========================================================================== */
+
+:root {
+  /* Label hierarchy — Light mode */
+  --color-label:            #1c1c1e;
+  --color-label-secondary:  rgba(60, 60, 67, 0.75);
+  --color-label-tertiary:   rgba(60, 60, 67, 0.30);
+  --color-label-quaternary: rgba(60, 60, 67, 0.18);
+
+  /* Tinted text colors — Livemap palette */
+  --color-tint-destructive: #ff3b30;
+  --color-tint-positive:    #34c759;
+  --color-tint-action:      #007aff;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-label:            #ffffff;
+    --color-label-secondary:  rgba(235, 235, 245, 0.60);
+    --color-label-tertiary:   rgba(235, 235, 245, 0.30);
+    --color-label-quaternary: rgba(235, 235, 245, 0.18);
+
+    --color-tint-destructive: #ff453a;
+    --color-tint-positive:    #30d158;
+    --color-tint-action:      #0a84ff;
+  }
+}
+
+
+/* ==========================================================================
+   13. SF Mono — Monospace Tokens
+   ========================================================================== */
+
+:root {
+  --font-family-mono:      "SF Mono", SFMono-Regular, ui-monospace, Menlo, monospace;
+  --font-size-mono-body:   15px;
+  --font-size-mono-caption: 12px;
+}
+
+
+/* ==========================================================================
+   15. Measure Tokens — Line Length
+   ========================================================================== */
+
+:root {
+  --measure-narrow:  280px;
+  --measure-default: 480px;
+  --measure-wide:    640px;
+}
+
+
+/* ==========================================================================
+   16. Map Label Typography
+   --------------------------------------------------------------------------
+   Abstract presets for map label rendering. These are spec-level tokens —
+   implementation depends on MapKit / Mapbox / CSS overlay.
+   All map labels should use Condensed width when space is tight.
+   Halo/outline: 1–2px white halo for legibility over terrain.
+   ========================================================================== */
+
+:root {
+  /* Map label — City */
+  --map-label-city-size:     14px;
+  --map-label-city-weight:   var(--font-weight-semibold);
+  --map-label-city-tracking: 0.02em;
+
+  /* Map label — District */
+  --map-label-district-size:     12px;
+  --map-label-district-weight:   var(--font-weight-medium);
+  --map-label-district-tracking: 0.04em;
+
+  /* Map label — Street */
+  --map-label-street-size:     11px;
+  --map-label-street-weight:   var(--font-weight-regular);
+  --map-label-street-tracking: 0.02em;
+
+  /* Map label — POI */
+  --map-label-poi-size:   12px;
+  --map-label-poi-weight: var(--font-weight-medium);
+
+  /* Map label — Distance badge */
+  --map-label-distance-size:   13px;
+  --map-label-distance-weight: var(--font-weight-medium);
+}
+
+
+/* ==========================================================================
+   17. Minimum Sizes & Accessibility
+   --------------------------------------------------------------------------
+   Absolute minimums and touch target sizes per Apple HIG.
+   ========================================================================== */
+
+:root {
+  --font-size-minimum:             11px;  /* Nano — absolute floor */
+  --font-size-minimum-interactive: 13px;  /* Fine — minimum for tappable text */
+  --touch-target-minimum:          44px;  /* iOS HIG minimum touch target */
+}
+
+
+/* ==========================================================================
+   Spacing Scale
+   --------------------------------------------------------------------------
+   4pt base grid. Below 16 uses 2pt micro-steps for component internals;
+   above 16 snaps to 4pt or 8pt increments for layout spacing.
+
+   Platform mapping (1x):
+     CSS   →  var(--space-8)        px
+     iOS   →  Spacing.s8            pt      (CGFloat)
+     Android → R.dimen.space_8      8dp
+     Design → space/8               8
+   ========================================================================== */
+
+:root {
+  --space-2:   2px;
+  --space-4:   4px;
+  --space-6:   6px;
+  --space-8:   8px;
+  --space-10:  10px;
+  --space-12:  12px;
+  --space-16:  16px;
+  --space-20:  20px;
+  --space-24:  24px;
+  --space-32:  32px;
+  --space-40:  40px;
+  --space-48:  48px;
+  --space-64:  64px;
+  --space-80:  80px;
+  --space-96:  96px;
+}
+
+
+/* ==========================================================================
+   Border Radius
+   --------------------------------------------------------------------------
+   Progressive scale from small interactive elements to large surfaces.
+
+   Platform mapping:
+     CSS   →  var(--radius-sm)      px
+     iOS   →  Radius.sm             pt      (CALayer.cornerRadius)
+     Android → R.dimen.radius_sm    dp      (ShapeAppearance)
+     Design → radius/sm
+   ========================================================================== */
+
+:root {
+  --radius-xs:    6px;     /* tags, code blocks, small controls */
+  --radius-sm:    8px;     /* inputs, nav items, buttons */
+  --radius-md:    12px;    /* cards, dialogs, popovers */
+  --radius-lg:    16px;    /* large cards, panels */
+  --radius-xl:    20px;    /* feature cards, surfaces */
+  --radius-full:  9999px;  /* pills, avatars, circular elements */
+}
+
+
+/* ==========================================================================
+   Surfaces, Fills & Borders
+   --------------------------------------------------------------------------
+   Background layers, overlay fills, and separator colors.
+   Light mode values shown; dark mode overrides below.
+
+   Platform mapping:
+     CSS   →  var(--color-surface)          rgba/hex
+     iOS   →  Color.surface                 UIColor / Color
+     Android → R.color.color_surface        @ColorRes
+     Design → color/surface
+   ========================================================================== */
+
+:root {
+  /* Surfaces — opaque background layers */
+  --color-surface:           #ffffff;
+  --color-surface-secondary: #fafafc;
+
+  /* Fills — translucent tinted backgrounds */
+  --color-fill:              rgba(0, 0, 0, 0.04);
+  --color-fill-secondary:    rgba(0, 0, 0, 0.03);
+
+  /* Borders & Separators */
+  --color-separator:         rgba(0, 0, 0, 0.06);
+  --color-separator-subtle:  rgba(0, 0, 0, 0.04);
+
+  /* System Grays — opaque chrome colors (Apple systemGray equivalents) */
+  --color-gray:    #8e8e93;
+  --color-gray-2:  #aeaeb2;
+  --color-gray-3:  #c7c7cc;
+  --color-gray-4:  #d1d1d6;
+  --color-gray-5:  #e5e5ea;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-surface:           #1c1c1e;
+    --color-surface-secondary: #2c2c2e;
+
+    --color-fill:              rgba(255, 255, 255, 0.06);
+    --color-fill-secondary:    rgba(255, 255, 255, 0.04);
+
+    --color-separator:         rgba(255, 255, 255, 0.08);
+    --color-separator-subtle:  rgba(255, 255, 255, 0.05);
+
+    --color-gray:    #8e8e93;
+    --color-gray-2:  #636366;
+    --color-gray-3:  #48484a;
+    --color-gray-4:  #3a3a3c;
+    --color-gray-5:  #2c2c2e;
+  }
+}

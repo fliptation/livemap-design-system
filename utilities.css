@@ -1,0 +1,341 @@
+@import "tokens.css";
+
+/* ==========================================================================
+   7. Utility Classes — Type Styles
+   ========================================================================== */
+
+.type-display {
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-display);
+  font-weight: var(--font-weight-display);
+  line-height: var(--line-height-display);
+  letter-spacing: var(--letter-spacing-display);
+}
+
+.type-heading-lg {
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-heading-lg);
+  font-weight: var(--font-weight-heading-lg);
+  line-height: var(--line-height-heading-lg);
+  letter-spacing: var(--letter-spacing-heading-lg);
+}
+
+.type-heading-md {
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-heading-md);
+  font-weight: var(--font-weight-heading-md);
+  line-height: var(--line-height-heading-md);
+  letter-spacing: var(--letter-spacing-heading-md);
+}
+
+.type-heading-sm {
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-heading-sm);
+  font-weight: var(--font-weight-heading-sm);
+  line-height: var(--line-height-heading-sm);
+  letter-spacing: var(--letter-spacing-heading-sm);
+}
+
+.type-label {
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-label);
+  font-weight: var(--font-weight-label);
+  line-height: var(--line-height-label);
+  letter-spacing: var(--letter-spacing-label);
+}
+
+.type-body {
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-body);
+  line-height: var(--line-height-body);
+  letter-spacing: var(--letter-spacing-body);
+}
+
+.type-detail {
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-detail);
+  font-weight: var(--font-weight-detail);
+  line-height: var(--line-height-detail);
+  letter-spacing: var(--letter-spacing-detail);
+}
+
+.type-small {
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-small);
+  line-height: var(--line-height-small);
+  letter-spacing: var(--letter-spacing-small);
+}
+
+.type-fine {
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-fine);
+  font-weight: var(--font-weight-fine);
+  line-height: var(--line-height-fine);
+  letter-spacing: var(--letter-spacing-fine);
+}
+
+.type-micro {
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-micro);
+  font-weight: var(--font-weight-micro);
+  line-height: var(--line-height-micro);
+  letter-spacing: var(--letter-spacing-micro);
+}
+
+.type-nano {
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-nano);
+  font-weight: var(--font-weight-nano);
+  line-height: var(--line-height-nano);
+  letter-spacing: var(--letter-spacing-nano);
+}
+
+
+/* ==========================================================================
+   8. Weight Modifier Classes
+   --------------------------------------------------------------------------
+   Apply on top of any type class to override weight.
+   e.g. <p class="type-body weight-semibold">
+   ========================================================================== */
+
+.weight-regular    { font-weight: var(--font-weight-regular); }
+.weight-medium     { font-weight: var(--font-weight-medium); }
+.weight-semibold   { font-weight: var(--font-weight-semibold); }
+.weight-bold       { font-weight: var(--font-weight-bold); }
+
+
+/* ==========================================================================
+   9. Font Family Modifier Classes
+   ========================================================================== */
+
+.font-display { font-family: var(--font-family-display); }
+.font-text    { font-family: var(--font-family-text); }
+.font-rounded { font-family: var(--font-family-rounded); }
+
+
+/* ==========================================================================
+   10. Emphasis Styles — Bold & Italic per Type Style
+   --------------------------------------------------------------------------
+   Each type style steps up one weight when emphasized.
+   Constrained to Livemap's 4-weight system (Regular -> Medium -> Semibold -> Bold).
+   ========================================================================== */
+
+.type-display.emphasized    { font-weight: var(--font-weight-bold); }
+.type-heading-lg.emphasized { font-weight: var(--font-weight-bold); }
+.type-heading-md.emphasized { font-weight: var(--font-weight-bold); }
+.type-heading-sm.emphasized { font-weight: var(--font-weight-semibold); }
+.type-label.emphasized      { font-weight: var(--font-weight-bold); }
+.type-body.emphasized       { font-weight: var(--font-weight-semibold); }
+.type-detail.emphasized     { font-weight: var(--font-weight-medium); }
+.type-small.emphasized      { font-weight: var(--font-weight-medium); }
+.type-fine.emphasized        { font-weight: var(--font-weight-semibold); }
+.type-micro.emphasized      { font-weight: var(--font-weight-medium); }
+.type-nano.emphasized       { font-weight: var(--font-weight-semibold); }
+
+.italic { font-style: italic; }
+
+
+/* ==========================================================================
+   Color Utility Classes
+   ========================================================================== */
+
+.color-primary    { color: var(--color-label); }
+.color-secondary  { color: var(--color-label-secondary); }
+.color-tertiary   { color: var(--color-label-tertiary); }
+.color-quaternary { color: var(--color-label-quaternary); }
+.color-tint-destructive { color: var(--color-tint-destructive); }
+.color-tint-positive    { color: var(--color-tint-positive); }
+.color-tint-action      { color: var(--color-tint-action); }
+
+
+/* ==========================================================================
+   12. Numbers & Tabular Figures
+   ========================================================================== */
+
+.tabular-nums       { font-variant-numeric: tabular-nums; }
+.proportional-nums  { font-variant-numeric: proportional-nums; }
+.oldstyle-nums      { font-variant-numeric: oldstyle-nums; }
+
+/* Composite data style: medium weight, small size, tabular figures */
+.type-data {
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-small);
+  letter-spacing: var(--letter-spacing-small);
+  font-variant-numeric: tabular-nums;
+}
+
+
+/* ==========================================================================
+   13. SF Mono — Monospace Classes
+   ========================================================================== */
+
+.type-mono {
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-mono-body);
+  font-weight: var(--font-weight-regular);
+  line-height: 22px;
+}
+
+.type-mono-caption {
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-mono-caption);
+  font-weight: var(--font-weight-regular);
+  line-height: 16px;
+}
+
+
+/* ==========================================================================
+   14. Uppercase & Small Caps
+   ========================================================================== */
+
+.type-overline {
+  font-family: var(--font-family-text);
+  font-size: 11px;
+  font-weight: var(--font-weight-medium);
+  line-height: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.type-small-caps {
+  font-family: var(--font-family-text);
+  font-variant-caps: all-small-caps;
+  letter-spacing: 0.05em;
+}
+
+
+/* ==========================================================================
+   15. Truncation & Line Clamping
+   ========================================================================== */
+
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+
+/* ==========================================================================
+   18. Chat Bubble Typography
+   ========================================================================== */
+
+.bubble-user {
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-body);
+  letter-spacing: var(--letter-spacing-body);
+  color: #fff;
+  background: #1c1c1e;
+  padding: 10px 16px;
+  border-radius: 20px 20px 4px 20px;
+  max-width: 280px;
+  align-self: flex-end;
+}
+
+.bubble-assistant {
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-body);
+  letter-spacing: var(--letter-spacing-body);
+  color: var(--color-label);
+  background: rgba(0, 0, 0, 0.04);
+  padding: 10px 16px;
+  border-radius: 20px 20px 20px 4px;
+  max-width: 280px;
+  align-self: flex-start;
+}
+
+.bubble-system {
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-micro);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-micro);
+  letter-spacing: var(--letter-spacing-micro);
+  color: var(--color-label-secondary);
+  text-align: center;
+  align-self: center;
+  padding: 4px 0;
+}
+
+.bubble-time {
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-nano);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-nano);
+  letter-spacing: var(--letter-spacing-nano);
+  color: var(--color-label-tertiary);
+}
+
+
+/* ==========================================================================
+   19. Search Match Highlight
+   ========================================================================== */
+
+.search-match {
+  font-weight: var(--font-weight-bold);
+  color: var(--color-label);
+}
+
+
+/* ==========================================================================
+   20. Live Data Typography
+   ========================================================================== */
+
+.type-live-data {
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-small);
+  letter-spacing: var(--letter-spacing-small);
+  font-variant-numeric: tabular-nums;
+}
+
+
+/* ==========================================================================
+   21. Navigation & Wayfinding Typography
+   ========================================================================== */
+
+.nav-maneuver {
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-heading-sm);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-heading-sm);
+  letter-spacing: var(--letter-spacing-heading-sm);
+}
+
+.nav-street {
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-label);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-label);
+  letter-spacing: var(--letter-spacing-label);
+}
+
+.nav-distance {
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-small);
+  letter-spacing: var(--letter-spacing-small);
+  font-variant-numeric: tabular-nums;
+}
