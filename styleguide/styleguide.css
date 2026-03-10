@@ -553,6 +553,9 @@ body {
   line-height: 14px;
   flex: 1;
   padding-left: 4px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 .sidebar__search-meta kbd {
