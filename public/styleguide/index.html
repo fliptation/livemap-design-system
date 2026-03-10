@@ -132,7 +132,7 @@
           </div>
           <div class="home-card__body">
             <div class="home-card__title">Colors</div>
-            <div class="home-card__desc">Palette, semantic colors, tints, and dark mode.</div>
+            <div class="home-card__desc">Palette, label colors, semantic colors, and dark mode.</div>
           </div>
         </div>
         <div class="home-card" data-home-page="spacing">
@@ -586,6 +586,9 @@
       <p class="section-note">
         iOS defines four semantic label colors. Livemap adjusts Secondary from Apple's default 60% to 75% opacity to meet WCAG AA (4.5:1). Tertiary and Quaternary intentionally fail AA &mdash; use only for <span class="usage-hl">placeholders</span>, <span class="usage-hl">disabled states</span>, or <span class="usage-hl">decorative elements</span>.
       </p>
+      <p class="section-note" style="margin-top: var(--space-8);">
+        See also: the <a href="#" data-home-page="colors" class="token-link" style="color: var(--color-tint-action); text-decoration: none; font-weight: var(--font-weight-medium); cursor: pointer;">Colors</a> page for the complete color token reference, including palette, label colors, semantic colors, backgrounds, and dark mode.
+      </p>
 
       <div class="color-grid">
         <div class="color-row">
@@ -994,72 +997,10 @@
     <section id="accessibility">
       <p class="section-label">Minimum Sizes &amp; Accessibility</p>
       <p class="section-note">
-        Typography must remain legible and tappable. Minimum sizes for <span class="usage-hl">body text</span>, <span class="usage-hl">interactive labels</span>, and <span class="usage-hl">touch targets</span> per Apple's Human Interface Guidelines.
+        For the full accessibility checklist — contrast, touch targets, text sizes, focus rings, alt text, and motion — see the
+        <a href="#" data-home-page="guidelines" class="token-link" style="color: var(--color-tint-action); text-decoration: none; font-weight: var(--font-weight-medium); cursor: pointer;">Accessibility guidelines</a>.
+        The Dynamic Type scaling reference below is specific to typography.
       </p>
-
-      <!-- Minimum size demo -->
-      <p style="font-family: var(--font-family-text); font-size: 11px; font-weight: 600; color: #aeaeb2; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 16px;">Minimum size readability</p>
-      <div class="size-check">
-        <div class="size-check__row">
-          <div class="size-check__meta">11px (Caption 2)</div>
-          <div class="size-check__sample" style="font-size: 11px; line-height: 13px;">Map data &copy; OpenStreetMap contributors</div>
-          <div class="size-check__status" style="color: #ff9500;">Floor</div>
-        </div>
-        <div class="size-check__row">
-          <div class="size-check__meta">12px (Caption 1)</div>
-          <div class="size-check__sample" style="font-size: 12px; line-height: 16px;">Last updated 5 minutes ago</div>
-          <div class="size-check__status" style="color: #34c759;">Good</div>
-        </div>
-        <div class="size-check__row">
-          <div class="size-check__meta">13px (Footnote)</div>
-          <div class="size-check__sample" style="font-size: 13px; line-height: 18px;">Tap to view full directions to this location</div>
-          <div class="size-check__status" style="color: #34c759;">Interactive min</div>
-        </div>
-        <div class="size-check__row">
-          <div class="size-check__meta">15px (Subheadline)</div>
-          <div class="size-check__sample" style="font-size: 15px; line-height: 20px;">Comfortable reading size for secondary text</div>
-          <div class="size-check__status" style="color: #34c759;">Good</div>
-        </div>
-        <div class="size-check__row">
-          <div class="size-check__meta">17px (Body)</div>
-          <div class="size-check__sample" style="font-size: 17px; line-height: 22px;">Primary body text &mdash; the standard reading size</div>
-          <div class="size-check__status" style="color: #34c759;">Default</div>
-        </div>
-      </div>
-
-      <!-- Touch target -->
-      <p style="font-family: var(--font-family-text); font-size: 11px; font-weight: 600; color: #aeaeb2; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 16px;">Touch target minimum</p>
-      <div class="touch-target-demo">
-        <div class="touch-target-box">
-          <span class="touch-target-box__label">44px</span>
-        </div>
-        <div class="touch-target-demo__text">
-          All interactive elements must have a minimum touch target of 44&times;44 points (iOS HIG). Text inside tappable areas must be at least 13px.
-        </div>
-      </div>
-
-      <!-- Contrast check -->
-      <p style="font-family: var(--font-family-text); font-size: 11px; font-weight: 600; color: #aeaeb2; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 16px;">Contrast check</p>
-      <div class="contrast-grid">
-        <div class="contrast-card" style="background: #fff; border: 1px solid rgba(0,0,0,0.06);">
-          <div class="contrast-card__label-name" style="color: #aeaeb2;">On white</div>
-          <div class="contrast-card__sample" style="color: #1c1c1e;">Primary &mdash; #1c1c1e</div>
-          <div class="contrast-card__ratio" style="color: #34c759;">~16.5:1</div>
-          <div class="contrast-card__sample" style="color: rgba(60, 60, 67, 0.75);">Secondary &mdash; 75% opacity</div>
-          <div class="contrast-card__ratio" style="color: #34c759;">~5.0:1 Pass</div>
-          <div class="contrast-card__sample" style="color: rgba(60, 60, 67, 0.30);">Tertiary &mdash; placeholders only</div>
-          <div class="contrast-card__ratio" style="color: #ff3b30;">~1.9:1 Fail</div>
-        </div>
-        <div class="contrast-card" style="background: #1c1c1e;">
-          <div class="contrast-card__label-name" style="color: rgba(255,255,255,0.4);">On dark</div>
-          <div class="contrast-card__sample" style="color: #fff;">Primary &mdash; #ffffff</div>
-          <div class="contrast-card__ratio" style="color: #30d158;">~16.5:1</div>
-          <div class="contrast-card__sample" style="color: rgba(235, 235, 245, 0.60);">Secondary &mdash; 60% opacity</div>
-          <div class="contrast-card__ratio" style="color: #30d158;">~6.8:1</div>
-          <div class="contrast-card__sample" style="color: rgba(235, 235, 245, 0.30);">Tertiary &mdash; placeholders only</div>
-          <div class="contrast-card__ratio" style="color: #ff453a;">~2.8:1 Fail</div>
-        </div>
-      </div>
 
       <!-- Dynamic Type table -->
       <p style="font-family: var(--font-family-text); font-size: 11px; font-weight: 600; color: #aeaeb2; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 16px;">Dynamic Type scaling</p>
@@ -1144,10 +1085,8 @@
         </table>
       </div>
 
-      <div class="rule-box" style="display: flex; flex-direction: column; gap: 8px;">
-        <div><strong>Rule:</strong> Never go below 11px for any text. Interactive text (tappable labels, links) never below 13px.</div>
-        <div><strong>Rule:</strong> All touch targets must be at least 44&times;44 points, regardless of visible text size.</div>
-        <div><strong>Rule:</strong> Native apps must support the full Dynamic Type range (xSmall through AX5).</div>
+      <div class="rule-box">
+        <strong>Rule:</strong> Native apps must support the full Dynamic Type range (xSmall through AX5).
       </div>
     </section>
 
@@ -1779,7 +1718,7 @@
             <td><code>rgba(60,60,67,0.18)</code></td>
           </tr>
           <tr>
-            <td>Tint colors</td>
+            <td>Semantic colors</td>
             <td><code>--color-tint-destructive</code></td>
             <td><code>#ff3b30</code></td>
           </tr>
@@ -1926,39 +1865,7 @@
          ============================================================ -->
     <section id="tk-spacing">
       <p class="section-label">Spacing Scale</p>
-      <p class="section-note">
-        4pt base grid. Below 16 uses 2pt micro-steps for component internals; above 16 snaps to 4pt or 8pt increments for layout spacing.
-      </p>
-
-      <table class="token-table">
-        <thead>
-          <tr>
-            <th>Token</th>
-            <th>CSS</th>
-            <th>iOS</th>
-            <th>Android</th>
-            <th>Value</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td>space-2</td><td><code>var(--space-2)</code></td><td>Spacing.s2</td><td>R.dimen.space_2</td><td>2px</td><td><div class="token-spacing-row__bar" style="width: 2px;"></div></td></tr>
-          <tr><td>space-4</td><td><code>var(--space-4)</code></td><td>Spacing.s4</td><td>R.dimen.space_4</td><td>4px</td><td><div class="token-spacing-row__bar" style="width: 4px;"></div></td></tr>
-          <tr><td>space-6</td><td><code>var(--space-6)</code></td><td>Spacing.s6</td><td>R.dimen.space_6</td><td>6px</td><td><div class="token-spacing-row__bar" style="width: 6px;"></div></td></tr>
-          <tr><td>space-8</td><td><code>var(--space-8)</code></td><td>Spacing.s8</td><td>R.dimen.space_8</td><td>8px</td><td><div class="token-spacing-row__bar" style="width: 8px;"></div></td></tr>
-          <tr><td>space-10</td><td><code>var(--space-10)</code></td><td>Spacing.s10</td><td>R.dimen.space_10</td><td>10px</td><td><div class="token-spacing-row__bar" style="width: 10px;"></div></td></tr>
-          <tr><td>space-12</td><td><code>var(--space-12)</code></td><td>Spacing.s12</td><td>R.dimen.space_12</td><td>12px</td><td><div class="token-spacing-row__bar" style="width: 12px;"></div></td></tr>
-          <tr><td>space-16</td><td><code>var(--space-16)</code></td><td>Spacing.s16</td><td>R.dimen.space_16</td><td>16px</td><td><div class="token-spacing-row__bar" style="width: 16px;"></div></td></tr>
-          <tr><td>space-20</td><td><code>var(--space-20)</code></td><td>Spacing.s20</td><td>R.dimen.space_20</td><td>20px</td><td><div class="token-spacing-row__bar" style="width: 20px;"></div></td></tr>
-          <tr><td>space-24</td><td><code>var(--space-24)</code></td><td>Spacing.s24</td><td>R.dimen.space_24</td><td>24px</td><td><div class="token-spacing-row__bar" style="width: 24px;"></div></td></tr>
-          <tr><td>space-32</td><td><code>var(--space-32)</code></td><td>Spacing.s32</td><td>R.dimen.space_32</td><td>32px</td><td><div class="token-spacing-row__bar" style="width: 32px;"></div></td></tr>
-          <tr><td>space-40</td><td><code>var(--space-40)</code></td><td>Spacing.s40</td><td>R.dimen.space_40</td><td>40px</td><td><div class="token-spacing-row__bar" style="width: 40px;"></div></td></tr>
-          <tr><td>space-48</td><td><code>var(--space-48)</code></td><td>Spacing.s48</td><td>R.dimen.space_48</td><td>48px</td><td><div class="token-spacing-row__bar" style="width: 48px;"></div></td></tr>
-          <tr><td>space-64</td><td><code>var(--space-64)</code></td><td>Spacing.s64</td><td>R.dimen.space_64</td><td>64px</td><td><div class="token-spacing-row__bar" style="width: 64px;"></div></td></tr>
-          <tr><td>space-80</td><td><code>var(--space-80)</code></td><td>Spacing.s80</td><td>R.dimen.space_80</td><td>80px</td><td><div class="token-spacing-row__bar" style="width: 80px;"></div></td></tr>
-          <tr><td>space-96</td><td><code>var(--space-96)</code></td><td>Spacing.s96</td><td>R.dimen.space_96</td><td>96px</td><td><div class="token-spacing-row__bar" style="width: 96px;"></div></td></tr>
-        </tbody>
-      </table>
+      <p class="section-note">See the <a href="#" data-home-page="spacing" class="token-link" style="color: var(--color-tint-action); text-decoration: none; font-weight: var(--font-weight-medium); cursor: pointer;">Spacing &amp; Layout</a> page for the full scale, usage guidance, and grid system.</p>
     </section>
 
 
@@ -2025,166 +1932,8 @@
     <section id="tk-surfaces">
       <p class="section-label">Surfaces &amp; Fills</p>
       <p class="section-note">
-        Background layers, overlay fills, and separator colors. Light mode values shown below; dark mode overrides follow.
+        Background layers, overlay fills, separator colors, and system grays are documented on the <a href="#" data-home-page="colors" class="token-link" style="color: var(--color-tint-action); text-decoration: none; font-weight: var(--font-weight-medium); cursor: pointer;">Colors</a> page &mdash; see <em>Backgrounds &amp; Fills</em> and <em>Dark Mode</em> sections for the full reference including light and dark values.
       </p>
-
-      <!-- Surface layers -->
-      <div class="token-surface-stack">
-        <div class="token-surface-layer" style="background: #ffffff;">
-          <div class="token-surface-layer__info">
-            <span class="token-surface-layer__name">Surface</span>
-            <span class="token-surface-layer__var">--color-surface</span>
-          </div>
-          <span class="token-surface-layer__value">#ffffff</span>
-        </div>
-        <div class="token-surface-layer" style="background: #fafafc;">
-          <div class="token-surface-layer__info">
-            <span class="token-surface-layer__name">Surface Secondary</span>
-            <span class="token-surface-layer__var">--color-surface-secondary</span>
-          </div>
-          <span class="token-surface-layer__value">#fafafc</span>
-        </div>
-        <div class="token-surface-layer" style="background: rgba(0, 0, 0, 0.04);">
-          <div class="token-surface-layer__info">
-            <span class="token-surface-layer__name">Fill</span>
-            <span class="token-surface-layer__var">--color-fill</span>
-          </div>
-          <span class="token-surface-layer__value">rgba(0,0,0,0.04)</span>
-        </div>
-        <div class="token-surface-layer" style="background: rgba(0, 0, 0, 0.03);">
-          <div class="token-surface-layer__info">
-            <span class="token-surface-layer__name">Fill Secondary</span>
-            <span class="token-surface-layer__var">--color-fill-secondary</span>
-          </div>
-          <span class="token-surface-layer__value">rgba(0,0,0,0.03)</span>
-        </div>
-      </div>
-
-      <!-- Separators -->
-      <div class="token-separator-samples">
-        <div class="token-separator-sample">
-          <div class="token-separator-sample__line" style="border-top-color: rgba(0, 0, 0, 0.06);"></div>
-          <div class="token-separator-sample__info">
-            <span class="token-separator-sample__name">Separator</span>
-            <span class="token-separator-sample__var">rgba(0,0,0,0.06)</span>
-          </div>
-        </div>
-        <div class="token-separator-sample">
-          <div class="token-separator-sample__line" style="border-top-color: rgba(0, 0, 0, 0.04);"></div>
-          <div class="token-separator-sample__info">
-            <span class="token-separator-sample__name">Separator Subtle</span>
-            <span class="token-separator-sample__var">rgba(0,0,0,0.04)</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- System grays -->
-      <div class="token-gray-row">
-        <div class="token-gray-swatch">
-          <div class="token-gray-swatch__color" style="background: #8e8e93;"></div>
-          <span class="token-gray-swatch__name">Gray</span>
-          <span class="token-gray-swatch__hex">#8e8e93</span>
-        </div>
-        <div class="token-gray-swatch">
-          <div class="token-gray-swatch__color" style="background: #aeaeb2;"></div>
-          <span class="token-gray-swatch__name">Gray 2</span>
-          <span class="token-gray-swatch__hex">#aeaeb2</span>
-        </div>
-        <div class="token-gray-swatch">
-          <div class="token-gray-swatch__color" style="background: #c7c7cc;"></div>
-          <span class="token-gray-swatch__name">Gray 3</span>
-          <span class="token-gray-swatch__hex">#c7c7cc</span>
-        </div>
-        <div class="token-gray-swatch">
-          <div class="token-gray-swatch__color" style="background: #d1d1d6;"></div>
-          <span class="token-gray-swatch__name">Gray 4</span>
-          <span class="token-gray-swatch__hex">#d1d1d6</span>
-        </div>
-        <div class="token-gray-swatch">
-          <div class="token-gray-swatch__color" style="background: #e5e5ea;"></div>
-          <span class="token-gray-swatch__name">Gray 5</span>
-          <span class="token-gray-swatch__hex">#e5e5ea</span>
-        </div>
-      </div>
-
-      <!-- Dark mode -->
-      <div class="dark-strip">
-        <div class="token-surface-stack">
-          <div class="token-surface-layer" style="background: #1c1c1e; border-color: rgba(255,255,255,0.08);">
-            <div class="token-surface-layer__info">
-              <span class="token-surface-layer__name">Surface</span>
-              <span class="token-surface-layer__var">--color-surface</span>
-            </div>
-            <span class="token-surface-layer__value">#1c1c1e</span>
-          </div>
-          <div class="token-surface-layer" style="background: #2c2c2e; border-color: rgba(255,255,255,0.08);">
-            <div class="token-surface-layer__info">
-              <span class="token-surface-layer__name">Surface Secondary</span>
-              <span class="token-surface-layer__var">--color-surface-secondary</span>
-            </div>
-            <span class="token-surface-layer__value">#2c2c2e</span>
-          </div>
-          <div class="token-surface-layer" style="background: rgba(255, 255, 255, 0.06); border-color: rgba(255,255,255,0.08);">
-            <div class="token-surface-layer__info">
-              <span class="token-surface-layer__name">Fill</span>
-              <span class="token-surface-layer__var">--color-fill</span>
-            </div>
-            <span class="token-surface-layer__value">rgba(255,255,255,0.06)</span>
-          </div>
-          <div class="token-surface-layer" style="background: rgba(255, 255, 255, 0.04); border-color: rgba(255,255,255,0.08);">
-            <div class="token-surface-layer__info">
-              <span class="token-surface-layer__name">Fill Secondary</span>
-              <span class="token-surface-layer__var">--color-fill-secondary</span>
-            </div>
-            <span class="token-surface-layer__value">rgba(255,255,255,0.04)</span>
-          </div>
-        </div>
-
-        <div class="token-separator-samples">
-          <div class="token-separator-sample">
-            <div class="token-separator-sample__line" style="border-top-color: rgba(255, 255, 255, 0.08);"></div>
-            <div class="token-separator-sample__info">
-              <span class="token-separator-sample__name">Separator</span>
-              <span class="token-separator-sample__var">rgba(255,255,255,0.08)</span>
-            </div>
-          </div>
-          <div class="token-separator-sample">
-            <div class="token-separator-sample__line" style="border-top-color: rgba(255, 255, 255, 0.05);"></div>
-            <div class="token-separator-sample__info">
-              <span class="token-separator-sample__name">Separator Subtle</span>
-              <span class="token-separator-sample__var">rgba(255,255,255,0.05)</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="token-gray-row">
-          <div class="token-gray-swatch">
-            <div class="token-gray-swatch__color" style="background: #8e8e93;"></div>
-            <span class="token-gray-swatch__name">Gray</span>
-            <span class="token-gray-swatch__hex">#8e8e93</span>
-          </div>
-          <div class="token-gray-swatch">
-            <div class="token-gray-swatch__color" style="background: #636366;"></div>
-            <span class="token-gray-swatch__name">Gray 2</span>
-            <span class="token-gray-swatch__hex">#636366</span>
-          </div>
-          <div class="token-gray-swatch">
-            <div class="token-gray-swatch__color" style="background: #48484a;"></div>
-            <span class="token-gray-swatch__name">Gray 3</span>
-            <span class="token-gray-swatch__hex">#48484a</span>
-          </div>
-          <div class="token-gray-swatch">
-            <div class="token-gray-swatch__color" style="background: #3a3a3c;"></div>
-            <span class="token-gray-swatch__name">Gray 4</span>
-            <span class="token-gray-swatch__hex">#3a3a3c</span>
-          </div>
-          <div class="token-gray-swatch">
-            <div class="token-gray-swatch__color" style="background: #2c2c2e;"></div>
-            <span class="token-gray-swatch__name">Gray 5</span>
-            <span class="token-gray-swatch__hex">#2c2c2e</span>
-          </div>
-        </div>
-      </div>
     </section>
 
 
@@ -2194,127 +1943,8 @@
     <section id="tk-colors">
       <p class="section-label">Colors &amp; Grays</p>
       <p class="section-note">
-        Four semantic label colors that adapt to light/dark mode. Plus tinted colors from the Livemap palette for status and actions.
+        Label colors, semantic colors, and their dark mode variants are documented on the <a href="#" data-home-page="colors" class="token-link" style="color: var(--color-tint-action); text-decoration: none; font-weight: var(--font-weight-medium); cursor: pointer;">Colors</a> page &mdash; see <em>Color Palette</em>, <em>Label Colors</em>, and <em>Semantic Colors</em> for the full reference.
       </p>
-
-      <!-- Label hierarchy -->
-      <div class="token-label-preview">
-        <div class="token-label-row">
-          <div class="token-label-row__swatch" style="background: #1c1c1e;"></div>
-          <div class="token-label-row__info">
-            <span class="token-label-row__name">Label (Primary)</span>
-            <span class="token-label-row__var">--color-label</span>
-          </div>
-          <div class="token-label-row__sample" style="color: #1c1c1e;">Ristorante Da Mario</div>
-          <span class="token-label-row__value">#1c1c1e</span>
-        </div>
-        <div class="token-label-row">
-          <div class="token-label-row__swatch" style="background: rgba(60, 60, 67, 0.75);"></div>
-          <div class="token-label-row__info">
-            <span class="token-label-row__name">Secondary</span>
-            <span class="token-label-row__var">--color-label-secondary</span>
-          </div>
-          <div class="token-label-row__sample" style="color: rgba(60, 60, 67, 0.75);">Italian &middot; $$$ &middot; 1.2 km</div>
-          <span class="token-label-row__value">#3c3c43 / 75%</span>
-        </div>
-        <div class="token-label-row">
-          <div class="token-label-row__swatch" style="background: rgba(60, 60, 67, 0.30);"></div>
-          <div class="token-label-row__info">
-            <span class="token-label-row__name">Tertiary</span>
-            <span class="token-label-row__var">--color-label-tertiary</span>
-          </div>
-          <div class="token-label-row__sample" style="color: rgba(60, 60, 67, 0.30);">Search places&hellip;</div>
-          <span class="token-label-row__value">#3c3c43 / 30%</span>
-        </div>
-        <div class="token-label-row">
-          <div class="token-label-row__swatch" style="background: rgba(60, 60, 67, 0.18);"></div>
-          <div class="token-label-row__info">
-            <span class="token-label-row__name">Quaternary</span>
-            <span class="token-label-row__var">--color-label-quaternary</span>
-          </div>
-          <div class="token-label-row__sample" style="color: rgba(60, 60, 67, 0.18);">Decorative only</div>
-          <span class="token-label-row__value">#3c3c43 / 18%</span>
-        </div>
-      </div>
-
-      <!-- Tint colors -->
-      <div class="token-tint-row">
-        <div class="token-tint-card">
-          <div class="token-tint-card__swatch" style="background: #ff3b30;"></div>
-          <span class="token-tint-card__name">Destructive</span>
-          <span class="token-tint-card__hex">#ff3b30</span>
-        </div>
-        <div class="token-tint-card">
-          <div class="token-tint-card__swatch" style="background: #34c759;"></div>
-          <span class="token-tint-card__name">Positive</span>
-          <span class="token-tint-card__hex">#34c759</span>
-        </div>
-        <div class="token-tint-card">
-          <div class="token-tint-card__swatch" style="background: #007aff;"></div>
-          <span class="token-tint-card__name">Action</span>
-          <span class="token-tint-card__hex">#007aff</span>
-        </div>
-      </div>
-
-      <!-- Dark mode -->
-      <div class="dark-strip">
-        <div class="token-label-preview" style="margin-bottom: var(--space-24);">
-          <div class="token-label-row">
-            <div class="token-label-row__swatch" style="background: #fff; border-color: rgba(255,255,255,0.1);"></div>
-            <div class="token-label-row__info">
-              <span class="token-label-row__name">Label (Primary)</span>
-              <span class="token-label-row__var">--color-label</span>
-            </div>
-            <div class="token-label-row__sample" style="color: #fff;">Ristorante Da Mario</div>
-            <span class="token-label-row__value">#ffffff</span>
-          </div>
-          <div class="token-label-row">
-            <div class="token-label-row__swatch" style="background: rgba(235, 235, 245, 0.60); border-color: rgba(255,255,255,0.1);"></div>
-            <div class="token-label-row__info">
-              <span class="token-label-row__name">Secondary</span>
-              <span class="token-label-row__var">--color-label-secondary</span>
-            </div>
-            <div class="token-label-row__sample" style="color: rgba(235, 235, 245, 0.60);">Italian &middot; $$$ &middot; 1.2 km</div>
-            <span class="token-label-row__value">#ebebf5 / 60%</span>
-          </div>
-          <div class="token-label-row">
-            <div class="token-label-row__swatch" style="background: rgba(235, 235, 245, 0.30); border-color: rgba(255,255,255,0.1);"></div>
-            <div class="token-label-row__info">
-              <span class="token-label-row__name">Tertiary</span>
-              <span class="token-label-row__var">--color-label-tertiary</span>
-            </div>
-            <div class="token-label-row__sample" style="color: rgba(235, 235, 245, 0.30);">Search places&hellip;</div>
-            <span class="token-label-row__value">#ebebf5 / 30%</span>
-          </div>
-          <div class="token-label-row">
-            <div class="token-label-row__swatch" style="background: rgba(235, 235, 245, 0.18); border-color: rgba(255,255,255,0.1);"></div>
-            <div class="token-label-row__info">
-              <span class="token-label-row__name">Quaternary</span>
-              <span class="token-label-row__var">--color-label-quaternary</span>
-            </div>
-            <div class="token-label-row__sample" style="color: rgba(235, 235, 245, 0.18);">Decorative only</div>
-            <span class="token-label-row__value">#ebebf5 / 18%</span>
-          </div>
-        </div>
-
-        <div class="token-tint-row" style="margin-bottom: 0;">
-          <div class="token-tint-card">
-            <div class="token-tint-card__swatch" style="background: #ff453a;"></div>
-            <span class="token-tint-card__name">Destructive</span>
-            <span class="token-tint-card__hex">#ff453a</span>
-          </div>
-          <div class="token-tint-card">
-            <div class="token-tint-card__swatch" style="background: #30d158;"></div>
-            <span class="token-tint-card__name">Positive</span>
-            <span class="token-tint-card__hex">#30d158</span>
-          </div>
-          <div class="token-tint-card">
-            <div class="token-tint-card__swatch" style="background: #0a84ff;"></div>
-            <span class="token-tint-card__name">Action</span>
-            <span class="token-tint-card__hex">#0a84ff</span>
-          </div>
-        </div>
-      </div>
     </section>
 
 
@@ -2539,7 +2169,9 @@
     <section id="tk-a11y">
       <p class="section-label">Accessibility</p>
       <p class="section-note">
-        Absolute minimums and touch target sizes per Apple HIG. These are hard floors &mdash; never go below these values.
+        Hard-floor tokens for minimum sizes and touch targets. See the
+        <a href="#" data-home-page="guidelines" class="token-link" style="color: var(--color-tint-action); text-decoration: none; font-weight: var(--font-weight-medium); cursor: pointer;">Accessibility guidelines</a>
+        for the full checklist.
       </p>
 
       <table class="token-table">
@@ -3104,7 +2736,7 @@
               </div>
             </div>
 
-            <!-- Tint colors -->
+            <!-- Semantic colors -->
             <div class="token-tint-row">
               <div class="token-tint-card">
                 <div class="token-tint-card__swatch" style="background: var(--color-tint-destructive)"></div>
@@ -3154,12 +2786,12 @@
           </section>
 
           <!-- ============================================================
-               Semantic Colors
+               Label Colors
                ============================================================ -->
           <section id="cl-semantic">
-            <h2 class="section-label">Semantic Colors</h2>
+            <h2 class="section-label">Label Colors</h2>
             <p class="section-note">
-              Four semantic label colors form the text hierarchy. Secondary has been raised from
+              Four label colors form the text hierarchy. Secondary has been raised from
               Apple's default 60% to 75% opacity to meet WCAG AA contrast on white backgrounds.
               Tertiary and Quaternary intentionally fail AA — use only for decorative elements.
             </p>
@@ -3210,7 +2842,7 @@
           <section id="cl-when-to-use">
             <h2 class="section-label">When to Use</h2>
             <p class="section-note">
-              Match each UI need to the right color token. Label hierarchy descends from full opacity to decorative-only; tint colors carry semantic meaning.
+              Match each UI need to the right color token. Label hierarchy descends from full opacity to decorative-only; semantic colors carry intent-based meaning.
             </p>
 
             <table class="token-table">
@@ -3241,12 +2873,12 @@
           </section>
 
           <!-- ============================================================
-               Tint Colors
+               Semantic Colors
                ============================================================ -->
           <section id="cl-tints">
-            <h2 class="section-label">Tint Colors</h2>
+            <h2 class="section-label">Semantic Colors</h2>
             <p class="section-note">
-              Three tint colors for status and interactive elements. Each has light and dark mode
+              Three semantic colors for status and interactive elements. Each has light and dark mode
               variants optimized for contrast on their respective backgrounds.
             </p>
 
@@ -3388,7 +3020,7 @@
                 </div>
               </div>
 
-              <!-- Dark tint colors -->
+              <!-- Dark semantic colors -->
               <div class="token-tint-row" style="margin-bottom: var(--space-32)">
                 <div class="token-tint-card">
                   <div class="token-tint-card__swatch" style="background: #ff453a"></div>
@@ -3444,8 +3076,9 @@
           <section id="cl-contrast">
             <h2 class="section-label">Contrast &amp; Accessibility</h2>
             <p class="section-note">
-              WCAG 2.1 AA requires a minimum contrast ratio of 4.5:1 for normal text and 3:1 for
-              large text (≥18px bold or ≥24px regular). All primary and secondary label colors pass.
+              The contrast examples below show how Livemap label colors perform against WCAG 2.1 AA thresholds
+              (4.5:1 normal text, 3:1 large text). For the full accessibility checklist, see the
+              <a href="#" data-home-page="guidelines" class="token-link" style="color: var(--color-tint-action); text-decoration: none; font-weight: var(--font-weight-medium); cursor: pointer;">Accessibility guidelines</a>.
             </p>
 
             <div class="contrast-grid">
@@ -3477,6 +3110,58 @@
               background patterns. All readable text must use Label or Secondary.
             </div>
           </section>
+
+    <!-- ============================================================
+         Line Lengths (Measure)
+         ============================================================ -->
+    <section id="ty-measure">
+      <p class="section-label">Line Lengths</p>
+      <p class="section-note">
+        Measure tokens constrain text blocks to readable line lengths. Apply with <code>max-width</code>.
+      </p>
+
+      <div class="token-measure-samples">
+        <div class="token-measure-sample">
+          <div class="token-measure-sample__info">
+            <span class="token-measure-sample__name">Compact</span>
+            <span class="token-measure-sample__var">--measure-compact · 48ch</span>
+          </div>
+          <div class="token-measure-sample__bar" style="width: 48ch;"></div>
+        </div>
+        <div class="token-measure-sample">
+          <div class="token-measure-sample__info">
+            <span class="token-measure-sample__name">Narrow</span>
+            <span class="token-measure-sample__var">--measure-narrow · 34ch</span>
+          </div>
+          <div class="token-measure-sample__bar" style="width: 34ch;"></div>
+        </div>
+        <div class="token-measure-sample">
+          <div class="token-measure-sample__info">
+            <span class="token-measure-sample__name">Default</span>
+            <span class="token-measure-sample__var">--measure-default · 58ch</span>
+          </div>
+          <div class="token-measure-sample__bar" style="width: 58ch;"></div>
+        </div>
+        <div class="token-measure-sample">
+          <div class="token-measure-sample__info">
+            <span class="token-measure-sample__name">Wide</span>
+            <span class="token-measure-sample__var">--measure-wide · 75ch</span>
+          </div>
+          <div class="token-measure-sample__bar" style="width: 75ch;"></div>
+        </div>
+      </div>
+
+      <table class="token-table">
+        <thead><tr><th>Token</th><th>CSS</th><th>iOS</th><th>Android</th><th>Value</th></tr></thead>
+        <tbody>
+          <tr><td>measure-compact</td><td><code>var(--measure-compact)</code></td><td>Measure.compact</td><td>R.dimen.measure_compact</td><td>48ch</td></tr>
+          <tr><td>measure-narrow</td><td><code>var(--measure-narrow)</code></td><td>Measure.narrow</td><td>R.dimen.measure_narrow</td><td>34ch</td></tr>
+          <tr><td>measure-default</td><td><code>var(--measure-default)</code></td><td>Measure.default</td><td>R.dimen.measure_default</td><td>58ch</td></tr>
+          <tr><td>measure-wide</td><td><code>var(--measure-wide)</code></td><td>Measure.wide</td><td>R.dimen.measure_wide</td><td>75ch</td></tr>
+          <tr><td>text-wrap-balance</td><td><code>var(--text-wrap-balance)</code></td><td>.lineBreakMode = .byBalancing</td><td>android:breakStrategy="balanced"</td><td>balance</td></tr>
+        </tbody>
+      </table>
+    </section>
 
         </div>
 
@@ -3636,58 +3321,6 @@
           <span class="token-container-box__value">1040px — dashboards, grids</span>
         </div>
       </div>
-    </section>
-
-    <!-- ============================================================
-         5. Line Lengths (Measure)
-         ============================================================ -->
-    <section id="sp-measure">
-      <p class="section-label">Line Lengths</p>
-      <p class="section-note">
-        Measure tokens constrain text blocks to readable line lengths. Apply with <code>max-width</code>.
-      </p>
-
-      <div class="token-measure-samples">
-        <div class="token-measure-sample">
-          <div class="token-measure-sample__info">
-            <span class="token-measure-sample__name">Compact</span>
-            <span class="token-measure-sample__var">--measure-compact · 48ch</span>
-          </div>
-          <div class="token-measure-sample__bar" style="width: 48ch;"></div>
-        </div>
-        <div class="token-measure-sample">
-          <div class="token-measure-sample__info">
-            <span class="token-measure-sample__name">Narrow</span>
-            <span class="token-measure-sample__var">--measure-narrow · 34ch</span>
-          </div>
-          <div class="token-measure-sample__bar" style="width: 34ch;"></div>
-        </div>
-        <div class="token-measure-sample">
-          <div class="token-measure-sample__info">
-            <span class="token-measure-sample__name">Default</span>
-            <span class="token-measure-sample__var">--measure-default · 58ch</span>
-          </div>
-          <div class="token-measure-sample__bar" style="width: 58ch;"></div>
-        </div>
-        <div class="token-measure-sample">
-          <div class="token-measure-sample__info">
-            <span class="token-measure-sample__name">Wide</span>
-            <span class="token-measure-sample__var">--measure-wide · 75ch</span>
-          </div>
-          <div class="token-measure-sample__bar" style="width: 75ch;"></div>
-        </div>
-      </div>
-
-      <table class="token-table">
-        <thead><tr><th>Token</th><th>CSS</th><th>iOS</th><th>Android</th><th>Value</th></tr></thead>
-        <tbody>
-          <tr><td>measure-compact</td><td><code>var(--measure-compact)</code></td><td>Measure.compact</td><td>R.dimen.measure_compact</td><td>48ch</td></tr>
-          <tr><td>measure-narrow</td><td><code>var(--measure-narrow)</code></td><td>Measure.narrow</td><td>R.dimen.measure_narrow</td><td>34ch</td></tr>
-          <tr><td>measure-default</td><td><code>var(--measure-default)</code></td><td>Measure.default</td><td>R.dimen.measure_default</td><td>58ch</td></tr>
-          <tr><td>measure-wide</td><td><code>var(--measure-wide)</code></td><td>Measure.wide</td><td>R.dimen.measure_wide</td><td>75ch</td></tr>
-          <tr><td>text-wrap-balance</td><td><code>var(--text-wrap-balance)</code></td><td>.lineBreakMode = .byBalancing</td><td>android:breakStrategy="balanced"</td><td>balance</td></tr>
-        </tbody>
-      </table>
     </section>
 
         </div>
@@ -5600,6 +5233,67 @@
         <button class="comp-btn comp-btn--primary" disabled>Disabled</button>
       </div>
 
+      <!-- State matrix -->
+      <p class="section-note">State matrix — every variant across interactive states:</p>
+      <div class="state-matrix state-matrix--buttons">
+        <div class="state-matrix__header"></div>
+        <div class="state-matrix__header">Primary</div>
+        <div class="state-matrix__header">Secondary</div>
+        <div class="state-matrix__header">Destructive</div>
+        <div class="state-matrix__header">Ghost</div>
+
+        <div class="state-matrix__row-label">Default</div>
+        <div class="state-matrix__cell"><button class="comp-btn comp-btn--primary">Label</button></div>
+        <div class="state-matrix__cell"><button class="comp-btn comp-btn--secondary">Label</button></div>
+        <div class="state-matrix__cell"><button class="comp-btn comp-btn--destructive">Label</button></div>
+        <div class="state-matrix__cell"><button class="comp-btn comp-btn--ghost">Label</button></div>
+
+        <div class="state-matrix__row-label">Hover</div>
+        <div class="state-matrix__cell"><button class="comp-btn comp-btn--primary is-hover">Label</button></div>
+        <div class="state-matrix__cell"><button class="comp-btn comp-btn--secondary is-hover">Label</button></div>
+        <div class="state-matrix__cell"><button class="comp-btn comp-btn--destructive is-hover">Label</button></div>
+        <div class="state-matrix__cell"><button class="comp-btn comp-btn--ghost is-hover">Label</button></div>
+
+        <div class="state-matrix__row-label">Active / Pressed</div>
+        <div class="state-matrix__cell"><button class="comp-btn comp-btn--primary is-active">Label</button></div>
+        <div class="state-matrix__cell"><button class="comp-btn comp-btn--secondary is-active">Label</button></div>
+        <div class="state-matrix__cell"><button class="comp-btn comp-btn--destructive is-active">Label</button></div>
+        <div class="state-matrix__cell"><button class="comp-btn comp-btn--ghost is-active">Label</button></div>
+
+        <div class="state-matrix__row-label">Disabled</div>
+        <div class="state-matrix__cell"><button class="comp-btn comp-btn--primary" disabled>Label</button></div>
+        <div class="state-matrix__cell"><button class="comp-btn comp-btn--secondary" disabled>Label</button></div>
+        <div class="state-matrix__cell"><button class="comp-btn comp-btn--destructive" disabled>Label</button></div>
+        <div class="state-matrix__cell"><button class="comp-btn comp-btn--ghost" disabled>Label</button></div>
+
+        <div class="state-matrix__row-label">Loading</div>
+        <div class="state-matrix__cell"><button class="comp-btn comp-btn--primary is-loading">Label</button></div>
+        <div class="state-matrix__cell"><button class="comp-btn comp-btn--secondary is-loading">Label</button></div>
+        <div class="state-matrix__cell"><button class="comp-btn comp-btn--destructive is-loading">Label</button></div>
+        <div class="state-matrix__cell"><button class="comp-btn comp-btn--ghost is-loading">Label</button></div>
+      </div>
+
+      <!-- Keyboard & ARIA -->
+      <div class="a11y-note">
+        <div class="a11y-note__col">
+          <div class="a11y-note__heading">Keyboard</div>
+          <ul class="a11y-note__list">
+            <li><code>Enter</code> or <code>Space</code> activates the button</li>
+            <li><code>Tab</code> / <code>Shift+Tab</code> moves focus in and out</li>
+            <li>Disabled buttons are removed from tab order via native <code>disabled</code></li>
+          </ul>
+        </div>
+        <div class="a11y-note__col">
+          <div class="a11y-note__heading">ARIA</div>
+          <ul class="a11y-note__list">
+            <li>Use <code>&lt;button&gt;</code> — not <code>&lt;div&gt;</code> or <code>&lt;a&gt;</code></li>
+            <li>Icon-only buttons require <code>aria-label</code></li>
+            <li>Loading: add <code>aria-disabled="true"</code> + <code>aria-busy="true"</code></li>
+            <li>Destructive actions: confirm before executing</li>
+          </ul>
+        </div>
+      </div>
+
       <details class="comp-snippet">
         <summary>Token usage</summary>
         <div class="comp-snippet__body">
@@ -5616,6 +5310,13 @@
   border-radius: var(--radius-sm);
   background: var(--color-label);
   color: var(--color-surface);
+}
+.btn:hover { opacity: 0.85; }
+.btn:active { transform: scale(0.97); opacity: 0.75; }
+.btn:disabled { opacity: 0.35; cursor: default; }
+.btn.is-loading {
+  color: transparent; pointer-events: none;
+  /* 14px spinner pseudo-element */
 }</code></pre>
           <pre class="comp-snippet__pre" data-lang="swift" hidden><code>Button("Primary") { /* action */ }
   .font(.system(size: FontSize.fine, weight: .semibold))
@@ -5623,12 +5324,16 @@
   .padding(.vertical, Spacing.s10)
   .background(Color.label)
   .foregroundColor(Color.surface)
-  .cornerRadius(Radius.sm)</code></pre>
+  .cornerRadius(Radius.sm)
+// States: .opacity(0.85) hover, .scaleEffect(0.97) press,
+// .disabled(true) + .opacity(0.35), ProgressView() for loading</code></pre>
           <pre class="comp-snippet__pre" data-lang="kotlin" hidden><code>Button(
   onClick = { /* action */ },
+  enabled = !isLoading,
   colors = ButtonDefaults.buttonColors(
     containerColor = LivemapTheme.colors.label,
-    contentColor = LivemapTheme.colors.surface
+    contentColor = LivemapTheme.colors.surface,
+    disabledContainerColor = LivemapTheme.colors.label.copy(alpha = 0.35f)
   ),
   shape = RoundedCornerShape(LivemapTheme.radius.sm),
   contentPadding = PaddingValues(
@@ -5636,7 +5341,11 @@
     vertical = LivemapTheme.spacing.s10
   )
 ) {
-  Text("Primary", style = LivemapTheme.typography.fine.copy(
+  if (isLoading) CircularProgressIndicator(
+    modifier = Modifier.size(14.dp),
+    color = LivemapTheme.colors.surface, strokeWidth = 2.dp
+  )
+  else Text("Primary", style = LivemapTheme.typography.fine.copy(
     fontWeight = FontWeight.SemiBold
   ))
 }</code></pre>
@@ -5661,6 +5370,83 @@
         <div class="comp-field">
           <label class="comp-label">Error state</label>
           <input class="comp-input comp-input--error" type="text" value="Invalid value">
+          <span class="comp-error-text">This field is required</span>
+        </div>
+        <div class="comp-field">
+          <label class="comp-label">With helper text</label>
+          <input class="comp-input" type="text" placeholder="jane@example.com">
+          <span class="comp-helper">We'll never share your email</span>
+        </div>
+      </div>
+
+      <!-- State matrix -->
+      <p class="section-note">State matrix — every input state:</p>
+      <div class="state-matrix state-matrix--inputs">
+        <div class="state-matrix__header"></div>
+        <div class="state-matrix__header">Appearance</div>
+
+        <div class="state-matrix__row-label">Default</div>
+        <div class="state-matrix__cell"><input class="comp-input" type="text" placeholder="Placeholder text"></div>
+
+        <div class="state-matrix__row-label">Hover</div>
+        <div class="state-matrix__cell"><input class="comp-input is-hover" type="text" placeholder="Placeholder text"></div>
+
+        <div class="state-matrix__row-label">Focused</div>
+        <div class="state-matrix__cell"><input class="comp-input is-focus" type="text" value="Editing value"></div>
+
+        <div class="state-matrix__row-label">Disabled</div>
+        <div class="state-matrix__cell"><input class="comp-input is-disabled" type="text" value="Read-only value" disabled></div>
+
+        <div class="state-matrix__row-label">Error</div>
+        <div class="state-matrix__cell">
+          <div class="comp-field"><input class="comp-input comp-input--error" type="text" value="Invalid"><span class="comp-error-text">Please enter a valid value</span></div>
+        </div>
+
+        <div class="state-matrix__row-label">Error + Focused</div>
+        <div class="state-matrix__cell">
+          <div class="comp-field"><input class="comp-input comp-input--error is-focus" type="text" value="Invalid"><span class="comp-error-text">Please enter a valid value</span></div>
+        </div>
+
+        <div class="state-matrix__row-label">Success</div>
+        <div class="state-matrix__cell"><input class="comp-input comp-input--success" type="text" value="Confirmed"></div>
+      </div>
+
+      <!-- Keyboard & ARIA -->
+      <div class="a11y-note">
+        <div class="a11y-note__col">
+          <div class="a11y-note__heading">Keyboard</div>
+          <ul class="a11y-note__list">
+            <li><code>Tab</code> moves focus to the next field</li>
+            <li><code>Shift+Tab</code> moves focus to the previous field</li>
+            <li>Disabled inputs are skipped in tab order</li>
+          </ul>
+        </div>
+        <div class="a11y-note__col">
+          <div class="a11y-note__heading">ARIA</div>
+          <ul class="a11y-note__list">
+            <li>Every input needs a visible <code>&lt;label&gt;</code> with matching <code>for</code>/<code>id</code></li>
+            <li>Error state: add <code>aria-invalid="true"</code></li>
+            <li>Link error text with <code>aria-describedby</code></li>
+            <li>Required fields: use <code>aria-required="true"</code> and the <code>.comp-label--required</code> class</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Textarea & Select -->
+      <p class="section-note">Textarea &amp; Select:</p>
+      <div class="comp-preview comp-preview--column">
+        <div class="comp-field">
+          <label class="comp-label">Textarea</label>
+          <textarea class="comp-textarea" placeholder="Enter a description…"></textarea>
+        </div>
+        <div class="comp-field">
+          <label class="comp-label">Select</label>
+          <select class="comp-select">
+            <option value="" disabled selected>Choose an option</option>
+            <option>Option A</option>
+            <option>Option B</option>
+            <option>Option C</option>
+          </select>
         </div>
       </div>
 
@@ -5673,7 +5459,15 @@
             <button class="comp-snippet__tab" data-lang="kotlin">Kotlin</button>
           </div>
           <button class="comp-snippet__copy">Copy</button>
-          <pre class="comp-snippet__pre" data-lang="css"><code>.input {
+          <pre class="comp-snippet__pre" data-lang="css"><code>.field { display: flex; flex-direction: column; }
+.label {
+  font: var(--font-weight-medium) var(--font-size-micro)/var(--line-height-micro)
+       var(--font-family-text);
+  color: var(--color-label-secondary);
+  margin-bottom: var(--space-4);
+}
+.label--required::after { content: ' *'; color: var(--color-tint-destructive); }
+.input {
   font: var(--font-weight-regular) var(--font-size-fine)/var(--line-height-fine)
        var(--font-family-text);
   color: var(--color-label);
@@ -5682,11 +5476,21 @@
   border-radius: var(--radius-sm);
   padding: var(--space-10) var(--space-12);
 }
+.input:hover { border-color: var(--color-gray-2); }
 .input:focus {
   border-color: var(--color-tint-action);
   box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.1);
 }
-.input--error { border-color: var(--color-tint-destructive); }</code></pre>
+.input:disabled { opacity: 0.35; background: var(--color-fill); }
+.input--error { border-color: var(--color-tint-destructive); }
+.input--success { border-color: var(--color-tint-positive); }
+.helper, .error-text {
+  font: var(--font-size-micro)/var(--line-height-micro)
+       var(--font-family-text);
+  margin-top: var(--space-4);
+}
+.helper { color: var(--color-label-tertiary); }
+.error-text { color: var(--color-tint-destructive); font-weight: var(--font-weight-medium); }</code></pre>
           <pre class="comp-snippet__pre" data-lang="swift" hidden><code>TextField("Placeholder", text: $value)
   .font(.system(size: FontSize.fine))
   .padding(.horizontal, Spacing.s12)
@@ -5695,21 +5499,28 @@
   .overlay(
     RoundedRectangle(cornerRadius: Radius.sm)
       .stroke(isFocused ? Color.tintAction : Color.separator)
-  )</code></pre>
+  )
+// Error: .stroke(Color.tintDestructive)
+// Disabled: .disabled(true) + .opacity(0.35)
+// Success: .stroke(Color.tintPositive)</code></pre>
           <pre class="comp-snippet__pre" data-lang="kotlin" hidden><code>OutlinedTextField(
   value = value,
   onValueChange = { value = it },
+  enabled = !isDisabled,
+  isError = hasError,
   textStyle = LivemapTheme.typography.fine,
   colors = OutlinedTextFieldDefaults.colors(
     unfocusedBorderColor = LivemapTheme.colors.separator,
     focusedBorderColor = LivemapTheme.colors.tintAction,
-    errorBorderColor = LivemapTheme.colors.tintDestructive
+    errorBorderColor = LivemapTheme.colors.tintDestructive,
+    disabledBorderColor = LivemapTheme.colors.separator.copy(alpha = 0.35f)
   ),
   shape = RoundedCornerShape(LivemapTheme.radius.sm),
   contentPadding = PaddingValues(
     horizontal = LivemapTheme.spacing.s12,
     vertical = LivemapTheme.spacing.s10
-  )
+  ),
+  supportingText = if (hasError) { { Text("Error message") } } else null
 )</code></pre>
         </div>
       </details>
@@ -5733,6 +5544,59 @@
         </button>
       </div>
 
+      <!-- State matrix -->
+      <p class="section-note">State matrix — toggles and checkboxes across states:</p>
+      <div class="state-matrix state-matrix--toggles">
+        <div class="state-matrix__header"></div>
+        <div class="state-matrix__header">Toggle</div>
+        <div class="state-matrix__header">Checkbox</div>
+
+        <div class="state-matrix__row-label">Off — Default</div>
+        <div class="state-matrix__cell"><button class="comp-toggle" aria-label="Off"></button></div>
+        <div class="state-matrix__cell"><button class="comp-checkbox" aria-label="Unchecked"></button></div>
+
+        <div class="state-matrix__row-label">Off — Hover</div>
+        <div class="state-matrix__cell"><button class="comp-toggle is-hover" aria-label="Off hover"></button></div>
+        <div class="state-matrix__cell"><button class="comp-checkbox is-hover" aria-label="Unchecked hover"></button></div>
+
+        <div class="state-matrix__row-label">On — Default</div>
+        <div class="state-matrix__cell"><button class="comp-toggle is-on" aria-label="On"></button></div>
+        <div class="state-matrix__cell"><button class="comp-checkbox is-checked" aria-label="Checked"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 6 5 8.5 9.5 4"/></svg></button></div>
+
+        <div class="state-matrix__row-label">On — Hover</div>
+        <div class="state-matrix__cell"><button class="comp-toggle is-on is-hover" aria-label="On hover"></button></div>
+        <div class="state-matrix__cell"><button class="comp-checkbox is-checked is-hover" aria-label="Checked hover"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 6 5 8.5 9.5 4"/></svg></button></div>
+
+        <div class="state-matrix__row-label">Disabled — Off</div>
+        <div class="state-matrix__cell"><button class="comp-toggle is-disabled" aria-label="Disabled off" disabled></button></div>
+        <div class="state-matrix__cell"><button class="comp-checkbox is-disabled" aria-label="Disabled unchecked" disabled></button></div>
+
+        <div class="state-matrix__row-label">Disabled — On</div>
+        <div class="state-matrix__cell"><button class="comp-toggle is-on is-disabled" aria-label="Disabled on" disabled></button></div>
+        <div class="state-matrix__cell"><button class="comp-checkbox is-checked is-disabled" aria-label="Disabled checked" disabled><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 6 5 8.5 9.5 4"/></svg></button></div>
+      </div>
+
+      <!-- Keyboard & ARIA -->
+      <div class="a11y-note">
+        <div class="a11y-note__col">
+          <div class="a11y-note__heading">Keyboard</div>
+          <ul class="a11y-note__list">
+            <li><code>Space</code> toggles the control on/off</li>
+            <li><code>Tab</code> / <code>Shift+Tab</code> moves focus between controls</li>
+            <li>In a checkbox group, <code>Arrow</code> keys move between items</li>
+          </ul>
+        </div>
+        <div class="a11y-note__col">
+          <div class="a11y-note__heading">ARIA</div>
+          <ul class="a11y-note__list">
+            <li>Toggle: <code>role="switch"</code> with <code>aria-checked</code></li>
+            <li>Checkbox: use native <code>&lt;input type="checkbox"&gt;</code> or <code>role="checkbox"</code> with <code>aria-checked</code></li>
+            <li>Always provide a visible label or <code>aria-label</code></li>
+            <li>Disabled: use native <code>disabled</code> attribute</li>
+          </ul>
+        </div>
+      </div>
+
       <details class="comp-snippet">
         <summary>Token usage</summary>
         <div class="comp-snippet__body">
@@ -5750,6 +5614,8 @@
   transition: background var(--duration-normal) var(--ease-default);
 }
 .toggle.is-on { background: var(--color-tint-positive); }
+.toggle:hover { filter: brightness(0.95); }
+.toggle:disabled { opacity: 0.35; }
 .toggle__knob {
   width: 22px; height: 22px;
   border-radius: var(--radius-full);
@@ -5758,17 +5624,22 @@
 }</code></pre>
           <pre class="comp-snippet__pre" data-lang="swift" hidden><code>Toggle(isOn: $isEnabled) { Text("Setting") }
   .tint(Color.tintPositive)
+  .disabled(isDisabled)
   // Native iOS toggle uses system styling.
   // Custom: 44x26pt track, 22pt knob,
-  // Radius.full rounding, Shadow.sm on knob.</code></pre>
+  // Radius.full rounding, Shadow.sm on knob.
+  // Hover: brightness(0.95), Disabled: opacity(0.35)</code></pre>
           <pre class="comp-snippet__pre" data-lang="kotlin" hidden><code>Switch(
   checked = isEnabled,
   onCheckedChange = { isEnabled = it },
+  enabled = !isDisabled,
   colors = SwitchDefaults.colors(
     checkedTrackColor = LivemapTheme.colors.tintPositive,
     uncheckedTrackColor = LivemapTheme.colors.gray4,
     checkedThumbColor = LivemapTheme.colors.surface,
-    uncheckedThumbColor = LivemapTheme.colors.surface
+    uncheckedThumbColor = LivemapTheme.colors.surface,
+    disabledCheckedTrackColor = LivemapTheme.colors.tintPositive.copy(alpha = 0.35f),
+    disabledUncheckedTrackColor = LivemapTheme.colors.gray4.copy(alpha = 0.35f)
   )
 )
 // Track: 44x26dp, knob: 22dp, radius: full</code></pre>
@@ -6018,6 +5889,7 @@
         Stack form fields vertically with consistent spacing. Use <span class="usage-hl">space-16</span> between fields and <span class="usage-hl">space-12</span> for side-by-side fields in a row.
       </p>
 
+      <p class="section-note">Basic form layout:</p>
       <div class="pattern-preview">
         <div class="pattern-form">
           <div class="comp-field">
@@ -6039,6 +5911,54 @@
             <input class="comp-input" type="email" placeholder="jane@example.com" style="width: 100%;">
           </div>
           <button class="comp-btn comp-btn--primary" style="align-self: flex-start;">Submit</button>
+        </div>
+      </div>
+
+      <p class="section-note">Form with validation — required fields, error/helper text, and multi-section layout:</p>
+      <div class="pattern-preview">
+        <div class="pattern-form">
+          <!-- Section: Account -->
+          <div class="pattern-form__section">
+            <p class="pattern-form__section-title">Account</p>
+            <div class="comp-field">
+              <label class="comp-label comp-label--required">Email</label>
+              <input class="comp-input comp-input--error" type="email" value="jane@" style="width: 100%;" aria-invalid="true" aria-describedby="email-err">
+              <span class="comp-error-text" id="email-err">Enter a valid email address.</span>
+            </div>
+            <div class="comp-field">
+              <label class="comp-label comp-label--required">Password</label>
+              <input class="comp-input" type="password" placeholder="8+ characters" style="width: 100%;" aria-required="true">
+              <span class="comp-helper">Must include a letter and a number.</span>
+            </div>
+          </div>
+          <!-- Section: Profile -->
+          <div class="pattern-form__section">
+            <p class="pattern-form__section-title">Profile</p>
+            <div class="comp-field">
+              <label class="comp-label comp-label--required">Display name</label>
+              <input class="comp-input comp-input--success" type="text" value="janedoe" style="width: 100%;">
+              <span class="comp-helper">Name is available.</span>
+            </div>
+            <div class="comp-field">
+              <label class="comp-label">Bio</label>
+              <textarea class="comp-textarea" placeholder="Tell us about yourself…" style="width: 100%;"></textarea>
+              <span class="comp-helper">Max 160 characters.</span>
+            </div>
+            <div class="comp-field">
+              <label class="comp-label">Role</label>
+              <select class="comp-select" style="width: 100%;">
+                <option value="" disabled selected>Select a role</option>
+                <option>Designer</option>
+                <option>Developer</option>
+                <option>Manager</option>
+              </select>
+            </div>
+          </div>
+          <!-- Actions -->
+          <div class="pattern-form__actions">
+            <button class="comp-btn comp-btn--primary">Create account</button>
+            <button class="comp-btn comp-btn--secondary">Cancel</button>
+          </div>
         </div>
       </div>
     </section>
@@ -7297,27 +7217,9 @@ FlareCard(style: .serendipity) {
           <!-- ====== Dark Mode ====== -->
           <section id="gl-dark">
             <p class="section-label">Dark Mode</p>
-            <p class="section-note">All Livemap surfaces support automatic dark mode via semantic tokens. Never hard-code color values.</p>
+            <p class="section-note">For full dark-mode token values and usage guidance, see the <a href="#cl-dark-mode" data-nav="colors">Colors &rsaquo; Dark Mode</a> section. The layout-specific note below applies when building elevated UI in dark contexts.</p>
 
             <div class="guideline-cards">
-              <div class="guideline-card">
-                <div class="guideline-card__icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-                </div>
-                <div class="guideline-card__body">
-                  <div class="guideline-card__title">Use semantic color tokens</div>
-                  <div class="guideline-card__desc">Always reference --color-surface, --color-label, --color-fill, etc. These swap automatically between light and dark.</div>
-                </div>
-              </div>
-              <div class="guideline-card">
-                <div class="guideline-card__icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
-                </div>
-                <div class="guideline-card__body">
-                  <div class="guideline-card__title">Test both modes</div>
-                  <div class="guideline-card__desc">Verify every screen in both light and dark. Pay attention to shadows — they need higher opacity in dark mode for visibility.</div>
-                </div>
-              </div>
               <div class="guideline-card">
                 <div class="guideline-card__icon">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>

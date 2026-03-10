@@ -26,6 +26,29 @@
 
 .pattern-form__row > * { flex: 1; }
 
+.pattern-form__section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+}
+
+.pattern-form__section-title {
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-fine);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-fine);
+  letter-spacing: var(--letter-spacing-fine);
+  color: var(--color-label);
+  padding-bottom: var(--space-8);
+  border-bottom: 1px solid var(--color-separator-subtle);
+}
+
+.pattern-form__actions {
+  display: flex;
+  gap: var(--space-12);
+  padding-top: var(--space-8);
+}
+
 /* ---- Nav pattern ---- */
 .pattern-nav-bar {
   display: flex;

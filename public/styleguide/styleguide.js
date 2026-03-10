@@ -77,9 +77,9 @@
       enabled: true,
       children: [
         { id: "cl-palette", label: "Color Palette" },
-        { id: "cl-semantic", label: "Semantic Colors" },
+        { id: "cl-semantic", label: "Label Colors" },
         { id: "cl-when-to-use", label: "When to Use" },
-        { id: "cl-tints", label: "Tint Colors" },
+        { id: "cl-tints", label: "Semantic Colors" },
         { id: "cl-backgrounds", label: "Backgrounds & Fills" },
         { id: "cl-dark-mode", label: "Dark Mode" },
         { id: "cl-contrast", label: "Contrast & A11y" },
