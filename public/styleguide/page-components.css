@@ -409,24 +409,20 @@
 
 .state-matrix {
   display: grid;
-  gap: 1px;
-  background: var(--color-separator);
-  border: 1px solid var(--color-separator);
-  border-radius: var(--radius-lg);
-  overflow: hidden;
+  gap: 0;
   margin-bottom: var(--space-24);
 }
 
 .state-matrix--buttons {
-  grid-template-columns: auto repeat(4, 1fr);
+  grid-template-columns: auto repeat(4, auto);
 }
 
 .state-matrix--inputs {
-  grid-template-columns: auto 1fr;
+  grid-template-columns: auto auto;
 }
 
 .state-matrix--toggles {
-  grid-template-columns: auto repeat(2, 1fr);
+  grid-template-columns: auto repeat(2, auto);
 }
 
 .state-matrix__header {
@@ -436,8 +432,7 @@
   line-height: var(--line-height-nano);
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--color-label-secondary);
-  background: var(--color-fill-subtle);
+  color: var(--color-label-tertiary);
   padding: var(--space-10) var(--space-16);
   display: flex;
   align-items: center;
@@ -447,18 +442,16 @@
 .state-matrix__row-label {
   font-family: var(--font-family-text);
   font-size: var(--font-size-micro);
-  font-weight: var(--font-weight-medium);
+  font-weight: var(--font-weight-regular);
   line-height: var(--line-height-micro);
   color: var(--color-label-secondary);
-  background: var(--color-fill-subtle);
-  padding: var(--space-12) var(--space-16);
+  padding: var(--space-16) var(--space-16) var(--space-16) 0;
   display: flex;
   align-items: center;
   white-space: nowrap;
 }
 
 .state-matrix__cell {
-  background: var(--color-surface);
   padding: var(--space-16);
   display: flex;
   align-items: center;
