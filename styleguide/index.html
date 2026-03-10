@@ -7,14 +7,20 @@
   <link rel="stylesheet" href="../utilities.css">
   <link rel="stylesheet" href="typography.css">
   <link rel="stylesheet" href="styleguide.css">
+  <link rel="stylesheet" href="inspector.css">
 </head>
 <body>
   <div class="app-shell">
 
     <aside class="app-sidebar" id="app-sidebar">
-      <div class="app-sidebar__brand" id="sidebar-toggle">
-        <div class="app-sidebar__brand-name">Livemap Design System</div>
-        <div class="app-sidebar__brand-version">v0.1</div>
+      <div class="app-sidebar__brand">
+        <div class="app-sidebar__brand-text" id="sidebar-brand">
+          <div class="app-sidebar__brand-name">Livemap Design System</div>
+          <div class="app-sidebar__brand-version">v0.1</div>
+        </div>
+        <button class="app-sidebar__toggle" id="sidebar-toggle" aria-label="Toggle sidebar">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="10,3 5,8 10,13"/></svg>
+        </button>
       </div>
       <nav class="app-sidebar__nav" id="app-sidebar-nav"></nav>
       <div class="app-sidebar__profile">
@@ -29,7 +35,6 @@
     <div class="app-main">
       <header class="app-header">
         <div class="app-header__left">
-          <p class="app-header__title" id="header-title">Livemap Design System <span style="opacity: 0.5; margin-left: 4px;">v0.1</span></p>
           <h1 class="app-header__heading" id="header-heading">Typography <span>/ SF Pro</span></h1>
         </div>
         <div class="app-header__right">
@@ -58,11 +63,155 @@
             <button class="platform-toggle__btn" data-platform="ios">iOS</button>
             <button class="platform-toggle__btn" data-platform="android">Android</button>
           </div>
+          <button class="inspect-toggle" id="inspect-toggle" aria-label="Toggle token inspector" aria-pressed="false">
+            <svg class="inspect-toggle__icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="3"/><line x1="8" y1="1" x2="8" y2="4"/><line x1="8" y1="12" x2="8" y2="15"/><line x1="1" y1="8" x2="4" y2="8"/><line x1="12" y1="8" x2="15" y2="8"/></svg>
+            Inspect
+          </button>
         </div>
       </header>
 
       <div class="app-content" id="app-content">
-        <div class="content-panel" id="panel-typography">
+        <div class="content-page" id="page-home">
+
+    <div class="home-hero">
+      <p class="home-hero__desc">The shared design language for building Livemap across iOS, Android, and the web. Browse foundations, styles, components, and guidelines.</p>
+    </div>
+
+    <div class="home-group">
+      <div class="home-group__label">Foundations</div>
+      <div class="home-grid">
+        <div class="home-card" data-home-page="getting-started">
+          <div class="home-card__icon">
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10l7-7 7 7"/><path d="M5 8v8a1 1 0 001 1h8a1 1 0 001-1V8"/></svg>
+          </div>
+          <div class="home-card__body">
+            <div class="home-card__title">Getting Started</div>
+            <div class="home-card__desc">Principles, workflow, tools, and how to contribute.</div>
+          </div>
+        </div>
+        <div class="home-card" data-home-page="tokens">
+          <div class="home-card__icon">
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="6" height="6" rx="1"/><rect x="11" y="3" width="6" height="6" rx="1"/><rect x="3" y="11" width="6" height="6" rx="1"/><rect x="11" y="11" width="6" height="6" rx="1"/></svg>
+          </div>
+          <div class="home-card__body">
+            <div class="home-card__title">Design Tokens</div>
+            <div class="home-card__desc">Spacing, radii, surfaces, colors, and typography tokens.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="home-group">
+      <div class="home-group__label">Styles</div>
+      <div class="home-grid">
+        <div class="home-card" data-home-page="typography">
+          <div class="home-card__icon">
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h12"/><path d="M10 4v13"/><path d="M7 17h6"/></svg>
+          </div>
+          <div class="home-card__body">
+            <div class="home-card__title">Typography</div>
+            <div class="home-card__desc">Font families, type scale, weights, and text styles.</div>
+          </div>
+        </div>
+        <div class="home-card" data-home-page="colors">
+          <div class="home-card__icon">
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="7"/><circle cx="10" cy="7" r="2"/><circle cx="7.3" cy="12" r="2"/><circle cx="12.7" cy="12" r="2"/></svg>
+          </div>
+          <div class="home-card__body">
+            <div class="home-card__title">Colors</div>
+            <div class="home-card__desc">Palette, semantic colors, tints, and dark mode.</div>
+          </div>
+        </div>
+        <div class="home-card" data-home-page="spacing">
+          <div class="home-card__icon">
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="14" height="14" rx="1.5"/><line x1="7" y1="3" x2="7" y2="17"/><line x1="13" y1="3" x2="13" y2="17"/><line x1="3" y1="7" x2="17" y2="7"/><line x1="3" y1="13" x2="17" y2="13"/></svg>
+          </div>
+          <div class="home-card__body">
+            <div class="home-card__title">Spacing & Layout</div>
+            <div class="home-card__desc">Spacing scale, grid system, and breakpoints.</div>
+          </div>
+        </div>
+        <div class="home-card" data-home-page="elevation">
+          <div class="home-card__icon">
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="12" height="9" rx="1.5"/><rect x="6" y="9" width="12" height="9" rx="1.5"/></svg>
+          </div>
+          <div class="home-card__body">
+            <div class="home-card__title">Elevation & Borders</div>
+            <div class="home-card__desc">Shadows, border radii, dividers, and z-index layers.</div>
+          </div>
+        </div>
+        <div class="home-card" data-home-page="motion">
+          <div class="home-card__icon">
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17C3 17 6 3 10 3s7 14 7 14"/></svg>
+          </div>
+          <div class="home-card__body">
+            <div class="home-card__title">Motion</div>
+            <div class="home-card__desc">Easing curves, duration scale, and transitions.</div>
+          </div>
+        </div>
+        <div class="home-card" data-home-page="iconography">
+          <div class="home-card__icon">
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="7"/><path d="M10 7v3l2 2"/></svg>
+          </div>
+          <div class="home-card__body">
+            <div class="home-card__title">Iconography</div>
+            <div class="home-card__desc">Icon set, sizing, stroke, and usage guidelines.</div>
+          </div>
+        </div>
+        <div class="home-card" data-home-page="map">
+          <div class="home-card__icon">
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5l5-2 4 2 5-2v12l-5 2-4-2-5 2z"/><line x1="8" y1="3" x2="8" y2="15"/><line x1="12" y1="5" x2="12" y2="17"/></svg>
+          </div>
+          <div class="home-card__body">
+            <div class="home-card__title">Map</div>
+            <div class="home-card__desc">Labels, pins, map colors, terrain, and overlays.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="home-group">
+      <div class="home-group__label">Building Blocks</div>
+      <div class="home-grid">
+        <div class="home-card" data-home-page="components">
+          <div class="home-card__icon">
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="14" height="6" rx="1.5"/><rect x="3" y="11" width="6" height="6" rx="1.5"/><rect x="11" y="11" width="6" height="6" rx="1.5"/></svg>
+          </div>
+          <div class="home-card__body">
+            <div class="home-card__title">Components</div>
+            <div class="home-card__desc">Buttons, inputs, cards, modals, toasts, and more.</div>
+          </div>
+        </div>
+        <div class="home-card" data-home-page="patterns">
+          <div class="home-card__icon">
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="14" height="4" rx="1"/><rect x="3" y="9" width="6" height="8" rx="1"/><rect x="11" y="9" width="6" height="8" rx="1"/></svg>
+          </div>
+          <div class="home-card__body">
+            <div class="home-card__title">Patterns</div>
+            <div class="home-card__desc">Form layouts, navigation, data display, and states.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="home-group">
+      <div class="home-group__label">Resources</div>
+      <div class="home-grid">
+        <div class="home-card" data-home-page="guidelines">
+          <div class="home-card__icon">
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3h10a1 1 0 011 1v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4a1 1 0 011-1z"/><line x1="7" y1="7" x2="13" y2="7"/><line x1="7" y1="10" x2="11" y2="10"/></svg>
+          </div>
+          <div class="home-card__body">
+            <div class="home-card__title">Guidelines</div>
+            <div class="home-card__desc">Accessibility, responsive design, voice & tone, i18n.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+        </div>
+
+        <div class="content-page" id="page-typography" hidden>
     <!-- ============================================================
          1. Font Families
          ============================================================ -->
@@ -78,10 +227,10 @@
           <span class="family-card__usage">Variable font with automatic optical sizing (opsz 17-28)</span>
         </div>
         <div class="family-card__sample" style="font-family: var(--font-family);">
-          Explore Zürich from Bellevue to Bürkliplatz
+          Explore Zürich from Oerlikon to Wollishofen
         </div>
         <div class="family-card__sample-small" style="font-family: var(--font-family);">
-          Every pin on the map tells a story. From the Altstadt to the lakefront, Livemap helps you discover places worth visiting and people worth meeting.
+          Every pin on the map tells a story. From Wipkingen to Seefeld, Livemap helps you discover places worth visiting and people worth meeting.
         </div>
       </div>
 
@@ -743,7 +892,7 @@
         <div class="truncation-demo">
           <div class="truncation-demo__label">Single-line truncation</div>
           <div class="truncation-demo__box" style="max-width: 320px;">
-            <div class="type-label truncate">Schweizerisches Landesmuseum Zürich — Museumstrasse</div>
+            <div class="type-label truncate">Kunsthaus Zürich Chipperfield Zürich — Museumstrasse</div>
           </div>
         </div>
         <div class="truncation-demo">
@@ -789,90 +938,7 @@
 
 
     <!-- ============================================================
-         11. Map Labels
-         ============================================================ -->
-    <section id="map-labels">
-      <p class="section-label">Map Label Typography</p>
-      <p class="section-note">
-        Abstract presets for <span class="usage-hl">city names</span>, <span class="usage-hl">districts</span>, <span class="usage-hl">streets</span>, <span class="usage-hl">POIs</span>, and <span class="usage-hl">distance badges</span> on the map. Spec-level tokens &mdash; implementation depends on MapKit, Mapbox, or CSS overlays.
-      </p>
-
-      <div class="map-label-hierarchy">
-        <div class="map-label-row">
-          <div class="map-label-row__meta">
-            <span class="map-label-row__name">City</span>
-            <span class="map-label-row__spec">14px / Semibold / +0.02em</span>
-          </div>
-          <div class="map-label-row__sample" style="font-size: 14px; font-weight: 600; letter-spacing: 0.02em;">Zürich</div>
-        </div>
-        <div class="map-label-row">
-          <div class="map-label-row__meta">
-            <span class="map-label-row__name">District</span>
-            <span class="map-label-row__spec">12px / Medium / +0.04em</span>
-          </div>
-          <div class="map-label-row__sample" style="font-size: 12px; font-weight: 500; letter-spacing: 0.04em;">Altstadt</div>
-        </div>
-        <div class="map-label-row">
-          <div class="map-label-row__meta">
-            <span class="map-label-row__name">Street</span>
-            <span class="map-label-row__spec">11px / Regular / +0.02em</span>
-          </div>
-          <div class="map-label-row__sample" style="font-size: 11px; font-weight: 400; letter-spacing: 0.02em;">Bahnhofstrasse</div>
-        </div>
-        <div class="map-label-row">
-          <div class="map-label-row__meta">
-            <span class="map-label-row__name">POI</span>
-            <span class="map-label-row__spec">12px / Medium</span>
-          </div>
-          <div class="map-label-row__sample" style="font-size: 12px; font-weight: 500;">Confiserie Sprüngli</div>
-        </div>
-        <div class="map-label-row">
-          <div class="map-label-row__meta">
-            <span class="map-label-row__name">Distance</span>
-            <span class="map-label-row__spec">13px / Medium / tabular</span>
-          </div>
-          <div class="map-label-row__sample" style="font-size: 13px; font-weight: 500; font-variant-numeric: tabular-nums;">350 m</div>
-        </div>
-      </div>
-
-      <!-- Simulated map context -->
-      <p style="font-family: var(--font-family-text); font-size: 11px; font-weight: 600; color: #aeaeb2; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 16px;">Halo effect on map surfaces</p>
-      <div class="map-context">
-        <div class="map-surface map-surface--light">
-          <div class="map-halo" style="font-size: 14px; font-weight: 600; letter-spacing: 0.02em; color: #1c1c1e;">Zürich</div>
-          <div class="map-halo" style="font-size: 12px; font-weight: 500; letter-spacing: 0.04em; color: #3a3a3c;">Altstadt</div>
-          <div class="map-halo" style="font-size: 11px; font-weight: 400; letter-spacing: 0.02em; color: #636366;">Bahnhofstrasse</div>
-          <div class="map-halo" style="font-size: 12px; font-weight: 500; color: #007aff;">Confiserie Sprüngli</div>
-        </div>
-        <div class="map-surface map-surface--dark">
-          <div class="map-halo--dark" style="font-size: 14px; font-weight: 600; letter-spacing: 0.02em; color: #e8e8ed;">Zürich</div>
-          <div class="map-halo--dark" style="font-size: 12px; font-weight: 500; letter-spacing: 0.04em; color: #a0a0b0;">Altstadt</div>
-          <div class="map-halo--dark" style="font-size: 11px; font-weight: 400; letter-spacing: 0.02em; color: #70708a;">Bahnhofstrasse</div>
-          <div class="map-halo--dark" style="font-size: 12px; font-weight: 500; color: #5ac8fa;">Confiserie Sprüngli</div>
-        </div>
-      </div>
-
-      <!-- Condensed comparison -->
-      <p style="font-family: var(--font-family-text); font-size: 11px; font-weight: 600; color: #aeaeb2; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 16px; margin-top: 32px;">Normal vs Condensed width</p>
-      <div style="display: flex; gap: 48px; margin-bottom: 24px;">
-        <div>
-          <div style="font-family: var(--font-family-text); font-size: 11px; color: #aeaeb2; margin-bottom: 8px;">Normal (wdth: 100)</div>
-          <div style="font-size: 12px; font-weight: 500; letter-spacing: 0.04em; color: #1c1c1e; font-stretch: 100%;">Schweizerisches Landesmuseum</div>
-        </div>
-        <div>
-          <div style="font-family: var(--font-family-text); font-size: 11px; color: #aeaeb2; margin-bottom: 8px;">Condensed (wdth: 60)</div>
-          <div style="font-size: 12px; font-weight: 500; letter-spacing: 0.04em; color: #1c1c1e; font-stretch: 60%;">Schweizerisches Landesmuseum</div>
-        </div>
-      </div>
-
-      <div class="rule-box">
-        These are <strong>spec-level tokens</strong> &mdash; implementation depends on MapKit, Mapbox, or CSS overlays. Native map SDKs handle font rendering differently from CSS.
-      </div>
-    </section>
-
-
-    <!-- ============================================================
-         12. Accessibility
+         11. Accessibility
          ============================================================ -->
     <section id="accessibility">
       <p class="section-label">Minimum Sizes &amp; Accessibility</p>
@@ -1750,103 +1816,2169 @@
         </div>
 
 
-        <div class="content-panel" id="panel-tokens" hidden>
-          <div class="content-panel__placeholder">
-            <svg class="content-panel__placeholder-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M14 8C10.5 8 7 11.5 7 15s3.5 7 7 7"/><path d="M14 22c-3.5 0-7 3.5-7 7s3.5 7 7 7"/><path d="M34 8c3.5 0 7 3.5 7 7s-3.5 7-7 7"/><path d="M34 22c3.5 0 7 3.5 7 7s-3.5 7-7 7"/><line x1="20" y1="24" x2="28" y2="24"/>
-            </svg>
-            <p class="content-panel__placeholder-text">Design Tokens coming soon</p>
+        <div class="content-page" id="page-tokens" hidden>
+
+    <!-- ============================================================
+         1. Spacing Scale
+         ============================================================ -->
+    <section id="tk-spacing">
+      <p class="section-label">Spacing Scale</p>
+      <p class="section-note">
+        4pt base grid. Below 16 uses 2pt micro-steps for component internals; above 16 snaps to 4pt or 8pt increments for layout spacing.
+      </p>
+
+      <div class="token-spacing-bars">
+        <div class="token-spacing-row">
+          <span class="token-spacing-row__label">--space-2</span>
+          <div class="token-spacing-row__bar" style="width: 2px;"></div>
+          <span class="token-spacing-row__value">2px</span>
+        </div>
+        <div class="token-spacing-row">
+          <span class="token-spacing-row__label">--space-4</span>
+          <div class="token-spacing-row__bar" style="width: 4px;"></div>
+          <span class="token-spacing-row__value">4px</span>
+        </div>
+        <div class="token-spacing-row">
+          <span class="token-spacing-row__label">--space-6</span>
+          <div class="token-spacing-row__bar" style="width: 6px;"></div>
+          <span class="token-spacing-row__value">6px</span>
+        </div>
+        <div class="token-spacing-row">
+          <span class="token-spacing-row__label">--space-8</span>
+          <div class="token-spacing-row__bar" style="width: 8px;"></div>
+          <span class="token-spacing-row__value">8px</span>
+        </div>
+        <div class="token-spacing-row">
+          <span class="token-spacing-row__label">--space-10</span>
+          <div class="token-spacing-row__bar" style="width: 10px;"></div>
+          <span class="token-spacing-row__value">10px</span>
+        </div>
+        <div class="token-spacing-row">
+          <span class="token-spacing-row__label">--space-12</span>
+          <div class="token-spacing-row__bar" style="width: 12px;"></div>
+          <span class="token-spacing-row__value">12px</span>
+        </div>
+        <div class="token-spacing-row">
+          <span class="token-spacing-row__label">--space-16</span>
+          <div class="token-spacing-row__bar" style="width: 16px;"></div>
+          <span class="token-spacing-row__value">16px</span>
+        </div>
+        <div class="token-spacing-row">
+          <span class="token-spacing-row__label">--space-20</span>
+          <div class="token-spacing-row__bar" style="width: 20px;"></div>
+          <span class="token-spacing-row__value">20px</span>
+        </div>
+        <div class="token-spacing-row">
+          <span class="token-spacing-row__label">--space-24</span>
+          <div class="token-spacing-row__bar" style="width: 24px;"></div>
+          <span class="token-spacing-row__value">24px</span>
+        </div>
+        <div class="token-spacing-row">
+          <span class="token-spacing-row__label">--space-32</span>
+          <div class="token-spacing-row__bar" style="width: 32px;"></div>
+          <span class="token-spacing-row__value">32px</span>
+        </div>
+        <div class="token-spacing-row">
+          <span class="token-spacing-row__label">--space-40</span>
+          <div class="token-spacing-row__bar" style="width: 40px;"></div>
+          <span class="token-spacing-row__value">40px</span>
+        </div>
+        <div class="token-spacing-row">
+          <span class="token-spacing-row__label">--space-48</span>
+          <div class="token-spacing-row__bar" style="width: 48px;"></div>
+          <span class="token-spacing-row__value">48px</span>
+        </div>
+        <div class="token-spacing-row">
+          <span class="token-spacing-row__label">--space-64</span>
+          <div class="token-spacing-row__bar" style="width: 64px;"></div>
+          <span class="token-spacing-row__value">64px</span>
+        </div>
+        <div class="token-spacing-row">
+          <span class="token-spacing-row__label">--space-80</span>
+          <div class="token-spacing-row__bar" style="width: 80px;"></div>
+          <span class="token-spacing-row__value">80px</span>
+        </div>
+        <div class="token-spacing-row">
+          <span class="token-spacing-row__label">--space-96</span>
+          <div class="token-spacing-row__bar" style="width: 96px;"></div>
+          <span class="token-spacing-row__value">96px</span>
+        </div>
+      </div>
+
+      <table class="token-table">
+        <thead>
+          <tr>
+            <th>Token</th>
+            <th>CSS</th>
+            <th>iOS</th>
+            <th>Android</th>
+            <th>Value</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>space-2</td><td><code>var(--space-2)</code></td><td>Spacing.s2</td><td>R.dimen.space_2</td><td>2px</td></tr>
+          <tr><td>space-4</td><td><code>var(--space-4)</code></td><td>Spacing.s4</td><td>R.dimen.space_4</td><td>4px</td></tr>
+          <tr><td>space-6</td><td><code>var(--space-6)</code></td><td>Spacing.s6</td><td>R.dimen.space_6</td><td>6px</td></tr>
+          <tr><td>space-8</td><td><code>var(--space-8)</code></td><td>Spacing.s8</td><td>R.dimen.space_8</td><td>8px</td></tr>
+          <tr><td>space-10</td><td><code>var(--space-10)</code></td><td>Spacing.s10</td><td>R.dimen.space_10</td><td>10px</td></tr>
+          <tr><td>space-12</td><td><code>var(--space-12)</code></td><td>Spacing.s12</td><td>R.dimen.space_12</td><td>12px</td></tr>
+          <tr><td>space-16</td><td><code>var(--space-16)</code></td><td>Spacing.s16</td><td>R.dimen.space_16</td><td>16px</td></tr>
+          <tr><td>space-20</td><td><code>var(--space-20)</code></td><td>Spacing.s20</td><td>R.dimen.space_20</td><td>20px</td></tr>
+          <tr><td>space-24</td><td><code>var(--space-24)</code></td><td>Spacing.s24</td><td>R.dimen.space_24</td><td>24px</td></tr>
+          <tr><td>space-32</td><td><code>var(--space-32)</code></td><td>Spacing.s32</td><td>R.dimen.space_32</td><td>32px</td></tr>
+          <tr><td>space-40</td><td><code>var(--space-40)</code></td><td>Spacing.s40</td><td>R.dimen.space_40</td><td>40px</td></tr>
+          <tr><td>space-48</td><td><code>var(--space-48)</code></td><td>Spacing.s48</td><td>R.dimen.space_48</td><td>48px</td></tr>
+          <tr><td>space-64</td><td><code>var(--space-64)</code></td><td>Spacing.s64</td><td>R.dimen.space_64</td><td>64px</td></tr>
+          <tr><td>space-80</td><td><code>var(--space-80)</code></td><td>Spacing.s80</td><td>R.dimen.space_80</td><td>80px</td></tr>
+          <tr><td>space-96</td><td><code>var(--space-96)</code></td><td>Spacing.s96</td><td>R.dimen.space_96</td><td>96px</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+
+    <!-- ============================================================
+         2. Border Radius
+         ============================================================ -->
+    <section id="tk-radius">
+      <p class="section-label">Border Radius</p>
+      <p class="section-note">
+        Progressive scale from small interactive elements to large surfaces. The <code>full</code> token creates pill shapes and circles.
+      </p>
+
+      <div class="token-radius-grid">
+        <div class="token-radius-card" style="border-radius: 6px;">
+          <span class="token-radius-card__name">xs</span>
+          <span class="token-radius-card__value">6px</span>
+        </div>
+        <div class="token-radius-card" style="border-radius: 8px;">
+          <span class="token-radius-card__name">sm</span>
+          <span class="token-radius-card__value">8px</span>
+        </div>
+        <div class="token-radius-card" style="border-radius: 12px;">
+          <span class="token-radius-card__name">md</span>
+          <span class="token-radius-card__value">12px</span>
+        </div>
+        <div class="token-radius-card" style="border-radius: 16px;">
+          <span class="token-radius-card__name">lg</span>
+          <span class="token-radius-card__value">16px</span>
+        </div>
+        <div class="token-radius-card" style="border-radius: 20px;">
+          <span class="token-radius-card__name">xl</span>
+          <span class="token-radius-card__value">20px</span>
+        </div>
+        <div class="token-radius-card" style="border-radius: 9999px;">
+          <span class="token-radius-card__name">full</span>
+          <span class="token-radius-card__value">9999px</span>
+        </div>
+      </div>
+
+      <table class="token-table">
+        <thead>
+          <tr>
+            <th>Token</th>
+            <th>CSS</th>
+            <th>Value</th>
+            <th>Usage</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>radius-xs</td><td><code>var(--radius-xs)</code></td><td>6px</td><td>Tags, code blocks, small controls</td></tr>
+          <tr><td>radius-sm</td><td><code>var(--radius-sm)</code></td><td>8px</td><td>Inputs, nav items, buttons</td></tr>
+          <tr><td>radius-md</td><td><code>var(--radius-md)</code></td><td>12px</td><td>Cards, dialogs, popovers</td></tr>
+          <tr><td>radius-lg</td><td><code>var(--radius-lg)</code></td><td>16px</td><td>Large cards, panels</td></tr>
+          <tr><td>radius-xl</td><td><code>var(--radius-xl)</code></td><td>20px</td><td>Feature cards, surfaces</td></tr>
+          <tr><td>radius-full</td><td><code>var(--radius-full)</code></td><td>9999px</td><td>Pills, avatars, circular elements</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+
+    <!-- ============================================================
+         3. Surfaces & Fills
+         ============================================================ -->
+    <section id="tk-surfaces">
+      <p class="section-label">Surfaces &amp; Fills</p>
+      <p class="section-note">
+        Background layers, overlay fills, and separator colors. Light mode values shown below; dark mode overrides follow.
+      </p>
+
+      <!-- Surface layers -->
+      <div class="token-surface-stack">
+        <div class="token-surface-layer" style="background: #ffffff;">
+          <div class="token-surface-layer__info">
+            <span class="token-surface-layer__name">Surface</span>
+            <span class="token-surface-layer__var">--color-surface</span>
+          </div>
+          <span class="token-surface-layer__value">#ffffff</span>
+        </div>
+        <div class="token-surface-layer" style="background: #fafafc;">
+          <div class="token-surface-layer__info">
+            <span class="token-surface-layer__name">Surface Secondary</span>
+            <span class="token-surface-layer__var">--color-surface-secondary</span>
+          </div>
+          <span class="token-surface-layer__value">#fafafc</span>
+        </div>
+        <div class="token-surface-layer" style="background: rgba(0, 0, 0, 0.04);">
+          <div class="token-surface-layer__info">
+            <span class="token-surface-layer__name">Fill</span>
+            <span class="token-surface-layer__var">--color-fill</span>
+          </div>
+          <span class="token-surface-layer__value">rgba(0,0,0,0.04)</span>
+        </div>
+        <div class="token-surface-layer" style="background: rgba(0, 0, 0, 0.03);">
+          <div class="token-surface-layer__info">
+            <span class="token-surface-layer__name">Fill Secondary</span>
+            <span class="token-surface-layer__var">--color-fill-secondary</span>
+          </div>
+          <span class="token-surface-layer__value">rgba(0,0,0,0.03)</span>
+        </div>
+      </div>
+
+      <!-- Separators -->
+      <div class="token-separator-samples">
+        <div class="token-separator-sample">
+          <div class="token-separator-sample__line" style="border-top-color: rgba(0, 0, 0, 0.06);"></div>
+          <div class="token-separator-sample__info">
+            <span class="token-separator-sample__name">Separator</span>
+            <span class="token-separator-sample__var">rgba(0,0,0,0.06)</span>
+          </div>
+        </div>
+        <div class="token-separator-sample">
+          <div class="token-separator-sample__line" style="border-top-color: rgba(0, 0, 0, 0.04);"></div>
+          <div class="token-separator-sample__info">
+            <span class="token-separator-sample__name">Separator Subtle</span>
+            <span class="token-separator-sample__var">rgba(0,0,0,0.04)</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- System grays -->
+      <div class="token-gray-row">
+        <div class="token-gray-swatch">
+          <div class="token-gray-swatch__color" style="background: #8e8e93;"></div>
+          <span class="token-gray-swatch__name">Gray</span>
+          <span class="token-gray-swatch__hex">#8e8e93</span>
+        </div>
+        <div class="token-gray-swatch">
+          <div class="token-gray-swatch__color" style="background: #aeaeb2;"></div>
+          <span class="token-gray-swatch__name">Gray 2</span>
+          <span class="token-gray-swatch__hex">#aeaeb2</span>
+        </div>
+        <div class="token-gray-swatch">
+          <div class="token-gray-swatch__color" style="background: #c7c7cc;"></div>
+          <span class="token-gray-swatch__name">Gray 3</span>
+          <span class="token-gray-swatch__hex">#c7c7cc</span>
+        </div>
+        <div class="token-gray-swatch">
+          <div class="token-gray-swatch__color" style="background: #d1d1d6;"></div>
+          <span class="token-gray-swatch__name">Gray 4</span>
+          <span class="token-gray-swatch__hex">#d1d1d6</span>
+        </div>
+        <div class="token-gray-swatch">
+          <div class="token-gray-swatch__color" style="background: #e5e5ea;"></div>
+          <span class="token-gray-swatch__name">Gray 5</span>
+          <span class="token-gray-swatch__hex">#e5e5ea</span>
+        </div>
+      </div>
+
+      <!-- Dark mode -->
+      <div class="dark-strip">
+        <div class="token-surface-stack">
+          <div class="token-surface-layer" style="background: #1c1c1e; border-color: rgba(255,255,255,0.08);">
+            <div class="token-surface-layer__info">
+              <span class="token-surface-layer__name">Surface</span>
+              <span class="token-surface-layer__var">--color-surface</span>
+            </div>
+            <span class="token-surface-layer__value">#1c1c1e</span>
+          </div>
+          <div class="token-surface-layer" style="background: #2c2c2e; border-color: rgba(255,255,255,0.08);">
+            <div class="token-surface-layer__info">
+              <span class="token-surface-layer__name">Surface Secondary</span>
+              <span class="token-surface-layer__var">--color-surface-secondary</span>
+            </div>
+            <span class="token-surface-layer__value">#2c2c2e</span>
+          </div>
+          <div class="token-surface-layer" style="background: rgba(255, 255, 255, 0.06); border-color: rgba(255,255,255,0.08);">
+            <div class="token-surface-layer__info">
+              <span class="token-surface-layer__name">Fill</span>
+              <span class="token-surface-layer__var">--color-fill</span>
+            </div>
+            <span class="token-surface-layer__value">rgba(255,255,255,0.06)</span>
+          </div>
+          <div class="token-surface-layer" style="background: rgba(255, 255, 255, 0.04); border-color: rgba(255,255,255,0.08);">
+            <div class="token-surface-layer__info">
+              <span class="token-surface-layer__name">Fill Secondary</span>
+              <span class="token-surface-layer__var">--color-fill-secondary</span>
+            </div>
+            <span class="token-surface-layer__value">rgba(255,255,255,0.04)</span>
           </div>
         </div>
 
-        <div class="content-panel" id="panel-getting-started" hidden>
-          <div class="content-panel__placeholder">
-            <svg class="content-panel__placeholder-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M6 24h36M30 14l10 10-10 10"/><circle cx="12" cy="24" r="3.5" fill="currentColor" stroke="none"/>
-            </svg>
-            <p class="content-panel__placeholder-text">Getting Started coming soon</p>
+        <div class="token-separator-samples">
+          <div class="token-separator-sample">
+            <div class="token-separator-sample__line" style="border-top-color: rgba(255, 255, 255, 0.08);"></div>
+            <div class="token-separator-sample__info">
+              <span class="token-separator-sample__name">Separator</span>
+              <span class="token-separator-sample__var">rgba(255,255,255,0.08)</span>
+            </div>
+          </div>
+          <div class="token-separator-sample">
+            <div class="token-separator-sample__line" style="border-top-color: rgba(255, 255, 255, 0.05);"></div>
+            <div class="token-separator-sample__info">
+              <span class="token-separator-sample__name">Separator Subtle</span>
+              <span class="token-separator-sample__var">rgba(255,255,255,0.05)</span>
+            </div>
           </div>
         </div>
 
-        <div class="content-panel" id="panel-colors" hidden>
-          <div class="content-panel__placeholder">
-            <svg class="content-panel__placeholder-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
-              <circle cx="24" cy="24" r="18"/>
-              <circle cx="18" cy="18" r="3.5" fill="currentColor"/>
-              <circle cx="30" cy="16" r="3.5" fill="currentColor"/>
-              <circle cx="33" cy="27" r="3.5" fill="currentColor"/>
-              <circle cx="20" cy="30" r="3.5" fill="currentColor"/>
-            </svg>
-            <p class="content-panel__placeholder-text">Color system coming soon</p>
+        <div class="token-gray-row">
+          <div class="token-gray-swatch">
+            <div class="token-gray-swatch__color" style="background: #8e8e93;"></div>
+            <span class="token-gray-swatch__name">Gray</span>
+            <span class="token-gray-swatch__hex">#8e8e93</span>
+          </div>
+          <div class="token-gray-swatch">
+            <div class="token-gray-swatch__color" style="background: #636366;"></div>
+            <span class="token-gray-swatch__name">Gray 2</span>
+            <span class="token-gray-swatch__hex">#636366</span>
+          </div>
+          <div class="token-gray-swatch">
+            <div class="token-gray-swatch__color" style="background: #48484a;"></div>
+            <span class="token-gray-swatch__name">Gray 3</span>
+            <span class="token-gray-swatch__hex">#48484a</span>
+          </div>
+          <div class="token-gray-swatch">
+            <div class="token-gray-swatch__color" style="background: #3a3a3c;"></div>
+            <span class="token-gray-swatch__name">Gray 4</span>
+            <span class="token-gray-swatch__hex">#3a3a3c</span>
+          </div>
+          <div class="token-gray-swatch">
+            <div class="token-gray-swatch__color" style="background: #2c2c2e;"></div>
+            <span class="token-gray-swatch__name">Gray 5</span>
+            <span class="token-gray-swatch__hex">#2c2c2e</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         4. Colors & Grays
+         ============================================================ -->
+    <section id="tk-colors">
+      <p class="section-label">Colors &amp; Grays</p>
+      <p class="section-note">
+        Four semantic label colors that adapt to light/dark mode. Plus tinted colors from the Livemap palette for status and actions.
+      </p>
+
+      <!-- Label hierarchy -->
+      <div class="token-label-preview">
+        <div class="token-label-row">
+          <div class="token-label-row__swatch" style="background: #1c1c1e;"></div>
+          <div class="token-label-row__info">
+            <span class="token-label-row__name">Label (Primary)</span>
+            <span class="token-label-row__var">--color-label</span>
+          </div>
+          <div class="token-label-row__sample" style="color: #1c1c1e;">Ristorante Da Mario</div>
+          <span class="token-label-row__value">#1c1c1e</span>
+        </div>
+        <div class="token-label-row">
+          <div class="token-label-row__swatch" style="background: rgba(60, 60, 67, 0.75);"></div>
+          <div class="token-label-row__info">
+            <span class="token-label-row__name">Secondary</span>
+            <span class="token-label-row__var">--color-label-secondary</span>
+          </div>
+          <div class="token-label-row__sample" style="color: rgba(60, 60, 67, 0.75);">Italian &middot; $$$ &middot; 1.2 km</div>
+          <span class="token-label-row__value">#3c3c43 / 75%</span>
+        </div>
+        <div class="token-label-row">
+          <div class="token-label-row__swatch" style="background: rgba(60, 60, 67, 0.30);"></div>
+          <div class="token-label-row__info">
+            <span class="token-label-row__name">Tertiary</span>
+            <span class="token-label-row__var">--color-label-tertiary</span>
+          </div>
+          <div class="token-label-row__sample" style="color: rgba(60, 60, 67, 0.30);">Search places&hellip;</div>
+          <span class="token-label-row__value">#3c3c43 / 30%</span>
+        </div>
+        <div class="token-label-row">
+          <div class="token-label-row__swatch" style="background: rgba(60, 60, 67, 0.18);"></div>
+          <div class="token-label-row__info">
+            <span class="token-label-row__name">Quaternary</span>
+            <span class="token-label-row__var">--color-label-quaternary</span>
+          </div>
+          <div class="token-label-row__sample" style="color: rgba(60, 60, 67, 0.18);">Decorative only</div>
+          <span class="token-label-row__value">#3c3c43 / 18%</span>
+        </div>
+      </div>
+
+      <!-- Tint colors -->
+      <div class="token-tint-row">
+        <div class="token-tint-card">
+          <div class="token-tint-card__swatch" style="background: #ff3b30;"></div>
+          <span class="token-tint-card__name">Destructive</span>
+          <span class="token-tint-card__hex">#ff3b30</span>
+        </div>
+        <div class="token-tint-card">
+          <div class="token-tint-card__swatch" style="background: #34c759;"></div>
+          <span class="token-tint-card__name">Positive</span>
+          <span class="token-tint-card__hex">#34c759</span>
+        </div>
+        <div class="token-tint-card">
+          <div class="token-tint-card__swatch" style="background: #007aff;"></div>
+          <span class="token-tint-card__name">Action</span>
+          <span class="token-tint-card__hex">#007aff</span>
+        </div>
+      </div>
+
+      <!-- Dark mode -->
+      <div class="dark-strip">
+        <div class="token-label-preview" style="margin-bottom: var(--space-24);">
+          <div class="token-label-row">
+            <div class="token-label-row__swatch" style="background: #fff; border-color: rgba(255,255,255,0.1);"></div>
+            <div class="token-label-row__info">
+              <span class="token-label-row__name">Label (Primary)</span>
+              <span class="token-label-row__var">--color-label</span>
+            </div>
+            <div class="token-label-row__sample" style="color: #fff;">Ristorante Da Mario</div>
+            <span class="token-label-row__value">#ffffff</span>
+          </div>
+          <div class="token-label-row">
+            <div class="token-label-row__swatch" style="background: rgba(235, 235, 245, 0.60); border-color: rgba(255,255,255,0.1);"></div>
+            <div class="token-label-row__info">
+              <span class="token-label-row__name">Secondary</span>
+              <span class="token-label-row__var">--color-label-secondary</span>
+            </div>
+            <div class="token-label-row__sample" style="color: rgba(235, 235, 245, 0.60);">Italian &middot; $$$ &middot; 1.2 km</div>
+            <span class="token-label-row__value">#ebebf5 / 60%</span>
+          </div>
+          <div class="token-label-row">
+            <div class="token-label-row__swatch" style="background: rgba(235, 235, 245, 0.30); border-color: rgba(255,255,255,0.1);"></div>
+            <div class="token-label-row__info">
+              <span class="token-label-row__name">Tertiary</span>
+              <span class="token-label-row__var">--color-label-tertiary</span>
+            </div>
+            <div class="token-label-row__sample" style="color: rgba(235, 235, 245, 0.30);">Search places&hellip;</div>
+            <span class="token-label-row__value">#ebebf5 / 30%</span>
+          </div>
+          <div class="token-label-row">
+            <div class="token-label-row__swatch" style="background: rgba(235, 235, 245, 0.18); border-color: rgba(255,255,255,0.1);"></div>
+            <div class="token-label-row__info">
+              <span class="token-label-row__name">Quaternary</span>
+              <span class="token-label-row__var">--color-label-quaternary</span>
+            </div>
+            <div class="token-label-row__sample" style="color: rgba(235, 235, 245, 0.18);">Decorative only</div>
+            <span class="token-label-row__value">#ebebf5 / 18%</span>
           </div>
         </div>
 
-        <div class="content-panel" id="panel-spacing" hidden>
-          <div class="content-panel__placeholder">
-            <svg class="content-panel__placeholder-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <div class="token-tint-row" style="margin-bottom: 0;">
+          <div class="token-tint-card">
+            <div class="token-tint-card__swatch" style="background: #ff453a;"></div>
+            <span class="token-tint-card__name">Destructive</span>
+            <span class="token-tint-card__hex">#ff453a</span>
+          </div>
+          <div class="token-tint-card">
+            <div class="token-tint-card__swatch" style="background: #30d158;"></div>
+            <span class="token-tint-card__name">Positive</span>
+            <span class="token-tint-card__hex">#30d158</span>
+          </div>
+          <div class="token-tint-card">
+            <div class="token-tint-card__swatch" style="background: #0a84ff;"></div>
+            <span class="token-tint-card__name">Action</span>
+            <span class="token-tint-card__hex">#0a84ff</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         5. Typography Tokens
+         ============================================================ -->
+    <section id="tk-typography">
+      <p class="section-label">Typography</p>
+      <p class="section-note">
+        Complete type token reference. Sizes, line heights, letter spacing, and weights for every scale step. Platform mappings: CSS custom properties, iOS named constants, Android dimension resources.
+      </p>
+
+      <!-- Font families -->
+      <table class="token-table">
+        <thead>
+          <tr>
+            <th>Family</th>
+            <th>CSS</th>
+            <th>Fallback Stack</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>SF Pro</td><td><code>var(--font-family)</code></td><td>-apple-system, BlinkMacSystemFont, system-ui, sans-serif</td></tr>
+          <tr><td>SF Pro Display</td><td><code>var(--font-family-display)</code></td><td>-apple-system, BlinkMacSystemFont, system-ui, sans-serif</td></tr>
+          <tr><td>SF Pro Text</td><td><code>var(--font-family-text)</code></td><td>-apple-system, BlinkMacSystemFont, system-ui, sans-serif</td></tr>
+          <tr><td>SF Pro Rounded</td><td><code>var(--font-family-rounded)</code></td><td>-apple-system, BlinkMacSystemFont, system-ui, sans-serif</td></tr>
+          <tr><td>SF Mono</td><td><code>var(--font-family-mono)</code></td><td>SFMono-Regular, ui-monospace, Menlo, monospace</td></tr>
+        </tbody>
+      </table>
+
+      <!-- Type scale -->
+      <table class="token-table">
+        <thead>
+          <tr>
+            <th>Style</th>
+            <th>Size</th>
+            <th>Line Height</th>
+            <th>Letter Spacing</th>
+            <th>Weight</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Display</td><td>34px</td><td>41px</td><td>+0.011em</td><td>Regular (400)</td></tr>
+          <tr><td>Heading LG</td><td>28px</td><td>34px</td><td>+0.013em</td><td>Regular (400)</td></tr>
+          <tr><td>Heading MD</td><td>22px</td><td>28px</td><td>+0.016em</td><td>Regular (400)</td></tr>
+          <tr><td>Heading SM</td><td>20px</td><td>25px</td><td>+0.019em</td><td>Regular (400)</td></tr>
+          <tr><td>Label</td><td>17px</td><td>22px</td><td>-0.024em</td><td>Semibold (600)</td></tr>
+          <tr><td>Body</td><td>17px</td><td>22px</td><td>-0.024em</td><td>Regular (400)</td></tr>
+          <tr><td>Detail</td><td>16px</td><td>21px</td><td>-0.020em</td><td>Regular (400)</td></tr>
+          <tr><td>Small</td><td>15px</td><td>20px</td><td>-0.016em</td><td>Regular (400)</td></tr>
+          <tr><td>Fine</td><td>13px</td><td>18px</td><td>-0.006em</td><td>Regular (400)</td></tr>
+          <tr><td>Micro</td><td>12px</td><td>16px</td><td>0</td><td>Regular (400)</td></tr>
+          <tr><td>Nano</td><td>11px</td><td>13px</td><td>+0.006em</td><td>Regular (400)</td></tr>
+        </tbody>
+      </table>
+
+      <!-- Font weights -->
+      <table class="token-table">
+        <thead>
+          <tr>
+            <th>Weight</th>
+            <th>CSS</th>
+            <th>iOS</th>
+            <th>Value</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Regular</td><td><code>var(--font-weight-regular)</code></td><td>.regular</td><td>400</td></tr>
+          <tr><td>Medium</td><td><code>var(--font-weight-medium)</code></td><td>.medium</td><td>500</td></tr>
+          <tr><td>Semibold</td><td><code>var(--font-weight-semibold)</code></td><td>.semibold</td><td>600</td></tr>
+          <tr><td>Bold</td><td><code>var(--font-weight-bold)</code></td><td>.bold</td><td>700</td></tr>
+        </tbody>
+      </table>
+
+      <div class="rule-box">
+        <strong>Platform mapping:</strong> CSS uses <code>var(--font-size-*)</code> + <code>var(--line-height-*)</code> + <code>var(--letter-spacing-*)</code>. iOS uses <code>UIFont.TextStyle</code> with Dynamic Type. Android uses <code>TextAppearance.Material3.*</code> with matching <code>R.dimen</code> resources.
+      </div>
+    </section>
+
+        </div>
+
+        <div class="content-page" id="page-getting-started" hidden>
+
+    <!-- ============================================================
+         1. Overview
+         ============================================================ -->
+    <section id="gs-overview">
+      <p class="section-label">Overview</p>
+      <p class="section-note">
+        The Livemap Design System is the shared language for everyone building Livemap. It defines the typography, color, spacing, and component decisions that keep the product coherent across iOS, Android, and the web.
+      </p>
+      <p class="gs-intro">
+        This styleguide is the single source of truth. Every token, type scale, and pattern documented here is what ships in the product. If it's not in the system, it shouldn't be in the build. Use it to <strong>design with real values</strong>, <strong>review work against a known baseline</strong>, and <strong>onboard new team members</strong> without tribal knowledge.
+      </p>
+    </section>
+
+    <!-- ============================================================
+         2. Try It Out
+         ============================================================ -->
+    <section id="gs-playground">
+      <p class="section-label">Try It Out</p>
+      <p class="section-note">
+        The fastest way to understand the system is to use it. Open the Livemap kit in Pencil and start designing with real tokens immediately &mdash; no setup required.
+      </p>
+
+      <div class="gs-playground-card">
+        <div class="gs-playground-card__icon">
+          <svg viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="22" height="22" rx="5"/>
+            <path d="M9 14l3 3 7-7"/>
+          </svg>
+        </div>
+        <div class="gs-playground-card__body">
+          <p class="gs-playground-card__title">Livemap Design Kit on Pencil</p>
+          <p class="gs-playground-card__desc">Explore tokens, test typography, and prototype screens with the full Livemap design system loaded. Works in the browser &mdash; nothing to install.</p>
+        </div>
+        <div class="gs-playground-card__action">
+          <a class="gs-playground-card__link" href="https://pencil.dev" target="_blank" rel="noopener">
+            Open in Pencil
+            <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 2h7v7"/><path d="M12 2L5 9"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         3. Design Principles
+         ============================================================ -->
+    <section id="gs-principles">
+      <p class="section-label">Design Principles</p>
+      <p class="section-note">
+        Four principles guide every design decision at Livemap. When you're unsure which direction to take, come back to these.
+      </p>
+
+      <div class="gs-principles-grid">
+        <div class="gs-principle">
+          <p class="gs-principle__number">01</p>
+          <p class="gs-principle__name">Map-first</p>
+          <p class="gs-principle__desc">The map is the product. UI should support spatial understanding, never compete with it. Keep chrome minimal, let geography do the talking.</p>
+        </div>
+        <div class="gs-principle">
+          <p class="gs-principle__number">02</p>
+          <p class="gs-principle__name">Clarity over cleverness</p>
+          <p class="gs-principle__desc">Every element earns its place. Prefer clear labels over icons, visible states over hidden ones, and obvious actions over discoverable ones.</p>
+        </div>
+        <div class="gs-principle">
+          <p class="gs-principle__number">03</p>
+          <p class="gs-principle__name">Platform-native feel</p>
+          <p class="gs-principle__desc">SF Pro on Apple, Roboto on Android, system fonts on the web. Respect each platform's conventions for navigation, gestures, and density.</p>
+        </div>
+        <div class="gs-principle">
+          <p class="gs-principle__number">04</p>
+          <p class="gs-principle__name">Accessible by default</p>
+          <p class="gs-principle__desc">Contrast ratios, touch targets, and semantic markup aren't afterthoughts. Build for the widest range of people and contexts from the start.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         4. How We Work
+         ============================================================ -->
+    <section id="gs-workflow">
+      <p class="section-label">How We Work</p>
+      <p class="section-note">
+        Design system changes follow a simple loop: propose, design, document, ship.
+      </p>
+
+      <div class="gs-workflow-steps">
+        <div class="gs-workflow-step">
+          <div class="gs-workflow-step__number">1</div>
+          <div class="gs-workflow-step__body">
+            <p class="gs-workflow-step__title">Design with real tokens</p>
+            <p class="gs-workflow-step__desc">Use the Pencil kit or this styleguide as your starting point. Pull colors, type styles, and spacing from the system &mdash; don't eyeball values.</p>
+          </div>
+        </div>
+        <div class="gs-workflow-step">
+          <div class="gs-workflow-step__number">2</div>
+          <div class="gs-workflow-step__body">
+            <p class="gs-workflow-step__title">Validate across platforms</p>
+            <p class="gs-workflow-step__desc">Use the platform toggle (HTML / iOS / Android) in this styleguide to verify that your design maps cleanly to each target. Naming conventions differ &mdash; the system handles the translation.</p>
+          </div>
+        </div>
+        <div class="gs-workflow-step">
+          <div class="gs-workflow-step__number">3</div>
+          <div class="gs-workflow-step__body">
+            <p class="gs-workflow-step__title">Document what you ship</p>
+            <p class="gs-workflow-step__desc">If you introduce a new token, pattern, or component, add it to the styleguide before closing the ticket. Undocumented additions create drift.</p>
+          </div>
+        </div>
+        <div class="gs-workflow-step">
+          <div class="gs-workflow-step__number">4</div>
+          <div class="gs-workflow-step__body">
+            <p class="gs-workflow-step__title">Review against the system</p>
+            <p class="gs-workflow-step__desc">During design review, check that new work uses existing tokens and patterns. If something doesn't fit, discuss whether to extend the system or adjust the design.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         5. Tools & Setup
+         ============================================================ -->
+    <section id="gs-tools">
+      <p class="section-label">Tools & Setup</p>
+      <p class="section-note">
+        Everything you need to start designing and building with the Livemap Design System.
+      </p>
+
+      <div class="gs-tools-list">
+        <div class="gs-tool-row">
+          <span class="gs-tool-row__name">Pencil</span>
+          <span class="gs-tool-row__desc">Browser-based design tool with the full Livemap kit preloaded. Best for rapid prototyping and exploration.</span>
+          <a class="gs-tool-row__link" href="https://pencil.dev" target="_blank" rel="noopener">pencil.dev</a>
+        </div>
+        <div class="gs-tool-row">
+          <span class="gs-tool-row__name">This Styleguide</span>
+          <span class="gs-tool-row__desc">The reference for all tokens, type scales, colors, and patterns. Runs locally &mdash; open <code>styleguide/index.html</code>.</span>
+        </div>
+        <div class="gs-tool-row">
+          <span class="gs-tool-row__name">SF Pro</span>
+          <span class="gs-tool-row__desc">Apple's system typeface. Required for accurate rendering on macOS. Included with Xcode or available from Apple's developer site.</span>
+        </div>
+        <div class="gs-tool-row">
+          <span class="gs-tool-row__name">Design Tokens</span>
+          <span class="gs-tool-row__desc">CSS custom properties in <code>utilities.css</code> and <code>typography.css</code>. Import these in any project to get the full token set.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         6. Contributing
+         ============================================================ -->
+    <section id="gs-contributing">
+      <p class="section-label">Contributing</p>
+      <p class="section-note">
+        The design system is a living product. Here's how to contribute well.
+      </p>
+
+      <div class="gs-contrib-list">
+        <div class="gs-contrib-item">
+          <div class="gs-contrib-item__bullet"></div>
+          <div><strong>Check existing patterns first.</strong> Before proposing something new, verify it doesn't already exist in the system. Duplication is the most common source of drift.</div>
+        </div>
+        <div class="gs-contrib-item">
+          <div class="gs-contrib-item__bullet"></div>
+          <div><strong>Propose in context.</strong> When you need a new token or pattern, share the specific use case. "I need a 14px muted label for map overlays" is better than "can we add another gray?"</div>
+        </div>
+        <div class="gs-contrib-item">
+          <div class="gs-contrib-item__bullet"></div>
+          <div><strong>Update the styleguide.</strong> Every addition or change should be reflected here. Add the section, write the usage note, show the example. If it's not documented, it's not in the system.</div>
+        </div>
+        <div class="gs-contrib-item">
+          <div class="gs-contrib-item__bullet"></div>
+          <div><strong>Think cross-platform.</strong> A token that only works on iOS isn't a system token. Consider how it maps to Android and web before committing.</div>
+        </div>
+        <div class="gs-contrib-item">
+          <div class="gs-contrib-item__bullet"></div>
+          <div><strong>Keep it tight.</strong> Resist the urge to add options. A design system with 6 grays and 4 weights is more useful than one with 12 of each.</div>
+        </div>
+      </div>
+    </section>
+
+        </div>
+
+        <div class="content-page" id="page-colors" hidden>
+
+          <!-- ============================================================
+               Color Palette Overview
+               ============================================================ -->
+          <section id="cl-palette">
+            <h2 class="section-label">Color Palette</h2>
+            <p class="section-note">
+              The Livemap color system is built on Apple's HIG palette. All colors are defined as
+              CSS custom properties in <code>tokens.css</code> with automatic light/dark mode support.
+              Toggle between platforms above to see native format equivalents.
+            </p>
+
+            <!-- Label colors -->
+            <div class="token-label-preview">
+              <div class="token-label-row">
+                <div class="token-label-row__swatch" style="background: var(--color-label)"></div>
+                <div class="token-label-row__info">
+                  <span class="token-label-row__name">Label</span>
+                  <span class="token-label-row__var">--color-label</span>
+                </div>
+                <span class="token-label-row__sample" style="color: var(--color-label)">Primary text</span>
+                <code class="token-label-row__value" data-color-var="--color-label">#1c1c1e</code>
+              </div>
+              <div class="token-label-row">
+                <div class="token-label-row__swatch" style="background: var(--color-label-secondary)"></div>
+                <div class="token-label-row__info">
+                  <span class="token-label-row__name">Secondary</span>
+                  <span class="token-label-row__var">--color-label-secondary</span>
+                </div>
+                <span class="token-label-row__sample" style="color: var(--color-label-secondary)">Supporting text</span>
+                <code class="token-label-row__value" data-color-var="--color-label-secondary">rgba(60, 60, 67, 0.75)</code>
+              </div>
+              <div class="token-label-row">
+                <div class="token-label-row__swatch" style="background: var(--color-label-tertiary)"></div>
+                <div class="token-label-row__info">
+                  <span class="token-label-row__name">Tertiary</span>
+                  <span class="token-label-row__var">--color-label-tertiary</span>
+                </div>
+                <span class="token-label-row__sample" style="color: var(--color-label-tertiary)">Placeholder text</span>
+                <code class="token-label-row__value" data-color-var="--color-label-tertiary">rgba(60, 60, 67, 0.30)</code>
+              </div>
+              <div class="token-label-row">
+                <div class="token-label-row__swatch" style="background: var(--color-label-quaternary)"></div>
+                <div class="token-label-row__info">
+                  <span class="token-label-row__name">Quaternary</span>
+                  <span class="token-label-row__var">--color-label-quaternary</span>
+                </div>
+                <span class="token-label-row__sample" style="color: var(--color-label-quaternary)">Decorative only</span>
+                <code class="token-label-row__value" data-color-var="--color-label-quaternary">rgba(60, 60, 67, 0.18)</code>
+              </div>
+            </div>
+
+            <!-- Tint colors -->
+            <div class="token-tint-row">
+              <div class="token-tint-card">
+                <div class="token-tint-card__swatch" style="background: var(--color-tint-destructive)"></div>
+                <span class="token-tint-card__name">Destructive</span>
+                <code class="token-tint-card__hex" data-color-var="--color-tint-destructive">#ff3b30</code>
+              </div>
+              <div class="token-tint-card">
+                <div class="token-tint-card__swatch" style="background: var(--color-tint-positive)"></div>
+                <span class="token-tint-card__name">Positive</span>
+                <code class="token-tint-card__hex" data-color-var="--color-tint-positive">#34c759</code>
+              </div>
+              <div class="token-tint-card">
+                <div class="token-tint-card__swatch" style="background: var(--color-tint-action)"></div>
+                <span class="token-tint-card__name">Action</span>
+                <code class="token-tint-card__hex" data-color-var="--color-tint-action">#007aff</code>
+              </div>
+            </div>
+
+            <!-- System grays -->
+            <div class="token-gray-row" style="margin-top: var(--space-32)">
+              <div class="token-gray-swatch">
+                <div class="token-gray-swatch__color" style="background: var(--color-gray)"></div>
+                <span class="token-gray-swatch__name">Gray</span>
+                <code class="token-gray-swatch__hex" data-color-var="--color-gray">#8e8e93</code>
+              </div>
+              <div class="token-gray-swatch">
+                <div class="token-gray-swatch__color" style="background: var(--color-gray-2)"></div>
+                <span class="token-gray-swatch__name">Gray 2</span>
+                <code class="token-gray-swatch__hex" data-color-var="--color-gray-2">#aeaeb2</code>
+              </div>
+              <div class="token-gray-swatch">
+                <div class="token-gray-swatch__color" style="background: var(--color-gray-3)"></div>
+                <span class="token-gray-swatch__name">Gray 3</span>
+                <code class="token-gray-swatch__hex" data-color-var="--color-gray-3">#c7c7cc</code>
+              </div>
+              <div class="token-gray-swatch">
+                <div class="token-gray-swatch__color" style="background: var(--color-gray-4)"></div>
+                <span class="token-gray-swatch__name">Gray 4</span>
+                <code class="token-gray-swatch__hex" data-color-var="--color-gray-4">#d1d1d6</code>
+              </div>
+              <div class="token-gray-swatch">
+                <div class="token-gray-swatch__color" style="background: var(--color-gray-5)"></div>
+                <span class="token-gray-swatch__name">Gray 5</span>
+                <code class="token-gray-swatch__hex" data-color-var="--color-gray-5">#e5e5ea</code>
+              </div>
+            </div>
+          </section>
+
+          <!-- ============================================================
+               Semantic Colors
+               ============================================================ -->
+          <section id="cl-semantic">
+            <h2 class="section-label">Semantic Colors</h2>
+            <p class="section-note">
+              Four semantic label colors form the text hierarchy. Secondary has been raised from
+              Apple's default 60% to 75% opacity to meet WCAG AA contrast on white backgrounds.
+              Tertiary and Quaternary intentionally fail AA — use only for decorative elements.
+            </p>
+
+            <div class="token-label-preview">
+              <div class="token-label-row">
+                <div class="token-label-row__swatch" style="background: var(--color-label)"></div>
+                <div class="token-label-row__info">
+                  <span class="token-label-row__name" data-name-html="--color-label" data-name-ios="Color.label" data-name-android="color_label">--color-label</span>
+                  <span class="token-label-row__var">Primary text, headings</span>
+                </div>
+                <span class="token-label-row__sample" style="color: var(--color-label); font-size: var(--font-size-body)">Nearby — Coffee &amp; Brunch</span>
+                <code class="token-label-row__value" data-color-var="--color-label">#1c1c1e</code>
+              </div>
+              <div class="token-label-row">
+                <div class="token-label-row__swatch" style="background: var(--color-label-secondary)"></div>
+                <div class="token-label-row__info">
+                  <span class="token-label-row__name" data-name-html="--color-label-secondary" data-name-ios="Color.labelSecondary" data-name-android="color_label_secondary">--color-label-secondary</span>
+                  <span class="token-label-row__var">Descriptions, metadata</span>
+                </div>
+                <span class="token-label-row__sample" style="color: var(--color-label-secondary); font-size: var(--font-size-small)">Open until 10 PM · 0.3 mi away</span>
+                <code class="token-label-row__value" data-color-var="--color-label-secondary">rgba(60, 60, 67, 0.75)</code>
+              </div>
+              <div class="token-label-row">
+                <div class="token-label-row__swatch" style="background: var(--color-label-tertiary)"></div>
+                <div class="token-label-row__info">
+                  <span class="token-label-row__name" data-name-html="--color-label-tertiary" data-name-ios="Color.labelTertiary" data-name-android="color_label_tertiary">--color-label-tertiary</span>
+                  <span class="token-label-row__var">Placeholders, disabled</span>
+                </div>
+                <span class="token-label-row__sample" style="color: var(--color-label-tertiary); font-size: var(--font-size-small)">Search places, routes…</span>
+                <code class="token-label-row__value" data-color-var="--color-label-tertiary">rgba(60, 60, 67, 0.30)</code>
+              </div>
+              <div class="token-label-row">
+                <div class="token-label-row__swatch" style="background: var(--color-label-quaternary)"></div>
+                <div class="token-label-row__info">
+                  <span class="token-label-row__name" data-name-html="--color-label-quaternary" data-name-ios="Color.labelQuaternary" data-name-android="color_label_quaternary">--color-label-quaternary</span>
+                  <span class="token-label-row__var">Decorative only</span>
+                </div>
+                <span class="token-label-row__sample" style="color: var(--color-label-quaternary); font-size: var(--font-size-small)">Watermark text</span>
+                <code class="token-label-row__value" data-color-var="--color-label-quaternary">rgba(60, 60, 67, 0.18)</code>
+              </div>
+            </div>
+          </section>
+
+          <!-- ============================================================
+               Tint Colors
+               ============================================================ -->
+          <section id="cl-tints">
+            <h2 class="section-label">Tint Colors</h2>
+            <p class="section-note">
+              Three tint colors for status and interactive elements. Each has light and dark mode
+              variants optimized for contrast on their respective backgrounds.
+            </p>
+
+            <div class="token-tint-row">
+              <div class="token-tint-card">
+                <div class="token-tint-card__swatch" style="background: var(--color-tint-destructive)"></div>
+                <span class="token-tint-card__name" data-name-html="--color-tint-destructive" data-name-ios="Color.tintDestructive" data-name-android="color_tint_destructive">--color-tint-destructive</span>
+                <code class="token-tint-card__hex" data-color-var="--color-tint-destructive">#ff3b30</code>
+                <span class="token-tint-card__usage">Errors, delete actions, warnings</span>
+              </div>
+              <div class="token-tint-card">
+                <div class="token-tint-card__swatch" style="background: var(--color-tint-positive)"></div>
+                <span class="token-tint-card__name" data-name-html="--color-tint-positive" data-name-ios="Color.tintPositive" data-name-android="color_tint_positive">--color-tint-positive</span>
+                <code class="token-tint-card__hex" data-color-var="--color-tint-positive">#34c759</code>
+                <span class="token-tint-card__usage">Success, online, available</span>
+              </div>
+              <div class="token-tint-card">
+                <div class="token-tint-card__swatch" style="background: var(--color-tint-action)"></div>
+                <span class="token-tint-card__name" data-name-html="--color-tint-action" data-name-ios="Color.tintAction" data-name-android="color_tint_action">--color-tint-action</span>
+                <code class="token-tint-card__hex" data-color-var="--color-tint-action">#007aff</code>
+                <span class="token-tint-card__usage">Links, primary actions, selection</span>
+              </div>
+            </div>
+          </section>
+
+          <!-- ============================================================
+               Backgrounds & Fills
+               ============================================================ -->
+          <section id="cl-backgrounds">
+            <h2 class="section-label">Backgrounds &amp; Fills</h2>
+            <p class="section-note">
+              Surfaces are opaque background layers. Fills are translucent overlays used for
+              tinting interactive states. Separators define borders and dividers.
+            </p>
+
+            <h3 class="color-subsection-title">Surfaces</h3>
+            <div class="token-surface-stack">
+              <div class="token-surface-layer" style="background: var(--color-surface)">
+                <div class="token-surface-layer__info">
+                  <span class="token-surface-layer__name" data-name-html="--color-surface" data-name-ios="Color.surface" data-name-android="color_surface">--color-surface</span>
+                  <span class="token-surface-layer__var">Primary background</span>
+                </div>
+                <code class="token-surface-layer__value" data-color-var="--color-surface">#ffffff</code>
+              </div>
+              <div class="token-surface-layer" style="background: var(--color-surface-secondary)">
+                <div class="token-surface-layer__info">
+                  <span class="token-surface-layer__name" data-name-html="--color-surface-secondary" data-name-ios="Color.surfaceSecondary" data-name-android="color_surface_secondary">--color-surface-secondary</span>
+                  <span class="token-surface-layer__var">Grouped / inset background</span>
+                </div>
+                <code class="token-surface-layer__value" data-color-var="--color-surface-secondary">#fafafc</code>
+              </div>
+            </div>
+
+            <h3 class="color-subsection-title">Fills</h3>
+            <div class="token-surface-stack">
+              <div class="token-surface-layer" style="background: var(--color-fill)">
+                <div class="token-surface-layer__info">
+                  <span class="token-surface-layer__name" data-name-html="--color-fill" data-name-ios="Color.fill" data-name-android="color_fill">--color-fill</span>
+                  <span class="token-surface-layer__var">Hover, pressed states</span>
+                </div>
+                <code class="token-surface-layer__value" data-color-var="--color-fill">rgba(0, 0, 0, 0.04)</code>
+              </div>
+              <div class="token-surface-layer" style="background: var(--color-fill-secondary)">
+                <div class="token-surface-layer__info">
+                  <span class="token-surface-layer__name" data-name-html="--color-fill-secondary" data-name-ios="Color.fillSecondary" data-name-android="color_fill_secondary">--color-fill-secondary</span>
+                  <span class="token-surface-layer__var">Subtle backgrounds, toggle tracks</span>
+                </div>
+                <code class="token-surface-layer__value" data-color-var="--color-fill-secondary">rgba(0, 0, 0, 0.03)</code>
+              </div>
+            </div>
+
+            <h3 class="color-subsection-title">Separators</h3>
+            <div class="token-separator-samples">
+              <div class="token-separator-sample">
+                <hr class="token-separator-sample__line" style="border-top-color: var(--color-separator)">
+                <div class="token-separator-sample__info">
+                  <span class="token-separator-sample__name" data-name-html="--color-separator" data-name-ios="Color.separator" data-name-android="color_separator">--color-separator</span>
+                  <code class="token-separator-sample__var" data-color-var="--color-separator">rgba(0, 0, 0, 0.06)</code>
+                </div>
+              </div>
+              <div class="token-separator-sample">
+                <hr class="token-separator-sample__line" style="border-top-color: var(--color-separator-subtle)">
+                <div class="token-separator-sample__info">
+                  <span class="token-separator-sample__name" data-name-html="--color-separator-subtle" data-name-ios="Color.separatorSubtle" data-name-android="color_separator_subtle">--color-separator-subtle</span>
+                  <code class="token-separator-sample__var" data-color-var="--color-separator-subtle">rgba(0, 0, 0, 0.04)</code>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- ============================================================
+               Dark Mode
+               ============================================================ -->
+          <section id="cl-dark-mode">
+            <h2 class="section-label">Dark Mode</h2>
+            <p class="section-note">
+              All color tokens automatically adapt via <code>prefers-color-scheme: dark</code>.
+              The styleguide forces light mode, but here are the dark mode values for reference.
+            </p>
+
+            <div class="dark-strip">
+              <!-- Dark label colors -->
+              <div class="token-label-preview" style="margin-bottom: var(--space-32)">
+                <div class="token-label-row">
+                  <div class="token-label-row__swatch" style="background: #ffffff"></div>
+                  <div class="token-label-row__info">
+                    <span class="token-label-row__name">Label</span>
+                    <span class="token-label-row__var">--color-label</span>
+                  </div>
+                  <span class="token-label-row__sample" style="color: #ffffff">Primary text</span>
+                  <code class="token-label-row__value" style="color: rgba(235,235,245,0.40)">#ffffff</code>
+                </div>
+                <div class="token-label-row">
+                  <div class="token-label-row__swatch" style="background: rgba(235, 235, 245, 0.60)"></div>
+                  <div class="token-label-row__info">
+                    <span class="token-label-row__name">Secondary</span>
+                    <span class="token-label-row__var">--color-label-secondary</span>
+                  </div>
+                  <span class="token-label-row__sample" style="color: rgba(235, 235, 245, 0.60)">Supporting text</span>
+                  <code class="token-label-row__value" style="color: rgba(235,235,245,0.40)">rgba(235, 235, 245, 0.60)</code>
+                </div>
+                <div class="token-label-row">
+                  <div class="token-label-row__swatch" style="background: rgba(235, 235, 245, 0.30)"></div>
+                  <div class="token-label-row__info">
+                    <span class="token-label-row__name">Tertiary</span>
+                    <span class="token-label-row__var">--color-label-tertiary</span>
+                  </div>
+                  <span class="token-label-row__sample" style="color: rgba(235, 235, 245, 0.30)">Placeholder text</span>
+                  <code class="token-label-row__value" style="color: rgba(235,235,245,0.40)">rgba(235, 235, 245, 0.30)</code>
+                </div>
+                <div class="token-label-row">
+                  <div class="token-label-row__swatch" style="background: rgba(235, 235, 245, 0.18)"></div>
+                  <div class="token-label-row__info">
+                    <span class="token-label-row__name">Quaternary</span>
+                    <span class="token-label-row__var">--color-label-quaternary</span>
+                  </div>
+                  <span class="token-label-row__sample" style="color: rgba(235, 235, 245, 0.18)">Decorative only</span>
+                  <code class="token-label-row__value" style="color: rgba(235,235,245,0.40)">rgba(235, 235, 245, 0.18)</code>
+                </div>
+              </div>
+
+              <!-- Dark tint colors -->
+              <div class="token-tint-row" style="margin-bottom: var(--space-32)">
+                <div class="token-tint-card">
+                  <div class="token-tint-card__swatch" style="background: #ff453a"></div>
+                  <span class="token-tint-card__name">Destructive</span>
+                  <code class="token-tint-card__hex">#ff453a</code>
+                </div>
+                <div class="token-tint-card">
+                  <div class="token-tint-card__swatch" style="background: #30d158"></div>
+                  <span class="token-tint-card__name">Positive</span>
+                  <code class="token-tint-card__hex">#30d158</code>
+                </div>
+                <div class="token-tint-card">
+                  <div class="token-tint-card__swatch" style="background: #0a84ff"></div>
+                  <span class="token-tint-card__name">Action</span>
+                  <code class="token-tint-card__hex">#0a84ff</code>
+                </div>
+              </div>
+
+              <!-- Dark grays -->
+              <div class="token-gray-row">
+                <div class="token-gray-swatch">
+                  <div class="token-gray-swatch__color" style="background: #8e8e93"></div>
+                  <span class="token-gray-swatch__name">Gray</span>
+                  <code class="token-gray-swatch__hex">#8e8e93</code>
+                </div>
+                <div class="token-gray-swatch">
+                  <div class="token-gray-swatch__color" style="background: #636366"></div>
+                  <span class="token-gray-swatch__name">Gray 2</span>
+                  <code class="token-gray-swatch__hex">#636366</code>
+                </div>
+                <div class="token-gray-swatch">
+                  <div class="token-gray-swatch__color" style="background: #48484a"></div>
+                  <span class="token-gray-swatch__name">Gray 3</span>
+                  <code class="token-gray-swatch__hex">#48484a</code>
+                </div>
+                <div class="token-gray-swatch">
+                  <div class="token-gray-swatch__color" style="background: #3a3a3c"></div>
+                  <span class="token-gray-swatch__name">Gray 4</span>
+                  <code class="token-gray-swatch__hex">#3a3a3c</code>
+                </div>
+                <div class="token-gray-swatch">
+                  <div class="token-gray-swatch__color" style="background: #2c2c2e"></div>
+                  <span class="token-gray-swatch__name">Gray 5</span>
+                  <code class="token-gray-swatch__hex">#2c2c2e</code>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- ============================================================
+               Contrast & Accessibility
+               ============================================================ -->
+          <section id="cl-contrast">
+            <h2 class="section-label">Contrast &amp; Accessibility</h2>
+            <p class="section-note">
+              WCAG 2.1 AA requires a minimum contrast ratio of 4.5:1 for normal text and 3:1 for
+              large text (≥18px bold or ≥24px regular). All primary and secondary label colors pass.
+            </p>
+
+            <div class="contrast-grid">
+              <div class="contrast-card" style="background: #ffffff">
+                <span class="contrast-card__label-name" style="color: var(--color-label)">Label on White</span>
+                <span class="contrast-card__sample" style="color: var(--color-label)">The quick brown fox jumps over the lazy dog</span>
+                <span class="contrast-card__ratio" style="color: var(--color-gray)">16.75:1 · <span class="wcag-badge wcag-badge--pass">AA Pass</span> <span class="wcag-badge wcag-badge--pass">AAA Pass</span></span>
+              </div>
+              <div class="contrast-card" style="background: #ffffff">
+                <span class="contrast-card__label-name" style="color: var(--color-label-secondary)">Secondary on White</span>
+                <span class="contrast-card__sample" style="color: var(--color-label-secondary)">The quick brown fox jumps over the lazy dog</span>
+                <span class="contrast-card__ratio" style="color: var(--color-gray)">4.97:1 · <span class="wcag-badge wcag-badge--pass">AA Pass</span></span>
+              </div>
+              <div class="contrast-card" style="background: #ffffff">
+                <span class="contrast-card__label-name" style="color: var(--color-label-tertiary)">Tertiary on White</span>
+                <span class="contrast-card__sample" style="color: var(--color-label-tertiary)">The quick brown fox jumps over the lazy dog</span>
+                <span class="contrast-card__ratio" style="color: var(--color-gray)">1.87:1 · <span class="wcag-badge wcag-badge--fail">AA Fail</span></span>
+              </div>
+              <div class="contrast-card" style="background: #fafafc">
+                <span class="contrast-card__label-name" style="color: var(--color-label)">Label on Surface Secondary</span>
+                <span class="contrast-card__sample" style="color: var(--color-label)">The quick brown fox jumps over the lazy dog</span>
+                <span class="contrast-card__ratio" style="color: var(--color-gray)">16.34:1 · <span class="wcag-badge wcag-badge--pass">AA Pass</span> <span class="wcag-badge wcag-badge--pass">AAA Pass</span></span>
+              </div>
+            </div>
+
+            <div class="rule-box">
+              <strong>Rule:</strong> Never use Tertiary or Quaternary label colors for text that must be readable.
+              These colors are for decorative or supplemental elements only — watermarks, subtle dividers,
+              background patterns. All readable text must use Label or Secondary.
+            </div>
+          </section>
+
+        </div>
+
+        <div class="content-page" id="page-spacing" hidden>
+          <div class="content-page__placeholder">
+            <svg class="content-page__placeholder-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
               <path d="M8 8v32M40 8v32"/><path d="M8 24h32"/><path d="M14 18l-6 6 6 6"/><path d="M34 18l6 6-6 6"/>
             </svg>
-            <p class="content-panel__placeholder-text">Spacing &amp; Layout coming soon</p>
+            <p class="content-page__placeholder-text">Spacing &amp; Layout coming soon</p>
           </div>
         </div>
 
-        <div class="content-panel" id="panel-elevation" hidden>
-          <div class="content-panel__placeholder">
-            <svg class="content-panel__placeholder-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="6" y="6" width="24" height="18" rx="3"/><rect x="18" y="24" width="24" height="18" rx="3"/>
-            </svg>
-            <p class="content-panel__placeholder-text">Elevation &amp; Borders coming soon</p>
+        <div class="content-page" id="page-elevation" hidden>
+
+    <!-- ============================================================
+         1. Shadows
+         ============================================================ -->
+    <section id="el-shadows">
+      <p class="section-label">Shadows</p>
+      <p class="section-note">
+        Five elevation levels from subtle control borders to prominent overlay shadows. Each level uses a two-layer shadow: a tighter ambient layer for definition and a wider spread for perceived depth.
+      </p>
+
+      <div class="token-shadow-grid">
+        <div class="token-shadow-card" style="box-shadow: var(--shadow-xs);">
+          <span class="token-shadow-card__name">--shadow-xs</span>
+          <span class="token-shadow-card__value">Controls</span>
+        </div>
+        <div class="token-shadow-card" style="box-shadow: var(--shadow-sm);">
+          <span class="token-shadow-card__name">--shadow-sm</span>
+          <span class="token-shadow-card__value">Cards, buttons</span>
+        </div>
+        <div class="token-shadow-card" style="box-shadow: var(--shadow-md);">
+          <span class="token-shadow-card__name">--shadow-md</span>
+          <span class="token-shadow-card__value">Dropdowns, popovers</span>
+        </div>
+        <div class="token-shadow-card" style="box-shadow: var(--shadow-lg);">
+          <span class="token-shadow-card__name">--shadow-lg</span>
+          <span class="token-shadow-card__value">Dialogs, panels</span>
+        </div>
+        <div class="token-shadow-card" style="box-shadow: var(--shadow-xl);">
+          <span class="token-shadow-card__name">--shadow-xl</span>
+          <span class="token-shadow-card__value">Modals, toasts</span>
+        </div>
+      </div>
+
+      <table class="token-table">
+        <thead>
+          <tr>
+            <th>Token</th>
+            <th>CSS</th>
+            <th>iOS</th>
+            <th>Android</th>
+            <th>Value</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>shadow-xs</td><td><code>var(--shadow-xs)</code></td><td>Shadow.xs</td><td>R.style.Shadow_Xs</td><td>0 1px 2px 0.04, 0 0 0 0.5px 0.03</td></tr>
+          <tr><td>shadow-sm</td><td><code>var(--shadow-sm)</code></td><td>Shadow.sm</td><td>R.style.Shadow_Sm</td><td>0 1px 3px 0.06, 0 0 0 0.5px 0.03</td></tr>
+          <tr><td>shadow-md</td><td><code>var(--shadow-md)</code></td><td>Shadow.md</td><td>R.style.Shadow_Md</td><td>0 4px 12px 0.08, 0 1px 3px 0.04</td></tr>
+          <tr><td>shadow-lg</td><td><code>var(--shadow-lg)</code></td><td>Shadow.lg</td><td>R.style.Shadow_Lg</td><td>0 8px 24px 0.12, 0 2px 6px 0.04</td></tr>
+          <tr><td>shadow-xl</td><td><code>var(--shadow-xl)</code></td><td>Shadow.xl</td><td>R.style.Shadow_Xl</td><td>0 16px 48px 0.16, 0 4px 12px 0.06</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- ============================================================
+         2. Border Radii
+         ============================================================ -->
+    <section id="el-radii">
+      <p class="section-label">Border Radii</p>
+      <p class="section-note">
+        Progressive scale from small interactive elements to large surfaces. Use <span class="usage-hl">radius-full</span> for pills and circular avatars.
+      </p>
+
+      <div class="token-radius-showcase">
+        <div class="token-radius-showcase__card" style="border-radius: var(--radius-xs);">
+          <span class="token-radius-showcase__name">xs</span>
+          <span class="token-radius-showcase__value">6px</span>
+        </div>
+        <div class="token-radius-showcase__card" style="border-radius: var(--radius-sm);">
+          <span class="token-radius-showcase__name">sm</span>
+          <span class="token-radius-showcase__value">8px</span>
+        </div>
+        <div class="token-radius-showcase__card" style="border-radius: var(--radius-md);">
+          <span class="token-radius-showcase__name">md</span>
+          <span class="token-radius-showcase__value">12px</span>
+        </div>
+        <div class="token-radius-showcase__card" style="border-radius: var(--radius-lg);">
+          <span class="token-radius-showcase__name">lg</span>
+          <span class="token-radius-showcase__value">16px</span>
+        </div>
+        <div class="token-radius-showcase__card" style="border-radius: var(--radius-xl);">
+          <span class="token-radius-showcase__name">xl</span>
+          <span class="token-radius-showcase__value">20px</span>
+        </div>
+        <div class="token-radius-showcase__card" style="border-radius: var(--radius-full); width: 120px;">
+          <span class="token-radius-showcase__name">full</span>
+          <span class="token-radius-showcase__value">9999px</span>
+        </div>
+      </div>
+
+      <table class="token-table">
+        <thead>
+          <tr>
+            <th>Token</th>
+            <th>CSS</th>
+            <th>iOS</th>
+            <th>Android</th>
+            <th>Value</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>radius-xs</td><td><code>var(--radius-xs)</code></td><td>Radius.xs</td><td>R.dimen.radius_xs</td><td>6px</td></tr>
+          <tr><td>radius-sm</td><td><code>var(--radius-sm)</code></td><td>Radius.sm</td><td>R.dimen.radius_sm</td><td>8px</td></tr>
+          <tr><td>radius-md</td><td><code>var(--radius-md)</code></td><td>Radius.md</td><td>R.dimen.radius_md</td><td>12px</td></tr>
+          <tr><td>radius-lg</td><td><code>var(--radius-lg)</code></td><td>Radius.lg</td><td>R.dimen.radius_lg</td><td>16px</td></tr>
+          <tr><td>radius-xl</td><td><code>var(--radius-xl)</code></td><td>Radius.xl</td><td>R.dimen.radius_xl</td><td>20px</td></tr>
+          <tr><td>radius-full</td><td><code>var(--radius-full)</code></td><td>Radius.full</td><td>R.dimen.radius_full</td><td>9999px</td></tr>
+        </tbody>
+      </table>
+
+      <div class="rule-box">
+        <strong>Usage guidelines:</strong> Tags, code blocks, and small controls use <strong>xs</strong>. Inputs, nav items, and buttons use <strong>sm</strong>. Cards, dialogs, and popovers use <strong>md</strong>. Large cards and panels use <strong>lg</strong>. Feature cards and prominent surfaces use <strong>xl</strong>. Pills and circular elements use <strong>full</strong>.
+      </div>
+    </section>
+
+    <!-- ============================================================
+         3. Borders & Dividers
+         ============================================================ -->
+    <section id="el-borders">
+      <p class="section-label">Borders &amp; Dividers</p>
+      <p class="section-note">
+        Two separator tokens for visual dividers. Use <span class="usage-hl">separator</span> for primary dividers between distinct sections and <span class="usage-hl">separator-subtle</span> for softer lines within grouped content.
+      </p>
+
+      <div class="token-border-samples">
+        <div class="token-border-sample">
+          <div class="token-border-sample__info">
+            <span class="token-border-sample__name">Separator</span>
+            <span class="token-border-sample__var">--color-separator</span>
           </div>
+          <hr class="token-border-sample__line" style="border-top-color: var(--color-separator);">
+        </div>
+        <div class="token-border-sample">
+          <div class="token-border-sample__info">
+            <span class="token-border-sample__name">Separator Subtle</span>
+            <span class="token-border-sample__var">--color-separator-subtle</span>
+          </div>
+          <hr class="token-border-sample__line" style="border-top-color: var(--color-separator-subtle);">
+        </div>
+      </div>
+
+      <table class="token-table">
+        <thead>
+          <tr>
+            <th>Token</th>
+            <th>CSS</th>
+            <th>iOS</th>
+            <th>Android</th>
+            <th>Value</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>separator</td><td><code>var(--color-separator)</code></td><td>Color.separator</td><td>R.color.color_separator</td><td>rgba(0, 0, 0, 0.06)</td></tr>
+          <tr><td>separator-subtle</td><td><code>var(--color-separator-subtle)</code></td><td>Color.separatorSubtle</td><td>R.color.color_separator_subtle</td><td>rgba(0, 0, 0, 0.04)</td></tr>
+        </tbody>
+      </table>
+
+      <div class="rule-box">
+        <strong>Border convention:</strong> Always use <strong>1px solid</strong> border-style. Card and container borders use <code>var(--color-separator)</code>. Rows, list dividers, and internal lines use <code>var(--color-separator-subtle)</code>. Never use opaque gray colors for borders — the translucent tokens adapt to any surface.
+      </div>
+    </section>
+
+    <!-- ============================================================
+         4. Z-Index Layers
+         ============================================================ -->
+    <section id="el-layers">
+      <p class="section-label">Z-Index Layers</p>
+      <p class="section-note">
+        A stacking-context scale for layered UI. Values are intentionally spaced to allow insertion without collision.
+      </p>
+
+      <div class="token-z-stack">
+        <div class="token-z-row">
+          <div class="token-z-row__bar">0</div>
+          <span class="token-z-row__name">--z-base</span>
+          <span class="token-z-row__usage">Default document flow</span>
+        </div>
+        <div class="token-z-row">
+          <div class="token-z-row__bar">1</div>
+          <span class="token-z-row__name">--z-raised</span>
+          <span class="token-z-row__usage">Raised cards, FABs</span>
+        </div>
+        <div class="token-z-row">
+          <div class="token-z-row__bar">100</div>
+          <span class="token-z-row__name">--z-dropdown</span>
+          <span class="token-z-row__usage">Dropdown menus, select panels</span>
+        </div>
+        <div class="token-z-row">
+          <div class="token-z-row__bar">200</div>
+          <span class="token-z-row__name">--z-sticky</span>
+          <span class="token-z-row__usage">Sticky headers, toolbars</span>
+        </div>
+        <div class="token-z-row">
+          <div class="token-z-row__bar">300</div>
+          <span class="token-z-row__name">--z-overlay</span>
+          <span class="token-z-row__usage">Backdrop overlays, dimming layers</span>
+        </div>
+        <div class="token-z-row">
+          <div class="token-z-row__bar">400</div>
+          <span class="token-z-row__name">--z-modal</span>
+          <span class="token-z-row__usage">Modal dialogs, bottom sheets</span>
+        </div>
+        <div class="token-z-row">
+          <div class="token-z-row__bar">500</div>
+          <span class="token-z-row__name">--z-popover</span>
+          <span class="token-z-row__usage">Popovers, tooltips</span>
+        </div>
+        <div class="token-z-row">
+          <div class="token-z-row__bar">600</div>
+          <span class="token-z-row__name">--z-toast</span>
+          <span class="token-z-row__usage">Toast notifications, snackbars</span>
+        </div>
+      </div>
+
+      <table class="token-table">
+        <thead>
+          <tr>
+            <th>Token</th>
+            <th>CSS</th>
+            <th>iOS</th>
+            <th>Android</th>
+            <th>Value</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>z-base</td><td><code>var(--z-base)</code></td><td>ZIndex.base</td><td>0dp</td><td>0</td></tr>
+          <tr><td>z-raised</td><td><code>var(--z-raised)</code></td><td>ZIndex.raised</td><td>1dp</td><td>1</td></tr>
+          <tr><td>z-dropdown</td><td><code>var(--z-dropdown)</code></td><td>ZIndex.dropdown</td><td>4dp</td><td>100</td></tr>
+          <tr><td>z-sticky</td><td><code>var(--z-sticky)</code></td><td>ZIndex.sticky</td><td>6dp</td><td>200</td></tr>
+          <tr><td>z-overlay</td><td><code>var(--z-overlay)</code></td><td>ZIndex.overlay</td><td>8dp</td><td>300</td></tr>
+          <tr><td>z-modal</td><td><code>var(--z-modal)</code></td><td>ZIndex.modal</td><td>12dp</td><td>400</td></tr>
+          <tr><td>z-popover</td><td><code>var(--z-popover)</code></td><td>ZIndex.popover</td><td>16dp</td><td>500</td></tr>
+          <tr><td>z-toast</td><td><code>var(--z-toast)</code></td><td>ZIndex.toast</td><td>24dp</td><td>600</td></tr>
+        </tbody>
+      </table>
+    </section>
+
         </div>
 
-        <div class="content-panel" id="panel-motion" hidden>
-          <div class="content-panel__placeholder">
-            <svg class="content-panel__placeholder-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <div class="content-page" id="page-motion" hidden>
+          <div class="content-page__placeholder">
+            <svg class="content-page__placeholder-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
               <path d="M6 38c8-8 12-28 36-28"/><circle cx="42" cy="10" r="3.5" fill="currentColor" stroke="none"/>
             </svg>
-            <p class="content-panel__placeholder-text">Motion coming soon</p>
+            <p class="content-page__placeholder-text">Motion coming soon</p>
           </div>
         </div>
 
-        <div class="content-panel" id="panel-iconography" hidden>
-          <div class="content-panel__placeholder">
-            <svg class="content-panel__placeholder-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <polygon points="24,4 30,18 44,20 34,30 36,44 24,38 12,44 14,30 4,20 18,18"/>
-            </svg>
-            <p class="content-panel__placeholder-text">Iconography coming soon</p>
+        <div class="content-page" id="page-iconography" hidden>
+
+    <!-- ============================================================
+         1. Icon Set
+         ============================================================ -->
+    <section id="ic-set">
+      <p class="section-label">Icon Set</p>
+      <p class="section-note">
+        Livemap uses <a href="https://lucide.dev" target="_blank" rel="noopener" style="color: var(--color-tint-action); text-decoration: none;">Lucide</a> as its icon library — an open-source fork of Feather Icons with 1500+ consistently designed icons. All icons use a 24&times;24 viewport with 2px stroke, rounded caps, and rounded joins.
+      </p>
+
+      <p class="token-icon-group-label">Navigation</p>
+      <div class="token-icon-grid">
+        <div class="token-icon-cell">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          <span class="token-icon-cell__name">house</span>
+        </div>
+        <div class="token-icon-cell">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+          <span class="token-icon-cell__name">chevron-left</span>
+        </div>
+        <div class="token-icon-cell">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+          <span class="token-icon-cell__name">chevron-right</span>
+        </div>
+        <div class="token-icon-cell">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          <span class="token-icon-cell__name">chevron-down</span>
+        </div>
+        <div class="token-icon-cell">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          <span class="token-icon-cell__name">arrow-right</span>
+        </div>
+        <div class="token-icon-cell">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>
+          <span class="token-icon-cell__name">arrow-left</span>
+        </div>
+        <div class="token-icon-cell">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" x2="6" y1="6" y2="18"/><line x1="6" x2="18" y1="6" y2="18"/></svg>
+          <span class="token-icon-cell__name">x</span>
+        </div>
+        <div class="token-icon-cell">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+          <span class="token-icon-cell__name">menu</span>
+        </div>
+        <div class="token-icon-cell">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>
+          <span class="token-icon-cell__name">ellipsis</span>
+        </div>
+      </div>
+
+      <p class="token-icon-group-label">Actions</p>
+      <div class="token-icon-grid">
+        <div class="token-icon-cell">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          <span class="token-icon-cell__name">search</span>
+        </div>
+        <div class="token-icon-cell">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg>
+          <span class="token-icon-cell__name">plus</span>
+        </div>
+        <div class="token-icon-cell">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/></svg>
+          <span class="token-icon-cell__name">minus</span>
+        </div>
+        <div class="token-icon-cell">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          <span class="token-icon-cell__name">check</span>
+        </div>
+        <div class="token-icon-cell">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/></svg>
+          <span class="token-icon-cell__name">pencil</span>
+        </div>
+        <div class="token-icon-cell">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/><line x1="10" x2="10" y1="11" y2="17"/><line x1="14" x2="14" y1="11" y2="17"/></svg>
+          <span class="token-icon-cell__name">trash-2</span>
+        </div>
+        <div class="token-icon-cell">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+          <span class="token-icon-cell__name">download</span>
+        </div>
+        <div class="token-icon-cell">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" x2="12" y1="3" y2="15"/></svg>
+          <span class="token-icon-cell__name">upload</span>
+        </div>
+        <div class="token-icon-cell">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" x2="12" y1="2" y2="15"/></svg>
+          <span class="token-icon-cell__name">share</span>
+        </div>
+        <div class="token-icon-cell">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+          <span class="token-icon-cell__name">copy</span>
+        </div>
+        <div class="token-icon-cell">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>
+          <span class="token-icon-cell__name">settings</span>
+        </div>
+        <div class="token-icon-cell">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.12 2.12 0 0 1 3 3L12 15l-4 1 1-4Z"/></svg>
+          <span class="token-icon-cell__name">square-pen</span>
+        </div>
+        <div class="token-icon-cell">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 0 1-9 9m9-9a9 9 0 0 0-9-9m9 9H3m9 9a9 9 0 0 1-9-9m9 9c1.66 0 3-4.03 3-9s-1.34-9-3-9m0 18c-1.66 0-3-4.03-3-9s1.34-9 3-9m-9 9a9 9 0 0 1 9-9"/></svg>
+          <span class="token-icon-cell__name">globe</span>
+        </div>
+        <div class="token-icon-cell">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+          <span class="token-icon-cell__name">info</span>
+        </div>
+      </div>
+
+      <p class="token-icon-group-label">Map &amp; Location</p>
+      <div class="token-icon-grid">
+        <div class="token-icon-cell">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span class="token-icon-cell__name">map-pin</span>
+        </div>
+        <div class="token-icon-cell">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7V5a2 2 0 0 1 2-2h2"/><path d="M17 3h2a2 2 0 0 1 2 2v2"/><path d="M21 17v2a2 2 0 0 1-2 2h-2"/><path d="M7 21H5a2 2 0 0 1-2-2v-2"/><circle cx="12" cy="12" r="3"/><path d="m16 16-1.9-1.9"/></svg>
+          <span class="token-icon-cell__name">scan-search</span>
+        </div>
+        <div class="token-icon-cell">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" x2="8" y1="2" y2="18"/><line x1="16" x2="16" y1="6" y2="22"/></svg>
+          <span class="token-icon-cell__name">map</span>
+        </div>
+        <div class="token-icon-cell">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+          <span class="token-icon-cell__name">navigation</span>
+        </div>
+        <div class="token-icon-cell">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
+          <span class="token-icon-cell__name">compass</span>
+        </div>
+        <div class="token-icon-cell">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7Z"/></svg>
+          <span class="token-icon-cell__name">map-pin-off</span>
+        </div>
+        <div class="token-icon-cell">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 20H4a1 1 0 0 1-1-1v-5"/><path d="M3 8V4a1 1 0 0 1 1-1h5"/><path d="M15 3h5a1 1 0 0 1 1 1v5"/><path d="M21 16v3a1 1 0 0 1-1 1h-5"/><circle cx="12" cy="12" r="4"/></svg>
+          <span class="token-icon-cell__name">locate</span>
+        </div>
+        <div class="token-icon-cell">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 18H6a2 2 0 0 1-2-2V7l-2-2"/><path d="M2 7h16"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          <span class="token-icon-cell__name">route</span>
+        </div>
+        <div class="token-icon-cell">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8c0 4.5-6 9-6 9s-6-4.5-6-9a6 6 0 0 1 12 0"/><circle cx="12" cy="8" r="2"/><path d="M8.83 14A7 7 0 1 0 3 8.3"/></svg>
+          <span class="token-icon-cell__name">map-pinned</span>
+        </div>
+      </div>
+
+      <p class="token-icon-group-label">Communication</p>
+      <div class="token-icon-grid">
+        <div class="token-icon-cell">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
+          <span class="token-icon-cell__name">message-circle</span>
+        </div>
+        <div class="token-icon-cell">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 17a2 2 0 0 1-2 2H6l-4 4V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2Z"/></svg>
+          <span class="token-icon-cell__name">message-square</span>
+        </div>
+        <div class="token-icon-cell">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          <span class="token-icon-cell__name">mail</span>
+        </div>
+        <div class="token-icon-cell">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92Z"/></svg>
+          <span class="token-icon-cell__name">phone</span>
+        </div>
+        <div class="token-icon-cell">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
+          <span class="token-icon-cell__name">bell</span>
+        </div>
+        <div class="token-icon-cell">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          <span class="token-icon-cell__name">users</span>
+        </div>
+        <div class="token-icon-cell">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          <span class="token-icon-cell__name">user</span>
+        </div>
+      </div>
+
+      <p class="token-icon-group-label">Status &amp; Feedback</p>
+      <div class="token-icon-grid">
+        <div class="token-icon-cell">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="16 12 12 8 8 12"/><line x1="12" x2="12" y1="16" y2="8"/></svg>
+          <span class="token-icon-cell__name">circle-arrow-up</span>
+        </div>
+        <div class="token-icon-cell">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+          <span class="token-icon-cell__name">circle-check</span>
+        </div>
+        <div class="token-icon-cell">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></svg>
+          <span class="token-icon-cell__name">circle-x</span>
+        </div>
+        <div class="token-icon-cell">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
+          <span class="token-icon-cell__name">triangle-alert</span>
+        </div>
+        <div class="token-icon-cell">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>
+          <span class="token-icon-cell__name">badge-check</span>
+        </div>
+        <div class="token-icon-cell">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M12 6v6l4 2"/></svg>
+          <span class="token-icon-cell__name">clock</span>
+        </div>
+        <div class="token-icon-cell">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+          <span class="token-icon-cell__name">heart</span>
+        </div>
+        <div class="token-icon-cell">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <span class="token-icon-cell__name">star</span>
+        </div>
+        <div class="token-icon-cell">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"/></svg>
+          <span class="token-icon-cell__name">bookmark</span>
+        </div>
+      </div>
+
+      <p class="token-icon-group-label">Media &amp; Content</p>
+      <div class="token-icon-grid">
+        <div class="token-icon-cell">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.09-3.09a2 2 0 0 0-2.82 0L6 21"/></svg>
+          <span class="token-icon-cell__name">image</span>
+        </div>
+        <div class="token-icon-cell">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/></svg>
+          <span class="token-icon-cell__name">file</span>
+        </div>
+        <div class="token-icon-cell">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+          <span class="token-icon-cell__name">link</span>
+        </div>
+        <div class="token-icon-cell">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>
+          <span class="token-icon-cell__name">camera</span>
+        </div>
+        <div class="token-icon-cell">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          <span class="token-icon-cell__name">message-square</span>
+        </div>
+        <div class="token-icon-cell">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+          <span class="token-icon-cell__name">circle-info</span>
+        </div>
+        <div class="token-icon-cell">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span class="token-icon-cell__name">map-pin</span>
+        </div>
+        <div class="token-icon-cell">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="3" rx="2"/><line x1="8" x2="16" y1="21" y2="21"/><line x1="12" x2="12" y1="17" y2="21"/></svg>
+          <span class="token-icon-cell__name">monitor</span>
+        </div>
+        <div class="token-icon-cell">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="20" x="5" y="2" rx="2"/><path d="M12 18h.01"/></svg>
+          <span class="token-icon-cell__name">smartphone</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         2. Sizing & Stroke
+         ============================================================ -->
+    <section id="ic-sizing">
+      <p class="section-label">Sizing &amp; Stroke</p>
+      <p class="section-note">
+        Icons render at three sizes. The default <span class="usage-hl">24px</span> with <span class="usage-hl">2px stroke</span> suits most UI. Use 20px for compact contexts and 16px for inline/metadata. Stroke weight stays at 2px at all sizes for visual consistency.
+      </p>
+
+      <div class="token-icon-sizing">
+        <div class="token-icon-sizing__item">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <span class="token-icon-sizing__label">16px<br>Inline</span>
+        </div>
+        <div class="token-icon-sizing__item">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <span class="token-icon-sizing__label">20px<br>Compact</span>
+        </div>
+        <div class="token-icon-sizing__item">
+          <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <span class="token-icon-sizing__label">24px<br>Default</span>
+        </div>
+      </div>
+
+      <table class="token-table">
+        <thead>
+          <tr>
+            <th>Size</th>
+            <th>Stroke</th>
+            <th>Use</th>
+            <th>Touch target</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>16px</td><td>2px</td><td>Metadata, inline labels, timestamps</td><td>44px (padded)</td></tr>
+          <tr><td>20px</td><td>2px</td><td>Sidebar nav, compact toolbars, tabs</td><td>44px (padded)</td></tr>
+          <tr><td>24px</td><td>2px</td><td>Primary actions, headers, empty states</td><td>44px (padded)</td></tr>
+        </tbody>
+      </table>
+
+      <p class="token-icon-group-label">Stroke weight comparison</p>
+      <div class="token-icon-strokes">
+        <div class="token-icon-strokes__item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          <span class="token-icon-strokes__label">1px — too thin</span>
+        </div>
+        <div class="token-icon-strokes__item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          <span class="token-icon-strokes__label">1.5px — light</span>
+        </div>
+        <div class="token-icon-strokes__item is-recommended">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          <span class="token-icon-strokes__label">2px — default</span>
+        </div>
+        <div class="token-icon-strokes__item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          <span class="token-icon-strokes__label">2.5px — heavy</span>
+        </div>
+      </div>
+
+      <div class="rule-box">
+        <strong>Stroke rule:</strong> Always use <strong>2px stroke</strong> with <strong>round</strong> line caps and joins. This matches Lucide defaults and keeps icons visually consistent with SF Pro text weight at our standard sizes. Never mix stroke weights within the same view.
+      </div>
+    </section>
+
+    <!-- ============================================================
+         3. Usage Guidelines
+         ============================================================ -->
+    <section id="ic-usage">
+      <p class="section-label">Usage Guidelines</p>
+      <p class="section-note">
+        Follow these rules to keep icons readable, accessible, and consistent across all platforms.
+      </p>
+
+      <div class="token-icon-rules">
+        <div class="token-icon-rule">
+          <p class="token-icon-rule__header token-icon-rule__header--do">Do</p>
+          <div class="token-icon-rule__examples">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
           </div>
+          <p class="token-icon-rule__desc">Use Lucide icons consistently. Pick one icon per concept and stick with it across the entire product.</p>
+        </div>
+        <div class="token-icon-rule">
+          <p class="token-icon-rule__header token-icon-rule__header--dont">Don't</p>
+          <div class="token-icon-rule__examples">
+            <svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><circle cx="11" cy="11" r="8"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          </div>
+          <p class="token-icon-rule__desc">Don't use filled icons, mix stroke weights, or change line cap/join styles. Avoid non-Lucide icons.</p>
+        </div>
+      </div>
+
+      <div class="token-icon-rules">
+        <div class="token-icon-rule">
+          <p class="token-icon-rule__header token-icon-rule__header--do">Do</p>
+          <div class="token-icon-rule__examples">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="var(--color-label)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="var(--color-gray-2)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="var(--color-tint-action)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <p class="token-icon-rule__desc">Color icons with semantic tokens: <code>--color-label</code> for primary, <code>--color-gray-2</code> for secondary, or a tint for interactive states.</p>
+        </div>
+        <div class="token-icon-rule">
+          <p class="token-icon-rule__header token-icon-rule__header--dont">Don't</p>
+          <div class="token-icon-rule__examples">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#ff00ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="red" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="orange" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <p class="token-icon-rule__desc">Don't hardcode colors. Always use design tokens so icons adapt to light/dark mode and maintain contrast ratios.</p>
+        </div>
+      </div>
+
+      <div class="token-icon-rules">
+        <div class="token-icon-rule">
+          <p class="token-icon-rule__header token-icon-rule__header--do">Do</p>
+          <div class="token-icon-rule__examples" style="gap: var(--space-8);">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/></svg>
+            <span style="font-family: var(--font-family-text); font-size: var(--font-size-fine); color: var(--color-label);">Delete</span>
+          </div>
+          <p class="token-icon-rule__desc">Pair icons with text labels for primary actions. Icons alone are acceptable only for universal patterns (close, back, search).</p>
+        </div>
+        <div class="token-icon-rule">
+          <p class="token-icon-rule__header token-icon-rule__header--dont">Don't</p>
+          <div class="token-icon-rule__examples" style="gap: var(--space-8);">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/></svg>
+            <span style="font-family: var(--font-family-text); font-size: var(--font-size-fine); color: var(--color-label);">Delete this item now</span>
+          </div>
+          <p class="token-icon-rule__desc">Don't shrink icons below 16px or pair a tiny icon with a long label. Keep the icon visually balanced with adjacent text.</p>
+        </div>
+      </div>
+
+      <div class="rule-box" style="margin-top: var(--space-24);">
+        <strong>Accessibility:</strong> All interactive icons must have an <code>aria-label</code> or accompanying visible text. Decorative icons should use <code>aria-hidden="true"</code>. Ensure a minimum <strong>44&times;44px</strong> touch target around tappable icons per Apple HIG, using padding when the icon itself is smaller.
+      </div>
+    </section>
+
         </div>
 
-        <div class="content-panel" id="panel-components" hidden>
-          <div class="content-panel__placeholder">
-            <svg class="content-panel__placeholder-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <div class="content-page" id="page-map" hidden>
+
+          <!-- ============================================================
+               1. Label Typography (moved from Typography page)
+               ============================================================ -->
+          <section id="mp-labels">
+            <p class="section-label">Label Typography</p>
+            <p class="section-note">
+              Abstract presets for <span class="usage-hl">city names</span>, <span class="usage-hl">districts</span>, <span class="usage-hl">streets</span>, <span class="usage-hl">POIs</span>, and <span class="usage-hl">distance badges</span> on the map. Spec-level tokens &mdash; implementation depends on MapKit, Mapbox, or CSS overlays.
+            </p>
+
+            <div class="map-label-hierarchy">
+              <div class="map-label-row">
+                <div class="map-label-row__meta">
+                  <span class="map-label-row__name">City</span>
+                  <span class="map-label-row__spec">14px / Semibold / +0.02em</span>
+                </div>
+                <div class="map-label-row__sample" style="font-size: 14px; font-weight: 600; letter-spacing: 0.02em;">Zürich</div>
+              </div>
+              <div class="map-label-row">
+                <div class="map-label-row__meta">
+                  <span class="map-label-row__name">District</span>
+                  <span class="map-label-row__spec">12px / Medium / +0.04em</span>
+                </div>
+                <div class="map-label-row__sample" style="font-size: 12px; font-weight: 500; letter-spacing: 0.04em;">Oerlikon</div>
+              </div>
+              <div class="map-label-row">
+                <div class="map-label-row__meta">
+                  <span class="map-label-row__name">Street</span>
+                  <span class="map-label-row__spec">11px / Regular / +0.02em</span>
+                </div>
+                <div class="map-label-row__sample" style="font-size: 11px; font-weight: 400; letter-spacing: 0.02em;">Langstrasse</div>
+              </div>
+              <div class="map-label-row">
+                <div class="map-label-row__meta">
+                  <span class="map-label-row__name">POI</span>
+                  <span class="map-label-row__spec">12px / Medium</span>
+                </div>
+                <div class="map-label-row__sample" style="font-size: 12px; font-weight: 500;">Zoo Zürich</div>
+              </div>
+              <div class="map-label-row">
+                <div class="map-label-row__meta">
+                  <span class="map-label-row__name">Distance</span>
+                  <span class="map-label-row__spec">13px / Medium / tabular</span>
+                </div>
+                <div class="map-label-row__sample" style="font-size: 13px; font-weight: 500; font-variant-numeric: tabular-nums;">2.4 km</div>
+              </div>
+            </div>
+
+            <!-- Simulated map context -->
+            <p style="font-family: var(--font-family-text); font-size: 11px; font-weight: 600; color: #aeaeb2; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 16px;">Halo effect on map surfaces</p>
+            <div class="map-context">
+              <div class="map-surface map-surface--light">
+                <div class="map-halo" style="font-size: 14px; font-weight: 600; letter-spacing: 0.02em; color: #1c1c1e;">Zürich</div>
+                <div class="map-halo" style="font-size: 12px; font-weight: 500; letter-spacing: 0.04em; color: #3a3a3c;">Wipkingen</div>
+                <div class="map-halo" style="font-size: 11px; font-weight: 400; letter-spacing: 0.02em; color: #636366;">Birmensdorferstrasse</div>
+                <div class="map-halo" style="font-size: 12px; font-weight: 500; color: #007aff;">Rote Fabrik</div>
+              </div>
+              <div class="map-surface map-surface--dark">
+                <div class="map-halo--dark" style="font-size: 14px; font-weight: 600; letter-spacing: 0.02em; color: #e8e8ed;">Zürich</div>
+                <div class="map-halo--dark" style="font-size: 12px; font-weight: 500; letter-spacing: 0.04em; color: #a0a0b0;">Seefeld</div>
+                <div class="map-halo--dark" style="font-size: 11px; font-weight: 400; letter-spacing: 0.02em; color: #70708a;">Forchstrasse</div>
+                <div class="map-halo--dark" style="font-size: 12px; font-weight: 500; color: #5ac8fa;">Freitag Tower</div>
+              </div>
+            </div>
+
+            <!-- Condensed comparison -->
+            <p style="font-family: var(--font-family-text); font-size: 11px; font-weight: 600; color: #aeaeb2; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 16px; margin-top: 32px;">Normal vs Condensed width</p>
+            <div style="display: flex; gap: 48px; margin-bottom: 24px;">
+              <div>
+                <div style="font-family: var(--font-family-text); font-size: 11px; color: #aeaeb2; margin-bottom: 8px;">Normal (wdth: 100)</div>
+                <div style="font-size: 12px; font-weight: 500; letter-spacing: 0.04em; color: #1c1c1e; font-stretch: 100%;">Kunsthaus Zürich Chipperfield</div>
+              </div>
+              <div>
+                <div style="font-family: var(--font-family-text); font-size: 11px; color: #aeaeb2; margin-bottom: 8px;">Condensed (wdth: 60)</div>
+                <div style="font-size: 12px; font-weight: 500; letter-spacing: 0.04em; color: #1c1c1e; font-stretch: 60%;">Kunsthaus Zürich Chipperfield</div>
+              </div>
+            </div>
+
+            <!-- Token reference table -->
+            <p style="font-family: var(--font-family-text); font-size: 11px; font-weight: 600; color: #aeaeb2; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 16px; margin-top: 32px;">Token Reference</p>
+            <table class="map-token-table">
+              <thead>
+                <tr>
+                  <th>Label</th>
+                  <th>CSS Token</th>
+                  <th>iOS</th>
+                  <th>Android</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>City</td>
+                  <td><code>--map-label-city-size: 14px</code></td>
+                  <td>14pt / .semibold</td>
+                  <td>14sp / W600</td>
+                </tr>
+                <tr>
+                  <td>District</td>
+                  <td><code>--map-label-district-size: 12px</code></td>
+                  <td>12pt / .medium</td>
+                  <td>12sp / W500</td>
+                </tr>
+                <tr>
+                  <td>Street</td>
+                  <td><code>--map-label-street-size: 11px</code></td>
+                  <td>11pt / .regular</td>
+                  <td>11sp / W400</td>
+                </tr>
+                <tr>
+                  <td>POI</td>
+                  <td><code>--map-label-poi-size: 12px</code></td>
+                  <td>12pt / .medium</td>
+                  <td>12sp / W500</td>
+                </tr>
+                <tr>
+                  <td>Distance</td>
+                  <td><code>--map-label-distance-size: 13px</code></td>
+                  <td>13pt / .medium / tabular</td>
+                  <td>13sp / W500 / tabular</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="rule-box">
+              These are <strong>spec-level tokens</strong> &mdash; implementation depends on MapKit, Mapbox, or CSS overlays. Native map SDKs handle font rendering differently from CSS.
+            </div>
+          </section>
+
+
+          <!-- ============================================================
+               2. Pins & Markers
+               ============================================================ -->
+          <section id="mp-pins">
+            <p class="section-label">Pins &amp; Markers</p>
+            <p class="section-note">
+              Pin anatomy, states, and size scale for <span class="usage-hl">POI markers</span>, <span class="usage-hl">selected pins</span>, and <span class="usage-hl">cluster indicators</span> on the map.
+            </p>
+
+            <div class="map-placeholder">
+              <p class="map-placeholder__heading">Design direction</p>
+              <ul class="map-placeholder__list">
+                <li><strong>Pin anatomy:</strong> base shape, size tokens, icon area, label attachment point</li>
+                <li><strong>Pin states:</strong> default, selected, visited, clustered</li>
+                <li><strong>Size scale:</strong> small (POI), medium (selected), large (featured)</li>
+              </ul>
+              <p class="map-placeholder__note">Spec in progress &mdash; pin artwork TBD</p>
+            </div>
+          </section>
+
+
+          <!-- ============================================================
+               3. Map Colors
+               ============================================================ -->
+          <section id="mp-colors">
+            <p class="section-label">Map Colors</p>
+            <p class="section-note">
+              Color palette for <span class="usage-hl">map surfaces</span>, <span class="usage-hl">infrastructure</span>, and <span class="usage-hl">POI categories</span>. Palette adapts between light and dark mode.
+            </p>
+
+            <div class="map-placeholder">
+              <p class="map-placeholder__heading">Design direction</p>
+              <ul class="map-placeholder__list">
+                <li><strong>Map palette:</strong> land, water, parks/green, roads, buildings</li>
+                <li><strong>Light vs dark:</strong> color mapping across modes</li>
+                <li><strong>POI categories:</strong> food, shopping, nightlife, transit, etc.</li>
+              </ul>
+              <p class="map-placeholder__note">Palette depends on base map provider (MapKit/Mapbox)</p>
+            </div>
+          </section>
+
+
+          <!-- ============================================================
+               4. Terrain & Surfaces
+               ============================================================ -->
+          <section id="mp-surfaces">
+            <p class="section-label">Terrain &amp; Surfaces</p>
+            <p class="section-note">
+              Base map style principles: <span class="usage-hl">minimal chrome</span>, <span class="usage-hl">muted terrain</span>, <span class="usage-hl">content-forward</span> design.
+            </p>
+
+            <div class="map-placeholder">
+              <p class="map-placeholder__heading">Design direction</p>
+              <ul class="map-placeholder__list">
+                <li><strong>Principles:</strong> minimal chrome, muted terrain, content-forward</li>
+                <li><strong>Building footprints:</strong> subtle fill, no stroke at low zoom</li>
+                <li><strong>Water rendering:</strong> flat fill, no wave texture</li>
+                <li><strong>Park fills:</strong> desaturated green, no pattern overlay</li>
+              </ul>
+              <p class="map-placeholder__note">Map style configuration is provider-specific</p>
+            </div>
+          </section>
+
+
+          <!-- ============================================================
+               5. Overlays & Routes
+               ============================================================ -->
+          <section id="mp-overlays">
+            <p class="section-label">Overlays &amp; Routes</p>
+            <p class="section-note">
+              Route lines, search radius highlights, and <span class="usage-hl">geofence boundaries</span> drawn on top of the base map.
+            </p>
+
+            <div class="map-placeholder">
+              <p class="map-placeholder__heading">Design direction</p>
+              <ul class="map-placeholder__list">
+                <li><strong>Route lines:</strong> width, color, dash patterns for walking / driving / transit</li>
+                <li><strong>Search radius:</strong> semi-transparent area highlight with soft edge</li>
+                <li><strong>Geofences:</strong> boundary stroke + fill for defined regions</li>
+              </ul>
+              <p class="map-placeholder__note">Overlay tokens TBD</p>
+            </div>
+          </section>
+
+
+          <!-- ============================================================
+               6. Zoom & Density
+               ============================================================ -->
+          <section id="mp-zoom">
+            <p class="section-label">Zoom &amp; Density</p>
+            <p class="section-note">
+              Rules for <span class="usage-hl">label density</span>, <span class="usage-hl">pin clustering</span>, and <span class="usage-hl">detail level</span> at different zoom levels.
+            </p>
+
+            <div class="map-placeholder">
+              <p class="map-placeholder__heading">Design direction</p>
+              <ul class="map-placeholder__list">
+                <li><strong>Label density:</strong> which labels appear/hide at each zoom level</li>
+                <li><strong>Pin clustering:</strong> thresholds for grouping nearby markers</li>
+                <li><strong>Detail levels:</strong> when building footprints, parks, and streets appear</li>
+              </ul>
+              <p class="map-placeholder__note">Zoom behavior specs in progress</p>
+            </div>
+          </section>
+
+
+          <!-- ============================================================
+               7. Dark Mode
+               ============================================================ -->
+          <section id="mp-dark">
+            <p class="section-label">Dark Mode</p>
+            <p class="section-note">
+              How the map adapts to <span class="usage-hl">dark mode</span> &mdash; surface colors, label colors, and halo adjustments.
+            </p>
+
+            <!-- Light vs dark comparison -->
+            <p style="font-family: var(--font-family-text); font-size: 11px; font-weight: 600; color: #aeaeb2; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 16px;">Light vs Dark label colors</p>
+            <div class="map-dark-compare">
+              <div class="map-dark-compare__panel" style="background: #f0ece1;">
+                <p class="map-dark-compare__title" style="color: #8e8e93;">Light Mode</p>
+                <div class="map-color-row">
+                  <div class="map-color-swatch" style="background: #1c1c1e;"></div>
+                  <span class="map-color-label" style="color: #1c1c1e;">City &mdash; #1c1c1e</span>
+                </div>
+                <div class="map-color-row">
+                  <div class="map-color-swatch" style="background: #3a3a3c;"></div>
+                  <span class="map-color-label" style="color: #3a3a3c;">District &mdash; #3a3a3c</span>
+                </div>
+                <div class="map-color-row">
+                  <div class="map-color-swatch" style="background: #636366;"></div>
+                  <span class="map-color-label" style="color: #636366;">Street &mdash; #636366</span>
+                </div>
+                <div class="map-color-row">
+                  <div class="map-color-swatch" style="background: #007aff;"></div>
+                  <span class="map-color-label" style="color: #007aff;">POI &mdash; #007aff</span>
+                </div>
+              </div>
+              <div class="map-dark-compare__panel" style="background: #1a1a2e;">
+                <p class="map-dark-compare__title" style="color: #636366;">Dark Mode</p>
+                <div class="map-color-row">
+                  <div class="map-color-swatch map-color-swatch--dark-border" style="background: #e8e8ed;"></div>
+                  <span class="map-color-label" style="color: #e8e8ed;">City &mdash; #e8e8ed</span>
+                </div>
+                <div class="map-color-row">
+                  <div class="map-color-swatch map-color-swatch--dark-border" style="background: #a0a0b0;"></div>
+                  <span class="map-color-label" style="color: #a0a0b0;">District &mdash; #a0a0b0</span>
+                </div>
+                <div class="map-color-row">
+                  <div class="map-color-swatch map-color-swatch--dark-border" style="background: #70708a;"></div>
+                  <span class="map-color-label" style="color: #70708a;">Street &mdash; #70708a</span>
+                </div>
+                <div class="map-color-row">
+                  <div class="map-color-swatch map-color-swatch--dark-border" style="background: #5ac8fa;"></div>
+                  <span class="map-color-label" style="color: #5ac8fa;">POI &mdash; #5ac8fa</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Dark map surface demo -->
+            <p style="font-family: var(--font-family-text); font-size: 11px; font-weight: 600; color: #aeaeb2; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 16px;">Dark map surface with halos</p>
+            <div class="map-context">
+              <div class="map-surface map-surface--dark" style="flex: 1;">
+                <div class="map-halo--dark" style="font-size: 14px; font-weight: 600; letter-spacing: 0.02em; color: #e8e8ed;">Zürich</div>
+                <div class="map-halo--dark" style="font-size: 12px; font-weight: 500; letter-spacing: 0.04em; color: #a0a0b0;">Höngg</div>
+                <div class="map-halo--dark" style="font-size: 11px; font-weight: 400; letter-spacing: 0.02em; color: #70708a;">Limmatquai</div>
+                <div class="map-halo--dark" style="font-size: 12px; font-weight: 500; color: #5ac8fa;">Uetliberg</div>
+              </div>
+            </div>
+
+            <div class="rule-box" style="margin-top: 32px;">
+              Dark mode map colors are <strong>independent of the app&rsquo;s dark theme</strong>. The map can show a dark style even when the app is in light mode (e.g., night-time auto-switch).
+            </div>
+          </section>
+
+        </div>
+
+        <div class="content-page" id="page-components" hidden>
+          <div class="content-page__placeholder">
+            <svg class="content-page__placeholder-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
               <rect x="4" y="4" width="17" height="17" rx="2.5"/><rect x="27" y="4" width="17" height="17" rx="2.5"/><rect x="4" y="27" width="17" height="17" rx="2.5"/><rect x="27" y="27" width="17" height="17" rx="2.5"/>
             </svg>
-            <p class="content-panel__placeholder-text">Components coming soon</p>
+            <p class="content-page__placeholder-text">Components coming soon</p>
           </div>
         </div>
 
-        <div class="content-panel" id="panel-patterns" hidden>
-          <div class="content-panel__placeholder">
-            <svg class="content-panel__placeholder-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <div class="content-page" id="page-patterns" hidden>
+          <div class="content-page__placeholder">
+            <svg class="content-page__placeholder-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
               <rect x="4" y="4" width="40" height="10" rx="2.5"/><rect x="4" y="20" width="17" height="24" rx="2.5"/><rect x="27" y="20" width="17" height="24" rx="2.5"/>
             </svg>
-            <p class="content-panel__placeholder-text">Patterns coming soon</p>
+            <p class="content-page__placeholder-text">Patterns coming soon</p>
           </div>
         </div>
 
-        <div class="content-panel" id="panel-guidelines" hidden>
-          <div class="content-panel__placeholder">
-            <svg class="content-panel__placeholder-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <div class="content-page" id="page-guidelines" hidden>
+          <div class="content-page__placeholder">
+            <svg class="content-page__placeholder-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
               <path d="M10 8h28v36H10z"/><path d="M16 18h16"/><path d="M16 26h10"/>
             </svg>
-            <p class="content-panel__placeholder-text">Guidelines coming soon</p>
+            <p class="content-page__placeholder-text">Guidelines coming soon</p>
           </div>
         </div>
       </div>
     </div>
 
   </div>
+
+  <!-- Chat Widget -->
+  <div class="chat-widget" id="chat-widget">
+    <div class="chat-widget__panel" id="chat-panel">
+      <div class="chat-widget__header">
+        <div class="chat-widget__header-left">
+          <div class="chat-widget__avatar">
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10a7 7 0 1 1 14 0v2a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3v-2z"/><circle cx="7.5" cy="10" r="1" fill="currentColor" stroke="none"/><circle cx="12.5" cy="10" r="1" fill="currentColor" stroke="none"/></svg>
+          </div>
+          <div class="chat-widget__header-title">Design Assistant</div>
+        </div>
+        <button class="chat-widget__close" id="chat-close" aria-label="Close chat">
+          <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="3" y1="3" x2="9" y2="9"/><line x1="9" y1="3" x2="3" y2="9"/></svg>
+        </button>
+      </div>
+      <div class="chat-widget__messages" id="chat-messages">
+        <div class="chat-widget__message chat-widget__message--bot">
+          <div class="chat-widget__bubble">Hi! I can help you navigate the design system. Try asking about tokens, typography, or components.</div>
+        </div>
+      </div>
+      <div class="chat-widget__input-area">
+        <input class="chat-widget__input" id="chat-input" type="text" placeholder="Ask a question…" autocomplete="off" spellcheck="false">
+        <button class="chat-widget__send" id="chat-send" aria-label="Send message" disabled>
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="8" x2="12" y2="8"/><polyline points="9,5 12,8 9,11"/></svg>
+        </button>
+      </div>
+    </div>
+    <button class="chat-widget__fab" id="chat-fab" aria-label="Open chat">
+      <svg class="chat-widget__fab-icon chat-widget__fab-icon--chat" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h12a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H8l-4 3V5a1 1 0 0 1 1-1z"/></svg>
+      <svg class="chat-widget__fab-icon chat-widget__fab-icon--close" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="4" y1="4" x2="12" y2="12"/><line x1="12" y1="4" x2="4" y2="12"/></svg>
+    </button>
+  </div>
+
   <script src="styleguide.js"></script>
+  <script src="inspector.js"></script>
 </body>
 </html>

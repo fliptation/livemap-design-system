@@ -1,0 +1,173 @@
+/* ==========================================================================
+   Iconography Page — Component Styles
+   ========================================================================== */
+
+/* ---- Icon grid ---- */
+.token-icon-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: var(--space-4);
+  margin-bottom: var(--space-40);
+}
+
+.token-icon-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-8);
+  padding: var(--space-16) var(--space-8);
+  border-radius: var(--radius-md);
+  cursor: default;
+  transition: background 0.15s;
+}
+
+.token-icon-cell:hover {
+  background: var(--color-fill);
+}
+
+.token-icon-cell svg {
+  width: 24px;
+  height: 24px;
+  color: var(--color-label);
+}
+
+.token-icon-cell__name {
+  font-family: var(--font-family-mono);
+  font-size: 10px;
+  color: var(--color-gray-2);
+  text-align: center;
+  line-height: 1.3;
+  word-break: break-word;
+}
+
+/* ---- Icon group label ---- */
+.token-icon-group-label {
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-fine);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-fine);
+  letter-spacing: var(--letter-spacing-fine);
+  color: var(--color-label);
+  margin-bottom: var(--space-12);
+  margin-top: var(--space-32);
+}
+
+.token-icon-group-label:first-of-type {
+  margin-top: 0;
+}
+
+/* ---- Sizing demo ---- */
+.token-icon-sizing {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--space-32);
+  margin-bottom: var(--space-40);
+}
+
+.token-icon-sizing__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-8);
+}
+
+.token-icon-sizing__item svg {
+  color: var(--color-label);
+}
+
+.token-icon-sizing__label {
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-nano);
+  color: var(--color-gray-2);
+  text-align: center;
+}
+
+/* ---- Stroke demo ---- */
+.token-icon-strokes {
+  display: flex;
+  gap: var(--space-32);
+  margin-bottom: var(--space-40);
+}
+
+.token-icon-strokes__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-8);
+  padding: var(--space-20);
+  border: 1px solid var(--color-separator);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+}
+
+.token-icon-strokes__item svg {
+  width: 32px;
+  height: 32px;
+  color: var(--color-label);
+}
+
+.token-icon-strokes__label {
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-nano);
+  color: var(--color-gray-2);
+}
+
+.token-icon-strokes__item.is-recommended {
+  border-color: var(--color-tint-action);
+  box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.08);
+}
+
+/* ---- Do / Don't grid ---- */
+.token-icon-rules {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-16);
+  margin-bottom: var(--space-40);
+}
+
+.token-icon-rule {
+  padding: var(--space-24);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-separator);
+  background: var(--color-surface);
+}
+
+.token-icon-rule__header {
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-fine);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-fine);
+  letter-spacing: var(--letter-spacing-fine);
+  margin-bottom: var(--space-12);
+}
+
+.token-icon-rule__header--do {
+  color: var(--color-tint-positive);
+}
+
+.token-icon-rule__header--dont {
+  color: var(--color-tint-destructive);
+}
+
+.token-icon-rule__examples {
+  display: flex;
+  gap: var(--space-16);
+  align-items: center;
+  margin-bottom: var(--space-12);
+  min-height: var(--space-48);
+}
+
+.token-icon-rule__examples svg {
+  width: 24px;
+  height: 24px;
+  color: var(--color-label);
+}
+
+.token-icon-rule__desc {
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-small);
+  line-height: var(--line-height-small);
+  letter-spacing: var(--letter-spacing-small);
+  color: var(--color-gray);
+}

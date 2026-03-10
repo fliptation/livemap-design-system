@@ -169,6 +169,7 @@
   --measure-narrow:  280px;
   --measure-default: 480px;
   --measure-wide:    640px;
+  --text-wrap-balance:       balance;  /* balanced line breaks for short text blocks */
 }
 
 
@@ -271,6 +272,54 @@
   --radius-lg:    16px;    /* large cards, panels */
   --radius-xl:    20px;    /* feature cards, surfaces */
   --radius-full:  9999px;  /* pills, avatars, circular elements */
+}
+
+
+/* ==========================================================================
+   Shadows (Elevation)
+   --------------------------------------------------------------------------
+   Progressive shadow scale from subtle control borders to prominent overlays.
+   Each level uses a two-layer shadow: a tighter ambient layer for definition
+   and a wider spread layer for perceived depth.
+
+   Platform mapping:
+     CSS     →  var(--shadow-sm)                   box-shadow
+     iOS     →  Shadow.sm                          NSShadow / SwiftUI .shadow
+     Android → R.style.Shadow_Sm                   MaterialShapeDrawable
+     Design  → shadow/sm
+   ========================================================================== */
+
+:root {
+  --shadow-xs:  0 1px 2px rgba(0, 0, 0, 0.04), 0 0 0 0.5px rgba(0, 0, 0, 0.03);
+  --shadow-sm:  0 1px 3px rgba(0, 0, 0, 0.06), 0 0 0 0.5px rgba(0, 0, 0, 0.03);
+  --shadow-md:  0 4px 12px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.04);
+  --shadow-lg:  0 8px 24px rgba(0, 0, 0, 0.12), 0 2px 6px rgba(0, 0, 0, 0.04);
+  --shadow-xl:  0 16px 48px rgba(0, 0, 0, 0.16), 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+
+/* ==========================================================================
+   Z-Index Layers
+   --------------------------------------------------------------------------
+   Stacking-context scale for layered UI. Values are spaced to allow
+   insertion without collision.
+
+   Platform mapping:
+     CSS     →  var(--z-base)                      z-index
+     iOS     →  ZIndex.base                        zPosition / zIndex
+     Android → (ViewCompat.setElevation)           dp
+     Design  → z/base
+   ========================================================================== */
+
+:root {
+  --z-base:      0;
+  --z-raised:    1;
+  --z-dropdown:  100;
+  --z-sticky:    200;
+  --z-overlay:   300;
+  --z-modal:     400;
+  --z-popover:   500;
+  --z-toast:     600;
 }
 
 

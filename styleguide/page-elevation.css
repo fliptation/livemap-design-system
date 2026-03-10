@@ -1,0 +1,164 @@
+/* ==========================================================================
+   Elevation & Borders Page — Component Styles
+   ========================================================================== */
+
+/* ---- Shadow cards ---- */
+.token-shadow-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-24);
+  margin-bottom: var(--space-40);
+}
+
+.token-shadow-card {
+  width: 180px;
+  height: 140px;
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-8);
+}
+
+.token-shadow-card__name {
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-micro);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-label);
+}
+
+.token-shadow-card__value {
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-nano);
+  line-height: var(--line-height-nano);
+  letter-spacing: var(--letter-spacing-nano);
+  color: var(--color-gray-2);
+}
+
+/* ---- Radius cards (reuse existing pattern) ---- */
+.token-radius-showcase {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-16);
+  margin-bottom: var(--space-40);
+}
+
+.token-radius-showcase__card {
+  width: 120px;
+  height: 120px;
+  background: var(--color-fill);
+  border: 1.5px solid var(--color-separator);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-6);
+}
+
+.token-radius-showcase__name {
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-micro);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-label);
+}
+
+.token-radius-showcase__value {
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-nano);
+  color: var(--color-gray-2);
+}
+
+/* ---- Border / divider samples ---- */
+.token-border-samples {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-20);
+  margin-bottom: var(--space-40);
+}
+
+.token-border-sample {
+  display: flex;
+  align-items: center;
+  gap: var(--space-16);
+}
+
+.token-border-sample__line {
+  flex: 1;
+  height: 0;
+  border: none;
+  border-top-style: solid;
+  border-top-width: 1px;
+}
+
+.token-border-sample__info {
+  flex: 0 0 auto;
+  display: flex;
+  gap: var(--space-12);
+  align-items: baseline;
+}
+
+.token-border-sample__name {
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-fine);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-fine);
+  letter-spacing: var(--letter-spacing-fine);
+  color: var(--color-label);
+}
+
+.token-border-sample__var {
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-nano);
+  color: var(--color-gray-2);
+}
+
+/* ---- Z-index layer stack ---- */
+.token-z-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-bottom: var(--space-40);
+}
+
+.token-z-row {
+  display: flex;
+  align-items: center;
+  padding: var(--space-12) 0;
+  border-bottom: 1px solid var(--color-separator-subtle);
+  gap: var(--space-16);
+}
+
+.token-z-row:last-child { border-bottom: none; }
+
+.token-z-row__bar {
+  width: var(--space-48);
+  height: var(--space-32);
+  border-radius: var(--radius-xs);
+  background: var(--color-fill);
+  border: 1px solid var(--color-separator);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-nano);
+  color: var(--color-gray-2);
+}
+
+.token-z-row__name {
+  flex: 0 0 120px;
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-micro);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-label);
+}
+
+.token-z-row__usage {
+  flex: 1;
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-fine);
+  line-height: var(--line-height-fine);
+  letter-spacing: var(--letter-spacing-fine);
+  color: var(--color-gray);
+}

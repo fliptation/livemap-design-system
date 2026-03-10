@@ -1,0 +1,275 @@
+/* ==========================================================================
+   Getting Started Page — Component Styles
+   ========================================================================== */
+
+/* ---- Intro block ---- */
+.gs-intro {
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-body);
+  color: var(--color-label-secondary);
+  max-width: var(--measure-wide);
+  margin-bottom: var(--space-48);
+}
+
+.gs-intro strong {
+  color: var(--color-label);
+  font-weight: var(--font-weight-semibold);
+}
+
+/* ---- Playground card ---- */
+.gs-playground-card {
+  display: flex;
+  align-items: center;
+  gap: var(--space-32);
+  background: var(--color-surface);
+  border: 1px solid var(--color-separator);
+  border-radius: var(--radius-xl);
+  padding: var(--space-32) var(--space-40);
+  margin-bottom: var(--space-40);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.gs-playground-card:hover {
+  border-color: var(--color-gray-4);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+}
+
+.gs-playground-card__icon {
+  flex-shrink: 0;
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-lg);
+  background: var(--color-fill);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-label);
+}
+
+.gs-playground-card__icon svg {
+  width: 28px;
+  height: 28px;
+}
+
+.gs-playground-card__body {
+  flex: 1;
+  min-width: 0;
+}
+
+.gs-playground-card__title {
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-detail);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-label);
+  margin-bottom: var(--space-4);
+}
+
+.gs-playground-card__desc {
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-small);
+  line-height: var(--line-height-detail);
+  color: var(--color-gray);
+}
+
+.gs-playground-card__action {
+  flex-shrink: 0;
+}
+
+.gs-playground-card__link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-6);
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-fine);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-tint-action);
+  text-decoration: none;
+  padding: var(--space-10) var(--space-20);
+  border-radius: var(--radius-sm);
+  background: rgba(0, 122, 255, 0.08);
+  transition: background 0.15s;
+  white-space: nowrap;
+}
+
+.gs-playground-card__link:hover {
+  background: rgba(0, 122, 255, 0.14);
+}
+
+.gs-playground-card__link svg {
+  width: 14px;
+  height: 14px;
+}
+
+/* ---- Principle cards ---- */
+.gs-principles-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-16);
+  margin-bottom: var(--space-40);
+}
+
+.gs-principle {
+  padding: var(--space-24);
+  border: 1px solid var(--color-separator-subtle);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+}
+
+.gs-principle__number {
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-nano);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-gray-3);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: var(--space-10);
+}
+
+.gs-principle__name {
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-detail);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-label);
+  margin-bottom: var(--space-6);
+}
+
+.gs-principle__desc {
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-small);
+  line-height: var(--line-height-detail);
+  color: var(--color-gray);
+}
+
+/* ---- Workflow steps ---- */
+.gs-workflow-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-bottom: var(--space-40);
+}
+
+.gs-workflow-step {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-20);
+  padding: var(--space-24) 0;
+  border-bottom: 1px solid var(--color-separator-subtle);
+}
+
+.gs-workflow-step:last-child {
+  border-bottom: none;
+}
+
+.gs-workflow-step__number {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-full);
+  background: var(--color-fill);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-micro);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-label-secondary);
+}
+
+.gs-workflow-step__body {
+  flex: 1;
+  min-width: 0;
+}
+
+.gs-workflow-step__title {
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-detail);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-label);
+  margin-bottom: var(--space-4);
+}
+
+.gs-workflow-step__desc {
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-small);
+  line-height: var(--line-height-detail);
+  color: var(--color-gray);
+}
+
+/* ---- Tool list ---- */
+.gs-tools-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-bottom: var(--space-40);
+}
+
+.gs-tool-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-16);
+  padding: var(--space-16) 0;
+  border-bottom: 1px solid var(--color-separator-subtle);
+}
+
+.gs-tool-row:last-child {
+  border-bottom: none;
+}
+
+.gs-tool-row__name {
+  flex: 0 0 140px;
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-fine);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-label);
+}
+
+.gs-tool-row__desc {
+  flex: 1;
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-small);
+  color: var(--color-gray);
+}
+
+.gs-tool-row__link {
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-nano);
+  color: var(--color-tint-action);
+  text-decoration: none;
+}
+
+.gs-tool-row__link:hover {
+  text-decoration: underline;
+}
+
+/* ---- Contributing list ---- */
+.gs-contrib-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+  margin-bottom: var(--space-40);
+}
+
+.gs-contrib-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-12);
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-small);
+  line-height: var(--line-height-detail);
+  color: var(--color-label-secondary);
+}
+
+.gs-contrib-item__bullet {
+  flex-shrink: 0;
+  width: 6px;
+  height: 6px;
+  border-radius: var(--radius-full);
+  background: var(--color-gray-4);
+  margin-top: 7px;
+}
+
+.gs-contrib-item strong {
+  color: var(--color-label);
+  font-weight: var(--font-weight-semibold);
+}

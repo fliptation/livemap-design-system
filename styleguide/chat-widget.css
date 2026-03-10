@@ -1,0 +1,269 @@
+/* ==========================================================================
+   Chat Widget — Floating AI assistant
+   ========================================================================== */
+
+/* ---- Container ---- */
+.chat-widget {
+  position: fixed;
+  bottom: var(--space-24);
+  right: var(--space-24);
+  z-index: 1000;
+}
+
+/* ---- FAB ---- */
+.chat-widget__fab {
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-full);
+  border: none;
+  background: var(--color-label);
+  color: var(--color-surface);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.16), 0 1px 4px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.2s;
+  position: relative;
+}
+
+.chat-widget__fab:hover {
+  transform: scale(1.06);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2), 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.chat-widget__fab:active {
+  transform: scale(0.96);
+}
+
+.chat-widget__fab-icon {
+  width: 22px;
+  height: 22px;
+  position: absolute;
+  transition: opacity 0.2s, transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.chat-widget__fab-icon--chat {
+  opacity: 1;
+  transform: rotate(0deg);
+}
+
+.chat-widget__fab-icon--close {
+  opacity: 0;
+  transform: rotate(-90deg);
+}
+
+.chat-widget.is-open .chat-widget__fab-icon--chat {
+  opacity: 0;
+  transform: rotate(90deg);
+}
+
+.chat-widget.is-open .chat-widget__fab-icon--close {
+  opacity: 1;
+  transform: rotate(0deg);
+}
+
+/* ---- Panel ---- */
+.chat-widget__panel {
+  position: absolute;
+  bottom: calc(100% + var(--space-12));
+  right: 0;
+  width: 380px;
+  height: 520px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-separator);
+  border-radius: var(--radius-xl);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12), 0 4px 12px rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(8px) scale(0.96);
+  transform-origin: bottom right;
+  pointer-events: none;
+  transition: opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.chat-widget.is-open .chat-widget__panel {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+/* ---- Header ---- */
+.chat-widget__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-16) var(--space-16) var(--space-12);
+  border-bottom: 1px solid var(--color-separator-subtle);
+  flex-shrink: 0;
+}
+
+.chat-widget__header-left {
+  display: flex;
+  align-items: center;
+  gap: var(--space-10);
+}
+
+.chat-widget__avatar {
+  width: var(--space-32);
+  height: var(--space-32);
+  border-radius: var(--radius-full);
+  background: var(--color-fill);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-label-secondary);
+  flex-shrink: 0;
+}
+
+.chat-widget__avatar svg {
+  width: 18px;
+  height: 18px;
+}
+
+.chat-widget__header-title {
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-detail);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-label);
+}
+
+.chat-widget__close {
+  width: 28px;
+  height: 28px;
+  border: none;
+  background: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-gray-2);
+  transition: color 0.15s, background 0.15s;
+  padding: 0;
+}
+
+.chat-widget__close:hover {
+  color: var(--color-label-secondary);
+  background: var(--color-fill);
+}
+
+.chat-widget__close svg {
+  width: var(--space-12);
+  height: var(--space-12);
+}
+
+/* ---- Messages ---- */
+.chat-widget__messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--space-16);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-gray-5) transparent;
+}
+
+.chat-widget__message {
+  display: flex;
+  max-width: 85%;
+}
+
+.chat-widget__message--bot {
+  align-self: flex-start;
+}
+
+.chat-widget__message--user {
+  align-self: flex-end;
+}
+
+.chat-widget__bubble {
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-small);
+  line-height: var(--line-height-detail);
+  padding: var(--space-10) var(--space-12);
+  border-radius: var(--radius-lg);
+  word-wrap: break-word;
+}
+
+.chat-widget__message--bot .chat-widget__bubble {
+  background: var(--color-fill);
+  color: var(--color-label);
+  border-bottom-left-radius: var(--radius-xs);
+}
+
+.chat-widget__message--user .chat-widget__bubble {
+  background: var(--color-label);
+  color: var(--color-surface);
+  border-bottom-right-radius: var(--radius-xs);
+}
+
+/* ---- Input area ---- */
+.chat-widget__input-area {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+  padding: var(--space-12) var(--space-16);
+  border-top: 1px solid var(--color-separator-subtle);
+  flex-shrink: 0;
+}
+
+.chat-widget__input {
+  flex: 1;
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-regular);
+  color: var(--color-label);
+  background: var(--color-fill);
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: var(--space-10) var(--space-12);
+  outline: none;
+  line-height: var(--line-height-detail);
+}
+
+.chat-widget__input::placeholder {
+  color: var(--color-gray-3);
+}
+
+.chat-widget__send {
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: var(--radius-sm);
+  background: var(--color-label);
+  color: var(--color-surface);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: opacity 0.15s, transform 0.1s;
+  padding: 0;
+}
+
+.chat-widget__send:hover {
+  opacity: 0.85;
+}
+
+.chat-widget__send:active {
+  transform: scale(0.94);
+}
+
+.chat-widget__send:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.chat-widget__send:disabled:hover {
+  opacity: 0.3;
+}
+
+.chat-widget__send svg {
+  width: var(--space-16);
+  height: var(--space-16);
+}

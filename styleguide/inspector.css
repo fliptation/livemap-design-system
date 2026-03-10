@@ -1,0 +1,174 @@
+/* ==========================================================================
+   Token Inspector — Hover overlay that reveals design tokens on any element
+   ========================================================================== */
+
+/* ---- Toggle button ---- */
+.inspect-toggle {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-micro);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-micro);
+  color: var(--color-gray-2);
+  background: var(--color-fill-secondary);
+  border: none;
+  padding: var(--space-6) var(--space-16);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: color 0.15s, background 0.15s, box-shadow 0.15s;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.inspect-toggle:hover {
+  color: var(--color-label-secondary);
+}
+
+.inspect-toggle.is-active {
+  background: var(--color-surface);
+  color: var(--color-tint-action);
+  font-weight: var(--font-weight-semibold);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 0 0 0.5px rgba(0,122,255,0.15);
+}
+
+.inspect-toggle__icon {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
+/* ---- Hover outline when inspect mode is on ---- */
+.inspect-mode .app-content [data-inspect-hover] {
+  outline: 2px dashed rgba(0, 122, 255, 0.35);
+  outline-offset: 2px;
+  background-color: rgba(0, 122, 255, 0.03);
+}
+
+/* ---- Tooltip ---- */
+.token-inspector-tooltip {
+  position: fixed;
+  z-index: 10000;
+  max-width: 420px;
+  min-width: 260px;
+  background: var(--color-surface);
+  border-radius: var(--radius-md);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.12), 0 0 0 0.5px rgba(0,0,0,0.06);
+  padding: var(--space-12) var(--space-16);
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 0.12s ease-out, transform 0.12s ease-out;
+  max-height: 360px;
+  overflow-y: auto;
+}
+
+.token-inspector-tooltip.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* ---- Tooltip header (element selector) ---- */
+.token-inspector-tooltip__header {
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-nano);
+  line-height: var(--line-height-nano);
+  color: var(--color-label-tertiary);
+  margin-bottom: var(--space-8);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ---- Category group ---- */
+.token-inspector-tooltip__group {
+  margin-top: var(--space-8);
+}
+
+.token-inspector-tooltip__group:first-of-type {
+  margin-top: 0;
+}
+
+.token-inspector-tooltip__category {
+  font-family: var(--font-family-text);
+  font-size: 10px;
+  font-weight: var(--font-weight-semibold);
+  line-height: 14px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-label-tertiary);
+  margin-bottom: var(--space-4);
+}
+
+/* ---- Individual token row ---- */
+.token-inspector-tooltip__row {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-10);
+  padding: 2px 0;
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-nano);
+  line-height: var(--line-height-fine);
+}
+
+.token-inspector-tooltip__prop {
+  color: var(--color-label-secondary);
+  flex-shrink: 0;
+  min-width: 80px;
+}
+
+.token-inspector-tooltip__token {
+  color: var(--color-tint-action);
+  flex-shrink: 0;
+  cursor: pointer;
+  border-radius: 3px;
+  padding: 0 2px;
+  margin: 0 -2px;
+  transition: background 0.1s;
+}
+
+.token-inspector-tooltip__token:hover {
+  background: rgba(0, 122, 255, 0.08);
+  text-decoration: underline;
+}
+
+.token-inspector-tooltip__value {
+  color: var(--color-label-tertiary);
+  margin-left: auto;
+  text-align: right;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 120px;
+}
+
+/* Color swatch for color tokens */
+.token-inspector-tooltip__swatch {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  border: 0.5px solid rgba(0,0,0,0.1);
+  vertical-align: middle;
+  margin-right: var(--space-4);
+  flex-shrink: 0;
+}
+
+/* ---- Empty state ---- */
+.token-inspector-tooltip__empty {
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-nano);
+  color: var(--color-label-tertiary);
+  font-style: italic;
+}
+
+/* ---- Keyboard hint ---- */
+.token-inspector-tooltip__hint {
+  font-family: var(--font-family-text);
+  font-size: 10px;
+  color: var(--color-label-quaternary);
+  margin-top: var(--space-8);
+  padding-top: var(--space-6);
+  border-top: 0.5px solid var(--color-separator);
+}

@@ -1,0 +1,113 @@
+/* ==========================================================================
+   Homepage — Navigation Grid
+   ========================================================================== */
+
+/* ---- Hero section ---- */
+.home-hero {
+  margin-bottom: var(--space-48);
+}
+
+.home-hero__title {
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-heading-lg);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-label);
+  letter-spacing: var(--letter-spacing-heading-lg);
+  line-height: var(--line-height-heading-lg);
+  margin-bottom: var(--space-12);
+}
+
+.home-hero__desc {
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-body);
+  line-height: var(--line-height-body);
+  letter-spacing: var(--letter-spacing-body);
+  color: var(--color-label-secondary);
+  max-width: 560px;
+  text-wrap: var(--text-wrap-balance);
+}
+
+/* ---- Section groups ---- */
+.home-group {
+  margin-bottom: var(--space-40);
+}
+
+.home-group__label {
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-nano);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-nano);
+  letter-spacing: var(--letter-spacing-nano);
+  color: var(--color-gray);
+  text-transform: uppercase;
+  margin-bottom: var(--space-16);
+}
+
+/* ---- Card grid ---- */
+.home-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: var(--space-12);
+}
+
+/* ---- Card ---- */
+.home-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+  padding: var(--space-20) var(--space-20) var(--space-24);
+  border: 1px solid var(--color-separator);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  cursor: pointer;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  text-decoration: none;
+  color: inherit;
+}
+
+.home-card:hover {
+  border-color: var(--color-gray-4);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+}
+
+.home-card__icon {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-md);
+  background: var(--color-fill);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-label-secondary);
+  flex-shrink: 0;
+}
+
+.home-card__icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.home-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.home-card__title {
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-detail);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-detail);
+  letter-spacing: var(--letter-spacing-detail);
+  color: var(--color-label);
+}
+
+.home-card__desc {
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-small);
+  line-height: var(--line-height-small);
+  letter-spacing: var(--letter-spacing-small);
+  color: var(--color-gray);
+}
