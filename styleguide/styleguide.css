@@ -14,6 +14,7 @@
 @import "page-components.css";
 @import "page-patterns.css";
 @import "page-guidelines.css";
+@import "page-live-activities.css";
 @import "chat-widget.css";
 
 /* ---- Base ---- */
@@ -262,6 +263,28 @@ body {
 .nav-subitem.is-active {
   color: var(--color-label);
   font-weight: var(--font-weight-medium);
+}
+
+.nav-section-label {
+  font-family: var(--font-family-text);
+  font-size: 11px;
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-label-tertiary);
+  padding: var(--space-6) var(--space-16);
+  margin-top: var(--space-16);
+  cursor: pointer;
+  user-select: none;
+}
+.nav-section-label:hover {
+  color: var(--color-label-secondary);
+}
+.nav-section-label.is-active {
+  color: var(--color-label);
+}
+.app-sidebar.is-collapsed .nav-section-label {
+  opacity: 0;
 }
 
 .nav-divider {

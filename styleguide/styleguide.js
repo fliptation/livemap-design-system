@@ -138,6 +138,17 @@
         { id: 'pt-onboarding', label: 'Onboarding' }
       ]
     },
+    {
+      section: 'iOS', page: 'live-activities',
+      enabled: true, children: [
+        { id: 'la-views', label: 'Views' },
+        { id: 'la-routes', label: 'Routes' },
+        { id: 'la-spacing', label: 'Spacing' },
+        { id: 'la-colors', label: 'Colors' },
+        { id: 'la-alerts', label: 'Alerts' },
+        { id: 'la-standby', label: 'StandBy' }
+      ]
+    },
     { divider: true },
     {
       id: 'guidelines', label: 'Guidelines', page: 'guidelines',
@@ -164,6 +175,7 @@
     map:        { title: 'Livemap Design System', heading: 'Map', subtitle: '' },
     components: { title: 'Livemap Design System', heading: 'Components', subtitle: '' },
     patterns:   { title: 'Livemap Design System', heading: 'Patterns', subtitle: '' },
+    'live-activities': { title: 'Livemap Design System', heading: 'iOS', subtitle: '/ Live Activities' },
     guidelines: { title: 'Livemap Design System', heading: 'Guidelines', subtitle: '' }
   };
 
@@ -188,6 +200,51 @@
         var d = document.createElement('div');
         d.className = 'nav-divider';
         sidebarNav.appendChild(d);
+        return;
+      }
+
+      // Handle section labels (non-first-level grouped items)
+      if (item.section) {
+        var label = document.createElement('div');
+        label.className = 'nav-section-label' + (activePage === item.page ? ' is-active' : '');
+        label.setAttribute('data-page', item.page);
+        label.textContent = item.section;
+        label.addEventListener('click', function () {
+          if (activePage === item.page) {
+            var sub = sidebarNav.querySelector('.nav-subitems[data-parent-page="' + item.page + '"]');
+            if (sub) sub.classList.toggle('is-expanded');
+            return;
+          }
+          switchPage(item.page);
+        });
+        sidebarNav.appendChild(label);
+
+        if (item.children && item.children.length > 0) {
+          var subNav = document.createElement('div');
+          subNav.className = 'nav-subitems' + (activePage === item.page ? ' is-expanded' : '');
+          subNav.setAttribute('data-parent-page', item.page);
+          item.children.forEach(function (child) {
+            var a = document.createElement('a');
+            a.className = 'nav-subitem';
+            a.href = '#' + child.id;
+            a.textContent = child.label;
+            a.addEventListener('click', function (e) {
+              e.preventDefault();
+              var target = document.getElementById(child.id);
+              if (target) {
+                var page = document.getElementById('page-' + activePage);
+                if (page) {
+                  appContent.scrollTo({
+                    top: target.offsetTop - page.offsetTop - 20,
+                    behavior: 'smooth'
+                  });
+                }
+              }
+            });
+            subNav.appendChild(a);
+          });
+          sidebarNav.appendChild(subNav);
+        }
         return;
       }
 
@@ -287,6 +344,10 @@
     for (var i = 0; i < navItems.length; i++) {
       navItems[i].classList.toggle('is-active', navItems[i].getAttribute('data-page') === pageId);
     }
+    var sectionLabels = sidebarNav.querySelectorAll('.nav-section-label');
+    for (var i = 0; i < sectionLabels.length; i++) {
+      sectionLabels[i].classList.toggle('is-active', sectionLabels[i].getAttribute('data-page') === pageId);
+    }
     var subItems = sidebarNav.querySelectorAll('.nav-subitems');
     for (var i = 0; i < subItems.length; i++) {
       subItems[i].classList.toggle('is-expanded', subItems[i].getAttribute('data-parent-page') === pageId);
@@ -336,7 +397,10 @@
   var spySectionsMap = {};
   NAV_ITEMS.forEach(function (item) {
     if (!item.divider && item.children && item.children.length > 0) {
-      spySectionsMap[item.page] = item.children.filter(function (c) { return !c.divider; });
+      var page = item.page || (item.section ? item.page : null);
+      if (page) {
+        spySectionsMap[page] = item.children.filter(function (c) { return !c.divider; });
+      }
     }
   });
 

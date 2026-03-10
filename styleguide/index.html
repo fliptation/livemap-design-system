@@ -191,6 +191,15 @@
             <div class="home-card__desc">Form layouts, navigation, data display, and states.</div>
           </div>
         </div>
+        <div class="home-card" data-home-page="live-activities">
+          <div class="home-card__icon">
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="14" height="6" rx="3"/><circle cx="7" cy="10" r="1.5" fill="currentColor" stroke="none"/><line x1="11" y1="8.5" x2="14" y2="8.5"/><line x1="11" y1="11.5" x2="13" y2="11.5"/></svg>
+          </div>
+          <div class="home-card__body">
+            <div class="home-card__title">iOS</div>
+            <div class="home-card__desc">Live Activities, Dynamic Island views, routes, and alerts.</div>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -4591,6 +4600,623 @@
         <strong>Progress indicator:</strong> Use small dots at the bottom — active dot in <code>var(--color-label)</code>, inactive in <code>var(--color-gray-4)</code>. Allow swipe navigation between steps. Include a "Skip" link in <code>var(--color-gray-2)</code>.
       </div>
     </section>
+
+        </div>
+
+        <div class="content-page" id="page-live-activities" hidden>
+
+          <!-- ====== Views: Compact, Minimal, Expanded ====== -->
+          <section id="la-views">
+            <p class="section-label">Views</p>
+            <p class="section-note">Live Activities appear in three Dynamic Island presentations — Compact, Minimal, and Expanded — plus a Lock Screen widget. Each view serves a different glanceability need.</p>
+
+            <!-- Compact -->
+            <p class="section-label" style="margin-top: var(--space-32); font-size: var(--font-size-fine);">Compact</p>
+            <p class="section-note">Split into leading and trailing halves flanking the TrueDepth camera. Show the most essential info — an icon and one value per side.</p>
+
+            <div class="la-preview-grid">
+              <div class="la-preview-card">
+                <span class="la-view-label">Compact — Route</span>
+                <div class="la-island la-island--compact">
+                  <div class="la-island__leading">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    <span class="la-island__text">12 min</span>
+                  </div>
+                  <div class="la-island__camera"></div>
+                  <div class="la-island__trailing">
+                    <span class="la-island__text la-island__text--secondary">2.4 km</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                  </div>
+                </div>
+                <span class="la-preview-card__desc">230 × 37 pt — leading and trailing sides separated by camera</span>
+              </div>
+            </div>
+
+            <!-- Minimal -->
+            <p class="section-label" style="margin-top: var(--space-24); font-size: var(--font-size-fine);">Minimal</p>
+            <p class="section-note">Shown when two Live Activities compete for the Dynamic Island. One attaches to the island; the other becomes a detached circle.</p>
+
+            <div class="la-preview-grid">
+              <div class="la-preview-card">
+                <span class="la-view-label">Minimal — Attached</span>
+                <div style="position: relative; width: 200px; height: 61px;">
+                  <div class="la-island la-island--minimal" style="position: absolute; left: 60px; top: 12px;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 L12 22"/><path d="M5 9 L12 2 L19 9"/></svg>
+                  </div>
+                  <div class="la-island la-island--minimal-detached" style="position: absolute; right: 20px; top: 12px;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                  </div>
+                </div>
+                <span class="la-preview-card__desc">37 × 37 pt circle — single icon or compact glyph</span>
+              </div>
+            </div>
+
+            <!-- Expanded -->
+            <p class="section-label" style="margin-top: var(--space-24); font-size: var(--font-size-fine);">Expanded</p>
+            <p class="section-note">Triggered by long-press or briefly on update. Provides the richest layout with leading, trailing, center, and bottom regions. Max height: 160 pt.</p>
+
+            <div class="la-preview-grid">
+              <div class="la-preview-card">
+                <span class="la-view-label">Expanded — Route</span>
+                <div class="la-island la-island--expanded">
+                  <div class="la-island__content">
+                    <div class="la-island__top-row">
+                      <div class="la-island__leading">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px;color:#0a84ff"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                        <div>
+                          <span class="la-island__text">Bahnhofstrasse</span>
+                          <br>
+                          <span class="la-island__text la-island__text--secondary">In 200 m rechts abbiegen</span>
+                        </div>
+                      </div>
+                      <div class="la-island__trailing">
+                        <span class="la-island__text" style="font-size: var(--font-size-heading-sm); font-weight: var(--font-weight-bold);">12 min</span>
+                      </div>
+                    </div>
+                    <div class="la-island__bottom-row">
+                      <span class="la-island__text la-island__text--secondary">2.4 km verbleibend</span>
+                      <div class="la-island__progress" style="flex:1;">
+                        <div class="la-island__progress-fill" style="width: 35%;"></div>
+                      </div>
+                      <span class="la-island__text la-island__text--tint">14:32</span>
+                    </div>
+                  </div>
+                </div>
+                <span class="la-preview-card__desc">371 × 84–160 pt — full layout with progress and details</span>
+              </div>
+            </div>
+
+            <!-- Spec table -->
+            <table class="la-spec-table">
+              <thead>
+                <tr>
+                  <th>View</th>
+                  <th>Width</th>
+                  <th>Height</th>
+                  <th>Corner Radius</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Compact Leading / Trailing</td>
+                  <td><code>~52–62 pt</code></td>
+                  <td><code>37 pt</code></td>
+                  <td><code>22 pt</code></td>
+                </tr>
+                <tr>
+                  <td>Minimal</td>
+                  <td><code>37 pt</code></td>
+                  <td><code>37 pt</code></td>
+                  <td><code>full (circle)</code></td>
+                </tr>
+                <tr>
+                  <td>Expanded</td>
+                  <td><code>371–408 pt</code></td>
+                  <td><code>84–160 pt</code></td>
+                  <td><code>44 pt</code></td>
+                </tr>
+                <tr>
+                  <td>Lock Screen</td>
+                  <td><code>full width − 28 pt</code></td>
+                  <td><code>max 160 pt</code></td>
+                  <td><code>16 pt</code></td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+
+          <!-- ====== Routes (Livemap-specific) ====== -->
+          <section id="la-routes">
+            <p class="section-label">Routes</p>
+            <p class="section-note">Livemap navigation routes show transport mode, time remaining, and distance in all Live Activity views. Each mode uses a distinct icon for instant recognition.</p>
+
+            <!-- Expanded route cards -->
+            <div class="la-route-cards">
+              <!-- Walking -->
+              <div class="la-route-card">
+                <div class="la-route-card__content">
+                  <div class="la-route-card__header">
+                    <div class="la-route-card__mode">
+                      <div class="la-route-card__mode-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13" cy="4" r="1.5"/><path d="M7 21l3-7"/><path d="M10 14l-2-4 4-1 3 3"/><path d="M13 9l2 7 3 2"/></svg>
+                      </div>
+                      <span class="la-route-card__mode-label">Walking</span>
+                    </div>
+                    <span class="la-route-card__eta">8 min</span>
+                  </div>
+                  <div class="la-route-card__meta">
+                    <div class="la-route-card__stat">
+                      <span class="la-route-card__stat-value">0.6 km</span>
+                      <span class="la-route-card__stat-label">remaining</span>
+                    </div>
+                    <div class="la-route-card__stat">
+                      <span class="la-route-card__stat-value">14:23</span>
+                      <span class="la-route-card__stat-label">arrival</span>
+                    </div>
+                  </div>
+                  <div class="la-route-card__progress">
+                    <div class="la-route-card__progress-fill" style="width: 65%;"></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Public Transport (ÖV) -->
+              <div class="la-route-card">
+                <div class="la-route-card__content">
+                  <div class="la-route-card__header">
+                    <div class="la-route-card__mode">
+                      <div class="la-route-card__mode-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="16" rx="2"/><path d="M4 11h16"/><path d="M12 3v8"/><path d="M8 19l-2 3"/><path d="M16 19l2 3"/><circle cx="8" cy="15" r="1"/><circle cx="16" cy="15" r="1"/></svg>
+                      </div>
+                      <span class="la-route-card__mode-label">Public Transport</span>
+                    </div>
+                    <span class="la-route-card__eta">23 min</span>
+                  </div>
+                  <div class="la-route-card__meta">
+                    <div class="la-route-card__stat">
+                      <span class="la-route-card__stat-value">12.3 km</span>
+                      <span class="la-route-card__stat-label">remaining</span>
+                    </div>
+                    <div class="la-route-card__stat">
+                      <span class="la-route-card__stat-value">14:38</span>
+                      <span class="la-route-card__stat-label">arrival</span>
+                    </div>
+                  </div>
+                  <div class="la-route-card__progress">
+                    <div class="la-route-card__progress-fill" style="width: 40%;"></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Bicycle -->
+              <div class="la-route-card">
+                <div class="la-route-card__content">
+                  <div class="la-route-card__header">
+                    <div class="la-route-card__mode">
+                      <div class="la-route-card__mode-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="5.5" cy="17.5" r="3.5"/><circle cx="18.5" cy="17.5" r="3.5"/><path d="M15 6a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" fill="currentColor"/><path d="M12 17.5V14l-3-3 4-3 2 3h3"/></svg>
+                      </div>
+                      <span class="la-route-card__mode-label">Bicycle</span>
+                    </div>
+                    <span class="la-route-card__eta">15 min</span>
+                  </div>
+                  <div class="la-route-card__meta">
+                    <div class="la-route-card__stat">
+                      <span class="la-route-card__stat-value">3.8 km</span>
+                      <span class="la-route-card__stat-label">remaining</span>
+                    </div>
+                    <div class="la-route-card__stat">
+                      <span class="la-route-card__stat-value">14:30</span>
+                      <span class="la-route-card__stat-label">arrival</span>
+                    </div>
+                  </div>
+                  <div class="la-route-card__progress">
+                    <div class="la-route-card__progress-fill" style="width: 52%;"></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Car -->
+              <div class="la-route-card">
+                <div class="la-route-card__content">
+                  <div class="la-route-card__header">
+                    <div class="la-route-card__mode">
+                      <div class="la-route-card__mode-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9L18 10l-3.5-5H7L3.5 10 1.5 11.1C.7 11.3 0 12.1 0 13v3c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/><path d="M5 10h14"/></svg>
+                      </div>
+                      <span class="la-route-card__mode-label">Car</span>
+                    </div>
+                    <span class="la-route-card__eta">32 min</span>
+                  </div>
+                  <div class="la-route-card__meta">
+                    <div class="la-route-card__stat">
+                      <span class="la-route-card__stat-value">28.5 km</span>
+                      <span class="la-route-card__stat-label">remaining</span>
+                    </div>
+                    <div class="la-route-card__stat">
+                      <span class="la-route-card__stat-value">14:47</span>
+                      <span class="la-route-card__stat-label">arrival</span>
+                    </div>
+                  </div>
+                  <div class="la-route-card__progress">
+                    <div class="la-route-card__progress-fill" style="width: 18%;"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Compact route examples -->
+            <p class="section-label" style="font-size: var(--font-size-fine);">Compact View per Mode</p>
+            <p class="section-note">In compact view, show the transport icon (leading), time remaining, and distance (trailing).</p>
+
+            <div class="la-preview-grid" style="grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));">
+              <!-- Walking compact -->
+              <div class="la-preview-card">
+                <span class="la-view-label">Walking</span>
+                <div class="la-island la-island--compact">
+                  <div class="la-island__leading">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:#0a84ff"><circle cx="13" cy="4" r="1.5"/><path d="M7 21l3-7"/><path d="M10 14l-2-4 4-1 3 3"/><path d="M13 9l2 7 3 2"/></svg>
+                    <span class="la-island__text">8 min</span>
+                  </div>
+                  <div class="la-island__camera"></div>
+                  <div class="la-island__trailing">
+                    <span class="la-island__text la-island__text--secondary">0.6 km</span>
+                  </div>
+                </div>
+              </div>
+              <!-- ÖV compact -->
+              <div class="la-preview-card">
+                <span class="la-view-label">Public Transport</span>
+                <div class="la-island la-island--compact">
+                  <div class="la-island__leading">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:#0a84ff"><rect x="4" y="3" width="16" height="16" rx="2"/><path d="M4 11h16"/><path d="M12 3v8"/><path d="M8 19l-2 3"/><path d="M16 19l2 3"/><circle cx="8" cy="15" r="1"/><circle cx="16" cy="15" r="1"/></svg>
+                    <span class="la-island__text">23 min</span>
+                  </div>
+                  <div class="la-island__camera"></div>
+                  <div class="la-island__trailing">
+                    <span class="la-island__text la-island__text--secondary">12.3 km</span>
+                  </div>
+                </div>
+              </div>
+              <!-- Bicycle compact -->
+              <div class="la-preview-card">
+                <span class="la-view-label">Bicycle</span>
+                <div class="la-island la-island--compact">
+                  <div class="la-island__leading">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:#0a84ff"><circle cx="5.5" cy="17.5" r="3.5"/><circle cx="18.5" cy="17.5" r="3.5"/><path d="M15 6a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" fill="currentColor"/><path d="M12 17.5V14l-3-3 4-3 2 3h3"/></svg>
+                    <span class="la-island__text">15 min</span>
+                  </div>
+                  <div class="la-island__camera"></div>
+                  <div class="la-island__trailing">
+                    <span class="la-island__text la-island__text--secondary">3.8 km</span>
+                  </div>
+                </div>
+              </div>
+              <!-- Car compact -->
+              <div class="la-preview-card">
+                <span class="la-view-label">Car</span>
+                <div class="la-island la-island--compact">
+                  <div class="la-island__leading">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:#0a84ff"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9L18 10l-3.5-5H7L3.5 10 1.5 11.1C.7 11.3 0 12.1 0 13v3c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/><path d="M5 10h14"/></svg>
+                    <span class="la-island__text">32 min</span>
+                  </div>
+                  <div class="la-island__camera"></div>
+                  <div class="la-island__trailing">
+                    <span class="la-island__text la-island__text--secondary">28.5 km</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <table class="la-spec-table">
+              <thead>
+                <tr>
+                  <th>Element</th>
+                  <th>Leading</th>
+                  <th>Trailing</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Compact</td>
+                  <td>Mode icon + time remaining</td>
+                  <td>Distance in km</td>
+                </tr>
+                <tr>
+                  <td>Minimal</td>
+                  <td colspan="2">Mode icon only (16–20 pt)</td>
+                </tr>
+                <tr>
+                  <td>Expanded</td>
+                  <td>Street name + next turn instruction</td>
+                  <td>ETA (large, bold), progress bar, distance</td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+
+          <!-- ====== Spacing ====== -->
+          <section id="la-spacing">
+            <p class="section-label">Spacing</p>
+            <p class="section-note">Live Activities follow a concentric design principle — rounded shapes must nest inside each other with even margins. Content never touches the Dynamic Island walls.</p>
+
+            <div class="la-rule-box">
+              <div class="la-rule-box__title">Concentric Design Rule</div>
+              <div class="la-rule-box__text">Blur your content shape and verify the result is concentric with the Dynamic Island border. Inner corner radii should be: <code>outer radius − padding</code>. For the 44 pt expanded island, 20 pt inner padding gives 24 pt inner radii.</div>
+            </div>
+
+            <table class="la-spec-table">
+              <thead>
+                <tr>
+                  <th>Property</th>
+                  <th>Value</th>
+                  <th>Context</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Lock Screen margins</td>
+                  <td><code>14 pt</code> all sides</td>
+                  <td>Aligns with system notifications</td>
+                </tr>
+                <tr>
+                  <td>Screen edge padding</td>
+                  <td><code>16 pt</code> minimum</td>
+                  <td>General safe spacing from device edges</td>
+                </tr>
+                <tr>
+                  <td>Expanded outer padding</td>
+                  <td><code>11 pt</code></td>
+                  <td>Gap between island edge and inner content area</td>
+                </tr>
+                <tr>
+                  <td>Inner content padding</td>
+                  <td><code>12–16 pt</code></td>
+                  <td>Inside the rounded content area</td>
+                </tr>
+                <tr>
+                  <td>Compact content inset</td>
+                  <td><code>12 pt</code> horizontal</td>
+                  <td>Leading/trailing content from island edge</td>
+                </tr>
+                <tr>
+                  <td>Outer corner radius</td>
+                  <td><code>44 pt</code></td>
+                  <td>Dynamic Island hardware shape</td>
+                </tr>
+                <tr>
+                  <td>Inner corner radius</td>
+                  <td><code>33 pt</code> (44 − 11)</td>
+                  <td>Concentric nesting of content shapes</td>
+                </tr>
+                <tr>
+                  <td>Content gap</td>
+                  <td><code>8 pt</code></td>
+                  <td>Between rows in expanded view</td>
+                </tr>
+                <tr>
+                  <td>Max content payload</td>
+                  <td><code>4 KB</code></td>
+                  <td>Combined static + dynamic data</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="la-rule-box">
+              <div class="la-rule-box__title">Typography in Dynamic Island</div>
+              <div class="la-rule-box__text">Compact views: <code>15 pt</code> text, <code>22 pt</code> line height. Use heavy-weight, large text for readability at a glance. Icons/images: <code>24 pt</code> bounding box in compact views.</div>
+            </div>
+          </section>
+
+          <!-- ====== Colors ====== -->
+          <section id="la-colors">
+            <p class="section-label">Colors</p>
+            <p class="section-note">The Dynamic Island background is always opaque black (system-controlled). Use bold, vibrant colors for text and icons to ensure readability.</p>
+
+            <div class="la-color-swatches">
+              <div class="la-color-swatch">
+                <div class="la-color-swatch__circle" style="background: #1c1c1e; border-color: rgba(255,255,255,0.1);"></div>
+                <span class="la-color-swatch__name">Island BG</span>
+                <span class="la-color-swatch__value">#1C1C1E</span>
+              </div>
+              <div class="la-color-swatch">
+                <div class="la-color-swatch__circle" style="background: #ffffff;"></div>
+                <span class="la-color-swatch__name">Primary Text</span>
+                <span class="la-color-swatch__value">#FFFFFF</span>
+              </div>
+              <div class="la-color-swatch">
+                <div class="la-color-swatch__circle" style="background: rgba(235, 235, 245, 0.60);"></div>
+                <span class="la-color-swatch__name">Secondary</span>
+                <span class="la-color-swatch__value">60% white</span>
+              </div>
+              <div class="la-color-swatch">
+                <div class="la-color-swatch__circle" style="background: #0a84ff;"></div>
+                <span class="la-color-swatch__name">Action Tint</span>
+                <span class="la-color-swatch__value">#0A84FF</span>
+              </div>
+              <div class="la-color-swatch">
+                <div class="la-color-swatch__circle" style="background: #30d158;"></div>
+                <span class="la-color-swatch__name">Positive</span>
+                <span class="la-color-swatch__value">#30D158</span>
+              </div>
+              <div class="la-color-swatch">
+                <div class="la-color-swatch__circle" style="background: #ff453a;"></div>
+                <span class="la-color-swatch__name">Destructive</span>
+                <span class="la-color-swatch__value">#FF453A</span>
+              </div>
+              <div class="la-color-swatch">
+                <div class="la-color-swatch__circle" style="background: #ff9f0a;"></div>
+                <span class="la-color-swatch__name">Warning</span>
+                <span class="la-color-swatch__value">#FF9F0A</span>
+              </div>
+            </div>
+
+            <div class="guideline-split">
+              <div class="guideline-split__col">
+                <div class="guideline-split__header guideline-split__header--do">Do</div>
+                <div class="guideline-split__text">Use bold, high-contrast colors against the black island. Tint icons and key values with system blue or your brand accent.</div>
+              </div>
+              <div class="guideline-split__col">
+                <div class="guideline-split__header guideline-split__header--dont">Don't</div>
+                <div class="guideline-split__text">Don't use dark grays or muted tones — they disappear against the black background. Never set a custom Dynamic Island background color.</div>
+              </div>
+            </div>
+
+            <div class="la-rule-box" style="margin-top: var(--space-16);">
+              <div class="la-rule-box__title">Lock Screen background</div>
+              <div class="la-rule-box__text">Lock Screen widgets can use <code>.activityBackgroundTint()</code> with opacity. Apply sparingly — users customize wallpapers, so semi-transparent backgrounds work best. The system auto-generates a dismiss button from your foreground and background colors.</div>
+            </div>
+
+            <div class="la-rule-box">
+              <div class="la-rule-box__title">Vibrancy levels</div>
+              <div class="la-rule-box__text">iOS defines vibrancy levels for labels, fills, and separators: <strong>default &gt; secondary &gt; tertiary &gt; quaternary</strong>. Use secondary vibrancy for supporting text and quaternary for subtle separators.</div>
+            </div>
+          </section>
+
+          <!-- ====== Alerts ====== -->
+          <section id="la-alerts">
+            <p class="section-label">Alerts</p>
+            <p class="section-note">Live Activity alerts draw attention to important updates without sending a separate push notification. On Dynamic Island devices, the expanded view appears briefly.</p>
+
+            <div class="la-alert-demo">
+              <span class="la-view-label">Alert — Expanded on Dynamic Island</span>
+              <div class="la-island la-island--expanded" style="max-height: none;">
+                <div class="la-island__top-row">
+                  <div class="la-island__leading">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px;color:#ff453a"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                    <div>
+                      <span class="la-island__text">Route changed</span>
+                      <br>
+                      <span class="la-island__text la-island__text--secondary">Road closure ahead — rerouting via Seestrasse</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="la-island__bottom-row">
+                  <span class="la-island__text" style="color:#ff453a;">+4 min</span>
+                  <div class="la-island__progress" style="flex:1;">
+                    <div class="la-island__progress-fill" style="width: 28%; background: #ff453a;"></div>
+                  </div>
+                  <span class="la-island__text la-island__text--tint">14:36</span>
+                </div>
+              </div>
+            </div>
+
+            <table class="la-spec-table">
+              <thead>
+                <tr>
+                  <th>Device</th>
+                  <th>Behavior</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>iPhone with Dynamic Island</td>
+                  <td>Expanded view appears briefly in the island — no separate banner</td>
+                </tr>
+                <tr>
+                  <td>iPhone without Dynamic Island</td>
+                  <td>Banner at top of screen (when unlocked, app not in foreground)</td>
+                </tr>
+                <tr>
+                  <td>Locked device</td>
+                  <td>Screen lights up, notification sound plays</td>
+                </tr>
+                <tr>
+                  <td>Apple Watch</td>
+                  <td>Uses <code>title</code> and <code>body</code> from AlertConfiguration</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="la-rule-box">
+              <div class="la-rule-box__title">Alert design guidance</div>
+              <div class="la-rule-box__text">Emphasize the information that caused the alert in your expanded layout. Use color to signal urgency — red for reroutes or delays, green for early arrivals. Prefer alerts over push notifications for in-context updates.</div>
+            </div>
+          </section>
+
+          <!-- ====== StandBy ====== -->
+          <section id="la-standby">
+            <p class="section-label">StandBy</p>
+            <p class="section-note">When the device is in landscape, locked, and charging (iOS 17+), Live Activities scale to 2× to fill the screen. Design for legibility at distance.</p>
+
+            <div class="la-preview-grid" style="grid-template-columns: 1fr;">
+              <div class="la-preview-card" style="width: 100%; max-width: 560px;">
+                <span class="la-view-label">StandBy — Route Navigation (2× scale)</span>
+                <div class="la-standby-frame">
+                  <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="#0a84ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:24px;height:24px;"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9L18 10l-3.5-5H7L3.5 10 1.5 11.1C.7 11.3 0 12.1 0 13v3c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/><path d="M5 10h14"/></svg>
+                      <span style="font-family: var(--font-family-text); font-size: 28px; font-weight: 700; color: #fff;">32 min</span>
+                    </div>
+                    <span style="font-family: var(--font-family-text); font-size: 14px; color: rgba(235,235,245,0.60);">28.5 km — Bahnhofstrasse</span>
+                    <div style="width: 200px; height: 4px; background: rgba(255,255,255,0.15); border-radius: 9999px; overflow: hidden;">
+                      <div style="width: 18%; height: 100%; background: #0a84ff; border-radius: 9999px;"></div>
+                    </div>
+                  </div>
+                  <span class="la-standby-frame__label">StandBy mode</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="la-preview-grid" style="grid-template-columns: 1fr;">
+              <div class="la-preview-card" style="width: 100%; max-width: 560px;">
+                <span class="la-view-label">StandBy — Night Mode (red tint)</span>
+                <div class="la-standby-frame la-standby-frame--night">
+                  <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="#ff4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:24px;height:24px;"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9L18 10l-3.5-5H7L3.5 10 1.5 11.1C.7 11.3 0 12.1 0 13v3c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/><path d="M5 10h14"/></svg>
+                      <span style="font-family: var(--font-family-text); font-size: 28px; font-weight: 700; color: #ff6b6b;">32 min</span>
+                    </div>
+                    <span style="font-family: var(--font-family-text); font-size: 14px; color: rgba(255,100,100,0.60);">28.5 km — Bahnhofstrasse</span>
+                    <div style="width: 200px; height: 4px; background: rgba(255,100,100,0.15); border-radius: 9999px; overflow: hidden;">
+                      <div style="width: 18%; height: 100%; background: #ff4444; border-radius: 9999px;"></div>
+                    </div>
+                  </div>
+                  <span class="la-standby-frame__label" style="color: rgba(255,100,100,0.4);">Night mode</span>
+                </div>
+              </div>
+            </div>
+
+            <table class="la-spec-table">
+              <thead>
+                <tr>
+                  <th>Property</th>
+                  <th>Value</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Activation</td>
+                  <td>Device in landscape, locked, charging, at an angle</td>
+                </tr>
+                <tr>
+                  <td>Scaling</td>
+                  <td><code>2× (200%)</code> — Lock Screen presentation scaled to fill screen</td>
+                </tr>
+                <tr>
+                  <td>Detection</td>
+                  <td><code>EnvironmentValues.isActivityFullscreen</code></td>
+                </tr>
+                <tr>
+                  <td>Night mode</td>
+                  <td>Automatic red tint in low light — verify contrast under this mode</td>
+                </tr>
+                <tr>
+                  <td>Image resolution</td>
+                  <td>All assets must be high-res enough for the 2× scaled display</td>
+                </tr>
+                <tr>
+                  <td>Max active duration</td>
+                  <td><code>8 hours</code> (then removed from Dynamic Island; persists on Lock Screen up to 12 h total)</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="la-rule-box">
+              <div class="la-rule-box__title">StandBy design tips</div>
+              <div class="la-rule-box__text">If using a custom background, the system auto-stretches it full-screen. Removing the background gives a softer ambient look. Avoid placing content near sensor regions. Use <code>prefers-reduced-motion</code> to disable animations when <code>isLuminanceReduced</code> is true (Always-On Display).</div>
+            </div>
+          </section>
 
         </div>
 
