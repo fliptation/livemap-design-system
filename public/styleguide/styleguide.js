@@ -31,6 +31,7 @@
         { id: "tk-motion", label: "Motion" },
         { id: "tk-measures", label: "Measures" },
         { id: "tk-a11y", label: "Accessibility" },
+        { id: "tk-anatomy", label: "Anatomy Example" },
         { id: "tk-export", label: "Export Formats" },
       ],
     },
@@ -62,6 +63,7 @@
         { id: "multilingual", label: "Multilingual" },
         { id: "interactive", label: "Interactive" },
         { divider: true },
+        { id: "type-when-to-use", label: "When to Use" },
         { id: "token-reference", label: "Token Reference" },
         { id: "usage-notes", label: "Usage Notes" },
       ],
@@ -74,6 +76,7 @@
       children: [
         { id: "cl-palette", label: "Color Palette" },
         { id: "cl-semantic", label: "Semantic Colors" },
+        { id: "cl-when-to-use", label: "When to Use" },
         { id: "cl-tints", label: "Tint Colors" },
         { id: "cl-backgrounds", label: "Backgrounds & Fills" },
         { id: "cl-dark-mode", label: "Dark Mode" },
@@ -87,6 +90,7 @@
       enabled: true,
       children: [
         { id: "sp-scale", label: "Spacing Scale" },
+        { id: "sp-when-to-use", label: "When to Use" },
         { id: "sp-grid", label: "Grid System" },
         { id: "sp-breakpoints", label: "Breakpoints" },
         { id: "sp-containers", label: "Containers" },
@@ -100,6 +104,7 @@
       enabled: true,
       children: [
         { id: "el-shadows", label: "Shadows" },
+        { id: "el-when-to-use", label: "When to Use" },
         { id: "el-radii", label: "Border Radii" },
         { id: "el-borders", label: "Borders & Dividers" },
         { id: "el-layers", label: "Z-Index Layers" },

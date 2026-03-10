@@ -1570,6 +1570,58 @@
 
 
     <!-- ============================================================
+         When to Use (Typography)
+         ============================================================ -->
+    <section id="type-when-to-use">
+      <p class="section-label">When to Use</p>
+      <p class="section-note">
+        Quick reference for choosing the right type style. If two styles share a pixel size (e.g. Label and Body are both 17px), weight is the distinguishing factor.
+      </p>
+
+      <table class="token-table">
+        <thead>
+          <tr><th>Scenario</th><th>Style</th><th>Token</th><th>Weight</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Page title, hero</td><td>Display</td><td><code>--font-size-display</code></td><td>Regular</td></tr>
+          <tr><td>Sheet header</td><td>Heading LG</td><td><code>--font-size-heading-lg</code></td><td>Regular</td></tr>
+          <tr><td>Section heading</td><td>Heading MD</td><td><code>--font-size-heading-md</code></td><td>Regular</td></tr>
+          <tr><td>Group title</td><td>Heading SM</td><td><code>--font-size-heading-sm</code></td><td>Regular</td></tr>
+          <tr><td>Card title, nav title, button</td><td>Label</td><td><code>--font-size-label</code></td><td>Semibold</td></tr>
+          <tr><td>Body text, descriptions</td><td>Body</td><td><code>--font-size-body</code></td><td>Regular</td></tr>
+          <tr><td>Card subtitle, secondary line</td><td>Detail</td><td><code>--font-size-detail</code></td><td>Regular</td></tr>
+          <tr><td>Tab label, metadata, distances</td><td>Small</td><td><code>--font-size-small</code></td><td>Regular</td></tr>
+          <tr><td>Footnotes, timestamps</td><td>Fine</td><td><code>--font-size-fine</code></td><td>Regular</td></tr>
+          <tr><td>Legal text, map attribution</td><td>Micro</td><td><code>--font-size-micro</code></td><td>Regular</td></tr>
+          <tr><td>Badge counts, coordinates</td><td>Nano</td><td><code>--font-size-nano</code></td><td>Regular</td></tr>
+        </tbody>
+      </table>
+
+      <div class="guideline-split" style="margin-top: var(--space-32);">
+        <div class="guideline-split__col">
+          <div class="guideline-split__header guideline-split__header--do">Do</div>
+          <div class="guideline-split__text">Use <strong>Label</strong> (Semibold 17px) for card titles and actionable items — the heavier weight signals interactivity and hierarchy.</div>
+        </div>
+        <div class="guideline-split__col">
+          <div class="guideline-split__header guideline-split__header--dont">Don't</div>
+          <div class="guideline-split__text">Don't use <strong>Body</strong> (Regular 17px) for titles — same size, but Regular weight doesn't signal hierarchy.</div>
+        </div>
+      </div>
+
+      <div class="guideline-split" style="margin-top: var(--space-16);">
+        <div class="guideline-split__col">
+          <div class="guideline-split__header guideline-split__header--do">Do</div>
+          <div class="guideline-split__text">Use <strong>Detail</strong> (16px) for secondary content lines that pair with Body text on cards.</div>
+        </div>
+        <div class="guideline-split__col">
+          <div class="guideline-split__header guideline-split__header--dont">Don't</div>
+          <div class="guideline-split__text">Don't use <strong>Small</strong> (15px) for card subtitles — Small is for standalone metadata like distances and tab labels.</div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
          13. Token Reference
          ============================================================ -->
     <section id="token-reference">
@@ -2482,6 +2534,57 @@
     </section>
 
     <!-- ============================================================
+         Anatomy Example
+         ============================================================ -->
+    <section id="tk-anatomy">
+      <p class="section-label">Anatomy of a Place Card</p>
+      <p class="section-note">
+        A real-world example showing how multiple token categories combine in a single component. Every value comes from the design system.
+      </p>
+
+      <div style="
+        background: var(--color-surface);
+        border: 1px solid var(--color-separator);
+        border-radius: var(--radius-md);
+        box-shadow: var(--shadow-sm);
+        padding: var(--space-16);
+        max-width: 340px;
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-8);
+      ">
+        <span style="
+          font-size: var(--font-size-label);
+          font-weight: var(--font-weight-semibold);
+          color: var(--color-label);
+          line-height: 1.3;
+        ">Caf&eacute; Spr&ouml;ssling</span>
+        <span style="
+          font-size: var(--font-size-detail);
+          color: var(--color-label-secondary);
+          line-height: 1.3;
+        ">Coffee &amp; pastries &middot; 0.3 km</span>
+        <span style="
+          font-size: var(--font-size-small);
+          font-weight: var(--font-weight-medium);
+          color: var(--color-label);
+          font-variant-numeric: tabular-nums;
+          line-height: 1.3;
+        ">&starf; 4.7</span>
+      </div>
+
+      <div class="rule-box" style="margin-top: var(--space-24); display: flex; flex-direction: column; gap: 8px;">
+        <strong>Tokens used</strong>
+        <div><strong>Title:</strong> <code>--font-size-label</code>, <code>--font-weight-semibold</code>, <code>--color-label</code></div>
+        <div><strong>Detail:</strong> <code>--font-size-detail</code>, <code>--color-label-secondary</code></div>
+        <div><strong>Rating:</strong> <code>--font-size-small</code>, <code>--font-weight-medium</code>, <code>tabular-nums</code></div>
+        <div><strong>Padding:</strong> <code>--space-16</code> (card), <code>--space-8</code> (between lines)</div>
+        <div><strong>Surface:</strong> <code>--color-surface</code>, <code>--shadow-sm</code>, <code>--radius-md</code></div>
+        <div><strong>Border:</strong> <code>--color-separator</code></div>
+      </div>
+    </section>
+
+    <!-- ============================================================
          Export Formats
          ============================================================ -->
     <section id="tk-export">
@@ -2854,6 +2957,42 @@
           </section>
 
           <!-- ============================================================
+               When to Use (Colors)
+               ============================================================ -->
+          <section id="cl-when-to-use">
+            <h2 class="section-label">When to Use</h2>
+            <p class="section-note">
+              Match each UI need to the right color token. Label hierarchy descends from full opacity to decorative-only; tint colors carry semantic meaning.
+            </p>
+
+            <table class="token-table">
+              <thead>
+                <tr><th>Need</th><th>Token</th><th>Example</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Titles, primary content</td><td><code>--color-label</code></td><td>Ristorante Da Mario</td></tr>
+                <tr><td>Descriptions, metadata</td><td><code>--color-label-secondary</code></td><td>Italian &middot; 1.2 km</td></tr>
+                <tr><td>Placeholders, disabled</td><td><code>--color-label-tertiary</code></td><td>Search places&hellip;</td></tr>
+                <tr><td>Decorative only</td><td><code>--color-label-quaternary</code></td><td>Watermark text</td></tr>
+                <tr><td>Links, primary actions</td><td><code>--color-tint-action</code></td><td>Get directions</td></tr>
+                <tr><td>Delete, errors</td><td><code>--color-tint-destructive</code></td><td>Remove from saved</td></tr>
+                <tr><td>Success, available</td><td><code>--color-tint-positive</code></td><td>Open now</td></tr>
+              </tbody>
+            </table>
+
+            <div class="guideline-split" style="margin-top: var(--space-32);">
+              <div class="guideline-split__col">
+                <div class="guideline-split__header guideline-split__header--do">Do</div>
+                <div class="guideline-split__text">Use <strong>Secondary</strong> for all readable supporting text — it passes WCAG AA (4.5:1 contrast ratio).</div>
+              </div>
+              <div class="guideline-split__col">
+                <div class="guideline-split__header guideline-split__header--dont">Don't</div>
+                <div class="guideline-split__text">Never use <strong>Tertiary</strong> for body text — it fails AA (2.1:1). Reserve for placeholders only.</div>
+              </div>
+            </div>
+          </section>
+
+          <!-- ============================================================
                Tint Colors
                ============================================================ -->
           <section id="cl-tints">
@@ -3145,6 +3284,47 @@
     </section>
 
     <!-- ============================================================
+         When to Use (Spacing)
+         ============================================================ -->
+    <section id="sp-when-to-use">
+      <p class="section-label">When to Use</p>
+      <p class="section-note">
+        Map each spacing token to its intended scenario. Below 16px is for component internals; 16px and above is for layout spacing.
+      </p>
+
+      <table class="token-table">
+        <thead>
+          <tr><th>Scenario</th><th>Token</th><th>Value</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Hairline visual nudge</td><td><code>var(--space-2)</code></td><td>2px</td></tr>
+          <tr><td>Inline icon-to-text gap</td><td><code>var(--space-4)</code></td><td>4px</td></tr>
+          <tr><td>Optical alignment tweak</td><td><code>var(--space-6)</code></td><td>6px</td></tr>
+          <tr><td>Tight component padding (checkbox, chip)</td><td><code>var(--space-8)</code></td><td>8px</td></tr>
+          <tr><td>Input internal padding</td><td><code>var(--space-10)</code></td><td>10px</td></tr>
+          <tr><td>Control group gaps</td><td><code>var(--space-12)</code></td><td>12px</td></tr>
+          <tr><td>Card padding, section inset</td><td><code>var(--space-16)</code></td><td>16px</td></tr>
+          <tr><td>Stacked card gap</td><td><code>var(--space-20)</code></td><td>20px</td></tr>
+          <tr><td>Section content gap</td><td><code>var(--space-24)</code></td><td>24px</td></tr>
+          <tr><td>Between content groups</td><td><code>var(--space-32)</code></td><td>32px</td></tr>
+          <tr><td>Page section separator</td><td><code>var(--space-48)</code></td><td>48px</td></tr>
+          <tr><td>Major page divisions</td><td><code>var(--space-64)</code>+</td><td>64px+</td></tr>
+        </tbody>
+      </table>
+
+      <div class="guideline-split" style="margin-top: var(--space-32);">
+        <div class="guideline-split__col">
+          <div class="guideline-split__header guideline-split__header--do">Do</div>
+          <div class="guideline-split__text">Use <strong>space-8</strong> or <strong>space-12</strong> for component internals — checkbox padding, chip gaps, form control spacing.</div>
+        </div>
+        <div class="guideline-split__col">
+          <div class="guideline-split__header guideline-split__header--dont">Don't</div>
+          <div class="guideline-split__text">Don't use <strong>space-6</strong> for general padding — it exists only for optical alignment nudges (e.g. centering an icon that sits 1px off).</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
          2. Grid System
          ============================================================ -->
     <section id="sp-grid">
@@ -3314,6 +3494,29 @@
           <tr><td>shadow-md</td><td><code>var(--shadow-md)</code></td><td>Shadow.md</td><td>R.style.Shadow_Md</td><td>0 4px 12px 0.08, 0 1px 3px 0.04</td></tr>
           <tr><td>shadow-lg</td><td><code>var(--shadow-lg)</code></td><td>Shadow.lg</td><td>R.style.Shadow_Lg</td><td>0 8px 24px 0.12, 0 2px 6px 0.04</td></tr>
           <tr><td>shadow-xl</td><td><code>var(--shadow-xl)</code></td><td>Shadow.xl</td><td>R.style.Shadow_Xl</td><td>0 16px 48px 0.16, 0 4px 12px 0.06</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- ============================================================
+         When to Use (Elevation)
+         ============================================================ -->
+    <section id="el-when-to-use">
+      <p class="section-label">When to Use</p>
+      <p class="section-note">
+        Pair shadow depth with border radius — higher elevation surfaces get larger radii.
+      </p>
+
+      <table class="token-table">
+        <thead>
+          <tr><th>Surface</th><th>Shadow</th><th>Radius</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Flat controls, inputs</td><td><code>var(--shadow-xs)</code></td><td><code>var(--radius-sm)</code></td></tr>
+          <tr><td>Cards, buttons</td><td><code>var(--shadow-sm)</code></td><td><code>var(--radius-md)</code></td></tr>
+          <tr><td>Dropdowns, popovers</td><td><code>var(--shadow-md)</code></td><td><code>var(--radius-md)</code></td></tr>
+          <tr><td>Modals, sheets</td><td><code>var(--shadow-lg)</code></td><td><code>var(--radius-lg)</code></td></tr>
+          <tr><td>Toast notifications</td><td><code>var(--shadow-xl)</code></td><td><code>var(--radius-xl)</code></td></tr>
         </tbody>
       </table>
     </section>
