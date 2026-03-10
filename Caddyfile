@@ -3,9 +3,4 @@
 	file_server
 
 	redir / /styleguide/ permanent
-
-	handle /styleguide/* {
-		try_files {path} {path}/ /styleguide/index.html
-		file_server
-	}
 }
