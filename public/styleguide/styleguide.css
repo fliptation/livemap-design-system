@@ -1077,4 +1077,31 @@ html[data-theme="dark"] code {
 .flare-spec-table th { text-align: left; font-weight: 600; padding: 8px 12px; border-bottom: 2px solid var(--color-separator, rgba(0,0,0,0.08)); color: var(--color-label, #1c1c1e); }
 .flare-spec-table td { padding: 8px 12px; border-bottom: 1px solid var(--color-separator, rgba(0,0,0,0.06)); color: var(--color-label-secondary, #636366); }
 .flare-spec-table code { font-size: 12px; background: var(--color-fill-tertiary, rgba(0,0,0,0.04)); padding: 2px 6px; border-radius: 4px; }
+
+/* ---- Map Semantics ---- */
+.ms-callout { padding: 14px 16px; background: var(--color-fill-tertiary, rgba(0,0,0,0.04)); border-radius: 10px; font-size: 13px; line-height: 1.6; color: var(--color-label-secondary, #636366); margin-top: 16px; }
+.ms-callout strong { color: var(--color-label, #1c1c1e); }
+.ms-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }
+.ms-grid-item { display: flex; align-items: flex-start; gap: 12px; padding: 14px; background: var(--color-fill-tertiary, rgba(0,0,0,0.04)); border-radius: 10px; font-size: 13px; line-height: 1.5; }
+.ms-grid-item__icon { width: 32px; height: 32px; border-radius: 8px; background: var(--color-fill-secondary, rgba(0,0,0,0.06)); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 16px; }
+.ms-grid-item strong { display: block; font-size: 13px; font-weight: 600; color: var(--color-label, #1c1c1e); margin-bottom: 2px; }
+.ms-grid-item span { color: var(--color-label-secondary, #636366); }
+.ms-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.ms-table th { text-align: left; font-weight: 600; padding: 8px 12px; border-bottom: 2px solid var(--color-separator, rgba(0,0,0,0.08)); color: var(--color-label, #1c1c1e); }
+.ms-table td { padding: 8px 12px; border-bottom: 1px solid var(--color-separator, rgba(0,0,0,0.06)); color: var(--color-label-secondary, #636366); }
+.ms-table .ms-allowed { color: var(--color-system-green, #30D158); font-weight: 600; }
+.ms-table .ms-never { color: var(--color-system-red, #FF3B30); }
+.ms-sub-section { margin-bottom: 24px; padding-bottom: 24px; border-bottom: 1px solid var(--color-separator, rgba(0,0,0,0.08)); }
+.ms-sub-section:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+.ms-sub-section h4 { font-size: 14px; font-weight: 600; margin-bottom: 12px; color: var(--color-label, #1c1c1e); }
+.ms-sub-section p { font-size: 13px; line-height: 1.6; color: var(--color-label-secondary, #636366); }
+.ms-layer-stack { display: flex; flex-direction: column; gap: 2px; }
+.ms-layer { display: flex; align-items: center; gap: 16px; padding: 12px 16px; border-radius: 8px; font-size: 13px; }
+.ms-layer__rank { font-size: 11px; font-weight: 600; width: 20px; text-align: center; flex-shrink: 0; opacity: 0.7; }
+.ms-layer__name { font-weight: 500; flex: 1; }
+.ms-layer__meta { font-size: 11px; text-align: right; opacity: 0.7; }
+.ms-layer--top { background: var(--color-gray-1, #1c1c1e); color: #fff; }
+.ms-layer--mid { background: var(--color-gray-3, #48484a); color: #fff; }
+.ms-layer--base { background: var(--color-gray-5, #aeaeb2); color: var(--color-label, #1c1c1e); }
+.ms-layer--bottom { background: var(--color-fill-tertiary, rgba(0,0,0,0.04)); color: var(--color-label, #1c1c1e); }
 .flare-dark-preview { background: #1c1a1a; border-radius: 12px; padding: 24px; display: flex; flex-wrap: wrap; gap: 24px; justify-content: center; }

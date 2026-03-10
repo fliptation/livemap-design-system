@@ -150,6 +150,26 @@
         { id: "mp-dark", label: "Dark Mode" },
       ],
     },
+    {
+      id: "map-semantics",
+      label: "Map Semantics",
+      page: "map-semantics",
+      enabled: true,
+      children: [
+        { id: "ms-core", label: "Core Principle" },
+        { id: "ms-physical", label: "Physical Environment" },
+        { id: "ms-infrastructure", label: "Infrastructure" },
+        { id: "ms-contextual", label: "Contextual Conditions" },
+        { id: "ms-user-position", label: "User Position & Intent" },
+        { id: "ms-off-map", label: "What Stays Off the Map" },
+        { id: "ms-safety", label: "Where Safety Belongs" },
+        { id: "ms-overlay-rules", label: "Overlay Rules" },
+        { id: "ms-overlay-stack", label: "Overlay Stacking" },
+        { id: "ms-overlay-visual", label: "Overlay Behaviour" },
+        { id: "ms-density", label: "Visual Density" },
+        { id: "ms-rationale", label: "Rationale" },
+      ],
+    },
     { divider: true },
     {
       id: "components",
@@ -268,6 +288,11 @@
       subtitle: "",
     },
     map: { title: "Livemap Design System", heading: "Map", subtitle: "" },
+    "map-semantics": {
+      title: "Livemap Design System",
+      heading: "Map Semantics",
+      subtitle: "",
+    },
     components: {
       title: "Livemap Design System",
       heading: "Components",

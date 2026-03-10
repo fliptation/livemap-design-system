@@ -211,6 +211,15 @@
             <div class="home-card__desc">Contextual notifications, friend alerts, and event invitations.</div>
           </div>
         </div>
+        <div class="home-card" data-home-page="map-semantics">
+          <div class="home-card__icon">
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="7"/><path d="M10 6v4l2.5 2.5"/><path d="M6 3L4 1M14 3l2-2"/></svg>
+          </div>
+          <div class="home-card__body">
+            <div class="home-card__title">Map Semantics</div>
+            <div class="home-card__desc">What belongs on the map — and what must stay off it.</div>
+          </div>
+        </div>
         <div class="home-card" data-home-page="live-activities">
           <div class="home-card__icon">
             <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="14" height="6" rx="3"/><circle cx="7" cy="10" r="1.5" fill="currentColor" stroke="none"/><line x1="11" y1="8.5" x2="14" y2="8.5"/><line x1="11" y1="11.5" x2="13" y2="11.5"/></svg>
@@ -2993,6 +3002,10 @@
           <span class="gs-tool-row__name">No Tailwind / shadcn</span>
           <span class="gs-tool-row__desc">This design system uses vanilla CSS and custom properties only. We don't use Tailwind, shadcn, or any CSS framework.</span>
         </div>
+        <div class="gs-tool-row">
+          <span class="gs-tool-row__name">Modern CSS (Baseline)</span>
+          <span class="gs-tool-row__desc">We embrace modern CSS features supported across <a href="https://web.dev/baseline" target="_blank" rel="noopener" style="color: var(--color-tint-action); text-decoration: none; font-weight: var(--font-weight-medium);">Baseline</a> browsers &mdash; including <code>color-mix()</code>, <code>oklch()</code>, <code>:has()</code>, <code>@container</code> queries, <code>@layer</code>, <code>subgrid</code>, <code>text-wrap: balance</code>, and dynamic viewport units like <code>dvh</code>. No prefixes, no polyfills &mdash; if it's Baseline, it's fair game.</span>
+        </div>
       </div>
     </section>
 
@@ -5195,6 +5208,364 @@
 
             <div class="rule-box" style="margin-top: 32px;">
               Dark mode map colors are <strong>independent of the app&rsquo;s dark theme</strong>. The map can show a dark style even when the app is in light mode (e.g., night-time auto-switch).
+            </div>
+          </section>
+
+        </div>
+
+        <!-- ============================================================
+             Map Semantics
+             ============================================================ -->
+        <div class="content-page" id="page-map-semantics" hidden>
+
+          <!-- Core Principle -->
+          <section id="ms-core">
+            <p class="section-label">Core Principle</p>
+            <p class="section-description">
+              The map describes the environment. It never judges places, predicts threats, or labels areas as dangerous. It shows what is there &mdash; lighting, infrastructure, open venues, paths &mdash; and lets the user decide.
+            </p>
+            <p class="section-description" style="margin-top: 12px;">
+              <strong>Description over Judgment.</strong> The map is the product. What appears on it &mdash; and what does not &mdash; defines the user&rsquo;s experience. Every element must be observable, environmental, descriptive, and stable or slow-changing.
+            </p>
+            <div class="ms-callout">
+              <strong>The test:</strong> &ldquo;If I were standing there, could I reasonably notice this?&rdquo; If an element would make someone stop walking just by seeing the map, it does not belong on the map.
+            </div>
+          </section>
+
+          <!-- A. Physical Environment -->
+          <section id="ms-physical">
+            <p class="section-label">A. Physical Environment (Core Layer)</p>
+            <p class="section-description">Always allowed. These describe the city as it is &mdash; the baseline reality layer. They are observable and permanent.</p>
+
+            <div class="ms-grid" style="margin-top: 20px;">
+              <div class="ms-grid-item">
+                <div class="ms-grid-item__icon">🛤</div>
+                <div><strong>Streets, paths, crossings</strong><span>The navigable network as it physically exists.</span></div>
+              </div>
+              <div class="ms-grid-item">
+                <div class="ms-grid-item__icon">🌉</div>
+                <div><strong>Bridges, tunnels, underpasses</strong><span>Vertical transitions and grade-separated crossings.</span></div>
+              </div>
+              <div class="ms-grid-item">
+                <div class="ms-grid-item__icon">🌳</div>
+                <div><strong>Parks, trees, open spaces</strong><span>Green spaces, plazas, and pedestrian areas.</span></div>
+              </div>
+              <div class="ms-grid-item">
+                <div class="ms-grid-item__icon">💧</div>
+                <div><strong>Water, terrain, slope</strong><span>Rivers, lakes, elevation changes. Geography as context.</span></div>
+              </div>
+              <div class="ms-grid-item">
+                <div class="ms-grid-item__icon">🏛</div>
+                <div><strong>Buildings as landmarks</strong><span>For orientation, not ratings. No value judgement attached.</span></div>
+              </div>
+            </div>
+          </section>
+
+          <!-- B. Infrastructure Characteristics -->
+          <section id="ms-infrastructure">
+            <p class="section-label">B. Infrastructure Characteristics</p>
+            <p class="section-description">Allowed when shown neutrally. These are critical for the product &mdash; they describe how the environment is built.</p>
+            <div class="ms-callout" style="margin-bottom: 20px;">
+              <strong>Rule:</strong> The map may show how something is built, not how dangerous it is.
+            </div>
+
+            <div class="ms-grid">
+              <div class="ms-grid-item">
+                <div class="ms-grid-item__icon">💡</div>
+                <div><strong>Lighting presence</strong><span>Even / uneven illumination. From municipal data, shown as gradient, not binary.</span></div>
+              </div>
+              <div class="ms-grid-item">
+                <div class="ms-grid-item__icon">🚲</div>
+                <div><strong>Bike lane type</strong><span>Protected / painted / none. Infrastructure fact, not safety rating.</span></div>
+              </div>
+              <div class="ms-grid-item">
+                <div class="ms-grid-item__icon">🚋</div>
+                <div><strong>Tram lines and rails</strong><span>Fixed transit infrastructure and shared traffic zones.</span></div>
+              </div>
+              <div class="ms-grid-item">
+                <div class="ms-grid-item__icon">🛣</div>
+                <div><strong>Surface continuity</strong><span>Smooth / uneven / cobblestone. Observable path quality.</span></div>
+              </div>
+              <div class="ms-grid-item">
+                <div class="ms-grid-item__icon">🚧</div>
+                <div><strong>Construction zones</strong><span>As facts, not warnings. &ldquo;Construction present&rdquo;, not &ldquo;danger ahead&rdquo;.</span></div>
+              </div>
+              <div class="ms-grid-item">
+                <div class="ms-grid-item__icon">👁</div>
+                <div><strong>Visibility / sightlines</strong><span>Wide vs. narrow passages. Derived from geometry, not opinion.</span></div>
+              </div>
+            </div>
+          </section>
+
+          <!-- C. Contextual Conditions -->
+          <section id="ms-contextual">
+            <p class="section-label">C. Contextual Conditions (Carefully)</p>
+            <p class="section-description">Allowed only when clearly explained, presented as optional overlays, and never dominating the map. These are temporary or time-dependent.</p>
+
+            <div class="ms-grid" style="margin-top: 20px;">
+              <div class="ms-grid-item">
+                <div class="ms-grid-item__icon">🌧</div>
+                <div><strong>Rain affecting surface grip</strong><span>Current weather as it impacts the path.</span></div>
+              </div>
+              <div class="ms-grid-item">
+                <div class="ms-grid-item__icon">🌙</div>
+                <div><strong>Darkness affecting visibility</strong><span>Time-based lighting conditions.</span></div>
+              </div>
+              <div class="ms-grid-item">
+                <div class="ms-grid-item__icon">🍂</div>
+                <div><strong>Seasonal conditions</strong><span>Leaves, ice, snow as they affect surfaces.</span></div>
+              </div>
+              <div class="ms-grid-item">
+                <div class="ms-grid-item__icon">🕐</div>
+                <div><strong>Time-based changes</strong><span>Night vs day differences in infrastructure availability.</span></div>
+              </div>
+            </div>
+
+            <div class="ms-callout" style="margin-top: 16px;">
+              ✓ Must fade in gently, be dismissible, and never appear as alarms.
+            </div>
+          </section>
+
+          <!-- D. User Position & Intent -->
+          <section id="ms-user-position">
+            <p class="section-label">D. User Position &amp; Intent</p>
+            <p class="section-description">The user&rsquo;s own data on the map. Strictly factual &mdash; position and choice, never framing.</p>
+
+            <div style="margin-top: 20px; overflow-x: auto;">
+              <table class="ms-table">
+                <thead>
+                  <tr>
+                    <th class="ms-allowed">✓ Allowed</th>
+                    <th class="ms-never">✗ Never allowed</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>Current position</td><td class="ms-never">&ldquo;You are entering&hellip;&rdquo;</td></tr>
+                  <tr><td>Direction of movement</td><td class="ms-never">&ldquo;High risk area&rdquo;</td></tr>
+                  <tr><td>Selected route</td><td class="ms-never">&ldquo;Safer route&rdquo; badge on map</td></tr>
+                  <tr><td>Destination</td><td class="ms-never">Any predictive or moral framing</td></tr>
+                  <tr><td>Live-sharing indicator (when active)</td><td class="ms-never">&ldquo;You may feel unsafe here&rdquo;</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <!-- What Must Stay Off the Map -->
+          <section id="ms-off-map">
+            <p class="section-label">What Must Stay Off the Map</p>
+            <p class="section-description">Non-negotiable. The following must never appear on the map, even subtly. The map shows conditions, not decisions.</p>
+
+            <div class="ms-sub-section" style="margin-top: 24px;">
+              <h4>Fear Signals</h4>
+              <table class="ms-table">
+                <thead><tr><th class="ms-never">Never show</th><th>Why</th></tr></thead>
+                <tbody>
+                  <tr><td class="ms-never">Red zones or colour-coded &ldquo;danger&rdquo; areas</td><td>They create panic, stigmatise places, and override user judgement.</td></tr>
+                  <tr><td class="ms-never">Heatmaps labelled as danger</td><td>Turns data visualisation into a fear instrument.</td></tr>
+                  <tr><td class="ms-never">Warning triangles, exclamation marks, sirens, shields</td><td>Alarm iconography designed to trigger fight-or-flight.</td></tr>
+                  <tr><td class="ms-never">Flashing or pulsing markers</td><td>Violates motion principles. Demands attention without state change.</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="ms-sub-section">
+              <h4>Judgements &amp; Conclusions</h4>
+              <table class="ms-table">
+                <thead><tr><th class="ms-never">Never show</th><th>Why</th></tr></thead>
+                <tbody>
+                  <tr><td class="ms-never">&ldquo;Unsafe street&rdquo; / &ldquo;Avoid this area&rdquo;</td><td>Judgement, not description. Decisions belong in route comparison.</td></tr>
+                  <tr><td class="ms-never">&ldquo;High crime area&rdquo;</td><td>Crime data correlates with policing patterns, not actual risk.</td></tr>
+                  <tr><td class="ms-never">&ldquo;Safer route&rdquo; badges on the map</td><td>Comparative language belongs in route comparison UI, not pinned to geography.</td></tr>
+                  <tr><td class="ms-never">Risk scores or safety ratings</td><td>Reduces complex environments to a single number. False objectivity.</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="ms-sub-section">
+              <h4>Predictive Assumptions</h4>
+              <table class="ms-table">
+                <thead><tr><th class="ms-never">Never show</th><th>Why</th></tr></thead>
+                <tbody>
+                  <tr><td class="ms-never">&ldquo;Likely dangerous&rdquo; / &ldquo;Risk increases here&rdquo;</td><td>Speculation framed as fact. Creates anxiety about unknowable states.</td></tr>
+                  <tr><td class="ms-never">&ldquo;You may feel unsafe&rdquo;</td><td>Emotional inference. No behavioural assumption belongs on the map.</td></tr>
+                  <tr><td class="ms-never">Incident markers or report pins</td><td>Past incidents say nothing about current state. Turns the map into a fear register.</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="ms-sub-section">
+              <h4>Social Profiling</h4>
+              <table class="ms-table">
+                <thead><tr><th class="ms-never">Never encode</th><th>Why</th></tr></thead>
+                <tbody>
+                  <tr><td class="ms-never">Demographics of an area</td><td>This is how bias sneaks in. People are not map data.</td></tr>
+                  <tr><td class="ms-never">&ldquo;Busy vs quiet&rdquo; framed as good/bad</td><td>Presence of people is not inherently positive or negative.</td></tr>
+                  <tr><td class="ms-never">Crowd density or &ldquo;people nearby&rdquo;</td><td>Surveillance signal. Privacy violation for those being counted.</td></tr>
+                  <tr><td class="ms-never">User-submitted &ldquo;feeling unsafe&rdquo; reports</td><td>Subjective, biased, unverifiable. Disproportionately targets marginalised communities.</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <!-- Where "Safety" Belongs Instead -->
+          <section id="ms-safety">
+            <p class="section-label">Where &ldquo;Safety&rdquo; Belongs Instead</p>
+            <p class="section-description">Safety is not absent from the product &mdash; it is expressed through language, choices, and comparison, never through map markers. The map shows conditions. The UI helps the user interpret them.</p>
+
+            <div style="margin-top: 24px;">
+              <div class="ms-sub-section">
+                <h4>Route comparison views</h4>
+                <p>&ldquo;Route A has more consistent lighting&rdquo; &mdash; not a glowing red/green map. Side-by-side comparison of environmental characteristics, presented as facts.</p>
+              </div>
+              <div class="ms-sub-section">
+                <h4>Explanatory panels</h4>
+                <p>Tapping a route segment can reveal details: &ldquo;This section has uneven lighting&rdquo; or &ldquo;Protected bike lane for 400m&rdquo;. Information on demand, not overlaid on geography.</p>
+              </div>
+              <div class="ms-sub-section">
+                <h4>User-controlled modes</h4>
+                <p>The user chooses what to see. Overlays are opt-in. Preferences persist. No overlay is forced on the user by default.</p>
+              </div>
+              <div class="ms-sub-section">
+                <h4>Language, not colours</h4>
+                <p>Conditions are described in words, not encoded in alarm colours. &ldquo;Well-lit&rdquo; is a description. Green-to-red is a judgement.</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Overlay Rules -->
+          <section id="ms-overlay-rules">
+            <p class="section-label">Overlay Rules</p>
+            <p class="section-description">Overlays are powerful &mdash; and dangerous if unmanaged. Each overlay answers exactly one question and must follow strict rules.</p>
+
+            <div style="margin-top: 24px;">
+              <div class="ms-sub-section">
+                <h4>One question per overlay</h4>
+                <p>Each overlay answers exactly one question: &ldquo;Where is lighting present?&rdquo; or &ldquo;Where do bike lanes exist?&rdquo; Never combine multiple meanings into one overlay.</p>
+              </div>
+              <div class="ms-sub-section">
+                <h4>Overlays can co-exist</h4>
+                <p>Multiple overlays may be active in parallel. However, a maximum of <strong>2 overlays</strong> may be visible at once to prevent cognitive overload.</p>
+              </div>
+              <div class="ms-sub-section">
+                <h4>Third overlay handling</h4>
+                <p>If the user selects a third overlay: prompt to replace one, or auto-disable the oldest with a brief explanation. Never silently stack three layers.</p>
+              </div>
+              <div class="ms-sub-section">
+                <h4>Emergency and status signals</h4>
+                <p>Never appear on the map. They belong in UI chrome (top bar, bottom sheet, notification), not pinned to geography.</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Overlay Priority & Stacking -->
+          <section id="ms-overlay-stack">
+            <p class="section-label">Overlay Priority &amp; Stacking</p>
+            <p class="section-description">Layers stack in a fixed priority order. Higher layers always render above lower ones.</p>
+
+            <div class="ms-layer-stack" style="margin-top: 20px;">
+              <div class="ms-layer ms-layer--bottom">
+                <div class="ms-layer__rank">1</div>
+                <div class="ms-layer__name">Base map (streets, buildings, water, terrain)</div>
+                <div class="ms-layer__meta">Always visible</div>
+              </div>
+              <div class="ms-layer ms-layer--base">
+                <div class="ms-layer__rank">2</div>
+                <div class="ms-layer__name">Active route path</div>
+                <div class="ms-layer__meta">Always visible during navigation</div>
+              </div>
+              <div class="ms-layer ms-layer--mid">
+                <div class="ms-layer__rank">3</div>
+                <div class="ms-layer__name">Infrastructure overlays (lighting, lanes)</div>
+                <div class="ms-layer__meta">Max 2 active · user-toggled</div>
+              </div>
+              <div class="ms-layer ms-layer--mid">
+                <div class="ms-layer__rank">4</div>
+                <div class="ms-layer__name">Context overlays (weather, time-based)</div>
+                <div class="ms-layer__meta">Optional · dismissible · shares max-2 limit</div>
+              </div>
+              <div class="ms-layer ms-layer--top">
+                <div class="ms-layer__rank">5</div>
+                <div class="ms-layer__name">User position + direction</div>
+                <div class="ms-layer__meta">Always visible</div>
+              </div>
+            </div>
+
+            <div class="ms-callout" style="margin-top: 16px;">
+              <strong>Stacking rule:</strong> Lower-priority layers must never visually compete with higher-priority ones. If a conflict occurs, the lower layer reduces opacity or defers. Emergency or status overlays belong in UI chrome, never on the map.
+            </div>
+          </section>
+
+          <!-- Overlay Visual Behaviour -->
+          <section id="ms-overlay-visual">
+            <p class="section-label">Overlay Visual Behaviour</p>
+            <p class="section-description">How overlays appear, disappear, and coexist. All transitions follow the Motion principles.</p>
+
+            <div style="margin-top: 20px; overflow-x: auto;">
+              <table class="ms-table">
+                <thead>
+                  <tr><th>Behaviour</th><th>Rule</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td><strong>Appearing</strong></td><td>Fade in over 300ms. No slide, bounce, or scale. The overlay materialises in place.</td></tr>
+                  <tr><td><strong>Disappearing</strong></td><td>Fade out over 200ms. Faster than appearing &mdash; removal should feel instant.</td></tr>
+                  <tr><td><strong>Switching</strong></td><td>Cross-fade over 300ms. The outgoing overlay fades while the incoming one appears. No gap, no double-stack.</td></tr>
+                  <tr><td><strong>Zoom response</strong></td><td>Markers cluster at far zoom, expand at close zoom. Transitions are instant &mdash; no animated regrouping.</td></tr>
+                  <tr><td><strong>Pan / move</strong></td><td>Expanded marker details auto-collapse on pan. The map movement is the user&rsquo;s intent &mdash; overlays must not compete.</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <!-- Visual Density -->
+          <section id="ms-density">
+            <p class="section-label">Visual Density</p>
+
+            <div style="margin-top: 20px;">
+              <div class="ms-sub-section">
+                <h4>Maximum marker density</h4>
+                <p>No more than 12 individual markers visible at any zoom level. Beyond that, cluster. A cluttered map is a useless map &mdash; especially at night, on a small screen, while moving.</p>
+              </div>
+              <div class="ms-sub-section">
+                <h4>Overlay opacity</h4>
+                <p>Informational overlays render at 40&ndash;60% opacity so the base map remains legible underneath. The overlay informs, it does not obscure.</p>
+              </div>
+              <div class="ms-sub-section">
+                <h4>Label collision</h4>
+                <p>When labels overlap, lower-priority labels hide entirely. No partial overlap, no truncation. A label is either fully readable or not shown at all.</p>
+              </div>
+              <div class="ms-sub-section">
+                <h4>Colour restraint</h4>
+                <p>The map uses the neutral palette. Colour is reserved for the route path and active-state indicators. Everything else is monochrome. The map should feel calm, not like a dashboard.</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Rationale -->
+          <section id="ms-rationale">
+            <p class="section-label">Rationale</p>
+            <p class="section-description">This approach ensures the product stays true to its philosophy and clearly differentiates Livemap from crime heatmap tools, &ldquo;safe city&rdquo; dashboards, and surveillance-based navigation. We are building orientation, not surveillance.</p>
+
+            <div class="ms-grid" style="margin-top: 20px;">
+              <div class="ms-grid-item">
+                <div class="ms-grid-item__icon">✋</div>
+                <div><strong>No fear-based UX</strong><span>The map never creates panic or anxiety.</span></div>
+              </div>
+              <div class="ms-grid-item">
+                <div class="ms-grid-item__icon">👤</div>
+                <div><strong>User agency</strong><span>The user decides, the map informs.</span></div>
+              </div>
+              <div class="ms-grid-item">
+                <div class="ms-grid-item__icon">👥</div>
+                <div><strong>Inclusivity</strong><span>No assumptions about who the user is or why they navigate.</span></div>
+              </div>
+              <div class="ms-grid-item">
+                <div class="ms-grid-item__icon">🔍</div>
+                <div><strong>Transparency</strong><span>Every data source is observable and explainable.</span></div>
+              </div>
+              <div class="ms-grid-item">
+                <div class="ms-grid-item__icon">🧭</div>
+                <div><strong>Calm navigation</strong><span>The interface supports focus, not hypervigilance.</span></div>
+              </div>
             </div>
           </section>
 
