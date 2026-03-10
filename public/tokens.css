@@ -15,6 +15,11 @@
      - SF Pro Text: optimized for 19pt and below
    The variable font (SF Pro) handles this automatically via the `opsz` axis.
    We expose all three families for explicit control when needed.
+
+   Platform mapping:
+     iOS     →  SF Pro / SF Pro Display / SF Pro Text
+     Android →  Google Sans / Google Sans Display / Google Sans Text
+     CSS     →  var(--font-family)   (SF Pro with system fallbacks)
    -------------------------------------------------------------------------- */
 
 :root {
@@ -206,6 +211,57 @@
   /* Map label — Distance badge */
   --map-label-distance-size:   13px;
   --map-label-distance-weight: var(--font-weight-medium);
+
+  /* Map pin sizes */
+  --map-pin-sm:   24px;
+  --map-pin-md:   32px;
+  --map-pin-lg:   40px;
+
+  /* Map pin colors */
+  --map-pin-default:   #007AFF;
+  --map-pin-visited:   #8E8E93;
+  --map-pin-cluster:   #FF9500;
+
+  /* POI category colors */
+  --map-poi-food:      #FF9500;
+  --map-poi-shopping:  #AF52DE;
+  --map-poi-nightlife: #FF2D55;
+  --map-poi-transit:   #007AFF;
+  --map-poi-culture:   #5856D6;
+  --map-poi-outdoors:  #34C759;
+  --map-poi-health:    #FF3B30;
+  --map-poi-services:  #8E8E93;
+
+  /* Map terrain — Light */
+  --map-land:      #F0ECE1;
+  --map-water:     #B8D4E3;
+  --map-park:      #C8DDB5;
+  --map-road:      #FFFFFF;
+  --map-building:  #E0DCD2;
+  --map-highway:   #FFD580;
+
+  /* Map terrain — Dark */
+  --map-land-dark:      #1A1A2E;
+  --map-water-dark:     #1A2A3A;
+  --map-park-dark:      #1E2A1E;
+  --map-road-dark:      #2C2C3A;
+  --map-building-dark:  #24243A;
+  --map-highway-dark:   #6B5B33;
+
+  /* Route overlay tokens */
+  --map-route-walk-width:    3px;
+  --map-route-drive-width:   5px;
+  --map-route-transit-width: 4px;
+  --map-route-cycle-width:   3px;
+  --map-route-color:         #007AFF;
+  --map-route-transit-color: #AF52DE;
+  --map-route-cycle-color:   #34C759;
+
+  /* Area overlays */
+  --map-overlay-radius-fill:     rgba(0, 122, 255, 0.08);
+  --map-overlay-radius-stroke:   #007AFF;
+  --map-overlay-geofence-fill:   rgba(175, 82, 222, 0.06);
+  --map-overlay-geofence-stroke: #AF52DE;
 }
 
 

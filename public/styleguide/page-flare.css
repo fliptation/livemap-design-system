@@ -1,0 +1,250 @@
+/* ============================================================
+   Flare & Serendipity — page styles
+   ============================================================ */
+
+/* ---- Flare card (notification preview) ---- */
+.flare-card {
+  background: rgba(28, 28, 30, 0.82);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 16px;
+  max-width: 360px;
+  color: #f5f5f7;
+  position: relative;
+}
+
+.flare-card + .flare-card {
+  margin-top: 16px;
+}
+
+/* ---- Flare header row ---- */
+.flare-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.flare-header__wave {
+  font-size: 16px;
+}
+
+.flare-header__label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: rgba(235, 235, 245, 0.5);
+}
+
+/* ---- Flare body ---- */
+.flare-body__title {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 4px;
+  color: #f5f5f7;
+}
+
+.flare-body__subtitle {
+  font-size: 13px;
+  color: rgba(235, 235, 245, 0.5);
+  margin-bottom: 12px;
+}
+
+/* ---- Flare avatars ---- */
+.flare-avatars {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin-bottom: 12px;
+}
+
+.flare-avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 2px solid rgba(28, 28, 30, 0.82);
+  background: var(--color-gray-3, #48484a);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 600;
+  color: #f5f5f7;
+}
+
+.flare-avatar + .flare-avatar {
+  margin-left: -8px;
+}
+
+.flare-avatar--blue { background: #007AFF; }
+.flare-avatar--pink { background: #E53E56; }
+.flare-avatar--green { background: #30D158; }
+.flare-avatar--orange { background: #FF9F0A; }
+
+.flare-avatar-names {
+  font-size: 12px;
+  color: rgba(235, 235, 245, 0.5);
+  margin-left: 10px;
+}
+
+/* ---- Flare actions ---- */
+.flare-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.flare-btn {
+  flex: 1;
+  padding: 10px 16px;
+  border-radius: 12px;
+  border: none;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: center;
+}
+
+.flare-btn--primary {
+  background: #E53E56;
+  color: #fff;
+}
+
+.flare-btn--secondary {
+  background: rgba(118, 118, 128, 0.24);
+  color: rgba(235, 235, 245, 0.5);
+}
+
+.flare-btn--blue {
+  background: #007AFF;
+  color: #fff;
+}
+
+/* ---- Notification pills ---- */
+.flare-pill-row {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.flare-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  border-radius: 9999px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.flare-pill--friends {
+  background: #E53E56;
+  color: #fff;
+}
+
+.flare-pill--tip {
+  background: #007AFF;
+  color: #fff;
+}
+
+.flare-pill--event {
+  background: #FF9F0A;
+  color: #1c1c1e;
+}
+
+/* ---- Variant label ---- */
+.flare-variant-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-label-tertiary, #888);
+  margin-bottom: 8px;
+}
+
+/* ---- Flare grid ---- */
+.flare-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 24px;
+}
+
+/* ---- Principles list ---- */
+.flare-principle {
+  display: flex;
+  gap: 14px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--color-separator, rgba(0,0,0,0.08));
+}
+
+.flare-principle:last-child {
+  border-bottom: none;
+}
+
+.flare-principle__icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: var(--color-fill-tertiary, rgba(0,0,0,0.04));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 18px;
+}
+
+.flare-principle__body h4 {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 4px;
+  color: var(--color-label, #1c1c1e);
+}
+
+.flare-principle__body p {
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--color-label-secondary, #636366);
+}
+
+/* ---- Spec table ---- */
+.flare-spec-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.flare-spec-table th {
+  text-align: left;
+  font-weight: 600;
+  padding: 8px 12px;
+  border-bottom: 2px solid var(--color-separator, rgba(0,0,0,0.08));
+  color: var(--color-label, #1c1c1e);
+}
+
+.flare-spec-table td {
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--color-separator, rgba(0,0,0,0.06));
+  color: var(--color-label-secondary, #636366);
+}
+
+.flare-spec-table code {
+  font-size: 12px;
+  background: var(--color-fill-tertiary, rgba(0,0,0,0.04));
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+/* ---- Dark preview wrapper ---- */
+.flare-dark-preview {
+  background: #1c1a1a;
+  border-radius: 12px;
+  padding: 24px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: center;
+}

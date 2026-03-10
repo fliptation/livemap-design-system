@@ -9,6 +9,7 @@
       children: [
         { id: "gs-overview", label: "Overview" },
         { id: "gs-playground", label: "Try It Out" },
+        { id: "gs-token-picker", label: "Token Picker" },
         { id: "gs-principles", label: "Design Principles" },
         { id: "gs-workflow", label: "How We Work" },
         { id: "gs-tools", label: "Tools & Setup" },
@@ -32,6 +33,7 @@
         { id: "tk-measures", label: "Measures" },
         { id: "tk-a11y", label: "Accessibility" },
         { id: "tk-anatomy", label: "Anatomy Example" },
+        { id: "tk-recipes", label: "Token Recipes" },
         { id: "tk-export", label: "Export Formats" },
       ],
     },
@@ -183,6 +185,22 @@
       ],
     },
     {
+      id: "flare",
+      label: "Flare & Serendipity",
+      page: "flare",
+      enabled: true,
+      children: [
+        { id: "fl-overview", label: "Overview" },
+        { id: "fl-serendipity", label: "Serendipity" },
+        { id: "fl-magic-flare", label: "Magic Flare" },
+        { id: "fl-event-invite", label: "Event Invitations" },
+        { id: "fl-nearby", label: "Friend Nearby" },
+        { id: "fl-grouped", label: "Grouped Notifications" },
+        { id: "fl-principles", label: "Principles" },
+        { id: "fl-anatomy", label: "Anatomy & Specs" },
+      ],
+    },
+    {
       section: "iOS",
       page: "live-activities",
       enabled: true,
@@ -264,6 +282,11 @@
       title: "Livemap Design System",
       heading: "iOS",
       subtitle: "/ Live Activities",
+    },
+    flare: {
+      title: "Livemap Design System",
+      heading: "Flare & Serendipity",
+      subtitle: "",
     },
     guidelines: {
       title: "Livemap Design System",
@@ -879,8 +902,35 @@
     var attr = "data-name-" + platform;
     nameEls.forEach(function (el) {
       var name = el.getAttribute(attr);
-      if (name) el.textContent = name;
+      if (name === "hidden") {
+        el.style.display = "none";
+      } else {
+        el.style.display = "";
+        if (name) el.textContent = name;
+      }
     });
+    // Override font-family tokens for Android (Google Sans)
+    var root = document.documentElement;
+    if (platform === "android") {
+      root.style.setProperty("--font-family", '"Google Sans", sans-serif');
+      root.style.setProperty(
+        "--font-family-display",
+        '"Google Sans Display", "Google Sans", sans-serif',
+      );
+      root.style.setProperty(
+        "--font-family-text",
+        '"Google Sans Text", "Google Sans", sans-serif',
+      );
+      root.style.setProperty(
+        "--font-family-rounded",
+        '"Google Sans", sans-serif',
+      );
+    } else {
+      root.style.removeProperty("--font-family");
+      root.style.removeProperty("--font-family-display");
+      root.style.removeProperty("--font-family-text");
+      root.style.removeProperty("--font-family-rounded");
+    }
     // Update color value elements
     updateColorValues(platform);
   }
@@ -1388,4 +1438,398 @@
       });
     }
   });
+
+  // ===========================================================================
+  // Token Picker
+  // ===========================================================================
+  var TOKEN_PICKER_DATA = [
+    // Typography
+    {
+      domain: "Typography",
+      scenario: "Page title, hero",
+      token: "--font-size-display",
+      detail: "34px \u00b7 Regular",
+      tags: ["page", "hero", "landing", "title", "display"],
+    },
+    {
+      domain: "Typography",
+      scenario: "Sheet header",
+      token: "--font-size-heading-lg",
+      detail: "28px \u00b7 Regular",
+      tags: ["sheet", "modal", "header", "dialog"],
+    },
+    {
+      domain: "Typography",
+      scenario: "Section heading",
+      token: "--font-size-heading-md",
+      detail: "22px \u00b7 Regular",
+      tags: ["section", "heading", "page", "layout"],
+    },
+    {
+      domain: "Typography",
+      scenario: "Group title",
+      token: "--font-size-heading-sm",
+      detail: "20px \u00b7 Regular",
+      tags: ["group", "title", "sidebar"],
+    },
+    {
+      domain: "Typography",
+      scenario: "Card title, nav title, button",
+      token: "--font-size-label",
+      detail: "17px \u00b7 Semibold",
+      tags: ["card", "nav", "button", "title", "navigation", "action", "list"],
+    },
+    {
+      domain: "Typography",
+      scenario: "Body text, descriptions",
+      token: "--font-size-body",
+      detail: "17px \u00b7 Regular",
+      tags: [
+        "body",
+        "description",
+        "paragraph",
+        "content",
+        "card",
+        "modal",
+        "form",
+        "sheet",
+      ],
+    },
+    {
+      domain: "Typography",
+      scenario: "Card subtitle, secondary line",
+      token: "--font-size-detail",
+      detail: "16px \u00b7 Regular",
+      tags: ["card", "subtitle", "secondary", "list", "detail"],
+    },
+    {
+      domain: "Typography",
+      scenario: "Tab label, metadata, distances",
+      token: "--font-size-small",
+      detail: "15px \u00b7 Regular",
+      tags: ["tab", "metadata", "distance", "label", "tag", "chip"],
+    },
+    {
+      domain: "Typography",
+      scenario: "Footnotes, timestamps",
+      token: "--font-size-fine",
+      detail: "13px \u00b7 Regular",
+      tags: ["footnote", "timestamp", "caption", "map", "overlay"],
+    },
+    {
+      domain: "Typography",
+      scenario: "Legal text, map attribution",
+      token: "--font-size-micro",
+      detail: "12px \u00b7 Regular",
+      tags: ["legal", "map", "attribution", "disclaimer"],
+    },
+    {
+      domain: "Typography",
+      scenario: "Badge counts, coordinates",
+      token: "--font-size-nano",
+      detail: "11px \u00b7 Regular",
+      tags: ["badge", "count", "coordinate", "indicator", "tag"],
+    },
+
+    // Color
+    {
+      domain: "Color",
+      scenario: "Titles, primary content",
+      token: "--color-label",
+      detail: "#1c1c1e",
+      tags: [
+        "title",
+        "heading",
+        "card",
+        "primary",
+        "content",
+        "nav",
+        "button",
+        "list",
+        "modal",
+        "sheet",
+        "hero",
+      ],
+    },
+    {
+      domain: "Color",
+      scenario: "Descriptions, metadata",
+      token: "--color-label-secondary",
+      detail: "rgba(60,60,67,.75)",
+      tags: [
+        "description",
+        "metadata",
+        "subtitle",
+        "secondary",
+        "card",
+        "list",
+        "body",
+      ],
+    },
+    {
+      domain: "Color",
+      scenario: "Placeholders, disabled",
+      token: "--color-label-tertiary",
+      detail: "rgba(60,60,67,.30)",
+      tags: ["placeholder", "disabled", "input", "search", "form"],
+    },
+    {
+      domain: "Color",
+      scenario: "Decorative only",
+      token: "--color-label-quaternary",
+      detail: "rgba(60,60,67,.18)",
+      tags: ["decorative", "watermark", "ghost"],
+    },
+    {
+      domain: "Color",
+      scenario: "Links, primary actions",
+      token: "--color-tint-action",
+      detail: "#007aff",
+      tags: [
+        "link",
+        "action",
+        "button",
+        "primary",
+        "interactive",
+        "nav",
+        "tab",
+      ],
+    },
+    {
+      domain: "Color",
+      scenario: "Delete, errors",
+      token: "--color-tint-destructive",
+      detail: "#ff3b30",
+      tags: [
+        "delete",
+        "error",
+        "destructive",
+        "warning",
+        "alert",
+        "toast",
+        "form",
+      ],
+    },
+    {
+      domain: "Color",
+      scenario: "Success, available",
+      token: "--color-tint-positive",
+      detail: "#34c759",
+      tags: ["success", "available", "online", "positive", "status", "badge"],
+    },
+
+    // Spacing
+    {
+      domain: "Spacing",
+      scenario: "Inline icon-to-text gap",
+      token: "--space-4",
+      detail: "4px",
+      tags: ["icon", "inline", "gap", "button", "badge", "tag"],
+    },
+    {
+      domain: "Spacing",
+      scenario: "Tight component padding",
+      token: "--space-8",
+      detail: "8px",
+      tags: [
+        "checkbox",
+        "chip",
+        "tag",
+        "badge",
+        "tight",
+        "component",
+        "padding",
+      ],
+    },
+    {
+      domain: "Spacing",
+      scenario: "Input internal padding",
+      token: "--space-10",
+      detail: "10px",
+      tags: ["input", "form", "search", "field", "padding"],
+    },
+    {
+      domain: "Spacing",
+      scenario: "Control group gaps",
+      token: "--space-12",
+      detail: "12px",
+      tags: ["control", "group", "gap", "form", "button", "tab", "radio"],
+    },
+    {
+      domain: "Spacing",
+      scenario: "Card padding, section inset",
+      token: "--space-16",
+      detail: "16px",
+      tags: [
+        "card",
+        "padding",
+        "section",
+        "inset",
+        "list",
+        "nav",
+        "modal",
+        "sheet",
+      ],
+    },
+    {
+      domain: "Spacing",
+      scenario: "Stacked card gap",
+      token: "--space-20",
+      detail: "20px",
+      tags: ["card", "stack", "gap", "list"],
+    },
+    {
+      domain: "Spacing",
+      scenario: "Section content gap",
+      token: "--space-24",
+      detail: "24px",
+      tags: ["section", "content", "gap", "modal", "sheet", "form"],
+    },
+    {
+      domain: "Spacing",
+      scenario: "Between content groups",
+      token: "--space-32",
+      detail: "32px",
+      tags: ["group", "content", "page", "layout", "section", "hero"],
+    },
+    {
+      domain: "Spacing",
+      scenario: "Page section separator",
+      token: "--space-48",
+      detail: "48px",
+      tags: ["page", "section", "separator", "layout", "hero"],
+    },
+
+    // Elevation
+    {
+      domain: "Elevation",
+      scenario: "Flat controls, inputs",
+      token: "--shadow-xs + --radius-sm",
+      detail: "Subtle depth",
+      tags: [
+        "input",
+        "control",
+        "form",
+        "flat",
+        "checkbox",
+        "toggle",
+        "search",
+      ],
+    },
+    {
+      domain: "Elevation",
+      scenario: "Cards, buttons",
+      token: "--shadow-sm + --radius-md",
+      detail: "Default card",
+      tags: ["card", "button", "surface"],
+    },
+    {
+      domain: "Elevation",
+      scenario: "Dropdowns, popovers",
+      token: "--shadow-md + --radius-md",
+      detail: "Floating overlay",
+      tags: [
+        "dropdown",
+        "popover",
+        "menu",
+        "overlay",
+        "select",
+        "autocomplete",
+        "nav",
+      ],
+    },
+    {
+      domain: "Elevation",
+      scenario: "Modals, sheets",
+      token: "--shadow-lg + --radius-lg",
+      detail: "Full takeover",
+      tags: ["modal", "sheet", "dialog", "overlay"],
+    },
+    {
+      domain: "Elevation",
+      scenario: "Toast notifications",
+      token: "--shadow-xl + --radius-xl",
+      detail: "Highest prominence",
+      tags: ["toast", "notification", "alert", "snackbar"],
+    },
+  ];
+
+  var tpPreset = document.getElementById("tp-preset");
+  var tpSearch = document.getElementById("tp-search");
+  var tpResults = document.getElementById("tp-results");
+
+  if (tpPreset && tpSearch && tpResults) {
+    function tpFilter(query) {
+      if (!query) {
+        tpResults.innerHTML =
+          '<div class="tp-empty">Select a component above or type a keyword to see recommended tokens.</div>';
+        return;
+      }
+
+      var terms = query.toLowerCase().split(/\s+/).filter(Boolean);
+      var matches = TOKEN_PICKER_DATA.filter(function (entry) {
+        var haystack = entry.tags.concat(
+          entry.scenario.toLowerCase().split(/[\s,]+/),
+          entry.token.toLowerCase().split(/[\s\-]+/),
+        );
+        return terms.some(function (term) {
+          return haystack.some(function (tag) {
+            return tag.indexOf(term) !== -1;
+          });
+        });
+      });
+
+      if (matches.length === 0) {
+        tpResults.innerHTML =
+          '<div class="tp-empty">No tokens match \u201c' +
+          query.replace(/</g, "&lt;") +
+          "\u201d. Try a different keyword.</div>";
+        return;
+      }
+
+      // Group by domain
+      var groups = {};
+      var domainOrder = ["Typography", "Color", "Spacing", "Elevation"];
+      matches.forEach(function (m) {
+        if (!groups[m.domain]) groups[m.domain] = [];
+        groups[m.domain].push(m);
+      });
+
+      var html = "";
+      domainOrder.forEach(function (domain) {
+        if (!groups[domain]) return;
+        html += '<div class="tp-domain">';
+        html += '<div class="tp-domain__label">' + domain + "</div>";
+        groups[domain].forEach(function (entry) {
+          html += '<div class="tp-row">';
+          html +=
+            '<span class="tp-row__scenario">' + entry.scenario + "</span>";
+          html += '<code class="tp-row__token">' + entry.token + "</code>";
+          html += '<span class="tp-row__detail">' + entry.detail + "</span>";
+          html += "</div>";
+        });
+        html += "</div>";
+      });
+
+      tpResults.innerHTML = html;
+    }
+
+    tpPreset.addEventListener("change", function () {
+      var val = tpPreset.value;
+      tpSearch.value = "";
+      tpFilter(val);
+    });
+
+    var tpDebounce;
+    tpSearch.addEventListener("input", function () {
+      clearTimeout(tpDebounce);
+      tpDebounce = setTimeout(function () {
+        var val = tpSearch.value.trim();
+        if (val) {
+          tpPreset.value = "";
+        }
+        tpFilter(val || tpPreset.value);
+      }, 150);
+    });
+  }
 })();

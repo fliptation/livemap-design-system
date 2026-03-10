@@ -10,6 +10,7 @@
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🗺</text></svg>">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;600;700&family=Google+Sans+Display:wght@400;500;600;700&family=Google+Sans+Text:wght@400;500;600;700&display=swap">
   <link rel="stylesheet" href="../utilities.css">
   <link rel="stylesheet" href="typography.css">
   <link rel="stylesheet" href="styleguide.css">
@@ -41,7 +42,7 @@
     <div class="app-main">
       <header class="app-header">
         <div class="app-header__left">
-          <h1 class="app-header__heading" id="header-heading">Typography <span>/ SF Pro</span></h1>
+          <h1 class="app-header__heading" id="header-heading">Typography <span data-name-html="/ SF Pro" data-name-ios="/ SF Pro" data-name-android="/ Google Sans">/ SF Pro</span></h1>
         </div>
         <div class="app-header__right">
           <div class="sidebar__search" id="sidebar-search">
@@ -201,6 +202,15 @@
             <div class="home-card__desc">Form layouts, navigation, data display, and states.</div>
           </div>
         </div>
+        <div class="home-card" data-home-page="flare">
+          <div class="home-card__icon">
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2l1.5 4.5L16 8l-4.5 1.5L10 14l-1.5-4.5L4 8l4.5-1.5z"/><circle cx="15" cy="4" r="1"/><circle cx="5" cy="14" r="1"/></svg>
+          </div>
+          <div class="home-card__body">
+            <div class="home-card__title">Flare & Serendipity</div>
+            <div class="home-card__desc">Contextual notifications, friend alerts, and event invitations.</div>
+          </div>
+        </div>
         <div class="home-card" data-home-page="live-activities">
           <div class="home-card__icon">
             <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="14" height="6" rx="3"/><circle cx="7" cy="10" r="1.5" fill="currentColor" stroke="none"/><line x1="11" y1="8.5" x2="14" y2="8.5"/><line x1="11" y1="11.5" x2="13" y2="11.5"/></svg>
@@ -236,14 +246,14 @@
          ============================================================ -->
     <section id="font-families">
       <p class="section-label">Font Families</p>
-      <p class="section-note">
+      <p class="section-note" data-name-html="SF Pro is Apple's system typeface. It includes three variants: the default variable-width family, a Display cut for large sizes, a Text cut for small sizes, and a Rounded variant." data-name-ios="SF Pro is Apple's system typeface. It includes three variants: the default variable-width family, a Display cut for large sizes, a Text cut for small sizes, and a Rounded variant." data-name-android="Google Sans is Livemap's typeface on Android. It includes a default family, a Display cut for large sizes, and a Text cut for small sizes.">
         SF Pro is Apple's system typeface. It includes three variants: the default variable-width family, a Display cut for large sizes, a Text cut for small sizes, and a Rounded variant.
       </p>
 
       <div class="family-card">
         <div class="family-card__header">
-          <span class="family-card__name">SF Pro</span>
-          <span class="family-card__usage">Variable font with automatic optical sizing (opsz 17-28)</span>
+          <span class="family-card__name" data-name-html="SF Pro" data-name-ios="SF Pro" data-name-android="Google Sans">SF Pro</span>
+          <span class="family-card__usage" data-name-html="Variable font with automatic optical sizing (opsz 17-28)" data-name-ios="Variable font with automatic optical sizing (opsz 17-28)" data-name-android="Google's geometric sans-serif for product interfaces">Variable font with automatic optical sizing (opsz 17-28)</span>
         </div>
         <div class="family-card__sample" style="font-family: var(--font-family);">
           Explore Zürich from Oerlikon to Wollishofen
@@ -255,8 +265,8 @@
 
       <div class="family-card">
         <div class="family-card__header">
-          <span class="family-card__name">SF Pro Display</span>
-          <span class="family-card__usage">Optimized for 20pt and above</span>
+          <span class="family-card__name" data-name-html="SF Pro Display" data-name-ios="SF Pro Display" data-name-android="Google Sans Display">SF Pro Display</span>
+          <span class="family-card__usage" data-name-html="Optimized for 20pt and above" data-name-ios="Optimized for 20pt and above" data-name-android="Optimized for 20sp and above">Optimized for 20pt and above</span>
         </div>
         <div class="family-card__sample" style="font-family: var(--font-family-display);">
           Navigate Basel, Bern, Luzern und beyond
@@ -265,15 +275,15 @@
 
       <div class="family-card">
         <div class="family-card__header">
-          <span class="family-card__name">SF Pro Text</span>
-          <span class="family-card__usage">Optimized for 19pt and below</span>
+          <span class="family-card__name" data-name-html="SF Pro Text" data-name-ios="SF Pro Text" data-name-android="Google Sans Text">SF Pro Text</span>
+          <span class="family-card__usage" data-name-html="Optimized for 19pt and below" data-name-ios="Optimized for 19pt and below" data-name-android="Optimized for 19sp and below">Optimized for 19pt and below</span>
         </div>
         <div class="family-card__sample-small" style="font-family: var(--font-family-text); margin-top: 0;">
           Biege rechts ab in die Bahnhofstrasse, dann weiter geradeaus bis zur Quaibrücke. Du erreichst dein Ziel in etwa 12 Minuten zu Fuss.
         </div>
       </div>
 
-      <div class="family-card">
+      <div class="family-card" data-name-html="" data-name-ios="" data-name-android="hidden">
         <div class="family-card__header">
           <span class="family-card__name">SF Pro Rounded</span>
           <span class="family-card__usage">Softer terminals for badges, chips, friendly UI moments</span>
@@ -293,7 +303,7 @@
          ============================================================ -->
     <section id="weight-scale">
       <p class="section-label">Weight Scale</p>
-      <p class="section-note">
+      <p class="section-note" data-name-html="SF Pro ships 9 weights. Livemap uses four. Each has a clear role — if you're reaching for a weight not listed here, reconsider the hierarchy." data-name-ios="SF Pro ships 9 weights. Livemap uses four. Each has a clear role — if you're reaching for a weight not listed here, reconsider the hierarchy." data-name-android="Google Sans ships multiple weights. Livemap uses four. Each has a clear role — if you're reaching for a weight not listed here, reconsider the hierarchy.">
         SF Pro ships 9 weights. Livemap uses four. Each has a clear role &mdash; if you're reaching for a weight not listed here, reconsider the hierarchy.
       </p>
 
@@ -1583,17 +1593,17 @@
           <tr><th>Scenario</th><th>Style</th><th>Token</th><th>Weight</th></tr>
         </thead>
         <tbody>
-          <tr><td>Page title, hero</td><td>Display</td><td><code>--font-size-display</code></td><td>Regular</td></tr>
-          <tr><td>Sheet header</td><td>Heading LG</td><td><code>--font-size-heading-lg</code></td><td>Regular</td></tr>
-          <tr><td>Section heading</td><td>Heading MD</td><td><code>--font-size-heading-md</code></td><td>Regular</td></tr>
-          <tr><td>Group title</td><td>Heading SM</td><td><code>--font-size-heading-sm</code></td><td>Regular</td></tr>
-          <tr><td>Card title, nav title, button</td><td>Label</td><td><code>--font-size-label</code></td><td>Semibold</td></tr>
-          <tr><td>Body text, descriptions</td><td>Body</td><td><code>--font-size-body</code></td><td>Regular</td></tr>
-          <tr><td>Card subtitle, secondary line</td><td>Detail</td><td><code>--font-size-detail</code></td><td>Regular</td></tr>
-          <tr><td>Tab label, metadata, distances</td><td>Small</td><td><code>--font-size-small</code></td><td>Regular</td></tr>
-          <tr><td>Footnotes, timestamps</td><td>Fine</td><td><code>--font-size-fine</code></td><td>Regular</td></tr>
-          <tr><td>Legal text, map attribution</td><td>Micro</td><td><code>--font-size-micro</code></td><td>Regular</td></tr>
-          <tr><td>Badge counts, coordinates</td><td>Nano</td><td><code>--font-size-nano</code></td><td>Regular</td></tr>
+          <tr><td>Page title, hero</td><td data-name-html="Display" data-name-ios="Large Title" data-name-android="Display Large">Display</td><td><code data-name-html="--font-size-display" data-name-ios="Font.display" data-name-android="R.dimen.font_size_display">--font-size-display</code></td><td>Regular</td></tr>
+          <tr><td>Sheet header</td><td data-name-html="Heading LG" data-name-ios="Title 1" data-name-android="Headline Large">Heading LG</td><td><code data-name-html="--font-size-heading-lg" data-name-ios="Font.headingLg" data-name-android="R.dimen.font_size_heading_lg">--font-size-heading-lg</code></td><td>Regular</td></tr>
+          <tr><td>Section heading</td><td data-name-html="Heading MD" data-name-ios="Title 2" data-name-android="Headline Medium">Heading MD</td><td><code data-name-html="--font-size-heading-md" data-name-ios="Font.headingMd" data-name-android="R.dimen.font_size_heading_md">--font-size-heading-md</code></td><td>Regular</td></tr>
+          <tr><td>Group title</td><td data-name-html="Heading SM" data-name-ios="Title 3" data-name-android="Headline Small">Heading SM</td><td><code data-name-html="--font-size-heading-sm" data-name-ios="Font.headingSm" data-name-android="R.dimen.font_size_heading_sm">--font-size-heading-sm</code></td><td>Regular</td></tr>
+          <tr><td>Card title, nav title, button</td><td data-name-html="Label" data-name-ios="Headline" data-name-android="Title Medium">Label</td><td><code data-name-html="--font-size-label" data-name-ios="Font.label" data-name-android="R.dimen.font_size_label">--font-size-label</code></td><td>Semibold</td></tr>
+          <tr><td>Body text, descriptions</td><td data-name-html="Body" data-name-ios="Body" data-name-android="Body Large">Body</td><td><code data-name-html="--font-size-body" data-name-ios="Font.body" data-name-android="R.dimen.font_size_body">--font-size-body</code></td><td>Regular</td></tr>
+          <tr><td>Card subtitle, secondary line</td><td data-name-html="Detail" data-name-ios="Callout" data-name-android="Body Medium">Detail</td><td><code data-name-html="--font-size-detail" data-name-ios="Font.detail" data-name-android="R.dimen.font_size_detail">--font-size-detail</code></td><td>Regular</td></tr>
+          <tr><td>Tab label, metadata, distances</td><td data-name-html="Small" data-name-ios="Subheadline" data-name-android="Body Small">Small</td><td><code data-name-html="--font-size-small" data-name-ios="Font.small" data-name-android="R.dimen.font_size_small">--font-size-small</code></td><td>Regular</td></tr>
+          <tr><td>Footnotes, timestamps</td><td data-name-html="Fine" data-name-ios="Footnote" data-name-android="Label Large">Fine</td><td><code data-name-html="--font-size-fine" data-name-ios="Font.fine" data-name-android="R.dimen.font_size_fine">--font-size-fine</code></td><td>Regular</td></tr>
+          <tr><td>Legal text, map attribution</td><td data-name-html="Micro" data-name-ios="Caption 1" data-name-android="Label Medium">Micro</td><td><code data-name-html="--font-size-micro" data-name-ios="Font.micro" data-name-android="R.dimen.font_size_micro">--font-size-micro</code></td><td>Regular</td></tr>
+          <tr><td>Badge counts, coordinates</td><td data-name-html="Nano" data-name-ios="Caption 2" data-name-android="Label Small">Nano</td><td><code data-name-html="--font-size-nano" data-name-ios="Font.nano" data-name-android="R.dimen.font_size_nano">--font-size-nano</code></td><td>Regular</td></tr>
         </tbody>
       </table>
 
@@ -1885,7 +1895,7 @@
         <div>
           <p class="type-label" style="margin-bottom: 4px;">Platform availability</p>
           <p class="type-body" style="color: #636366;">
-            SF Pro is pre-installed on macOS, iOS, iPadOS, watchOS, and tvOS. It is not available on Windows or Android. The CSS fallback stack (<code>-apple-system, BlinkMacSystemFont, system-ui, sans-serif</code>) ensures graceful degradation to each platform's system font.
+            SF Pro is pre-installed on macOS, iOS, iPadOS, watchOS, and tvOS. On Android, Livemap uses Google Sans. The CSS fallback stack (<code>-apple-system, BlinkMacSystemFont, system-ui, sans-serif</code>) ensures graceful degradation to each platform's system font.
           </p>
         </div>
       </div>
@@ -2582,6 +2592,183 @@
         <div><strong>Surface:</strong> <code>--color-surface</code>, <code>--shadow-sm</code>, <code>--radius-md</code></div>
         <div><strong>Border:</strong> <code>--color-separator</code></div>
       </div>
+
+      <!-- Search Result Row anatomy -->
+      <p class="section-label" style="margin-top: var(--space-48);">Anatomy of a Search Result Row</p>
+      <p class="section-note">
+        A horizontal row from a place search list — icon area, two-line text block, and a trailing distance badge.
+      </p>
+
+      <div style="
+        background: var(--color-surface);
+        border-bottom: 1px solid var(--color-separator);
+        padding: var(--space-12) var(--space-16);
+        max-width: 420px;
+        display: flex;
+        align-items: center;
+        gap: var(--space-12);
+      ">
+        <div style="
+          width: 40px;
+          height: 40px;
+          border-radius: var(--radius-sm);
+          background: var(--color-fill-secondary);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
+          font-size: 18px;
+        ">&#x1F35D;</div>
+        <div style="
+          display: flex;
+          flex-direction: column;
+          gap: var(--space-8);
+          flex: 1;
+          min-width: 0;
+        ">
+          <span style="
+            font-size: var(--font-size-label);
+            font-weight: var(--font-weight-semibold);
+            color: var(--color-label);
+            line-height: 1.3;
+          ">Ristorante Da Mario</span>
+          <span style="
+            font-size: var(--font-size-detail);
+            color: var(--color-label-secondary);
+            line-height: 1.3;
+          ">Italian &middot; Closed at 22:00</span>
+        </div>
+        <span style="
+          font-size: var(--font-size-small);
+          font-weight: var(--font-weight-medium);
+          color: var(--color-label-secondary);
+          font-variant-numeric: tabular-nums;
+          flex-shrink: 0;
+        ">1.2 km</span>
+      </div>
+
+      <div class="rule-box" style="margin-top: var(--space-24); display: flex; flex-direction: column; gap: 8px;">
+        <strong>Tokens used</strong>
+        <div><strong>Name:</strong> <code>--font-size-label</code>, <code>--font-weight-semibold</code>, <code>--color-label</code></div>
+        <div><strong>Meta:</strong> <code>--font-size-detail</code>, <code>--color-label-secondary</code></div>
+        <div><strong>Distance:</strong> <code>--font-size-small</code>, <code>--font-weight-medium</code>, <code>--color-label-secondary</code>, <code>tabular-nums</code></div>
+        <div><strong>Icon area:</strong> 40&times;40, <code>--radius-sm</code>, <code>--color-fill-secondary</code></div>
+        <div><strong>Row padding:</strong> <code>--space-12</code> vertical, <code>--space-16</code> horizontal</div>
+        <div><strong>Gap:</strong> <code>--space-12</code> (icon to text), <code>--space-8</code> (between text lines)</div>
+        <div><strong>Divider:</strong> <code>--color-separator</code> bottom border</div>
+      </div>
+
+      <!-- Toast Notification anatomy -->
+      <p class="section-label" style="margin-top: var(--space-48);">Anatomy of a Toast Notification</p>
+      <p class="section-note">
+        A floating toast with icon, message, and dismiss action.
+      </p>
+
+      <div style="
+        background: var(--color-surface);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-xl);
+        padding: var(--space-12) var(--space-16);
+        max-width: 380px;
+        display: flex;
+        align-items: center;
+        gap: var(--space-10);
+      ">
+        <span style="
+          font-size: var(--font-size-small);
+          color: var(--color-tint-action);
+          flex-shrink: 0;
+        ">&#x2713;</span>
+        <span style="
+          font-size: var(--font-size-detail);
+          font-weight: var(--font-weight-medium);
+          color: var(--color-label);
+          line-height: 1.3;
+          flex: 1;
+        ">Route saved to favorites</span>
+        <span style="
+          font-size: var(--font-size-small);
+          color: var(--color-label-tertiary);
+          cursor: pointer;
+          flex-shrink: 0;
+        ">&#x2715;</span>
+      </div>
+
+      <div class="rule-box" style="margin-top: var(--space-24); display: flex; flex-direction: column; gap: 8px;">
+        <strong>Tokens used</strong>
+        <div><strong>Message:</strong> <code>--font-size-detail</code>, <code>--font-weight-medium</code>, <code>--color-label</code></div>
+        <div><strong>Icon / Action:</strong> <code>--font-size-small</code>, <code>--color-tint-action</code> / <code>--color-label-tertiary</code></div>
+        <div><strong>Padding:</strong> <code>--space-12</code> vertical, <code>--space-16</code> horizontal</div>
+        <div><strong>Gap:</strong> <code>--space-10</code> (icon to text)</div>
+        <div><strong>Surface:</strong> <code>--color-surface</code>, <code>--shadow-xl</code>, <code>--radius-lg</code></div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         Token Recipes
+         ============================================================ -->
+    <section id="tk-recipes">
+      <p class="section-label">Token Recipes</p>
+      <p class="section-note">
+        Common UI patterns and their full token set at a glance. Copy a recipe to get consistent styling instantly.
+      </p>
+
+      <table class="token-table">
+        <thead>
+          <tr><th>Pattern</th><th>Typography</th><th>Colors</th><th>Spacing</th><th>Surface</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Card</td>
+            <td><code>label</code> / <code>detail</code></td>
+            <td><code>label</code> / <code>secondary</code></td>
+            <td><code>space-16</code> pad, <code>space-8</code> gap</td>
+            <td><code>shadow-sm</code>, <code>radius-md</code>, <code>separator</code></td>
+          </tr>
+          <tr>
+            <td>List row</td>
+            <td><code>label</code> / <code>small</code></td>
+            <td><code>label</code> / <code>secondary</code></td>
+            <td><code>space-12</code> v, <code>space-16</code> h</td>
+            <td><code>separator</code> bottom</td>
+          </tr>
+          <tr>
+            <td>Form field</td>
+            <td><code>body</code> (input), <code>small</code> (label)</td>
+            <td><code>label</code> / <code>tertiary</code> (placeholder)</td>
+            <td><code>space-10</code> pad, <code>space-4</code> label gap</td>
+            <td><code>shadow-xs</code>, <code>radius-sm</code></td>
+          </tr>
+          <tr>
+            <td>Modal</td>
+            <td><code>heading-sm</code> / <code>body</code></td>
+            <td><code>label</code> / <code>secondary</code></td>
+            <td><code>space-24</code> pad, <code>space-16</code> gap</td>
+            <td><code>shadow-lg</code>, <code>radius-lg</code>, <code>z-modal</code></td>
+          </tr>
+          <tr>
+            <td>Toast</td>
+            <td><code>detail</code></td>
+            <td><code>label</code></td>
+            <td><code>space-12</code> v, <code>space-16</code> h</td>
+            <td><code>shadow-xl</code>, <code>radius-lg</code>, <code>z-toast</code></td>
+          </tr>
+          <tr>
+            <td>Button</td>
+            <td><code>fine</code> / <code>semibold</code></td>
+            <td><code>surface</code> on <code>label</code> bg</td>
+            <td><code>space-10</code> v, <code>space-20</code> h</td>
+            <td><code>radius-sm</code></td>
+          </tr>
+          <tr>
+            <td>Badge</td>
+            <td><code>fine</code> / <code>medium</code></td>
+            <td><code>surface</code> on tint bg</td>
+            <td><code>space-4</code> v, <code>space-8</code> h</td>
+            <td><code>radius-full</code></td>
+          </tr>
+        </tbody>
+      </table>
     </section>
 
     <!-- ============================================================
@@ -2665,6 +2852,43 @@
     </section>
 
     <!-- ============================================================
+         Token Picker
+         ============================================================ -->
+    <section id="gs-token-picker">
+      <p class="section-label">Token Picker</p>
+      <p class="section-note">
+        Choose what you're building and see the recommended tokens across typography, color, spacing, and elevation.
+      </p>
+
+      <div class="tp-widget">
+        <div class="tp-controls">
+          <span class="tp-prompt">I'm building</span>
+          <select class="tp-select" id="tp-preset">
+            <option value="">choose&hellip;</option>
+            <option value="card">a card</option>
+            <option value="modal sheet">a modal / sheet</option>
+            <option value="form input">a form</option>
+            <option value="button">a button</option>
+            <option value="nav navigation">a navigation bar</option>
+            <option value="list">a list</option>
+            <option value="search input">a search bar</option>
+            <option value="toast alert">a toast / alert</option>
+            <option value="badge tag">a badge / tag</option>
+            <option value="tab">a tab bar</option>
+            <option value="dropdown popover">a dropdown</option>
+            <option value="hero page">a hero section</option>
+            <option value="map overlay">a map overlay</option>
+          </select>
+          <input type="text" class="tp-search" id="tp-search" placeholder="or type to search&hellip;" autocomplete="off" spellcheck="false">
+        </div>
+        <div class="tp-results" id="tp-results">
+          <div class="tp-empty">Select a component above or type a keyword to see recommended tokens.</div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
          3. Design Principles
          ============================================================ -->
     <section id="gs-principles">
@@ -2687,7 +2911,7 @@
         <div class="gs-principle">
           <p class="gs-principle__number">03</p>
           <p class="gs-principle__name">Platform-native feel</p>
-          <p class="gs-principle__desc">SF Pro on Apple, Roboto on Android, system fonts on the web. Respect each platform's conventions for navigation, gestures, and density.</p>
+          <p class="gs-principle__desc">SF Pro on Apple, Google Sans on Android, system fonts on the web. Respect each platform's conventions for navigation, gestures, and density.</p>
         </div>
         <div class="gs-principle">
           <p class="gs-principle__number">04</p>
@@ -2763,7 +2987,11 @@
         </div>
         <div class="gs-tool-row">
           <span class="gs-tool-row__name">Design Tokens</span>
-          <span class="gs-tool-row__desc">CSS custom properties in <code>utilities.css</code> and <code>typography.css</code>. Import these in any project to get the full token set.</span>
+          <span class="gs-tool-row__desc">CSS custom properties in <code>tokens.css</code>. Import this in any project to get the full token set.</span>
+        </div>
+        <div class="gs-tool-row">
+          <span class="gs-tool-row__name">No Tailwind / shadcn</span>
+          <span class="gs-tool-row__desc">This design system uses vanilla CSS and custom properties only. We don't use Tailwind, shadcn, or any CSS framework.</span>
         </div>
       </div>
     </section>
@@ -2970,13 +3198,13 @@
                 <tr><th>Need</th><th>Token</th><th>Example</th></tr>
               </thead>
               <tbody>
-                <tr><td>Titles, primary content</td><td><code>--color-label</code></td><td>Ristorante Da Mario</td></tr>
-                <tr><td>Descriptions, metadata</td><td><code>--color-label-secondary</code></td><td>Italian &middot; 1.2 km</td></tr>
-                <tr><td>Placeholders, disabled</td><td><code>--color-label-tertiary</code></td><td>Search places&hellip;</td></tr>
-                <tr><td>Decorative only</td><td><code>--color-label-quaternary</code></td><td>Watermark text</td></tr>
-                <tr><td>Links, primary actions</td><td><code>--color-tint-action</code></td><td>Get directions</td></tr>
-                <tr><td>Delete, errors</td><td><code>--color-tint-destructive</code></td><td>Remove from saved</td></tr>
-                <tr><td>Success, available</td><td><code>--color-tint-positive</code></td><td>Open now</td></tr>
+                <tr><td>Titles, primary content</td><td><code data-name-html="--color-label" data-name-ios="Color.label" data-name-android="color_label">--color-label</code></td><td>Ristorante Da Mario</td></tr>
+                <tr><td>Descriptions, metadata</td><td><code data-name-html="--color-label-secondary" data-name-ios="Color.labelSecondary" data-name-android="color_label_secondary">--color-label-secondary</code></td><td>Italian &middot; 1.2 km</td></tr>
+                <tr><td>Placeholders, disabled</td><td><code data-name-html="--color-label-tertiary" data-name-ios="Color.labelTertiary" data-name-android="color_label_tertiary">--color-label-tertiary</code></td><td>Search places&hellip;</td></tr>
+                <tr><td>Decorative only</td><td><code data-name-html="--color-label-quaternary" data-name-ios="Color.labelQuaternary" data-name-android="color_label_quaternary">--color-label-quaternary</code></td><td>Watermark text</td></tr>
+                <tr><td>Links, primary actions</td><td><code data-name-html="--color-tint-action" data-name-ios="Color.tintAction" data-name-android="color_tint_action">--color-tint-action</code></td><td>Get directions</td></tr>
+                <tr><td>Delete, errors</td><td><code data-name-html="--color-tint-destructive" data-name-ios="Color.tintDestructive" data-name-android="color_tint_destructive">--color-tint-destructive</code></td><td>Remove from saved</td></tr>
+                <tr><td>Success, available</td><td><code data-name-html="--color-tint-positive" data-name-ios="Color.tintPositive" data-name-android="color_tint_positive">--color-tint-positive</code></td><td>Open now</td></tr>
               </tbody>
             </table>
 
@@ -3297,18 +3525,18 @@
           <tr><th>Scenario</th><th>Token</th><th>Value</th></tr>
         </thead>
         <tbody>
-          <tr><td>Hairline visual nudge</td><td><code>var(--space-2)</code></td><td>2px</td></tr>
-          <tr><td>Inline icon-to-text gap</td><td><code>var(--space-4)</code></td><td>4px</td></tr>
-          <tr><td>Optical alignment tweak</td><td><code>var(--space-6)</code></td><td>6px</td></tr>
-          <tr><td>Tight component padding (checkbox, chip)</td><td><code>var(--space-8)</code></td><td>8px</td></tr>
-          <tr><td>Input internal padding</td><td><code>var(--space-10)</code></td><td>10px</td></tr>
-          <tr><td>Control group gaps</td><td><code>var(--space-12)</code></td><td>12px</td></tr>
-          <tr><td>Card padding, section inset</td><td><code>var(--space-16)</code></td><td>16px</td></tr>
-          <tr><td>Stacked card gap</td><td><code>var(--space-20)</code></td><td>20px</td></tr>
-          <tr><td>Section content gap</td><td><code>var(--space-24)</code></td><td>24px</td></tr>
-          <tr><td>Between content groups</td><td><code>var(--space-32)</code></td><td>32px</td></tr>
-          <tr><td>Page section separator</td><td><code>var(--space-48)</code></td><td>48px</td></tr>
-          <tr><td>Major page divisions</td><td><code>var(--space-64)</code>+</td><td>64px+</td></tr>
+          <tr><td>Hairline visual nudge</td><td><code data-name-html="var(--space-2)" data-name-ios="Spacing.s2" data-name-android="R.dimen.space_2">var(--space-2)</code></td><td>2px</td></tr>
+          <tr><td>Inline icon-to-text gap</td><td><code data-name-html="var(--space-4)" data-name-ios="Spacing.s4" data-name-android="R.dimen.space_4">var(--space-4)</code></td><td>4px</td></tr>
+          <tr><td>Optical alignment tweak</td><td><code data-name-html="var(--space-6)" data-name-ios="Spacing.s6" data-name-android="R.dimen.space_6">var(--space-6)</code></td><td>6px</td></tr>
+          <tr><td>Tight component padding (checkbox, chip)</td><td><code data-name-html="var(--space-8)" data-name-ios="Spacing.s8" data-name-android="R.dimen.space_8">var(--space-8)</code></td><td>8px</td></tr>
+          <tr><td>Input internal padding</td><td><code data-name-html="var(--space-10)" data-name-ios="Spacing.s10" data-name-android="R.dimen.space_10">var(--space-10)</code></td><td>10px</td></tr>
+          <tr><td>Control group gaps</td><td><code data-name-html="var(--space-12)" data-name-ios="Spacing.s12" data-name-android="R.dimen.space_12">var(--space-12)</code></td><td>12px</td></tr>
+          <tr><td>Card padding, section inset</td><td><code data-name-html="var(--space-16)" data-name-ios="Spacing.s16" data-name-android="R.dimen.space_16">var(--space-16)</code></td><td>16px</td></tr>
+          <tr><td>Stacked card gap</td><td><code data-name-html="var(--space-20)" data-name-ios="Spacing.s20" data-name-android="R.dimen.space_20">var(--space-20)</code></td><td>20px</td></tr>
+          <tr><td>Section content gap</td><td><code data-name-html="var(--space-24)" data-name-ios="Spacing.s24" data-name-android="R.dimen.space_24">var(--space-24)</code></td><td>24px</td></tr>
+          <tr><td>Between content groups</td><td><code data-name-html="var(--space-32)" data-name-ios="Spacing.s32" data-name-android="R.dimen.space_32">var(--space-32)</code></td><td>32px</td></tr>
+          <tr><td>Page section separator</td><td><code data-name-html="var(--space-48)" data-name-ios="Spacing.s48" data-name-android="R.dimen.space_48">var(--space-48)</code></td><td>48px</td></tr>
+          <tr><td>Major page divisions</td><td><code data-name-html="var(--space-64)" data-name-ios="Spacing.s64" data-name-android="R.dimen.space_64">var(--space-64)</code>+</td><td>64px+</td></tr>
         </tbody>
       </table>
 
@@ -3512,11 +3740,11 @@
           <tr><th>Surface</th><th>Shadow</th><th>Radius</th></tr>
         </thead>
         <tbody>
-          <tr><td>Flat controls, inputs</td><td><code>var(--shadow-xs)</code></td><td><code>var(--radius-sm)</code></td></tr>
-          <tr><td>Cards, buttons</td><td><code>var(--shadow-sm)</code></td><td><code>var(--radius-md)</code></td></tr>
-          <tr><td>Dropdowns, popovers</td><td><code>var(--shadow-md)</code></td><td><code>var(--radius-md)</code></td></tr>
-          <tr><td>Modals, sheets</td><td><code>var(--shadow-lg)</code></td><td><code>var(--radius-lg)</code></td></tr>
-          <tr><td>Toast notifications</td><td><code>var(--shadow-xl)</code></td><td><code>var(--radius-xl)</code></td></tr>
+          <tr><td>Flat controls, inputs</td><td><code data-name-html="var(--shadow-xs)" data-name-ios="Shadow.xs" data-name-android="R.style.Shadow_Xs">var(--shadow-xs)</code></td><td><code data-name-html="var(--radius-sm)" data-name-ios="Radius.sm" data-name-android="R.dimen.radius_sm">var(--radius-sm)</code></td></tr>
+          <tr><td>Cards, buttons</td><td><code data-name-html="var(--shadow-sm)" data-name-ios="Shadow.sm" data-name-android="R.style.Shadow_Sm">var(--shadow-sm)</code></td><td><code data-name-html="var(--radius-md)" data-name-ios="Radius.md" data-name-android="R.dimen.radius_md">var(--radius-md)</code></td></tr>
+          <tr><td>Dropdowns, popovers</td><td><code data-name-html="var(--shadow-md)" data-name-ios="Shadow.md" data-name-android="R.style.Shadow_Md">var(--shadow-md)</code></td><td><code data-name-html="var(--radius-md)" data-name-ios="Radius.md" data-name-android="R.dimen.radius_md">var(--radius-md)</code></td></tr>
+          <tr><td>Modals, sheets</td><td><code data-name-html="var(--shadow-lg)" data-name-ios="Shadow.lg" data-name-android="R.style.Shadow_Lg">var(--shadow-lg)</code></td><td><code data-name-html="var(--radius-lg)" data-name-ios="Radius.lg" data-name-android="R.dimen.radius_lg">var(--radius-lg)</code></td></tr>
+          <tr><td>Toast notifications</td><td><code data-name-html="var(--shadow-xl)" data-name-ios="Shadow.xl" data-name-android="R.style.Shadow_Xl">var(--shadow-xl)</code></td><td><code data-name-html="var(--radius-xl)" data-name-ios="Radius.xl" data-name-android="R.dimen.radius_xl">var(--radius-xl)</code></td></tr>
         </tbody>
       </table>
     </section>
@@ -4412,14 +4640,112 @@
               Pin anatomy, states, and size scale for <span class="usage-hl">POI markers</span>, <span class="usage-hl">selected pins</span>, and <span class="usage-hl">cluster indicators</span> on the map.
             </p>
 
-            <div class="map-placeholder">
-              <p class="map-placeholder__heading">Design direction</p>
-              <ul class="map-placeholder__list">
-                <li><strong>Pin anatomy:</strong> base shape, size tokens, icon area, label attachment point</li>
-                <li><strong>Pin states:</strong> default, selected, visited, clustered</li>
-                <li><strong>Size scale:</strong> small (POI), medium (selected), large (featured)</li>
-              </ul>
-              <p class="map-placeholder__note">Spec in progress &mdash; pin artwork TBD</p>
+            <!-- Anatomy -->
+            <p style="font-family: var(--font-family-text); font-size: 11px; font-weight: 600; color: #aeaeb2; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 16px;">Anatomy</p>
+            <div class="map-pin-anatomy">
+              <div class="map-pin-anatomy__visual">
+                <svg width="64" height="84" viewBox="0 0 32 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M16 0C7.16 0 0 7.16 0 16c0 12 16 26 16 26s16-14 16-26C32 7.16 24.84 0 16 0z" fill="#007AFF"/>
+                  <circle cx="16" cy="16" r="6" fill="white" opacity="0.9"/>
+                </svg>
+              </div>
+              <div class="map-pin-anatomy__parts">
+                <div class="map-pin-anatomy__part">
+                  <div class="map-pin-anatomy__marker" style="background: #007AFF;"></div>
+                  <div class="map-pin-anatomy__desc"><strong>Container</strong> &mdash; teardrop shape, defines the touch target (min 44pt per HIG)</div>
+                </div>
+                <div class="map-pin-anatomy__part">
+                  <div class="map-pin-anatomy__marker" style="background: white; border: 1.5px solid #007AFF;"></div>
+                  <div class="map-pin-anatomy__desc"><strong>Icon area</strong> &mdash; centered circle for category glyph or dot</div>
+                </div>
+                <div class="map-pin-anatomy__part">
+                  <div class="map-pin-anatomy__marker" style="background: #1C1C1E;"></div>
+                  <div class="map-pin-anatomy__desc"><strong>Anchor point</strong> &mdash; tip aligns to exact lat/lng coordinate</div>
+                </div>
+                <div class="map-pin-anatomy__part">
+                  <div class="map-pin-anatomy__marker" style="background: rgba(0,0,0,0.12);"></div>
+                  <div class="map-pin-anatomy__desc"><strong>Shadow</strong> &mdash; ground shadow for depth (4px blur, 8% black)</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Pin states -->
+            <p style="font-family: var(--font-family-text); font-size: 11px; font-weight: 600; color: #aeaeb2; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 16px;">States</p>
+            <div class="map-pin-grid">
+              <div class="map-pin-card">
+                <div class="map-pin-card__visual">
+                  <svg width="32" height="42" viewBox="0 0 32 42" fill="none"><path d="M16 0C7.16 0 0 7.16 0 16c0 12 16 26 16 26s16-14 16-26C32 7.16 24.84 0 16 0z" fill="#007AFF"/><circle cx="16" cy="16" r="6" fill="white" opacity="0.9"/></svg>
+                </div>
+                <span class="map-pin-card__label">Default</span>
+                <span class="map-pin-card__spec">#007AFF</span>
+              </div>
+              <div class="map-pin-card">
+                <div class="map-pin-card__visual">
+                  <svg width="44" height="54" viewBox="-6 -6 44 54" fill="none"><circle cx="16" cy="16" r="22" fill="rgba(0,122,255,0.12)"/><path d="M16 0C7.16 0 0 7.16 0 16c0 12 16 26 16 26s16-14 16-26C32 7.16 24.84 0 16 0z" fill="#007AFF"/><circle cx="16" cy="16" r="6" fill="white" opacity="0.9"/></svg>
+                </div>
+                <span class="map-pin-card__label">Selected</span>
+                <span class="map-pin-card__spec">scale 1.2 + halo</span>
+              </div>
+              <div class="map-pin-card">
+                <div class="map-pin-card__visual">
+                  <svg width="32" height="42" viewBox="0 0 32 42" fill="none"><path d="M16 0C7.16 0 0 7.16 0 16c0 12 16 26 16 26s16-14 16-26C32 7.16 24.84 0 16 0z" fill="#8E8E93"/><circle cx="16" cy="16" r="6" fill="white" opacity="0.9"/></svg>
+                </div>
+                <span class="map-pin-card__label">Visited</span>
+                <span class="map-pin-card__spec">#8E8E93</span>
+              </div>
+              <div class="map-pin-card">
+                <div class="map-pin-card__visual">
+                  <svg width="36" height="36" viewBox="0 0 36 36" fill="none"><circle cx="18" cy="18" r="18" fill="#FF9500"/><text x="18" y="19" text-anchor="middle" dominant-baseline="central" fill="white" font-size="14" font-weight="600" font-family="SF Pro, system-ui, sans-serif">3</text></svg>
+                </div>
+                <span class="map-pin-card__label">Clustered</span>
+                <span class="map-pin-card__spec">#FF9500 + count</span>
+              </div>
+            </div>
+
+            <!-- Size scale -->
+            <p style="font-family: var(--font-family-text); font-size: 11px; font-weight: 600; color: #aeaeb2; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 16px; margin-top: 32px;">Size scale</p>
+            <div class="map-pin-grid" style="align-items: flex-end;">
+              <div class="map-pin-card">
+                <div class="map-pin-card__visual">
+                  <svg width="24" height="32" viewBox="0 0 32 42" fill="none"><path d="M16 0C7.16 0 0 7.16 0 16c0 12 16 26 16 26s16-14 16-26C32 7.16 24.84 0 16 0z" fill="#007AFF"/><circle cx="16" cy="16" r="6" fill="white" opacity="0.9"/></svg>
+                </div>
+                <span class="map-pin-card__label">Small</span>
+                <span class="map-pin-card__spec">24 &times; 32 pt</span>
+              </div>
+              <div class="map-pin-card">
+                <div class="map-pin-card__visual">
+                  <svg width="32" height="42" viewBox="0 0 32 42" fill="none"><path d="M16 0C7.16 0 0 7.16 0 16c0 12 16 26 16 26s16-14 16-26C32 7.16 24.84 0 16 0z" fill="#007AFF"/><circle cx="16" cy="16" r="6" fill="white" opacity="0.9"/></svg>
+                </div>
+                <span class="map-pin-card__label">Medium</span>
+                <span class="map-pin-card__spec">32 &times; 42 pt</span>
+              </div>
+              <div class="map-pin-card">
+                <div class="map-pin-card__visual">
+                  <svg width="40" height="52" viewBox="0 0 32 42" fill="none"><path d="M16 0C7.16 0 0 7.16 0 16c0 12 16 26 16 26s16-14 16-26C32 7.16 24.84 0 16 0z" fill="#007AFF"/><circle cx="16" cy="16" r="6" fill="white" opacity="0.9"/></svg>
+                </div>
+                <span class="map-pin-card__label">Large</span>
+                <span class="map-pin-card__spec">40 &times; 52 pt</span>
+              </div>
+            </div>
+
+            <!-- Token table -->
+            <p style="font-family: var(--font-family-text); font-size: 11px; font-weight: 600; color: #aeaeb2; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 16px; margin-top: 32px;">Token Reference</p>
+            <table class="map-token-table">
+              <thead>
+                <tr><th>Token</th><th>CSS</th><th>iOS</th><th>Android</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Pin Small</td><td><code>--map-pin-sm: 24px</code></td><td>24pt</td><td>24dp</td></tr>
+                <tr><td>Pin Medium</td><td><code>--map-pin-md: 32px</code></td><td>32pt</td><td>32dp</td></tr>
+                <tr><td>Pin Large</td><td><code>--map-pin-lg: 40px</code></td><td>40pt</td><td>40dp</td></tr>
+                <tr><td>Default</td><td><code>--map-pin-default: #007AFF</code></td><td>.systemBlue</td><td>@color/map_pin</td></tr>
+                <tr><td>Visited</td><td><code>--map-pin-visited: #8E8E93</code></td><td>.systemGray</td><td>@color/map_pin_visited</td></tr>
+                <tr><td>Cluster</td><td><code>--map-pin-cluster: #FF9500</code></td><td>.systemOrange</td><td>@color/map_cluster</td></tr>
+              </tbody>
+            </table>
+
+            <div class="rule-box">
+              Pin artwork uses <strong>SF Symbols</strong> for category glyphs on iOS, and <strong>Material Symbols</strong> on Android. Cluster badges use tabular-nums for stable width as the count changes.
             </div>
           </section>
 
@@ -4433,14 +4759,127 @@
               Color palette for <span class="usage-hl">map surfaces</span>, <span class="usage-hl">infrastructure</span>, and <span class="usage-hl">POI categories</span>. Palette adapts between light and dark mode.
             </p>
 
-            <div class="map-placeholder">
-              <p class="map-placeholder__heading">Design direction</p>
-              <ul class="map-placeholder__list">
-                <li><strong>Map palette:</strong> land, water, parks/green, roads, buildings</li>
-                <li><strong>Light vs dark:</strong> color mapping across modes</li>
-                <li><strong>POI categories:</strong> food, shopping, nightlife, transit, etc.</li>
-              </ul>
-              <p class="map-placeholder__note">Palette depends on base map provider (MapKit/Mapbox)</p>
+            <!-- Terrain palette — Light -->
+            <p style="font-family: var(--font-family-text); font-size: 11px; font-weight: 600; color: #aeaeb2; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 16px;">Terrain palette &mdash; Light</p>
+            <div class="map-palette-grid">
+              <div class="map-palette-chip">
+                <div class="map-palette-chip__color" style="background: #F0ECE1;"></div>
+                <div class="map-palette-chip__info"><span class="map-palette-chip__name">Land</span><span class="map-palette-chip__hex">#F0ECE1</span></div>
+              </div>
+              <div class="map-palette-chip">
+                <div class="map-palette-chip__color" style="background: #B8D4E3;"></div>
+                <div class="map-palette-chip__info"><span class="map-palette-chip__name">Water</span><span class="map-palette-chip__hex">#B8D4E3</span></div>
+              </div>
+              <div class="map-palette-chip">
+                <div class="map-palette-chip__color" style="background: #C8DDB5;"></div>
+                <div class="map-palette-chip__info"><span class="map-palette-chip__name">Parks</span><span class="map-palette-chip__hex">#C8DDB5</span></div>
+              </div>
+              <div class="map-palette-chip">
+                <div class="map-palette-chip__color" style="background: #FFFFFF; border: 1px solid #e5e5ea;"></div>
+                <div class="map-palette-chip__info"><span class="map-palette-chip__name">Roads</span><span class="map-palette-chip__hex">#FFFFFF</span></div>
+              </div>
+              <div class="map-palette-chip">
+                <div class="map-palette-chip__color" style="background: #E0DCD2;"></div>
+                <div class="map-palette-chip__info"><span class="map-palette-chip__name">Buildings</span><span class="map-palette-chip__hex">#E0DCD2</span></div>
+              </div>
+              <div class="map-palette-chip">
+                <div class="map-palette-chip__color" style="background: #FFD580;"></div>
+                <div class="map-palette-chip__info"><span class="map-palette-chip__name">Highway</span><span class="map-palette-chip__hex">#FFD580</span></div>
+              </div>
+            </div>
+
+            <!-- Terrain palette — Dark -->
+            <p style="font-family: var(--font-family-text); font-size: 11px; font-weight: 600; color: #aeaeb2; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 16px;">Terrain palette &mdash; Dark</p>
+            <div class="map-palette-grid">
+              <div class="map-palette-chip">
+                <div class="map-palette-chip__color" style="background: #1A1A2E;"></div>
+                <div class="map-palette-chip__info"><span class="map-palette-chip__name">Land</span><span class="map-palette-chip__hex">#1A1A2E</span></div>
+              </div>
+              <div class="map-palette-chip">
+                <div class="map-palette-chip__color" style="background: #1A2A3A;"></div>
+                <div class="map-palette-chip__info"><span class="map-palette-chip__name">Water</span><span class="map-palette-chip__hex">#1A2A3A</span></div>
+              </div>
+              <div class="map-palette-chip">
+                <div class="map-palette-chip__color" style="background: #1E2A1E;"></div>
+                <div class="map-palette-chip__info"><span class="map-palette-chip__name">Parks</span><span class="map-palette-chip__hex">#1E2A1E</span></div>
+              </div>
+              <div class="map-palette-chip">
+                <div class="map-palette-chip__color" style="background: #2C2C3A;"></div>
+                <div class="map-palette-chip__info"><span class="map-palette-chip__name">Roads</span><span class="map-palette-chip__hex">#2C2C3A</span></div>
+              </div>
+              <div class="map-palette-chip">
+                <div class="map-palette-chip__color" style="background: #24243A;"></div>
+                <div class="map-palette-chip__info"><span class="map-palette-chip__name">Buildings</span><span class="map-palette-chip__hex">#24243A</span></div>
+              </div>
+              <div class="map-palette-chip">
+                <div class="map-palette-chip__color" style="background: #6B5B33;"></div>
+                <div class="map-palette-chip__info"><span class="map-palette-chip__name">Highway</span><span class="map-palette-chip__hex">#6B5B33</span></div>
+              </div>
+            </div>
+
+            <!-- POI categories -->
+            <p style="font-family: var(--font-family-text); font-size: 11px; font-weight: 600; color: #aeaeb2; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 16px;">POI category colors</p>
+            <div class="map-poi-grid">
+              <div class="map-poi-item">
+                <div class="map-poi-item__dot" style="background: #FF9500;"></div>
+                <span class="map-poi-item__name">Food &amp; Drink</span>
+                <span class="map-poi-item__hex">#FF9500</span>
+              </div>
+              <div class="map-poi-item">
+                <div class="map-poi-item__dot" style="background: #AF52DE;"></div>
+                <span class="map-poi-item__name">Shopping</span>
+                <span class="map-poi-item__hex">#AF52DE</span>
+              </div>
+              <div class="map-poi-item">
+                <div class="map-poi-item__dot" style="background: #FF2D55;"></div>
+                <span class="map-poi-item__name">Nightlife</span>
+                <span class="map-poi-item__hex">#FF2D55</span>
+              </div>
+              <div class="map-poi-item">
+                <div class="map-poi-item__dot" style="background: #007AFF;"></div>
+                <span class="map-poi-item__name">Transit</span>
+                <span class="map-poi-item__hex">#007AFF</span>
+              </div>
+              <div class="map-poi-item">
+                <div class="map-poi-item__dot" style="background: #5856D6;"></div>
+                <span class="map-poi-item__name">Culture</span>
+                <span class="map-poi-item__hex">#5856D6</span>
+              </div>
+              <div class="map-poi-item">
+                <div class="map-poi-item__dot" style="background: #34C759;"></div>
+                <span class="map-poi-item__name">Outdoors</span>
+                <span class="map-poi-item__hex">#34C759</span>
+              </div>
+              <div class="map-poi-item">
+                <div class="map-poi-item__dot" style="background: #FF3B30;"></div>
+                <span class="map-poi-item__name">Health</span>
+                <span class="map-poi-item__hex">#FF3B30</span>
+              </div>
+              <div class="map-poi-item">
+                <div class="map-poi-item__dot" style="background: #8E8E93;"></div>
+                <span class="map-poi-item__name">Services</span>
+                <span class="map-poi-item__hex">#8E8E93</span>
+              </div>
+            </div>
+
+            <!-- Token table -->
+            <p style="font-family: var(--font-family-text); font-size: 11px; font-weight: 600; color: #aeaeb2; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 16px;">Token Reference</p>
+            <table class="map-token-table">
+              <thead>
+                <tr><th>Surface</th><th>Light</th><th>Dark</th><th>CSS Token</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Land</td><td>#F0ECE1</td><td>#1A1A2E</td><td><code>--map-land</code></td></tr>
+                <tr><td>Water</td><td>#B8D4E3</td><td>#1A2A3A</td><td><code>--map-water</code></td></tr>
+                <tr><td>Parks</td><td>#C8DDB5</td><td>#1E2A1E</td><td><code>--map-park</code></td></tr>
+                <tr><td>Roads</td><td>#FFFFFF</td><td>#2C2C3A</td><td><code>--map-road</code></td></tr>
+                <tr><td>Buildings</td><td>#E0DCD2</td><td>#24243A</td><td><code>--map-building</code></td></tr>
+                <tr><td>Highway</td><td>#FFD580</td><td>#6B5B33</td><td><code>--map-highway</code></td></tr>
+              </tbody>
+            </table>
+
+            <div class="rule-box">
+              These colors are <strong>design intent tokens</strong>. Actual rendering depends on the map provider (MapKit JSON style / Mapbox GL style). POI category colors use the <strong>Apple HIG system palette</strong> for consistency across the app.
             </div>
           </section>
 
@@ -4454,15 +4893,73 @@
               Base map style principles: <span class="usage-hl">minimal chrome</span>, <span class="usage-hl">muted terrain</span>, <span class="usage-hl">content-forward</span> design.
             </p>
 
-            <div class="map-placeholder">
-              <p class="map-placeholder__heading">Design direction</p>
-              <ul class="map-placeholder__list">
-                <li><strong>Principles:</strong> minimal chrome, muted terrain, content-forward</li>
-                <li><strong>Building footprints:</strong> subtle fill, no stroke at low zoom</li>
-                <li><strong>Water rendering:</strong> flat fill, no wave texture</li>
-                <li><strong>Park fills:</strong> desaturated green, no pattern overlay</li>
-              </ul>
-              <p class="map-placeholder__note">Map style configuration is provider-specific</p>
+            <!-- Design principles -->
+            <p style="font-family: var(--font-family-text); font-size: 11px; font-weight: 600; color: #aeaeb2; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 16px;">Principles</p>
+            <div class="map-principles">
+              <div class="map-principle">
+                <p class="map-principle__title">Minimal chrome</p>
+                <p class="map-principle__desc">Suppress provider UI defaults &mdash; no compass, no scale bar, no building labels. The app&rsquo;s own overlays are the primary information layer.</p>
+              </div>
+              <div class="map-principle">
+                <p class="map-principle__title">Muted terrain</p>
+                <p class="map-principle__desc">Desaturated, low-contrast surfaces so pins and route lines stand out. Terrain provides context, not competition.</p>
+              </div>
+              <div class="map-principle">
+                <p class="map-principle__title">Content-forward</p>
+                <p class="map-principle__desc">The map is a canvas for live data. Visual weight goes to user content &mdash; pins, routes, overlays &mdash; not cartographic decoration.</p>
+              </div>
+            </div>
+
+            <!-- Surface treatments -->
+            <p style="font-family: var(--font-family-text); font-size: 11px; font-weight: 600; color: #aeaeb2; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 16px;">Surface treatments</p>
+            <div class="map-surfaces-demo">
+              <div class="map-surface-card">
+                <div class="map-surface-card__visual" style="background: #E0DCD2; position: relative;">
+                  <div style="position: absolute; inset: 16px; border-radius: 3px; background: rgba(0,0,0,0.04);"></div>
+                  <div style="position: absolute; top: 24px; left: 24px; width: 40%; height: 30%; border-radius: 2px; background: rgba(0,0,0,0.06);"></div>
+                  <div style="position: absolute; bottom: 20px; right: 20px; width: 30%; height: 24%; border-radius: 2px; background: rgba(0,0,0,0.06);"></div>
+                </div>
+                <div class="map-surface-card__info">
+                  <span class="map-surface-card__name">Building footprints</span>
+                  <span class="map-surface-card__spec">Flat fill, no stroke at z &lt; 16</span>
+                </div>
+              </div>
+              <div class="map-surface-card">
+                <div class="map-surface-card__visual" style="background: #B8D4E3;">
+                  <div style="position: absolute; inset: 0; background: linear-gradient(135deg, #B8D4E3 0%, #a8c8db 100%);"></div>
+                </div>
+                <div class="map-surface-card__info">
+                  <span class="map-surface-card__name">Water</span>
+                  <span class="map-surface-card__spec">Flat fill, no wave texture or animation</span>
+                </div>
+              </div>
+              <div class="map-surface-card">
+                <div class="map-surface-card__visual" style="background: #C8DDB5;">
+                  <div style="position: absolute; inset: 0; background: radial-gradient(ellipse at 40% 50%, #c0d8ab 0%, #C8DDB5 100%);"></div>
+                </div>
+                <div class="map-surface-card__info">
+                  <span class="map-surface-card__name">Parks &amp; green space</span>
+                  <span class="map-surface-card__spec">Desaturated green, no pattern overlay</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Opacity by zoom -->
+            <p style="font-family: var(--font-family-text); font-size: 11px; font-weight: 600; color: #aeaeb2; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 16px;">Surface opacity by zoom</p>
+            <table class="map-token-table">
+              <thead>
+                <tr><th>Surface</th><th>z8 &ndash; z12</th><th>z13 &ndash; z15</th><th>z16 &ndash; z18</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Buildings</td><td>Hidden</td><td>30% opacity</td><td>100% opacity</td></tr>
+                <tr><td>Parks</td><td>60% opacity</td><td>80% opacity</td><td>100% opacity</td></tr>
+                <tr><td>Water</td><td>100%</td><td>100%</td><td>100%</td></tr>
+                <tr><td>Roads</td><td>Major only</td><td>All classes</td><td>All + lane detail</td></tr>
+              </tbody>
+            </table>
+
+            <div class="rule-box">
+              Surface styling is applied via <strong>MapKit JSON style overrides</strong> or <strong>Mapbox GL expressions</strong>. The tokens above define <em>design intent</em> &mdash; each provider has its own configuration format.
             </div>
           </section>
 
@@ -4476,14 +4973,77 @@
               Route lines, search radius highlights, and <span class="usage-hl">geofence boundaries</span> drawn on top of the base map.
             </p>
 
-            <div class="map-placeholder">
-              <p class="map-placeholder__heading">Design direction</p>
-              <ul class="map-placeholder__list">
-                <li><strong>Route lines:</strong> width, color, dash patterns for walking / driving / transit</li>
-                <li><strong>Search radius:</strong> semi-transparent area highlight with soft edge</li>
-                <li><strong>Geofences:</strong> boundary stroke + fill for defined regions</li>
-              </ul>
-              <p class="map-placeholder__note">Overlay tokens TBD</p>
+            <!-- Route line styles -->
+            <p style="font-family: var(--font-family-text); font-size: 11px; font-weight: 600; color: #aeaeb2; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 16px;">Route line styles</p>
+            <div class="map-route-grid">
+              <div class="map-route-row">
+                <div class="map-route-row__meta">
+                  <span class="map-route-row__name">Walking</span>
+                  <span class="map-route-row__spec">3px / dashed / #007AFF</span>
+                </div>
+                <svg style="flex:1;" height="6" width="100%"><line x1="0" y1="3" x2="100%" y2="3" stroke="#007AFF" stroke-width="3" stroke-dasharray="8 6" stroke-linecap="round"/></svg>
+              </div>
+              <div class="map-route-row">
+                <div class="map-route-row__meta">
+                  <span class="map-route-row__name">Driving</span>
+                  <span class="map-route-row__spec">5px / solid / #007AFF</span>
+                </div>
+                <svg style="flex:1;" height="6" width="100%"><line x1="0" y1="3" x2="100%" y2="3" stroke="#007AFF" stroke-width="5" stroke-linecap="round"/></svg>
+              </div>
+              <div class="map-route-row">
+                <div class="map-route-row__meta">
+                  <span class="map-route-row__name">Transit</span>
+                  <span class="map-route-row__spec">4px / dotted / #AF52DE</span>
+                </div>
+                <svg style="flex:1;" height="6" width="100%"><line x1="0" y1="3" x2="100%" y2="3" stroke="#AF52DE" stroke-width="4" stroke-dasharray="2 6" stroke-linecap="round"/></svg>
+              </div>
+              <div class="map-route-row">
+                <div class="map-route-row__meta">
+                  <span class="map-route-row__name">Cycling</span>
+                  <span class="map-route-row__spec">3px / dashed / #34C759</span>
+                </div>
+                <svg style="flex:1;" height="6" width="100%"><line x1="0" y1="3" x2="100%" y2="3" stroke="#34C759" stroke-width="3" stroke-dasharray="12 4" stroke-linecap="round"/></svg>
+              </div>
+            </div>
+
+            <!-- Area overlays -->
+            <p style="font-family: var(--font-family-text); font-size: 11px; font-weight: 600; color: #aeaeb2; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 16px;">Area overlays</p>
+            <div class="map-overlay-grid">
+              <div class="map-overlay-card" style="background: #f0ece1;">
+                <svg width="160" height="160" viewBox="0 0 160 160" fill="none">
+                  <circle cx="80" cy="80" r="70" fill="rgba(0,122,255,0.08)" stroke="#007AFF" stroke-width="1.5"/>
+                  <circle cx="80" cy="80" r="4" fill="#007AFF"/>
+                </svg>
+                <span class="map-overlay-card__label">Search radius</span>
+                <span class="map-overlay-card__spec">8% fill, 1.5px stroke, #007AFF</span>
+              </div>
+              <div class="map-overlay-card" style="background: #f0ece1;">
+                <svg width="160" height="160" viewBox="0 0 160 160" fill="none">
+                  <path d="M30 50 L80 20 L140 45 L130 130 L50 140 Z" fill="rgba(175,82,222,0.06)" stroke="#AF52DE" stroke-width="1.5" stroke-dasharray="6 4"/>
+                </svg>
+                <span class="map-overlay-card__label">Geofence boundary</span>
+                <span class="map-overlay-card__spec">6% fill, 1.5px dashed stroke, #AF52DE</span>
+              </div>
+            </div>
+
+            <!-- Token table -->
+            <p style="font-family: var(--font-family-text); font-size: 11px; font-weight: 600; color: #aeaeb2; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 16px;">Token Reference</p>
+            <table class="map-token-table">
+              <thead>
+                <tr><th>Overlay</th><th>Width</th><th>Color</th><th>CSS Token</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Walking route</td><td>3px dashed</td><td>#007AFF</td><td><code>--map-route-walk-width</code></td></tr>
+                <tr><td>Driving route</td><td>5px solid</td><td>#007AFF</td><td><code>--map-route-drive-width</code></td></tr>
+                <tr><td>Transit route</td><td>4px dotted</td><td>#AF52DE</td><td><code>--map-route-transit-color</code></td></tr>
+                <tr><td>Cycling route</td><td>3px dashed</td><td>#34C759</td><td><code>--map-route-cycle-color</code></td></tr>
+                <tr><td>Search radius</td><td>1.5px solid</td><td>8% fill</td><td><code>--map-overlay-radius-fill</code></td></tr>
+                <tr><td>Geofence</td><td>1.5px dashed</td><td>6% fill</td><td><code>--map-overlay-geofence-fill</code></td></tr>
+              </tbody>
+            </table>
+
+            <div class="rule-box">
+              Route overlays use <strong>rounded line caps</strong> and render above all terrain but below pins. Multi-segment routes (e.g. walk &rarr; transit &rarr; walk) use distinct dash patterns at each segment boundary.
             </div>
           </section>
 
@@ -4497,14 +5057,75 @@
               Rules for <span class="usage-hl">label density</span>, <span class="usage-hl">pin clustering</span>, and <span class="usage-hl">detail level</span> at different zoom levels.
             </p>
 
-            <div class="map-placeholder">
-              <p class="map-placeholder__heading">Design direction</p>
-              <ul class="map-placeholder__list">
-                <li><strong>Label density:</strong> which labels appear/hide at each zoom level</li>
-                <li><strong>Pin clustering:</strong> thresholds for grouping nearby markers</li>
-                <li><strong>Detail levels:</strong> when building footprints, parks, and streets appear</li>
-              </ul>
-              <p class="map-placeholder__note">Zoom behavior specs in progress</p>
+            <!-- Zoom level breakdown -->
+            <p style="font-family: var(--font-family-text); font-size: 11px; font-weight: 600; color: #aeaeb2; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 16px;">Zoom level breakdown</p>
+            <div class="map-zoom-grid">
+              <div class="map-zoom-grid__level">z8 &ndash; z10</div>
+              <div class="map-zoom-grid__content">
+                <span class="map-zoom-tag map-zoom-tag--label">City labels</span>
+                <span class="map-zoom-tag map-zoom-tag--surface">Major water</span>
+                <span class="map-zoom-tag map-zoom-tag--detail">Highways only</span>
+              </div>
+              <div class="map-zoom-grid__level">z11 &ndash; z12</div>
+              <div class="map-zoom-grid__content">
+                <span class="map-zoom-tag map-zoom-tag--label">District labels</span>
+                <span class="map-zoom-tag map-zoom-tag--surface">Parks visible</span>
+                <span class="map-zoom-tag map-zoom-tag--detail">Major roads</span>
+                <span class="map-zoom-tag map-zoom-tag--pin">Clustered pins</span>
+              </div>
+              <div class="map-zoom-grid__level">z13 &ndash; z14</div>
+              <div class="map-zoom-grid__content">
+                <span class="map-zoom-tag map-zoom-tag--label">Street labels</span>
+                <span class="map-zoom-tag map-zoom-tag--surface">Buildings fade in</span>
+                <span class="map-zoom-tag map-zoom-tag--detail">All road classes</span>
+                <span class="map-zoom-tag map-zoom-tag--pin">Small pins</span>
+              </div>
+              <div class="map-zoom-grid__level">z15 &ndash; z16</div>
+              <div class="map-zoom-grid__content">
+                <span class="map-zoom-tag map-zoom-tag--label">POI labels</span>
+                <span class="map-zoom-tag map-zoom-tag--surface">Full buildings</span>
+                <span class="map-zoom-tag map-zoom-tag--pin">Medium pins</span>
+                <span class="map-zoom-tag map-zoom-tag--detail">Lane markings</span>
+              </div>
+              <div class="map-zoom-grid__level">z17 &ndash; z18</div>
+              <div class="map-zoom-grid__content">
+                <span class="map-zoom-tag map-zoom-tag--label">All labels</span>
+                <span class="map-zoom-tag map-zoom-tag--pin">Large pins</span>
+                <span class="map-zoom-tag map-zoom-tag--surface">Full detail</span>
+                <span class="map-zoom-tag map-zoom-tag--detail">Indoor maps</span>
+              </div>
+            </div>
+
+            <!-- Clustering thresholds -->
+            <p style="font-family: var(--font-family-text); font-size: 11px; font-weight: 600; color: #aeaeb2; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 16px;">Pin clustering thresholds</p>
+            <table class="map-cluster-table">
+              <thead>
+                <tr><th>Zoom range</th><th>Cluster radius</th><th>Min items</th><th>Behavior</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>z8 &ndash; z10</td><td>80pt</td><td>2</td><td>Aggressive &mdash; most pins merge into clusters</td></tr>
+                <tr><td>z11 &ndash; z13</td><td>50pt</td><td>3</td><td>Moderate &mdash; nearby pins cluster, isolated pins show</td></tr>
+                <tr><td>z14 &ndash; z15</td><td>30pt</td><td>4</td><td>Light &mdash; only tightly packed pins cluster</td></tr>
+                <tr><td>z16+</td><td>&mdash;</td><td>&mdash;</td><td>No clustering &mdash; all pins render individually</td></tr>
+              </tbody>
+            </table>
+
+            <!-- Label density -->
+            <p style="font-family: var(--font-family-text); font-size: 11px; font-weight: 600; color: #aeaeb2; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 16px;">Label density rules</p>
+            <table class="map-cluster-table">
+              <thead>
+                <tr><th>Layer</th><th>Max visible</th><th>Priority</th><th>Collision</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>City</td><td>5 per viewport</td><td>Highest</td><td>Never hidden</td></tr>
+                <tr><td>District</td><td>8 per viewport</td><td>High</td><td>Yields to city</td></tr>
+                <tr><td>Street</td><td>12 per viewport</td><td>Medium</td><td>Yields to district+</td></tr>
+                <tr><td>POI</td><td>10 per viewport</td><td>Low</td><td>Yields to all labels</td></tr>
+              </tbody>
+            </table>
+
+            <div class="rule-box">
+              Clustering uses <strong>screen-space distance</strong>, not geographic distance. As the user zooms in, clusters split progressively with a 300ms spring animation. Labels follow a <strong>priority-based collision</strong> system &mdash; higher-priority labels always win.
             </div>
           </section>
 
@@ -5178,6 +5799,339 @@
       </div>
       <div class="rule-box">
         <strong>Progress indicator:</strong> Use small dots at the bottom — active dot in <code>var(--color-label)</code>, inactive in <code>var(--color-gray-4)</code>. Allow swipe navigation between steps. Include a "Skip" link in <code>var(--color-gray-2)</code>.
+      </div>
+    </section>
+
+        </div>
+
+        <div class="content-page" id="page-flare" hidden>
+
+    <!-- ============================================================
+         1. Overview
+         ============================================================ -->
+    <section id="fl-overview">
+      <p class="section-label">Overview</p>
+      <p class="section-note">
+        The Flare system handles contextual, serendipitous notifications in Livemap. Flares appear when something interesting is nearby &mdash; a friend, an event, a discovery. They are gentle, never blocking, and always dismissible.
+        Flares create moments of discovery, not obligation.
+      </p>
+
+      <div class="rule-box" style="margin-bottom: var(--space-24);">
+        <strong>Core philosophy:</strong> The Flare is not an alert. It is a suggestion that something interesting exists nearby. It must feel like a happy accident, not a push notification. The user should smile, not startle.
+      </div>
+
+      <p class="section-note">There are four notification variants, each with a different mood and context:</p>
+      <div class="flare-spec-table" style="margin-bottom: var(--space-24);">
+        <table class="flare-spec-table">
+          <thead>
+            <tr><th>Variant</th><th>Trigger</th><th>Mood</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>Serendipity</strong></td><td>Q detects something nearby that matches interests</td><td>Casual, discovery</td></tr>
+            <tr><td><strong>Magic Flare</strong></td><td>Friends are nearby</td><td>Social, warm</td></tr>
+            <tr><td><strong>Event Invitation</strong></td><td>Friend invites to a live event</td><td>Energetic, FOMO-free</td></tr>
+            <tr><td><strong>Friend Nearby</strong></td><td>A single friend is close</td><td>Intimate, low-key</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         2. Serendipity
+         ============================================================ -->
+    <section id="fl-serendipity">
+      <p class="section-label">Serendipity</p>
+      <p class="section-note">
+        The Serendipity variant is a casual discovery prompt. It surfaces when Q detects open venues, events, or points of interest matching the user's profile. Lightest-touch notification &mdash; no avatars, no social pressure.
+      </p>
+
+      <div class="flare-dark-preview">
+        <div>
+          <div class="flare-variant-label" style="color: rgba(235,235,245,0.5);">Zuefall &middot; Serendipity</div>
+          <div class="flare-card">
+            <div class="flare-body__title">Abigpl&auml;ne?</div>
+            <div class="flare-body__subtitle">Beize und Bars wo offe hend</div>
+            <div class="flare-actions">
+              <button class="flare-btn flare-btn--primary">Mitmache</button>
+              <button class="flare-btn flare-btn--secondary">Vilicht sp&ouml;&ouml;ter</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <details class="comp-snippet">
+        <summary>Token usage</summary>
+        <div class="comp-snippet__body">
+          <div class="comp-snippet__tabs">
+            <button class="comp-snippet__tab is-active" data-lang="css">CSS</button>
+            <button class="comp-snippet__tab" data-lang="swift">Swift</button>
+          </div>
+          <button class="comp-snippet__copy">Copy</button>
+          <pre class="comp-snippet__pre" data-lang="css"><code>.flare-serendipity {
+  background: rgba(28, 28, 30, 0.82);    /* Glass BG   */
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.08); /* Glass Rand */
+  border-radius: 16px;
+  padding: 16px;
+}
+.flare-serendipity .title { font-size: 16px; font-weight: 600; }
+.flare-serendipity .subtitle { font-size: 13px; color: var(--text-secondary); }
+.flare-serendipity .btn-primary { background: var(--flare-red); /* #E53E56 */ }
+.flare-serendipity .btn-skip { background: rgba(118,118,128,0.24); }</code></pre>
+          <pre class="comp-snippet__pre" data-lang="swift" hidden><code>// Serendipity flare uses glass material background
+FlareCard(style: .serendipity) {
+  FlareTitle("Abigpläne?")
+  FlareSubtitle("Beize und Bars wo offe hend")
+  FlareActions {
+    FlareButton("Mitmache", style: .primary)
+    FlareButton("Vilicht spööter", style: .skip)
+  }
+}</code></pre>
+        </div>
+      </details>
+    </section>
+
+    <!-- ============================================================
+         3. Magic Flare
+         ============================================================ -->
+    <section id="fl-magic-flare">
+      <p class="section-label">Magic Flare</p>
+      <p class="section-note">
+        The Magic Flare surfaces when friends are nearby. It shows avatar stacks, names, and a warm call-to-action. The <span class="usage-hl">wave emoji</span> signals friendliness. Two actions: join or defer.
+      </p>
+
+      <div class="flare-dark-preview">
+        <div>
+          <div class="flare-variant-label" style="color: rgba(235,235,245,0.5);">Zauberfunke &middot; Magic Flare</div>
+          <div class="flare-card">
+            <div class="flare-header">
+              <span class="flare-header__wave">&#x1F44B;</span>
+              <span class="flare-body__title" style="margin-bottom: 0;">2 Kolleginne i de N&ouml;chi</span>
+            </div>
+            <div class="flare-body__subtitle">Wotsch au cho?</div>
+            <div class="flare-avatars">
+              <div class="flare-avatar flare-avatar--blue">A</div>
+              <div class="flare-avatar flare-avatar--pink">J</div>
+              <span class="flare-avatar-names">Alex &amp; Jamie</span>
+            </div>
+            <div class="flare-actions">
+              <button class="flare-btn flare-btn--secondary">Vilicht sp&ouml;&ouml;ter</button>
+              <button class="flare-btn flare-btn--primary">Bin debii &#x1F389;</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <details class="comp-snippet">
+        <summary>Token usage</summary>
+        <div class="comp-snippet__body">
+          <div class="comp-snippet__tabs">
+            <button class="comp-snippet__tab is-active" data-lang="css">CSS</button>
+            <button class="comp-snippet__tab" data-lang="swift">Swift</button>
+          </div>
+          <button class="comp-snippet__copy">Copy</button>
+          <pre class="comp-snippet__pre" data-lang="css"><code>.flare-magic .avatar-stack {
+  display: flex;
+}
+.flare-magic .avatar {
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  border: 2px solid rgba(28,28,30,0.82);
+}
+.flare-magic .avatar + .avatar {
+  margin-left: -8px;  /* overlap */
+}</code></pre>
+          <pre class="comp-snippet__pre" data-lang="swift" hidden><code>FlareCard(style: .magicFlare) {
+  FlareHeader(emoji: "👋", title: "2 Kolleginne i de Nöchi")
+  FlareSubtitle("Wotsch au cho?")
+  AvatarStack(users: [alex, jamie])
+  FlareActions {
+    FlareButton("Vilicht spööter", style: .skip)
+    FlareButton("Bin debii 🎉", style: .primary)
+  }
+}</code></pre>
+        </div>
+      </details>
+    </section>
+
+    <!-- ============================================================
+         4. Event Invitations
+         ============================================================ -->
+    <section id="fl-event-invite">
+      <p class="section-label">Event Invitations</p>
+      <p class="section-note">
+        Event flares appear when a friend shares a live event nearby. They show more context &mdash; event name, friend group, and two clear actions. The friend count is shown in the avatar stack.
+      </p>
+
+      <div class="flare-dark-preview">
+        <div>
+          <div class="flare-variant-label" style="color: rgba(235,235,245,0.5);">Flare &middot; Event-Iiladig</div>
+          <div class="flare-card">
+            <div class="flare-header">
+              <span class="flare-header__wave">&#x1F44B;</span>
+              <span class="flare-body__title" style="margin-bottom: 0;">Live-Musig bim Bellevue</span>
+            </div>
+            <div class="flare-body__subtitle">Hets no Pl&auml;tz, gasch au?</div>
+            <div class="flare-avatars">
+              <div class="flare-avatar flare-avatar--green">S</div>
+              <div class="flare-avatar flare-avatar--blue">M</div>
+              <div class="flare-avatar flare-avatar--orange">L</div>
+              <span class="flare-avatar-names">Sara &amp; Marco &amp; Lena</span>
+            </div>
+            <div class="flare-actions">
+              <button class="flare-btn flare-btn--secondary">Emal luege</button>
+              <button class="flare-btn flare-btn--primary">Bin debii</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         5. Friend Nearby
+         ============================================================ -->
+    <section id="fl-nearby">
+      <p class="section-label">Friend Nearby</p>
+      <p class="section-note">
+        The simplest flare &mdash; one friend is close by. Single avatar, short message, two actions. Intimate and low-key. Uses <span class="usage-hl">iOS blue</span> for the primary action instead of Flare Red to feel calmer.
+      </p>
+
+      <div class="flare-dark-preview">
+        <div>
+          <div class="flare-variant-label" style="color: rgba(235,235,245,0.5);">Flare &middot; Eine i de N&ouml;chi</div>
+          <div class="flare-card">
+            <div class="flare-header">
+              <span class="flare-header__wave">&#x1F44B;</span>
+              <span class="flare-body__title" style="margin-bottom: 0;">1 Kollegin isch do</span>
+            </div>
+            <div class="flare-body__subtitle">Grad ums Egge &mdash; wotsch go?</div>
+            <div class="flare-avatars">
+              <div class="flare-avatar flare-avatar--green">T</div>
+              <span class="flare-avatar-names">Tim</span>
+            </div>
+            <div class="flare-actions">
+              <button class="flare-btn flare-btn--secondary">Sp&ouml;&ouml;ter</button>
+              <button class="flare-btn flare-btn--blue">Ja, los!</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         6. Grouped Notifications
+         ============================================================ -->
+    <section id="fl-grouped">
+      <p class="section-label">Grouped Notifications</p>
+      <p class="section-note">
+        When multiple notifications are active, they collapse into a grouped bar with pill badges. Tapping expands the full list. Each pill uses its category color: <span class="usage-hl">Flare Red</span> for friends, <span class="usage-hl">iOS Blue</span> for tips, <span class="usage-hl">Orange</span> for events.
+      </p>
+
+      <div class="flare-dark-preview" style="flex-direction: column; align-items: center; gap: 16px;">
+        <div>
+          <div class="flare-variant-label" style="color: rgba(235,235,245,0.5);">Gruppert &middot; Collapsed</div>
+          <div class="flare-pill-row">
+            <span class="flare-pill flare-pill--friends">2 Kolleginne</span>
+            <span class="flare-pill flare-pill--tip">1 Tipp</span>
+          </div>
+        </div>
+        <div>
+          <div class="flare-variant-label" style="color: rgba(235,235,245,0.5);">Pill Variante</div>
+          <div class="flare-pill-row">
+            <span class="flare-pill flare-pill--friends">3 Kolleginne</span>
+            <span class="flare-pill flare-pill--event">1 Event</span>
+            <span class="flare-pill flare-pill--tip">2 Tipp</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="rule-box" style="margin-top: var(--space-16);">
+        <strong>Stacking rule:</strong> No more than 3 pills visible at once. If more categories are active, show the top 2 by priority (friends &gt; events &gt; tips) and a &ldquo;+1 more&rdquo; suffix.
+      </div>
+    </section>
+
+    <!-- ============================================================
+         7. Principles
+         ============================================================ -->
+    <section id="fl-principles">
+      <p class="section-label">Principles</p>
+      <p class="section-note">
+        Every Flare design decision must follow these rules. The system must choose the best moment, not every moment.
+      </p>
+
+      <div class="flare-principle">
+        <div class="flare-principle__icon">&#x2728;</div>
+        <div class="flare-principle__body">
+          <h4>Serendipity, not notification</h4>
+          <p>The Flare is a gentle suggestion that something interesting exists nearby. It must feel like a happy accident, not a push notification.</p>
+        </div>
+      </div>
+      <div class="flare-principle">
+        <div class="flare-principle__icon">&#x1F44B;</div>
+        <div class="flare-principle__body">
+          <h4>Always dismissible, never blocking</h4>
+          <p>The Flare must never obstruct navigation or critical UI. It appears at the top, above content, and can be swiped away or ignored. Auto-dismisses after 12 seconds if not interacted with.</p>
+        </div>
+      </div>
+      <div class="flare-principle">
+        <div class="flare-principle__icon">&#x23F1;</div>
+        <div class="flare-principle__body">
+          <h4>Frequency discipline</h4>
+          <p>Maximum one Flare per session or per 30 minutes, whichever is longer. Multiple flares in succession feel like spam. The system must choose the best moment.</p>
+        </div>
+      </div>
+      <div class="flare-principle">
+        <div class="flare-principle__icon">&#x1F30D;</div>
+        <div class="flare-principle__body">
+          <h4>Proximity-driven</h4>
+          <p>Flares only fire based on real proximity &mdash; friends nearby, events within walking distance, discoveries on the current route. No speculative or time-based triggers.</p>
+        </div>
+      </div>
+      <div class="flare-principle">
+        <div class="flare-principle__icon">&#x1F6E1;</div>
+        <div class="flare-principle__body">
+          <h4>Respect privacy</h4>
+          <p>Location sharing is opt-in per friend. No one appears on another user's Flare without explicit consent. Users can pause Flare entirely in settings.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         8. Anatomy & Specs
+         ============================================================ -->
+    <section id="fl-anatomy">
+      <p class="section-label">Anatomy &amp; Specs</p>
+      <p class="section-note">
+        Technical specifications for rendering Flare notifications consistently across platforms.
+      </p>
+
+      <table class="flare-spec-table">
+        <thead>
+          <tr><th>Property</th><th>Value</th><th>Token</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Background</td><td>Glass material, 82% opacity</td><td><code>rgba(28,28,30,0.82)</code></td></tr>
+          <tr><td>Backdrop blur</td><td>20px</td><td>&mdash;</td></tr>
+          <tr><td>Border</td><td>1px solid, 8% white</td><td><code>rgba(255,255,255,0.08)</code></td></tr>
+          <tr><td>Border radius</td><td>16px</td><td><code>var(--radius-lg)</code></td></tr>
+          <tr><td>Padding</td><td>16px</td><td><code>var(--space-16)</code></td></tr>
+          <tr><td>Max width</td><td>360px</td><td>&mdash;</td></tr>
+          <tr><td>Title size</td><td>16px / semibold</td><td><code>var(--font-size-fine)</code></td></tr>
+          <tr><td>Subtitle size</td><td>13px / regular</td><td><code>var(--font-size-caption)</code></td></tr>
+          <tr><td>Primary color</td><td>Flare Red</td><td><code>#E53E56</code></td></tr>
+          <tr><td>Secondary color</td><td>iOS Blue</td><td><code>#007AFF</code></td></tr>
+          <tr><td>Skip button bg</td><td>24% system gray</td><td><code>rgba(118,118,128,0.24)</code></td></tr>
+          <tr><td>Avatar size</td><td>34px</td><td>&mdash;</td></tr>
+          <tr><td>Avatar overlap</td><td>-8px margin-left</td><td>&mdash;</td></tr>
+          <tr><td>Auto-dismiss</td><td>12 seconds</td><td>&mdash;</td></tr>
+          <tr><td>Max frequency</td><td>1 per 30 min / session</td><td>&mdash;</td></tr>
+          <tr><td>Entry animation</td><td>Slide down + fade, 600ms</td><td><code>cubic-bezier(0.16, 1, 0.3, 1)</code></td></tr>
+          <tr><td>Exit animation</td><td>Fade out, 400ms</td><td><code>cubic-bezier(0.16, 1, 0.3, 1)</code></td></tr>
+        </tbody>
+      </table>
+
+      <div class="rule-box" style="margin-top: var(--space-16);">
+        <strong>Pill badge specs:</strong> Border-radius <code>9999px</code>, font-size <code>12px</code>, font-weight <code>600</code>, padding <code>4px 10px</code>. Friends = Flare Red, Tips = iOS Blue, Events = Orange <code>#FF9F0A</code>.
       </div>
     </section>
 
