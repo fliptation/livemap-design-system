@@ -49,8 +49,9 @@
 /* ---- Tooltip ---- */
 .token-inspector-tooltip {
   position: fixed;
-  z-index: 10000;
-  max-width: 420px;
+  margin: 0;
+  border: none;
+  max-width: var(--measure-compact);
   min-width: 260px;
   background: var(--color-surface);
   border-radius: var(--radius-md);

@@ -1,0 +1,189 @@
+/* ==========================================================================
+   Patterns Page — Component Styles
+   ========================================================================== */
+
+/* ---- Pattern preview ---- */
+.pattern-preview {
+  padding: var(--space-32);
+  border: 1px solid var(--color-separator);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  margin-bottom: var(--space-24);
+}
+
+/* ---- Form layout demo ---- */
+.pattern-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+  max-width: 360px;
+}
+
+.pattern-form__row {
+  display: flex;
+  gap: var(--space-12);
+}
+
+.pattern-form__row > * { flex: 1; }
+
+/* ---- Nav pattern ---- */
+.pattern-nav-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: var(--space-8) 0;
+  border-top: 1px solid var(--color-separator);
+  gap: var(--space-4);
+}
+
+.pattern-nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-4) var(--space-12);
+  color: var(--color-gray-2);
+}
+
+.pattern-nav-item.is-active {
+  color: var(--color-tint-action);
+}
+
+.pattern-nav-item svg {
+  width: 20px;
+  height: 20px;
+}
+
+.pattern-nav-item__label {
+  font-family: var(--font-family-text);
+  font-size: 10px;
+  font-weight: var(--font-weight-medium);
+}
+
+/* ---- Data display ---- */
+.pattern-data-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.pattern-data-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-12) 0;
+  border-bottom: 1px solid var(--color-separator-subtle);
+}
+
+.pattern-data-row:last-child { border-bottom: none; }
+
+.pattern-data-row__label {
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-fine);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-fine);
+  color: var(--color-label-secondary);
+}
+
+.pattern-data-row__value {
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-fine);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-fine);
+  color: var(--color-label);
+}
+
+/* ---- Empty state ---- */
+.pattern-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-12);
+  padding: var(--space-48) var(--space-24);
+  text-align: center;
+}
+
+.pattern-empty svg {
+  width: 40px;
+  height: 40px;
+  color: var(--color-gray-4);
+}
+
+.pattern-empty__title {
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-detail);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-detail);
+  color: var(--color-label);
+}
+
+.pattern-empty__desc {
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-small);
+  line-height: var(--line-height-small);
+  color: var(--color-gray);
+  max-width: var(--measure-default);
+}
+
+/* ---- Loading skeleton ---- */
+.pattern-skeleton {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+}
+
+.pattern-skeleton__line {
+  height: var(--space-12);
+  background: var(--color-fill);
+  border-radius: var(--radius-xs);
+  animation: skeleton-pulse 1.5s ease-in-out infinite;
+}
+
+.pattern-skeleton__line--short { width: 40%; }
+.pattern-skeleton__line--medium { width: 70%; }
+.pattern-skeleton__line--long { width: 100%; }
+
+.pattern-skeleton__circle {
+  width: var(--space-40);
+  height: var(--space-40);
+  border-radius: var(--radius-full);
+  background: var(--color-fill);
+  animation: skeleton-pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes skeleton-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+/* ---- Error state ---- */
+.pattern-error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-12);
+  padding: var(--space-32) var(--space-24);
+  text-align: center;
+}
+
+.pattern-error svg {
+  width: 36px;
+  height: 36px;
+  color: var(--color-tint-destructive);
+}
+
+.pattern-error__title {
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-detail);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-detail);
+  color: var(--color-label);
+}
+
+.pattern-error__desc {
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-small);
+  line-height: var(--line-height-small);
+  color: var(--color-gray);
+  max-width: var(--measure-default);
+}

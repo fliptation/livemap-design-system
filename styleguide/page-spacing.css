@@ -1,0 +1,111 @@
+/* ==========================================================================
+   Spacing & Layout Page — Component Styles
+   ========================================================================== */
+
+/* ---- Breakpoint table visual ---- */
+.token-breakpoint-row {
+  display: flex;
+  align-items: center;
+  padding: var(--space-12) 0;
+  border-bottom: 1px solid var(--color-separator-subtle);
+  gap: var(--space-16);
+}
+
+.token-breakpoint-row:last-child { border-bottom: none; }
+
+.token-breakpoint-row__bar {
+  height: var(--space-8);
+  background: var(--color-fill);
+  border: 1px solid var(--color-separator);
+  border-radius: var(--radius-xs);
+}
+
+.token-breakpoint-row__name {
+  flex: 0 0 100px;
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-micro);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-label);
+}
+
+.token-breakpoint-row__value {
+  flex: 0 0 80px;
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-nano);
+  color: var(--color-gray-2);
+  text-align: right;
+}
+
+/* ---- Container diagram ---- */
+.token-container-diagram {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+  margin-bottom: var(--space-40);
+}
+
+.token-container-box {
+  border: 1.5px dashed var(--color-separator);
+  border-radius: var(--radius-md);
+  padding: var(--space-16) var(--space-24);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.token-container-box__name {
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-fine);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-fine);
+  letter-spacing: var(--letter-spacing-fine);
+  color: var(--color-label);
+}
+
+.token-container-box__value {
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-nano);
+  color: var(--color-gray-2);
+}
+
+/* ---- Measure lines ---- */
+.token-measure-samples {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+  margin-bottom: var(--space-40);
+}
+
+.token-measure-sample {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.token-measure-sample__bar {
+  height: var(--space-12);
+  background: var(--color-fill);
+  border: 1px solid var(--color-separator);
+  border-radius: var(--radius-xs);
+}
+
+.token-measure-sample__info {
+  display: flex;
+  gap: var(--space-12);
+  align-items: baseline;
+}
+
+.token-measure-sample__name {
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-fine);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-fine);
+  letter-spacing: var(--letter-spacing-fine);
+  color: var(--color-label);
+}
+
+.token-measure-sample__var {
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-nano);
+  color: var(--color-gray-2);
+}

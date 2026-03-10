@@ -911,26 +911,32 @@
 
       <p style="font-family: var(--font-family-text); font-size: 11px; font-weight: 600; color: #aeaeb2; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 16px;">Line Length (Measure)</p>
       <p class="section-note" style="margin-bottom: 24px;">
-        Optimal reading width is 45&ndash;75 characters per line. Three measure tokens cover common use cases.
+        Optimal reading width is 45&ndash;75 characters per line. Four measure tokens cover common use cases, defined in <code>ch</code> units so they scale with the font.
       </p>
 
       <div class="measure-demo">
         <div class="measure-bar">
-          <div class="measure-bar__label">Narrow &mdash; 280px (card descriptions)</div>
-          <div class="measure-bar__track" style="max-width: 640px;">
-            <div class="measure-bar__fill" style="width: 43.75%; opacity: 0.5;"></div>
+          <div class="measure-bar__label">Compact &mdash; 48ch (tooltips, popovers)</div>
+          <div class="measure-bar__track">
+            <div class="measure-bar__fill measure-bar__fill--compact"></div>
           </div>
         </div>
         <div class="measure-bar">
-          <div class="measure-bar__label">Default &mdash; 480px (body text)</div>
-          <div class="measure-bar__track" style="max-width: 640px;">
-            <div class="measure-bar__fill" style="width: 75%; opacity: 0.7;"></div>
+          <div class="measure-bar__label">Narrow &mdash; 34ch (card descriptions)</div>
+          <div class="measure-bar__track">
+            <div class="measure-bar__fill measure-bar__fill--narrow"></div>
           </div>
         </div>
         <div class="measure-bar">
-          <div class="measure-bar__label">Wide &mdash; 640px (long-form content)</div>
-          <div class="measure-bar__track" style="max-width: 640px;">
-            <div class="measure-bar__fill" style="width: 100%;"></div>
+          <div class="measure-bar__label">Default &mdash; 58ch (body text)</div>
+          <div class="measure-bar__track">
+            <div class="measure-bar__fill measure-bar__fill--default"></div>
+          </div>
+        </div>
+        <div class="measure-bar">
+          <div class="measure-bar__label">Wide &mdash; 75ch (long-form content)</div>
+          <div class="measure-bar__track">
+            <div class="measure-bar__fill measure-bar__fill--wide"></div>
           </div>
         </div>
       </div>
@@ -2947,12 +2953,174 @@
         </div>
 
         <div class="content-page" id="page-spacing" hidden>
-          <div class="content-page__placeholder">
-            <svg class="content-page__placeholder-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M8 8v32M40 8v32"/><path d="M8 24h32"/><path d="M14 18l-6 6 6 6"/><path d="M34 18l6 6-6 6"/>
-            </svg>
-            <p class="content-page__placeholder-text">Spacing &amp; Layout coming soon</p>
+
+    <!-- ============================================================
+         1. Spacing Scale
+         ============================================================ -->
+    <section id="sp-scale">
+      <p class="section-label">Spacing Scale</p>
+      <p class="section-note">
+        4pt base grid. Below 16 uses 2pt micro-steps for component internals; above 16 snaps to 4pt or 8pt increments for layout spacing.
+      </p>
+
+      <div class="token-spacing-bars">
+        <div class="token-spacing-row"><span class="token-spacing-row__label">--space-2</span><div class="token-spacing-row__bar" style="width: 2px;"></div><span class="token-spacing-row__value">2px</span></div>
+        <div class="token-spacing-row"><span class="token-spacing-row__label">--space-4</span><div class="token-spacing-row__bar" style="width: 4px;"></div><span class="token-spacing-row__value">4px</span></div>
+        <div class="token-spacing-row"><span class="token-spacing-row__label">--space-6</span><div class="token-spacing-row__bar" style="width: 6px;"></div><span class="token-spacing-row__value">6px</span></div>
+        <div class="token-spacing-row"><span class="token-spacing-row__label">--space-8</span><div class="token-spacing-row__bar" style="width: 8px;"></div><span class="token-spacing-row__value">8px</span></div>
+        <div class="token-spacing-row"><span class="token-spacing-row__label">--space-10</span><div class="token-spacing-row__bar" style="width: 10px;"></div><span class="token-spacing-row__value">10px</span></div>
+        <div class="token-spacing-row"><span class="token-spacing-row__label">--space-12</span><div class="token-spacing-row__bar" style="width: 12px;"></div><span class="token-spacing-row__value">12px</span></div>
+        <div class="token-spacing-row"><span class="token-spacing-row__label">--space-16</span><div class="token-spacing-row__bar" style="width: 16px;"></div><span class="token-spacing-row__value">16px</span></div>
+        <div class="token-spacing-row"><span class="token-spacing-row__label">--space-20</span><div class="token-spacing-row__bar" style="width: 20px;"></div><span class="token-spacing-row__value">20px</span></div>
+        <div class="token-spacing-row"><span class="token-spacing-row__label">--space-24</span><div class="token-spacing-row__bar" style="width: 24px;"></div><span class="token-spacing-row__value">24px</span></div>
+        <div class="token-spacing-row"><span class="token-spacing-row__label">--space-32</span><div class="token-spacing-row__bar" style="width: 32px;"></div><span class="token-spacing-row__value">32px</span></div>
+        <div class="token-spacing-row"><span class="token-spacing-row__label">--space-40</span><div class="token-spacing-row__bar" style="width: 40px;"></div><span class="token-spacing-row__value">40px</span></div>
+        <div class="token-spacing-row"><span class="token-spacing-row__label">--space-48</span><div class="token-spacing-row__bar" style="width: 48px;"></div><span class="token-spacing-row__value">48px</span></div>
+        <div class="token-spacing-row"><span class="token-spacing-row__label">--space-64</span><div class="token-spacing-row__bar" style="width: 64px;"></div><span class="token-spacing-row__value">64px</span></div>
+        <div class="token-spacing-row"><span class="token-spacing-row__label">--space-80</span><div class="token-spacing-row__bar" style="width: 80px;"></div><span class="token-spacing-row__value">80px</span></div>
+        <div class="token-spacing-row"><span class="token-spacing-row__label">--space-96</span><div class="token-spacing-row__bar" style="width: 96px;"></div><span class="token-spacing-row__value">96px</span></div>
+      </div>
+
+      <table class="token-table">
+        <thead><tr><th>Token</th><th>CSS</th><th>iOS</th><th>Android</th><th>Value</th></tr></thead>
+        <tbody>
+          <tr><td>space-2</td><td><code>var(--space-2)</code></td><td>Spacing.s2</td><td>R.dimen.space_2</td><td>2px</td></tr>
+          <tr><td>space-4</td><td><code>var(--space-4)</code></td><td>Spacing.s4</td><td>R.dimen.space_4</td><td>4px</td></tr>
+          <tr><td>space-6</td><td><code>var(--space-6)</code></td><td>Spacing.s6</td><td>R.dimen.space_6</td><td>6px</td></tr>
+          <tr><td>space-8</td><td><code>var(--space-8)</code></td><td>Spacing.s8</td><td>R.dimen.space_8</td><td>8px</td></tr>
+          <tr><td>space-10</td><td><code>var(--space-10)</code></td><td>Spacing.s10</td><td>R.dimen.space_10</td><td>10px</td></tr>
+          <tr><td>space-12</td><td><code>var(--space-12)</code></td><td>Spacing.s12</td><td>R.dimen.space_12</td><td>12px</td></tr>
+          <tr><td>space-16</td><td><code>var(--space-16)</code></td><td>Spacing.s16</td><td>R.dimen.space_16</td><td>16px</td></tr>
+          <tr><td>space-20</td><td><code>var(--space-20)</code></td><td>Spacing.s20</td><td>R.dimen.space_20</td><td>20px</td></tr>
+          <tr><td>space-24</td><td><code>var(--space-24)</code></td><td>Spacing.s24</td><td>R.dimen.space_24</td><td>24px</td></tr>
+          <tr><td>space-32</td><td><code>var(--space-32)</code></td><td>Spacing.s32</td><td>R.dimen.space_32</td><td>32px</td></tr>
+          <tr><td>space-40</td><td><code>var(--space-40)</code></td><td>Spacing.s40</td><td>R.dimen.space_40</td><td>40px</td></tr>
+          <tr><td>space-48</td><td><code>var(--space-48)</code></td><td>Spacing.s48</td><td>R.dimen.space_48</td><td>48px</td></tr>
+          <tr><td>space-64</td><td><code>var(--space-64)</code></td><td>Spacing.s64</td><td>R.dimen.space_64</td><td>64px</td></tr>
+          <tr><td>space-80</td><td><code>var(--space-80)</code></td><td>Spacing.s80</td><td>R.dimen.space_80</td><td>80px</td></tr>
+          <tr><td>space-96</td><td><code>var(--space-96)</code></td><td>Spacing.s96</td><td>R.dimen.space_96</td><td>96px</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- ============================================================
+         2. Grid System
+         ============================================================ -->
+    <section id="sp-grid">
+      <p class="section-label">Grid System</p>
+      <p class="section-note">
+        Content areas use a fluid grid constrained by a maximum width. Gutters and margins are derived from the spacing scale to keep things aligned to the 4pt grid.
+      </p>
+
+      <div class="rule-box">
+        <strong>Grid rules:</strong> Use <strong>12-column</strong> fluid grids for desktop layouts. Column gutters are <code>var(--space-16)</code> on compact screens and <code>var(--space-24)</code> on regular screens. Page margins match the gutter width. On mobile, collapse to stacked single-column.
+      </div>
+    </section>
+
+    <!-- ============================================================
+         3. Breakpoints
+         ============================================================ -->
+    <section id="sp-breakpoints">
+      <p class="section-label">Breakpoints</p>
+      <p class="section-note">
+        Responsive breakpoints follow Apple's size classes. Design mobile-first, then enhance at each breakpoint.
+      </p>
+
+      <div class="token-spacing-bars" style="margin-bottom: var(--space-40);">
+        <div class="token-breakpoint-row"><span class="token-breakpoint-row__name">Compact</span><div class="token-breakpoint-row__bar" style="width: 80px;"></div><span class="token-breakpoint-row__value">0–599px</span></div>
+        <div class="token-breakpoint-row"><span class="token-breakpoint-row__name">Medium</span><div class="token-breakpoint-row__bar" style="width: 140px;"></div><span class="token-breakpoint-row__value">600–899px</span></div>
+        <div class="token-breakpoint-row"><span class="token-breakpoint-row__name">Regular</span><div class="token-breakpoint-row__bar" style="width: 220px;"></div><span class="token-breakpoint-row__value">900–1199px</span></div>
+        <div class="token-breakpoint-row"><span class="token-breakpoint-row__name">Wide</span><div class="token-breakpoint-row__bar" style="width: 320px;"></div><span class="token-breakpoint-row__value">1200px+</span></div>
+      </div>
+
+      <table class="token-table">
+        <thead><tr><th>Breakpoint</th><th>Min width</th><th>CSS</th><th>Columns</th><th>Gutter</th></tr></thead>
+        <tbody>
+          <tr><td>Compact</td><td>0</td><td><code>default</code></td><td>4</td><td>16px</td></tr>
+          <tr><td>Medium</td><td>600px</td><td><code>@media (min-width: 600px)</code></td><td>8</td><td>24px</td></tr>
+          <tr><td>Regular</td><td>900px</td><td><code>@media (min-width: 900px)</code></td><td>12</td><td>24px</td></tr>
+          <tr><td>Wide</td><td>1200px</td><td><code>@media (min-width: 1200px)</code></td><td>12</td><td>32px</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- ============================================================
+         4. Containers
+         ============================================================ -->
+    <section id="sp-containers">
+      <p class="section-label">Containers</p>
+      <p class="section-note">
+        Content containers constrain maximum widths to maintain readable line lengths and consistent layouts.
+      </p>
+
+      <div class="token-container-diagram">
+        <div class="token-container-box" style="max-width: 640px;">
+          <span class="token-container-box__name">Narrow</span>
+          <span class="token-container-box__value">640px — forms, settings</span>
+        </div>
+        <div class="token-container-box" style="max-width: 840px;">
+          <span class="token-container-box__name">Default</span>
+          <span class="token-container-box__value">840px — articles, detail views</span>
+        </div>
+        <div class="token-container-box" style="max-width: 1040px;">
+          <span class="token-container-box__name">Wide</span>
+          <span class="token-container-box__value">1040px — dashboards, grids</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         5. Line Lengths (Measure)
+         ============================================================ -->
+    <section id="sp-measure">
+      <p class="section-label">Line Lengths</p>
+      <p class="section-note">
+        Measure tokens constrain text blocks to readable line lengths. Apply with <code>max-width</code>.
+      </p>
+
+      <div class="token-measure-samples">
+        <div class="token-measure-sample">
+          <div class="token-measure-sample__info">
+            <span class="token-measure-sample__name">Compact</span>
+            <span class="token-measure-sample__var">--measure-compact · 48ch</span>
           </div>
+          <div class="token-measure-sample__bar" style="width: 48ch;"></div>
+        </div>
+        <div class="token-measure-sample">
+          <div class="token-measure-sample__info">
+            <span class="token-measure-sample__name">Narrow</span>
+            <span class="token-measure-sample__var">--measure-narrow · 34ch</span>
+          </div>
+          <div class="token-measure-sample__bar" style="width: 34ch;"></div>
+        </div>
+        <div class="token-measure-sample">
+          <div class="token-measure-sample__info">
+            <span class="token-measure-sample__name">Default</span>
+            <span class="token-measure-sample__var">--measure-default · 58ch</span>
+          </div>
+          <div class="token-measure-sample__bar" style="width: 58ch;"></div>
+        </div>
+        <div class="token-measure-sample">
+          <div class="token-measure-sample__info">
+            <span class="token-measure-sample__name">Wide</span>
+            <span class="token-measure-sample__var">--measure-wide · 75ch</span>
+          </div>
+          <div class="token-measure-sample__bar" style="width: 75ch;"></div>
+        </div>
+      </div>
+
+      <table class="token-table">
+        <thead><tr><th>Token</th><th>CSS</th><th>iOS</th><th>Android</th><th>Value</th></tr></thead>
+        <tbody>
+          <tr><td>measure-compact</td><td><code>var(--measure-compact)</code></td><td>Measure.compact</td><td>R.dimen.measure_compact</td><td>48ch</td></tr>
+          <tr><td>measure-narrow</td><td><code>var(--measure-narrow)</code></td><td>Measure.narrow</td><td>R.dimen.measure_narrow</td><td>34ch</td></tr>
+          <tr><td>measure-default</td><td><code>var(--measure-default)</code></td><td>Measure.default</td><td>R.dimen.measure_default</td><td>58ch</td></tr>
+          <tr><td>measure-wide</td><td><code>var(--measure-wide)</code></td><td>Measure.wide</td><td>R.dimen.measure_wide</td><td>75ch</td></tr>
+          <tr><td>text-wrap-balance</td><td><code>var(--text-wrap-balance)</code></td><td>.lineBreakMode = .byBalancing</td><td>android:breakStrategy="balanced"</td><td>balance</td></tr>
+        </tbody>
+      </table>
+    </section>
+
         </div>
 
         <div class="content-page" id="page-elevation" hidden>
@@ -3195,12 +3363,164 @@
         </div>
 
         <div class="content-page" id="page-motion" hidden>
-          <div class="content-page__placeholder">
-            <svg class="content-page__placeholder-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M6 38c8-8 12-28 36-28"/><circle cx="42" cy="10" r="3.5" fill="currentColor" stroke="none"/>
-            </svg>
-            <p class="content-page__placeholder-text">Motion coming soon</p>
+
+    <!-- ============================================================
+         1. Easing Curves
+         ============================================================ -->
+    <section id="mo-easing">
+      <p class="section-label">Easing Curves</p>
+      <p class="section-note">
+        Easing curves define the acceleration profile of transitions. Hover each card to preview the curve. Use <span class="usage-hl">default</span> for most transitions, <span class="usage-hl">out</span> for elements entering, and <span class="usage-hl">in</span> for elements exiting.
+      </p>
+
+      <div class="token-easing-grid">
+        <div class="token-easing-card">
+          <div class="token-easing-card__preview">
+            <div class="token-easing-card__dot" style="transition: left 0.5s cubic-bezier(0.4, 0, 0.2, 1);"></div>
           </div>
+          <span class="token-easing-card__name">--ease-default</span>
+          <span class="token-easing-card__value">cubic-bezier(0.4, 0, 0.2, 1)</span>
+        </div>
+        <div class="token-easing-card">
+          <div class="token-easing-card__preview">
+            <div class="token-easing-card__dot" style="transition: left 0.5s cubic-bezier(0.4, 0, 1, 1);"></div>
+          </div>
+          <span class="token-easing-card__name">--ease-in</span>
+          <span class="token-easing-card__value">cubic-bezier(0.4, 0, 1, 1)</span>
+        </div>
+        <div class="token-easing-card">
+          <div class="token-easing-card__preview">
+            <div class="token-easing-card__dot" style="transition: left 0.5s cubic-bezier(0, 0, 0.2, 1);"></div>
+          </div>
+          <span class="token-easing-card__name">--ease-out</span>
+          <span class="token-easing-card__value">cubic-bezier(0, 0, 0.2, 1)</span>
+        </div>
+        <div class="token-easing-card">
+          <div class="token-easing-card__preview">
+            <div class="token-easing-card__dot" style="transition: left 0.5s cubic-bezier(0.4, 0, 0.2, 1);"></div>
+          </div>
+          <span class="token-easing-card__name">--ease-in-out</span>
+          <span class="token-easing-card__value">cubic-bezier(0.4, 0, 0.2, 1)</span>
+        </div>
+        <div class="token-easing-card">
+          <div class="token-easing-card__preview">
+            <div class="token-easing-card__dot" style="transition: left 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);"></div>
+          </div>
+          <span class="token-easing-card__name">--ease-spring</span>
+          <span class="token-easing-card__value">cubic-bezier(0.175, 0.885, 0.32, 1.275)</span>
+        </div>
+      </div>
+
+      <table class="token-table">
+        <thead><tr><th>Token</th><th>CSS</th><th>iOS</th><th>Use</th></tr></thead>
+        <tbody>
+          <tr><td>ease-default</td><td><code>var(--ease-default)</code></td><td>Easing.default</td><td>Most transitions</td></tr>
+          <tr><td>ease-in</td><td><code>var(--ease-in)</code></td><td>Easing.easeIn</td><td>Elements exiting the screen</td></tr>
+          <tr><td>ease-out</td><td><code>var(--ease-out)</code></td><td>Easing.easeOut</td><td>Elements entering the screen</td></tr>
+          <tr><td>ease-in-out</td><td><code>var(--ease-in-out)</code></td><td>Easing.easeInOut</td><td>Repositioning, resizing</td></tr>
+          <tr><td>ease-spring</td><td><code>var(--ease-spring)</code></td><td>Easing.spring</td><td>Playful feedback, bouncy</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- ============================================================
+         2. Duration Scale
+         ============================================================ -->
+    <section id="mo-duration">
+      <p class="section-label">Duration Scale</p>
+      <p class="section-note">
+        Duration tokens scale from instant state changes to full-page transitions. Shorter durations feel snappy; longer durations give the eye time to follow larger movements.
+      </p>
+
+      <div class="token-duration-bars">
+        <div class="token-duration-row"><span class="token-duration-row__name">--duration-instant</span><div class="token-duration-row__bar" style="width: 2px;"></div><span class="token-duration-row__value">0ms</span></div>
+        <div class="token-duration-row"><span class="token-duration-row__name">--duration-fast</span><div class="token-duration-row__bar" style="width: 40px;"></div><span class="token-duration-row__value">100ms</span></div>
+        <div class="token-duration-row"><span class="token-duration-row__name">--duration-normal</span><div class="token-duration-row__bar" style="width: 80px;"></div><span class="token-duration-row__value">200ms</span></div>
+        <div class="token-duration-row"><span class="token-duration-row__name">--duration-moderate</span><div class="token-duration-row__bar" style="width: 120px;"></div><span class="token-duration-row__value">300ms</span></div>
+        <div class="token-duration-row"><span class="token-duration-row__name">--duration-slow</span><div class="token-duration-row__bar" style="width: 200px;"></div><span class="token-duration-row__value">500ms</span></div>
+      </div>
+
+      <table class="token-table">
+        <thead><tr><th>Token</th><th>CSS</th><th>iOS</th><th>Value</th><th>Use</th></tr></thead>
+        <tbody>
+          <tr><td>duration-instant</td><td><code>var(--duration-instant)</code></td><td>Duration.instant</td><td>0ms</td><td>Immediate state changes</td></tr>
+          <tr><td>duration-fast</td><td><code>var(--duration-fast)</code></td><td>Duration.fast</td><td>100ms</td><td>Button press, hover states</td></tr>
+          <tr><td>duration-normal</td><td><code>var(--duration-normal)</code></td><td>Duration.normal</td><td>200ms</td><td>Toggles, fades, color changes</td></tr>
+          <tr><td>duration-moderate</td><td><code>var(--duration-moderate)</code></td><td>Duration.moderate</td><td>300ms</td><td>Panels, dropdowns, expanding</td></tr>
+          <tr><td>duration-slow</td><td><code>var(--duration-slow)</code></td><td>Duration.slow</td><td>500ms</td><td>Page transitions, large moves</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- ============================================================
+         3. Transitions
+         ============================================================ -->
+    <section id="mo-transitions">
+      <p class="section-label">Transitions</p>
+      <p class="section-note">
+        Combine easing curves with duration tokens for consistent transitions. Hover each card to preview.
+      </p>
+
+      <div class="token-transition-grid">
+        <div class="token-transition-card" data-demo="fade">
+          <div class="token-transition-card__box"></div>
+          <span class="token-transition-card__name">Fade</span>
+          <span class="token-transition-card__desc">opacity · normal · default</span>
+        </div>
+        <div class="token-transition-card" data-demo="scale">
+          <div class="token-transition-card__box"></div>
+          <span class="token-transition-card__name">Scale</span>
+          <span class="token-transition-card__desc">transform · normal · spring</span>
+        </div>
+        <div class="token-transition-card" data-demo="slide">
+          <div class="token-transition-card__box"></div>
+          <span class="token-transition-card__name">Slide</span>
+          <span class="token-transition-card__desc">transform · moderate · out</span>
+        </div>
+        <div class="token-transition-card" data-demo="color">
+          <div class="token-transition-card__box"></div>
+          <span class="token-transition-card__name">Color</span>
+          <span class="token-transition-card__desc">background · normal · default</span>
+        </div>
+        <div class="token-transition-card" data-demo="radius">
+          <div class="token-transition-card__box"></div>
+          <span class="token-transition-card__name">Radius</span>
+          <span class="token-transition-card__desc">border-radius · moderate · default</span>
+        </div>
+        <div class="token-transition-card" data-demo="shadow">
+          <div class="token-transition-card__box"></div>
+          <span class="token-transition-card__name">Elevation</span>
+          <span class="token-transition-card__desc">box-shadow · moderate · default</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         4. Animation Principles
+         ============================================================ -->
+    <section id="mo-principles">
+      <p class="section-label">Animation Principles</p>
+      <p class="section-note">
+        Follow these principles to keep motion purposeful and consistent across all platforms.
+      </p>
+
+      <div class="rule-box" style="margin-bottom: var(--space-24);">
+        <strong>1. Purposeful:</strong> Every animation should serve a function — guiding attention, confirming an action, or showing spatial relationships. Remove motion that exists only for decoration.
+      </div>
+      <div class="rule-box" style="margin-bottom: var(--space-24);">
+        <strong>2. Quick:</strong> Prefer shorter durations. Users should never feel like they're waiting for an animation to finish. If a transition takes longer than 500ms, reconsider whether it's needed.
+      </div>
+      <div class="rule-box" style="margin-bottom: var(--space-24);">
+        <strong>3. Natural:</strong> Use easing curves that mimic physical movement. Elements should accelerate and decelerate smoothly — never move at a constant speed (linear).
+      </div>
+      <div class="rule-box" style="margin-bottom: var(--space-24);">
+        <strong>4. Consistent:</strong> Use the same easing and duration for the same type of transition everywhere. A dropdown should feel identical whether it's in the header, sidebar, or a form.
+      </div>
+      <div class="rule-box">
+        <strong>5. Respectful:</strong> Honor <code>prefers-reduced-motion</code>. When the user requests reduced motion, disable transitions or replace them with instant cuts. Never remove state changes — only remove the animation.
+      </div>
+    </section>
+
         </div>
 
         <div class="content-page" id="page-iconography" hidden>
@@ -3916,30 +4236,571 @@
         </div>
 
         <div class="content-page" id="page-components" hidden>
-          <div class="content-page__placeholder">
-            <svg class="content-page__placeholder-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="4" y="4" width="17" height="17" rx="2.5"/><rect x="27" y="4" width="17" height="17" rx="2.5"/><rect x="4" y="27" width="17" height="17" rx="2.5"/><rect x="27" y="27" width="17" height="17" rx="2.5"/>
-            </svg>
-            <p class="content-page__placeholder-text">Components coming soon</p>
-          </div>
+
+    <!-- ============================================================
+         1. Buttons
+         ============================================================ -->
+    <section id="cp-buttons">
+      <p class="section-label">Buttons</p>
+      <p class="section-note">
+        Four button variants for different levels of emphasis. All buttons use <span class="usage-hl">semibold</span> weight, <span class="usage-hl">radius-sm</span>, and a subtle scale-down on press.
+      </p>
+
+      <div class="comp-preview">
+        <button class="comp-btn comp-btn--primary">Primary</button>
+        <button class="comp-btn comp-btn--secondary">Secondary</button>
+        <button class="comp-btn comp-btn--destructive">Destructive</button>
+        <button class="comp-btn comp-btn--ghost">Ghost</button>
+      </div>
+
+      <p class="section-note">Size variants:</p>
+      <div class="comp-preview">
+        <button class="comp-btn comp-btn--primary comp-btn--sm">Small</button>
+        <button class="comp-btn comp-btn--primary">Default</button>
+        <button class="comp-btn comp-btn--primary comp-btn--lg">Large</button>
+        <button class="comp-btn comp-btn--primary" disabled>Disabled</button>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         2. Inputs & Forms
+         ============================================================ -->
+    <section id="cp-inputs">
+      <p class="section-label">Inputs &amp; Forms</p>
+      <p class="section-note">
+        Text inputs use <span class="usage-hl">separator</span> border, <span class="usage-hl">action</span> tint focus ring, and <span class="usage-hl">gray-3</span> placeholder text.
+      </p>
+
+      <div class="comp-preview comp-preview--column">
+        <div class="comp-field">
+          <label class="comp-label">Label</label>
+          <input class="comp-input" type="text" placeholder="Placeholder text">
+        </div>
+        <div class="comp-field">
+          <label class="comp-label">Error state</label>
+          <input class="comp-input comp-input--error" type="text" value="Invalid value">
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         3. Toggles & Checkboxes
+         ============================================================ -->
+    <section id="cp-toggles">
+      <p class="section-label">Toggles &amp; Checkboxes</p>
+      <p class="section-note">
+        iOS-style toggles and checkboxes. Toggles use <span class="usage-hl">positive</span> tint when on; checkboxes use <span class="usage-hl">action</span> tint.
+      </p>
+
+      <div class="comp-preview">
+        <button class="comp-toggle" aria-label="Toggle off"></button>
+        <button class="comp-toggle is-on" aria-label="Toggle on"></button>
+        <button class="comp-checkbox" aria-label="Unchecked"></button>
+        <button class="comp-checkbox is-checked" aria-label="Checked">
+          <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="2.5 6 5 8.5 9.5 4"/></svg>
+        </button>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         4. Cards
+         ============================================================ -->
+    <section id="cp-cards">
+      <p class="section-label">Cards</p>
+      <p class="section-note">
+        Cards use <span class="usage-hl">separator</span> border, <span class="usage-hl">radius-lg</span>, and <span class="usage-hl">surface</span> background. Keep content compact with the spacing scale.
+      </p>
+
+      <div class="comp-preview">
+        <div class="comp-card">
+          <span class="comp-card__title">Card Title</span>
+          <span class="comp-card__desc">A brief description of the card content that wraps to two lines.</span>
+        </div>
+        <div class="comp-card" style="box-shadow: var(--shadow-md);">
+          <span class="comp-card__title">Elevated Card</span>
+          <span class="comp-card__desc">Same card with shadow-md applied for more visual prominence.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         5. Lists & Tables
+         ============================================================ -->
+    <section id="cp-lists">
+      <p class="section-label">Lists &amp; Tables</p>
+      <p class="section-note">
+        Use <span class="usage-hl">separator-subtle</span> for row dividers. See the token tables throughout this styleguide for the table pattern.
+      </p>
+
+      <div class="rule-box">
+        <strong>Convention:</strong> List rows use <code>var(--space-12)</code> vertical padding and <code>var(--color-separator-subtle)</code> dividers. Table headers use <strong>nano</strong> size, <strong>semibold</strong> weight, uppercase with 0.06em letter-spacing.
+      </div>
+    </section>
+
+    <!-- ============================================================
+         6. Badges & Tags
+         ============================================================ -->
+    <section id="cp-badges">
+      <p class="section-label">Badges &amp; Tags</p>
+      <p class="section-note">
+        Pill-shaped badges for status indicators, counts, and labels. Uses <span class="usage-hl">radius-full</span> and tinted backgrounds at 10% opacity.
+      </p>
+
+      <div class="comp-preview">
+        <span class="comp-badge comp-badge--default">Default</span>
+        <span class="comp-badge comp-badge--action">Info</span>
+        <span class="comp-badge comp-badge--positive">Success</span>
+        <span class="comp-badge comp-badge--destructive">Error</span>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         7. Tabs & Segments
+         ============================================================ -->
+    <section id="cp-tabs">
+      <p class="section-label">Tabs &amp; Segments</p>
+      <p class="section-note">
+        Underline tabs for section navigation. Active tab uses <span class="usage-hl">label</span> color with a 2px bottom border.
+      </p>
+
+      <div class="comp-preview comp-preview--column" style="width: 100%;">
+        <div class="comp-tabs">
+          <button class="comp-tab is-active">Overview</button>
+          <button class="comp-tab">Details</button>
+          <button class="comp-tab">Settings</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         8. Tooltips & Popovers
+         ============================================================ -->
+    <section id="cp-tooltips">
+      <p class="section-label">Tooltips &amp; Popovers</p>
+      <p class="section-note">
+        Tooltips use <span class="usage-hl">shadow-lg</span>, <span class="usage-hl">radius-md</span>, and appear above the target. The token inspector in this styleguide is a working example.
+      </p>
+
+      <div class="rule-box">
+        <strong>Tooltip rules:</strong> Max width <strong>280px</strong>. Use <code>var(--font-size-micro)</code> text. Appear after a <strong>300ms</strong> hover delay. Dismiss immediately on mouse leave. Position above the target, flip below if insufficient space.
+      </div>
+    </section>
+
+    <!-- ============================================================
+         9. Modals & Sheets
+         ============================================================ -->
+    <section id="cp-modals">
+      <p class="section-label">Modals &amp; Sheets</p>
+      <p class="section-note">
+        Modals use <span class="usage-hl">shadow-xl</span>, <span class="usage-hl">radius-xl</span>, and a dimming overlay at <span class="usage-hl">z-overlay</span>. The modal itself sits at <span class="usage-hl">z-modal</span>.
+      </p>
+
+      <div class="rule-box">
+        <strong>Modal rules:</strong> Max width <strong>480px</strong> for dialogs, full-width bottom sheets on mobile. Padding: <code>var(--space-24)</code>. Close on Escape key and backdrop click. Trap focus within the modal while open. Use <code>var(--duration-moderate)</code> with <code>var(--ease-out)</code> for enter, <code>var(--ease-in)</code> for exit.
+      </div>
+    </section>
+
+    <!-- ============================================================
+         10. Toasts & Alerts
+         ============================================================ -->
+    <section id="cp-toasts">
+      <p class="section-label">Toasts &amp; Alerts</p>
+      <p class="section-note">
+        Toasts appear at the bottom of the viewport at <span class="usage-hl">z-toast</span> and auto-dismiss after 4 seconds.
+      </p>
+
+      <div class="comp-preview">
+        <div class="comp-toast">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="6"/><path d="m6 8 1.5 1.5L10 7"/></svg>
+          Changes saved successfully
+        </div>
+      </div>
+
+      <div class="rule-box">
+        <strong>Toast rules:</strong> Dark background (<code>var(--color-label)</code>), light text (<code>var(--color-surface)</code>). Use <code>var(--shadow-lg)</code>. Slide up with <code>var(--ease-out)</code> at <code>var(--duration-moderate)</code>. Include a close button for persistent toasts. Stack from bottom if multiple.
+      </div>
+    </section>
+
         </div>
 
         <div class="content-page" id="page-patterns" hidden>
-          <div class="content-page__placeholder">
-            <svg class="content-page__placeholder-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="4" y="4" width="40" height="10" rx="2.5"/><rect x="4" y="20" width="17" height="24" rx="2.5"/><rect x="27" y="20" width="17" height="24" rx="2.5"/>
-            </svg>
-            <p class="content-page__placeholder-text">Patterns coming soon</p>
+
+    <!-- ============================================================
+         1. Form Layouts
+         ============================================================ -->
+    <section id="pt-forms">
+      <p class="section-label">Form Layouts</p>
+      <p class="section-note">
+        Stack form fields vertically with consistent spacing. Use <span class="usage-hl">space-16</span> between fields and <span class="usage-hl">space-12</span> for side-by-side fields in a row.
+      </p>
+
+      <div class="pattern-preview">
+        <div class="pattern-form">
+          <div class="comp-field">
+            <label class="comp-label">Full Name</label>
+            <input class="comp-input" type="text" placeholder="Jane Doe" style="width: 100%;">
           </div>
+          <div class="pattern-form__row">
+            <div class="comp-field">
+              <label class="comp-label">City</label>
+              <input class="comp-input" type="text" placeholder="Berlin" style="width: 100%;">
+            </div>
+            <div class="comp-field">
+              <label class="comp-label">Zip</label>
+              <input class="comp-input" type="text" placeholder="10115" style="width: 100%;">
+            </div>
+          </div>
+          <div class="comp-field">
+            <label class="comp-label">Email</label>
+            <input class="comp-input" type="email" placeholder="jane@example.com" style="width: 100%;">
+          </div>
+          <button class="comp-btn comp-btn--primary" style="align-self: flex-start;">Submit</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         2. Navigation Patterns
+         ============================================================ -->
+    <section id="pt-nav">
+      <p class="section-label">Navigation Patterns</p>
+      <p class="section-note">
+        Bottom tab bar for mobile, sidebar for desktop. Active item uses <span class="usage-hl">action</span> tint; inactive uses <span class="usage-hl">gray-2</span>.
+      </p>
+
+      <div class="pattern-preview">
+        <div style="width: 320px;">
+          <div class="pattern-nav-bar">
+            <div class="pattern-nav-item is-active">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+              <span class="pattern-nav-item__label">Home</span>
+            </div>
+            <div class="pattern-nav-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+              <span class="pattern-nav-item__label">Search</span>
+            </div>
+            <div class="pattern-nav-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" x2="8" y1="2" y2="18"/><line x1="16" x2="16" y1="6" y2="22"/></svg>
+              <span class="pattern-nav-item__label">Map</span>
+            </div>
+            <div class="pattern-nav-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              <span class="pattern-nav-item__label">Profile</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         3. Data Display
+         ============================================================ -->
+    <section id="pt-data">
+      <p class="section-label">Data Display</p>
+      <p class="section-note">
+        Key-value lists for displaying structured data. Labels use <span class="usage-hl">secondary</span> color; values use <span class="usage-hl">semibold</span> weight.
+      </p>
+
+      <div class="pattern-preview">
+        <div class="pattern-data-list" style="width: 360px;">
+          <div class="pattern-data-row"><span class="pattern-data-row__label">Status</span><span class="pattern-data-row__value"><span class="comp-badge comp-badge--positive">Active</span></span></div>
+          <div class="pattern-data-row"><span class="pattern-data-row__label">Location</span><span class="pattern-data-row__value">Berlin, DE</span></div>
+          <div class="pattern-data-row"><span class="pattern-data-row__label">Coordinates</span><span class="pattern-data-row__value">52.520°N, 13.405°E</span></div>
+          <div class="pattern-data-row"><span class="pattern-data-row__label">Last updated</span><span class="pattern-data-row__value">2 min ago</span></div>
+          <div class="pattern-data-row"><span class="pattern-data-row__label">Accuracy</span><span class="pattern-data-row__value">±4m</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         4. Empty States
+         ============================================================ -->
+    <section id="pt-empty">
+      <p class="section-label">Empty States</p>
+      <p class="section-note">
+        Show a centered message with an icon, title, and description when there's no content to display. Use <span class="usage-hl">gray-4</span> for the icon and include a call-to-action when possible.
+      </p>
+
+      <div class="pattern-preview">
+        <div class="pattern-empty" style="width: 100%;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" x2="8" y1="2" y2="18"/><line x1="16" x2="16" y1="6" y2="22"/></svg>
+          <span class="pattern-empty__title">No saved locations</span>
+          <span class="pattern-empty__desc">Locations you save will appear here. Tap the bookmark icon on any place to add it.</span>
+          <button class="comp-btn comp-btn--primary" style="margin-top: var(--space-8);">Explore map</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         5. Loading States
+         ============================================================ -->
+    <section id="pt-loading">
+      <p class="section-label">Loading States</p>
+      <p class="section-note">
+        Use skeleton screens instead of spinners for content loading. Pulse animation at 1.5s ease-in-out keeps the interface feeling alive without drawing too much attention.
+      </p>
+
+      <div class="pattern-preview">
+        <div class="pattern-skeleton" style="width: 320px;">
+          <div style="display: flex; gap: var(--space-12); align-items: center;">
+            <div class="pattern-skeleton__circle"></div>
+            <div style="flex: 1; display: flex; flex-direction: column; gap: var(--space-8);">
+              <div class="pattern-skeleton__line pattern-skeleton__line--medium"></div>
+              <div class="pattern-skeleton__line pattern-skeleton__line--short"></div>
+            </div>
+          </div>
+          <div class="pattern-skeleton__line pattern-skeleton__line--long"></div>
+          <div class="pattern-skeleton__line pattern-skeleton__line--long"></div>
+          <div class="pattern-skeleton__line pattern-skeleton__line--medium"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         6. Error Handling
+         ============================================================ -->
+    <section id="pt-errors">
+      <p class="section-label">Error Handling</p>
+      <p class="section-note">
+        Error states use <span class="usage-hl">destructive</span> tint for the icon. Always provide a clear explanation and a recovery action.
+      </p>
+
+      <div class="pattern-preview">
+        <div class="pattern-error" style="width: 100%;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></svg>
+          <span class="pattern-error__title">Unable to load map data</span>
+          <span class="pattern-error__desc">Check your internet connection and try again. If the problem persists, contact support.</span>
+          <button class="comp-btn comp-btn--secondary" style="margin-top: var(--space-8);">Retry</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         7. Onboarding
+         ============================================================ -->
+    <section id="pt-onboarding">
+      <p class="section-label">Onboarding</p>
+      <p class="section-note">
+        Keep onboarding flows to 3–4 steps maximum. Use large illustrations, concise headlines, and a single primary action per step.
+      </p>
+
+      <div class="rule-box" style="margin-bottom: var(--space-24);">
+        <strong>Step structure:</strong> Each onboarding screen should have an illustration area (top 50%), a headline in <strong>heading-md</strong> style, a one-sentence description in <strong>body</strong> style with <code>var(--color-label-secondary)</code>, and a primary action button.
+      </div>
+      <div class="rule-box">
+        <strong>Progress indicator:</strong> Use small dots at the bottom — active dot in <code>var(--color-label)</code>, inactive in <code>var(--color-gray-4)</code>. Allow swipe navigation between steps. Include a "Skip" link in <code>var(--color-gray-2)</code>.
+      </div>
+    </section>
+
         </div>
 
         <div class="content-page" id="page-guidelines" hidden>
-          <div class="content-page__placeholder">
-            <svg class="content-page__placeholder-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M10 8h28v36H10z"/><path d="M16 18h16"/><path d="M16 26h10"/>
-            </svg>
-            <p class="content-page__placeholder-text">Guidelines coming soon</p>
-          </div>
+
+          <!-- ====== Accessibility ====== -->
+          <section id="gl-a11y">
+            <p class="section-label">Accessibility</p>
+            <p class="section-note">Every Livemap surface must meet WCAG 2.1 AA. Follow these checks for every screen and component.</p>
+
+            <div class="guideline-checklist">
+              <div class="guideline-check">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                <span class="guideline-check__text">All text meets 4.5 : 1 contrast against its background (3 : 1 for large text ≥ 18pt bold / 24pt regular).</span>
+              </div>
+              <div class="guideline-check">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                <span class="guideline-check__text">Interactive elements have a minimum touch target of <code>44 × 44 px</code> (var(--touch-target-minimum)).</span>
+              </div>
+              <div class="guideline-check">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                <span class="guideline-check__text">No text is set below <code>11 px</code> (var(--font-size-minimum)). Tappable text uses ≥ <code>13 px</code> (var(--font-size-minimum-interactive)).</span>
+              </div>
+              <div class="guideline-check">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                <span class="guideline-check__text">Color is never the sole indicator of state — always pair with an icon, label, or shape change.</span>
+              </div>
+              <div class="guideline-check">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                <span class="guideline-check__text">Focus rings are visible on all interactive elements for keyboard navigation.</span>
+              </div>
+              <div class="guideline-check">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                <span class="guideline-check__text">Images and icons include descriptive <code>alt</code> text or <code>aria-label</code>; decorative images use <code>alt=""</code>.</span>
+              </div>
+              <div class="guideline-check">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                <span class="guideline-check__text">Motion respects <code>prefers-reduced-motion</code> — disable non-essential animations when set.</span>
+              </div>
+            </div>
+
+            <p class="section-label" style="margin-top: var(--space-32);">Contrast Examples</p>
+            <div class="guideline-contrast-grid">
+              <div class="guideline-contrast-card" style="background: var(--color-surface); border: 1px solid var(--color-separator);">
+                <span class="guideline-contrast-card__sample" style="color: var(--color-label);">Label on Surface</span>
+                <span class="guideline-contrast-card__ratio">≈ 15.4 : 1 — AAA</span>
+              </div>
+              <div class="guideline-contrast-card" style="background: var(--color-surface); border: 1px solid var(--color-separator);">
+                <span class="guideline-contrast-card__sample" style="color: var(--color-label-secondary);">Secondary on Surface</span>
+                <span class="guideline-contrast-card__ratio">≈ 5.8 : 1 — AA</span>
+              </div>
+              <div class="guideline-contrast-card" style="background: var(--color-tint-action);">
+                <span class="guideline-contrast-card__sample" style="color: #fff;">White on Action</span>
+                <span class="guideline-contrast-card__ratio" style="color: rgba(255,255,255,.7);">≈ 4.5 : 1 — AA</span>
+              </div>
+              <div class="guideline-contrast-card" style="background: var(--color-tint-destructive);">
+                <span class="guideline-contrast-card__sample" style="color: #fff;">White on Destructive</span>
+                <span class="guideline-contrast-card__ratio" style="color: rgba(255,255,255,.7);">≈ 4.6 : 1 — AA</span>
+              </div>
+            </div>
+          </section>
+
+          <!-- ====== Responsive Design ====== -->
+          <section id="gl-responsive">
+            <p class="section-label">Responsive Design</p>
+            <p class="section-note">Livemap uses a mobile-first approach with three breakpoints. Content reflows, but spacing tokens remain consistent across sizes.</p>
+
+            <div class="guideline-cards">
+              <div class="guideline-card">
+                <div class="guideline-card__icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12" y2="18.01"/></svg>
+                </div>
+                <div class="guideline-card__body">
+                  <div class="guideline-card__title">Compact — up to 390 px</div>
+                  <div class="guideline-card__desc">Single-column layout. Full-bleed cards. Bottom sheet navigation. Touch targets at maximum size.</div>
+                </div>
+              </div>
+              <div class="guideline-card">
+                <div class="guideline-card__icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="18" rx="2"/><line x1="12" y1="18" x2="12" y2="18.01"/></svg>
+                </div>
+                <div class="guideline-card__body">
+                  <div class="guideline-card__title">Medium — 391 px to 768 px</div>
+                  <div class="guideline-card__desc">Two-column grid for cards. Side-by-side form fields. Collapsible sidebar available but hidden by default.</div>
+                </div>
+              </div>
+              <div class="guideline-card">
+                <div class="guideline-card__icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><line x1="2" y1="8" x2="22" y2="8"/></svg>
+                </div>
+                <div class="guideline-card__body">
+                  <div class="guideline-card__title">Expanded — 769 px and above</div>
+                  <div class="guideline-card__desc">Full sidebar navigation. Three-column card grids. Generous whitespace with --space-32 gutters. Max content width: 1040 px.</div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- ====== Voice & Tone ====== -->
+          <section id="gl-voice">
+            <p class="section-label">Voice &amp; Tone</p>
+            <p class="section-note">Livemap speaks clearly and confidently. The tone shifts with context — instructional in guides, encouraging in empty states, concise in labels.</p>
+
+            <div class="guideline-split">
+              <div class="guideline-split__col">
+                <div class="guideline-split__header guideline-split__header--do">Do</div>
+                <div class="guideline-split__text">Use short, direct sentences. Lead with the action. "Tap the pin to see details."</div>
+              </div>
+              <div class="guideline-split__col">
+                <div class="guideline-split__header guideline-split__header--dont">Don't</div>
+                <div class="guideline-split__text">Avoid passive voice or filler. "The details of the pin can be seen by tapping on it."</div>
+              </div>
+            </div>
+
+            <div class="guideline-split">
+              <div class="guideline-split__col">
+                <div class="guideline-split__header guideline-split__header--do">Do</div>
+                <div class="guideline-split__text">Be specific with error messages. "Location access is off. Turn it on in Settings to see nearby places."</div>
+              </div>
+              <div class="guideline-split__col">
+                <div class="guideline-split__header guideline-split__header--dont">Don't</div>
+                <div class="guideline-split__text">Avoid vague or blaming language. "Something went wrong. Please try again later."</div>
+              </div>
+            </div>
+
+            <div class="guideline-cards" style="margin-top: var(--space-16);">
+              <div class="guideline-card">
+                <div class="guideline-card__icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+                </div>
+                <div class="guideline-card__body">
+                  <div class="guideline-card__title">Capitalization</div>
+                  <div class="guideline-card__desc">Use sentence case everywhere — buttons, headings, labels, tabs. Title Case only for the product name "Livemap".</div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- ====== Dark Mode ====== -->
+          <section id="gl-dark">
+            <p class="section-label">Dark Mode</p>
+            <p class="section-note">All Livemap surfaces support automatic dark mode via semantic tokens. Never hard-code color values.</p>
+
+            <div class="guideline-cards">
+              <div class="guideline-card">
+                <div class="guideline-card__icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                </div>
+                <div class="guideline-card__body">
+                  <div class="guideline-card__title">Use semantic color tokens</div>
+                  <div class="guideline-card__desc">Always reference --color-surface, --color-label, --color-fill, etc. These swap automatically between light and dark.</div>
+                </div>
+              </div>
+              <div class="guideline-card">
+                <div class="guideline-card__icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+                </div>
+                <div class="guideline-card__body">
+                  <div class="guideline-card__title">Test both modes</div>
+                  <div class="guideline-card__desc">Verify every screen in both light and dark. Pay attention to shadows — they need higher opacity in dark mode for visibility.</div>
+                </div>
+              </div>
+              <div class="guideline-card">
+                <div class="guideline-card__icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+                </div>
+                <div class="guideline-card__body">
+                  <div class="guideline-card__title">Elevation shifts in dark mode</div>
+                  <div class="guideline-card__desc">In dark mode, elevated surfaces use lighter backgrounds (--color-surface-secondary) rather than relying on shadows alone.</div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- ====== Internationalization ====== -->
+          <section id="gl-i18n">
+            <p class="section-label">Internationalization</p>
+            <p class="section-note">Livemap is built for a global audience. Design for text expansion, RTL layouts, and locale-specific formatting.</p>
+
+            <div class="guideline-cards">
+              <div class="guideline-card">
+                <div class="guideline-card__icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                </div>
+                <div class="guideline-card__body">
+                  <div class="guideline-card__title">Allow 40% text expansion</div>
+                  <div class="guideline-card__desc">German and other languages can be 30–40% longer than English. Design layouts with flexible widths and avoid fixed-width text containers.</div>
+                </div>
+              </div>
+              <div class="guideline-card">
+                <div class="guideline-card__icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 8 6 6"/><path d="m4 14 6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="m22 22-5-10-5 10"/><path d="M14 18h6"/></svg>
+                </div>
+                <div class="guideline-card__body">
+                  <div class="guideline-card__title">Support RTL layouts</div>
+                  <div class="guideline-card__desc">Use logical CSS properties (margin-inline-start, padding-inline-end) instead of physical directions. Mirror icon directions for RTL scripts.</div>
+                </div>
+              </div>
+              <div class="guideline-card">
+                <div class="guideline-card__icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4"/><path d="M8 2v4"/><path d="M3 10h18"/></svg>
+                </div>
+                <div class="guideline-card__body">
+                  <div class="guideline-card__title">Locale-aware formatting</div>
+                  <div class="guideline-card__desc">Use the system locale for dates, times, numbers, and units. Never hardcode formats like "MM/DD/YYYY" — use Intl APIs or platform formatters.</div>
+                </div>
+              </div>
+            </div>
+          </section>
+
         </div>
       </div>
     </div>

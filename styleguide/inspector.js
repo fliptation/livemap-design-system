@@ -400,6 +400,7 @@
     tooltipEl = document.createElement('div');
     tooltipEl.className = 'token-inspector-tooltip';
     tooltipEl.setAttribute('role', 'tooltip');
+    tooltipEl.setAttribute('popover', 'manual');
     tooltipEl.addEventListener('mouseenter', function () {
       isInsideTooltip = true;
       cancelHide();
@@ -496,12 +497,13 @@
 
   function showTooltip(el, tokenMap) {
     var tip = renderTooltip(el, tokenMap);
-    // Position offscreen first to measure
+
+    // Show popover offscreen first to measure
     tip.style.top = '-9999px';
     tip.style.left = '-9999px';
-    tip.classList.remove('is-visible');
+    try { tip.showPopover(); } catch (e) {}
 
-    // Force layout then position
+    // Position then animate in
     requestAnimationFrame(function () {
       var rect = el.getBoundingClientRect();
       positionTooltip(tip, rect);
@@ -515,6 +517,7 @@
     isInsideTooltip = false;
     if (tooltipEl) {
       tooltipEl.classList.remove('is-visible');
+      try { tooltipEl.hidePopover(); } catch (e) {}
     }
     if (currentTarget) {
       currentTarget.removeAttribute('data-inspect-hover');

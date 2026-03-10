@@ -166,9 +166,10 @@
    ========================================================================== */
 
 :root {
-  --measure-narrow:  280px;
-  --measure-default: 480px;
-  --measure-wide:    640px;
+  --measure-compact: 48ch;   /* tooltips, popovers, tight overlays */
+  --measure-narrow:  34ch;   /* captions, side panels, constrained blocks */
+  --measure-default: 58ch;   /* body text — optimal reading length */
+  --measure-wide:    75ch;   /* long-form prose, rule boxes, wide content */
   --text-wrap-balance:       balance;  /* balanced line breaks for short text blocks */
 }
 
@@ -320,6 +321,36 @@
   --z-modal:     400;
   --z-popover:   500;
   --z-toast:     600;
+}
+
+
+/* ==========================================================================
+   Motion — Easing & Duration
+   --------------------------------------------------------------------------
+   Easing curves follow Apple's HIG spring-based conventions. Duration
+   values scale from micro-interactions to full-page transitions.
+
+   Platform mapping:
+     CSS     →  var(--ease-default)              transition-timing-function
+     iOS     →  Easing.default                   UIView.animate / SwiftUI
+     Android → MotionEasing.default              TimeInterpolator
+     Design  → ease/default
+   ========================================================================== */
+
+:root {
+  /* Easing curves */
+  --ease-default:   cubic-bezier(0.4, 0, 0.2, 1);   /* standard — most transitions */
+  --ease-in:        cubic-bezier(0.4, 0, 1, 1);      /* accelerate — elements exiting */
+  --ease-out:       cubic-bezier(0, 0, 0.2, 1);      /* decelerate — elements entering */
+  --ease-in-out:    cubic-bezier(0.4, 0, 0.2, 1);    /* symmetric — repositioning */
+  --ease-spring:    cubic-bezier(0.175, 0.885, 0.32, 1.275);  /* spring overshoot — playful feedback */
+
+  /* Duration scale */
+  --duration-instant: 0ms;       /* immediate state changes */
+  --duration-fast:    100ms;     /* micro feedback: button press, hover */
+  --duration-normal:  200ms;     /* standard transitions: toggles, fades */
+  --duration-moderate: 300ms;    /* panels, dropdowns, expanding content */
+  --duration-slow:    500ms;     /* page transitions, large surface moves */
 }
 
 

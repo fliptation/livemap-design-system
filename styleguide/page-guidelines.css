@@ -1,0 +1,152 @@
+/* ==========================================================================
+   Guidelines Page — Component Styles
+   ========================================================================== */
+
+/* ---- Guideline card list ---- */
+.guideline-cards {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+  margin-bottom: var(--space-40);
+}
+
+.guideline-card {
+  padding: var(--space-20) var(--space-24);
+  border: 1px solid var(--color-separator);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  display: flex;
+  gap: var(--space-16);
+  align-items: flex-start;
+}
+
+.guideline-card__icon {
+  flex-shrink: 0;
+  width: var(--space-24);
+  height: var(--space-24);
+  color: var(--color-tint-action);
+}
+
+.guideline-card__icon svg {
+  width: var(--space-24);
+  height: var(--space-24);
+}
+
+.guideline-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.guideline-card__title {
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-fine);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-fine);
+  letter-spacing: var(--letter-spacing-fine);
+  color: var(--color-label);
+}
+
+.guideline-card__desc {
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-small);
+  line-height: var(--line-height-small);
+  letter-spacing: var(--letter-spacing-small);
+  color: var(--color-gray);
+}
+
+/* ---- Do / Don't split ---- */
+.guideline-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-16);
+  margin-bottom: var(--space-40);
+}
+
+.guideline-split__col {
+  padding: var(--space-20) var(--space-24);
+  border: 1px solid var(--color-separator);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+}
+
+.guideline-split__header {
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-fine);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-fine);
+  margin-bottom: var(--space-12);
+}
+
+.guideline-split__header--do { color: var(--color-tint-positive); }
+.guideline-split__header--dont { color: var(--color-tint-destructive); }
+
+.guideline-split__text {
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-small);
+  line-height: var(--line-height-small);
+  letter-spacing: var(--letter-spacing-small);
+  color: var(--color-gray);
+}
+
+/* ---- Checklist ---- */
+.guideline-checklist {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-bottom: var(--space-40);
+}
+
+.guideline-check {
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+  padding: var(--space-10) 0;
+  border-bottom: 1px solid var(--color-separator-subtle);
+}
+
+.guideline-check:last-child { border-bottom: none; }
+
+.guideline-check svg {
+  width: 16px;
+  height: 16px;
+  color: var(--color-tint-positive);
+  flex-shrink: 0;
+}
+
+.guideline-check__text {
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-fine);
+  line-height: var(--line-height-fine);
+  letter-spacing: var(--letter-spacing-fine);
+  color: var(--color-label);
+}
+
+/* ---- Contrast demo ---- */
+.guideline-contrast-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: var(--space-12);
+  margin-bottom: var(--space-40);
+}
+
+.guideline-contrast-card {
+  padding: var(--space-16);
+  border-radius: var(--radius-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.guideline-contrast-card__sample {
+  font-family: var(--font-family-text);
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-body);
+}
+
+.guideline-contrast-card__ratio {
+  font-family: var(--font-family-mono);
+  font-size: var(--font-size-nano);
+  opacity: 0.7;
+}

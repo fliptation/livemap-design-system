@@ -9,6 +9,11 @@
 @import "page-map.css";
 @import "page-elevation.css";
 @import "page-iconography.css";
+@import "page-spacing.css";
+@import "page-motion.css";
+@import "page-components.css";
+@import "page-patterns.css";
+@import "page-guidelines.css";
 @import "chat-widget.css";
 
 /* ---- Base ---- */
@@ -390,7 +395,7 @@ body {
 .content-page {
   max-width: 1040px;
   margin: 0 auto;
-  padding: 0 var(--space-48) 140px;
+  padding: 0 var(--space-48) 60vh;
 }
 
 .content-page[hidden] {
@@ -669,7 +674,7 @@ section:first-of-type { margin-top: var(--space-8); }
   font-size: var(--font-size-small);
   line-height: var(--line-height-body);
   color: var(--color-label-secondary);
-  max-width: 660px;
+  max-width: var(--measure-wide);
 }
 
 .rule-box strong {
