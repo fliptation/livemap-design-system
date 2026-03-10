@@ -3,1282 +3,66 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Livemap — Typography</title>
+  <title>Livemap — Design System</title>
+  <link rel="stylesheet" href="../utilities.css">
   <link rel="stylesheet" href="typography.css">
-  <style>
-    /* ---- Page chrome (not part of the design system) ---- */
-    html { scroll-behavior: smooth; color-scheme: light; }
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
-    /* Force light-mode color tokens — the styleguide always renders on white */
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --color-label:            #1c1c1e;
-        --color-label-secondary:  rgba(60, 60, 67, 0.75);
-        --color-label-tertiary:   rgba(60, 60, 67, 0.30);
-        --color-label-quaternary: rgba(60, 60, 67, 0.18);
-        --color-tint-destructive: #ff3b30;
-        --color-tint-positive:    #34c759;
-        --color-tint-action:      #007aff;
-      }
-    }
-
-    body {
-      font-family: var(--font-family);
-      background: #fff;
-      color: #1c1c1e;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
-
-    .page {
-      display: flex;
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 80px 40px 120px;
-    }
-
-    /* ---- Sidebar ---- */
-    .sidebar {
-      flex: 0 0 180px;
-      position: sticky;
-      top: 40px;
-      align-self: flex-start;
-      padding-right: 32px;
-      max-height: calc(100vh - 80px);
-      overflow-y: auto;
-    }
-
-    .sidebar__logo {
-      width: 44px;
-      height: 44px;
-      margin: 0 10px 16px;
-      opacity: 0.85;
-    }
-
-    /* ---- Search ---- */
-    .sidebar__search {
-      margin: 0 0 12px;
-    }
-
-    .sidebar__search-field {
-      position: relative;
-    }
-
-    .sidebar__search-icon {
-      position: absolute;
-      left: 8px;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 14px;
-      height: 14px;
-      color: #aeaeb2;
-      pointer-events: none;
-      transition: color 0.15s;
-    }
-
-    .sidebar__search-input {
-      width: 100%;
-      font-family: var(--font-family-text);
-      font-size: 12px;
-      font-weight: var(--font-weight-regular);
-      color: #1c1c1e;
-      background: #f2f2f7;
-      border: 1.5px solid transparent;
-      border-radius: 8px;
-      padding: 6px 28px 6px 26px;
-      outline: none;
-      transition: border-color 0.15s, background 0.15s;
-      line-height: 16px;
-    }
-
-    .sidebar__search-input::placeholder {
-      color: #aeaeb2;
-    }
-
-    .sidebar__search-input:focus {
-      border-color: #007aff;
-      background: #fff;
-    }
-
-    .sidebar__search-input:focus ~ .sidebar__search-icon {
-      color: #007aff;
-    }
-
-    .sidebar__search-clear {
-      position: absolute;
-      right: 4px;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 20px;
-      height: 20px;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      background: none;
-      border: none;
-      color: #aeaeb2;
-      cursor: pointer;
-      padding: 0;
-      border-radius: 50%;
-    }
-
-    .sidebar__search-clear:hover {
-      color: #636366;
-    }
-
-    .sidebar__search-clear svg {
-      width: 12px;
-      height: 12px;
-    }
-
-    .sidebar__search--has-query .sidebar__search-clear {
-      display: flex;
-    }
-
-    .sidebar__search-bar {
-      display: flex;
-      align-items: center;
-      gap: 4px;
-      padding: 4px 6px 0;
-      display: none;
-    }
-
-    .sidebar__search--has-query .sidebar__search-bar {
-      display: flex;
-    }
-
-    .sidebar__search-meta {
-      font-family: var(--font-family-text);
-      font-size: 10px;
-      font-weight: var(--font-weight-medium);
-      color: #aeaeb2;
-      line-height: 14px;
-      flex: 1;
-      padding-left: 4px;
-    }
-
-    .sidebar__search-meta kbd {
-      font-family: var(--font-family-text);
-      font-size: 9px;
-      color: #c7c7cc;
-      background: #e5e5ea;
-      padding: 1px 4px;
-      border-radius: 3px;
-      font-weight: var(--font-weight-medium);
-    }
-
-    /* Search highlight marks */
-    mark.search-hl {
-      background: #ffd60a;
-      color: inherit;
-      border-radius: 2px;
-      padding: 0 1px;
-      box-shadow: 0 0 0 1px rgba(255, 214, 10, 0.4);
-    }
-
-    mark.search-hl--current {
-      background: #ff9f0a;
-      box-shadow: 0 0 0 2px rgba(255, 159, 10, 0.5);
-    }
-
-    .sidebar__search-nav {
-      display: flex;
-      gap: 2px;
-    }
-
-    .sidebar__search-nav button {
-      width: 24px;
-      height: 20px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: #f2f2f7;
-      border: none;
-      border-radius: 5px;
-      color: #636366;
-      cursor: pointer;
-      padding: 0;
-      transition: background 0.1s;
-    }
-
-    .sidebar__search-nav button:hover {
-      background: #e5e5ea;
-    }
-
-    .sidebar__search-nav button:disabled {
-      opacity: 0.3;
-      cursor: default;
-    }
-
-    .sidebar__search-nav button svg {
-      width: 12px;
-      height: 12px;
-    }
-
-    .sidebar__nav {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-      list-style: none;
-    }
-
-    .sidebar__link {
-      font-family: var(--font-family-text);
-      font-size: 12px;
-      font-weight: var(--font-weight-regular);
-      color: #8e8e93;
-      text-decoration: none;
-      padding: 5px 10px;
-      border-radius: 6px;
-      transition: color 0.15s, background 0.15s;
-      line-height: 16px;
-    }
-
-    .sidebar__link:hover {
-      color: #1c1c1e;
-    }
-
-    .sidebar__link.is-active {
-      color: #1c1c1e;
-      font-weight: var(--font-weight-medium);
-    }
-
-    .sidebar__divider {
-      height: 1px;
-      background: #e5e5ea;
-      margin: 8px 10px;
-    }
-
-    .main-content {
-      flex: 1;
-      min-width: 0;
-    }
-
-    /* Section spacing */
-    section { margin-top: 80px; scroll-margin-top: 32px; }
-    section:first-of-type { margin-top: 60px; }
-
-    /* Page header */
-    .page-header {
-      padding-bottom: 40px;
-      border-bottom: 1px solid #e5e5ea;
-      scroll-margin-top: 32px;
-    }
-
-    .page-title {
-      font-family: var(--font-family-display);
-      font-size: 11px;
-      font-weight: var(--font-weight-semibold);
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: #8e8e93;
-      margin-bottom: 8px;
-    }
-
-    .page-heading {
-      font-family: var(--font-family-display);
-      font-size: 48px;
-      font-weight: var(--font-weight-bold);
-      line-height: 1.1;
-      letter-spacing: -0.01em;
-      color: #1c1c1e;
-    }
-
-    .page-heading span {
-      color: #8e8e93;
-      font-weight: var(--font-weight-light);
-    }
-
-    /* Section titles */
-    .section-label {
-      font-family: var(--font-family-text);
-      font-size: 11px;
-      font-weight: var(--font-weight-semibold);
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: #8e8e93;
-      margin-bottom: 24px;
-    }
-
-    .section-note {
-      font-family: var(--font-family-text);
-      font-size: 15px;
-      font-weight: var(--font-weight-regular);
-      line-height: 22px;
-      letter-spacing: -0.016em;
-      color: #636366;
-      max-width: 560px;
-      margin-bottom: 40px;
-    }
-
-    /* ---- Type scale table ---- */
-    .type-row {
-      display: flex;
-      align-items: baseline;
-      padding: 20px 0;
-      border-bottom: 1px solid #f2f2f7;
-      gap: 24px;
-    }
-
-    .type-row:last-child { border-bottom: none; }
-
-    .type-row__meta {
-      flex: 0 0 200px;
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-
-    .type-row__name {
-      font-family: var(--font-family-text);
-      font-size: 13px;
-      font-weight: var(--font-weight-semibold);
-      color: #1c1c1e;
-    }
-
-    .type-row__spec {
-      font-family: var(--font-family-text);
-      font-size: 11px;
-      font-weight: var(--font-weight-regular);
-      color: #aeaeb2;
-      letter-spacing: 0.01em;
-    }
-
-    .type-row__sample {
-      flex: 1;
-      min-width: 0;
-    }
-
-    /* ---- Weight cards ---- */
-    .weight-grid {
-      display: flex;
-      flex-direction: column;
-      gap: 0;
-    }
-
-    .weight-card {
-      padding: 32px 0;
-      border-bottom: 1px solid #f2f2f7;
-    }
-
-    .weight-card:last-child { border-bottom: none; }
-
-    .weight-card__header {
-      display: flex;
-      align-items: baseline;
-      gap: 12px;
-      margin-bottom: 6px;
-    }
-
-    .weight-card__name {
-      font-family: var(--font-family-text);
-      font-size: 13px;
-      font-weight: var(--font-weight-semibold);
-      color: #1c1c1e;
-    }
-
-    .weight-card__value {
-      font-family: var(--font-family-text);
-      font-size: 11px;
-      color: #aeaeb2;
-    }
-
-    .weight-card__role {
-      font-family: var(--font-family-text);
-      font-size: 13px;
-      color: #8e8e93;
-      line-height: 18px;
-      margin-bottom: 20px;
-    }
-
-    .weight-card__sample {
-      font-family: var(--font-family);
-      font-size: 40px;
-      line-height: 1.15;
-      letter-spacing: -0.01em;
-      color: #1c1c1e;
-      margin-bottom: 12px;
-    }
-
-    .weight-card__context {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-    }
-
-    .weight-card__tag {
-      font-family: var(--font-family-text);
-      font-size: 12px;
-      font-weight: var(--font-weight-medium);
-      color: #8e8e93;
-      background: #f2f2f7;
-      padding: 4px 10px;
-      border-radius: 6px;
-    }
-
-    /* ---- Width variants ---- */
-    .width-grid {
-      display: flex;
-      flex-direction: column;
-      gap: 0;
-    }
-
-    .width-row {
-      display: flex;
-      align-items: baseline;
-      padding: 20px 0;
-      border-bottom: 1px solid #f2f2f7;
-      gap: 24px;
-    }
-
-    .width-row:last-child { border-bottom: none; }
-
-    .width-row__label {
-      flex: 0 0 200px;
-    }
-
-    .width-row__name {
-      font-family: var(--font-family-text);
-      font-size: 13px;
-      font-weight: var(--font-weight-semibold);
-      color: #1c1c1e;
-    }
-
-    .width-row__note {
-      font-family: var(--font-family-text);
-      font-size: 11px;
-      color: #aeaeb2;
-      margin-top: 2px;
-    }
-
-    .width-row__sample {
-      flex: 1;
-      font-size: 36px;
-      font-weight: 600;
-      line-height: 1.2;
-      color: #1c1c1e;
-    }
-
-    /* ---- Family variants ---- */
-    .family-card {
-      padding: 32px 0;
-      border-bottom: 1px solid #f2f2f7;
-    }
-
-    .family-card:last-child { border-bottom: none; }
-
-    .family-card__header {
-      display: flex;
-      align-items: baseline;
-      gap: 12px;
-      margin-bottom: 16px;
-    }
-
-    .family-card__name {
-      font-family: var(--font-family-text);
-      font-size: 13px;
-      font-weight: var(--font-weight-semibold);
-      color: #1c1c1e;
-    }
-
-    .family-card__usage {
-      font-family: var(--font-family-text);
-      font-size: 11px;
-      color: #aeaeb2;
-    }
-
-    .family-card__sample {
-      font-size: 28px;
-      line-height: 1.3;
-      color: #1c1c1e;
-    }
-
-    .family-card__sample-small {
-      font-size: 15px;
-      line-height: 22px;
-      color: #3a3a3c;
-      margin-top: 12px;
-      max-width: 600px;
-    }
-
-    /* ---- Emphasis demo ---- */
-    .emphasis-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 32px 48px;
-    }
-
-    .emphasis-pair__label {
-      font-family: var(--font-family-text);
-      font-size: 11px;
-      font-weight: var(--font-weight-semibold);
-      color: #aeaeb2;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      margin-bottom: 8px;
-    }
-
-    .emphasis-pair__default {
-      color: #1c1c1e;
-      margin-bottom: 4px;
-    }
-
-    .emphasis-pair__emphasized {
-      color: #1c1c1e;
-    }
-
-    .tag {
-      display: inline-block;
-      font-family: var(--font-family-text);
-      font-size: 10px;
-      font-weight: var(--font-weight-medium);
-      color: #aeaeb2;
-      margin-left: 8px;
-      vertical-align: middle;
-    }
-
-    /* ---- Code reference table ---- */
-    .ref-table {
-      width: 100%;
-      border-collapse: collapse;
-    }
-
-    .ref-table th {
-      font-family: var(--font-family-text);
-      font-size: 11px;
-      font-weight: var(--font-weight-semibold);
-      color: #aeaeb2;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      text-align: left;
-      padding: 0 0 12px;
-      border-bottom: 1px solid #e5e5ea;
-    }
-
-    .ref-table td {
-      font-family: var(--font-family-text);
-      font-size: 13px;
-      font-weight: var(--font-weight-regular);
-      color: #3a3a3c;
-      padding: 10px 0;
-      border-bottom: 1px solid #f2f2f7;
-      vertical-align: top;
-    }
-
-    .ref-table td:first-child {
-      font-weight: var(--font-weight-medium);
-      color: #1c1c1e;
-    }
-
-    .ref-table code {
-      font-family: "SF Mono", SFMono-Regular, ui-monospace, Menlo, monospace;
-      font-size: 12px;
-      color: #636366;
-      background: #f2f2f7;
-      padding: 2px 6px;
-      border-radius: 4px;
-    }
-
-    /* ---- Text Colors ---- */
-    .color-grid {
-      display: flex;
-      flex-direction: column;
-      gap: 0;
-    }
-
-    .color-row {
-      display: flex;
-      align-items: center;
-      padding: 16px 0;
-      border-bottom: 1px solid #f2f2f7;
-      gap: 24px;
-    }
-
-    .color-row:last-child { border-bottom: none; }
-
-    .color-row__swatch {
-      flex: 0 0 40px;
-      width: 40px;
-      height: 40px;
-      border-radius: 10px;
-      border: 1px solid rgba(0,0,0,0.06);
-    }
-
-    .color-row__info {
-      flex: 0 0 200px;
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
-
-    .color-row__name {
-      font-family: var(--font-family-text);
-      font-size: 13px;
-      font-weight: var(--font-weight-semibold);
-      color: #1c1c1e;
-    }
-
-    .color-row__hex {
-      font-family: "SF Mono", SFMono-Regular, ui-monospace, Menlo, monospace;
-      font-size: 11px;
-      color: #aeaeb2;
-    }
-
-    .color-row__sample {
-      flex: 1;
-      font-family: var(--font-family-text);
-      font-size: 17px;
-      line-height: 22px;
-    }
-
-    .dark-strip {
-      background: #1c1c1e;
-      border-radius: 16px;
-      padding: 32px;
-      margin-top: 32px;
-      overflow: visible;
-    }
-
-    .dark-strip .color-row {
-      border-bottom-color: rgba(255,255,255,0.08);
-    }
-
-    .dark-strip .color-row__sample {
-      min-width: 0;
-    }
-
-    .dark-strip .color-row__name {
-      color: #fff;
-    }
-
-    .dark-strip .color-row__hex {
-      color: rgba(235, 235, 245, 0.40);
-    }
-
-    .tint-grid {
-      display: flex;
-      gap: 32px;
-      margin-top: 32px;
-    }
-
-    .tint-card {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .tint-card__sample {
-      font-family: var(--font-family-text);
-      font-size: 22px;
-      font-weight: var(--font-weight-semibold);
-      line-height: 28px;
-    }
-
-    .tint-card__meta {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
-
-    .tint-card__name {
-      font-family: var(--font-family-text);
-      font-size: 13px;
-      font-weight: var(--font-weight-semibold);
-      color: #1c1c1e;
-    }
-
-    .tint-card__hex {
-      font-family: "SF Mono", SFMono-Regular, ui-monospace, Menlo, monospace;
-      font-size: 11px;
-      color: #aeaeb2;
-    }
-
-    .tint-card__tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-top: 4px;
-    }
-
-    .wcag-badge {
-      flex: 0 0 auto;
-      flex-shrink: 0;
-      font-family: var(--font-family-text);
-      font-size: 10px;
-      font-weight: var(--font-weight-semibold);
-      letter-spacing: 0.02em;
-      padding: 3px 8px;
-      border-radius: 4px;
-      line-height: 14px;
-      white-space: nowrap;
-      display: inline-block;
-    }
-
-    .wcag-badge--pass {
-      color: #1a7d36;
-      background: rgba(52, 199, 89, 0.14);
-    }
-
-    .wcag-badge--fail {
-      color: #c43025;
-      background: rgba(255, 59, 48, 0.10);
-    }
-
-    .dark-strip .wcag-badge.wcag-badge--pass {
-      color: #30d158;
-      background: rgba(48, 209, 88, 0.20);
-    }
-
-    .dark-strip .wcag-badge.wcag-badge--fail {
-      color: #ff453a;
-      background: rgba(255, 69, 58, 0.20);
-    }
-
-    /* ---- Numbers & Tabular Figures ---- */
-    .num-compare {
-      display: flex;
-      gap: 64px;
-      margin-bottom: 40px;
-    }
-
-    .num-column {
-      display: flex;
-      flex-direction: column;
-      gap: 0;
-    }
-
-    .num-column__title {
-      font-family: var(--font-family-text);
-      font-size: 11px;
-      font-weight: var(--font-weight-semibold);
-      color: #aeaeb2;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      margin-bottom: 12px;
-    }
-
-    .num-column__value {
-      font-family: var(--font-family-text);
-      font-size: 28px;
-      font-weight: var(--font-weight-medium);
-      line-height: 40px;
-      color: #1c1c1e;
-      text-align: right;
-      padding-right: 16px;
-      border-right: 2px solid #f2f2f7;
-    }
-
-    .num-examples {
-      display: flex;
-      gap: 48px;
-    }
-
-    .num-example {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .num-example__label {
-      font-family: var(--font-family-text);
-      font-size: 11px;
-      font-weight: var(--font-weight-semibold);
-      color: #aeaeb2;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-    }
-
-    .num-example__values {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-
-    .num-example__row {
-      display: flex;
-      align-items: baseline;
-      gap: 12px;
-    }
-
-    .num-example__row-name {
-      font-family: var(--font-family-text);
-      font-size: 15px;
-      color: #636366;
-      flex: 0 0 120px;
-    }
-
-    .num-example__row-value {
-      font-family: var(--font-family-text);
-      font-size: 15px;
-      font-weight: var(--font-weight-medium);
-      color: #1c1c1e;
-      font-variant-numeric: tabular-nums;
-    }
-
-    /* ---- SF Mono ---- */
-    .mono-specimen {
-      display: flex;
-      flex-direction: column;
-      gap: 0;
-      margin-bottom: 32px;
-    }
-
-    .mono-specimen__row {
-      display: flex;
-      align-items: baseline;
-      padding: 16px 0;
-      border-bottom: 1px solid #f2f2f7;
-      gap: 24px;
-    }
-
-    .mono-specimen__row:last-child { border-bottom: none; }
-
-    .mono-specimen__label {
-      flex: 0 0 200px;
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
-
-    .mono-specimen__name {
-      font-family: var(--font-family-text);
-      font-size: 13px;
-      font-weight: var(--font-weight-semibold);
-      color: #1c1c1e;
-    }
-
-    .mono-specimen__spec {
-      font-family: var(--font-family-text);
-      font-size: 11px;
-      color: #aeaeb2;
-    }
-
-    .mono-specimen__sample {
-      flex: 1;
-      color: #1c1c1e;
-    }
-
-    .mono-pairing {
-      font-family: var(--font-family-text);
-      font-size: 17px;
-      line-height: 28px;
-      color: #3a3a3c;
-      max-width: 600px;
-    }
-
-    .mono-pairing code {
-      font-family: "SF Mono", SFMono-Regular, ui-monospace, Menlo, monospace;
-      font-size: 15px;
-      color: #1c1c1e;
-      background: #f2f2f7;
-      padding: 2px 6px;
-      border-radius: 4px;
-    }
-
-    /* ---- Uppercase & Small Caps ---- */
-    .overline-demos {
-      display: flex;
-      flex-direction: column;
-      gap: 32px;
-      margin-bottom: 32px;
-    }
-
-    .overline-demo {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .overline-demo__context {
-      font-family: var(--font-family-text);
-      font-size: 11px;
-      color: #aeaeb2;
-    }
-
-    /* ---- Truncation ---- */
-    .truncation-demos {
-      display: flex;
-      flex-direction: column;
-      gap: 32px;
-      margin-bottom: 40px;
-    }
-
-    .truncation-demo {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .truncation-demo__label {
-      font-family: var(--font-family-text);
-      font-size: 11px;
-      font-weight: var(--font-weight-semibold);
-      color: #aeaeb2;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-    }
-
-    .truncation-demo__box {
-      background: #f9f9fb;
-      border-radius: 12px;
-      padding: 16px 20px;
-    }
-
-    .measure-demo {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-
-    .measure-bar {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-
-    .measure-bar__label {
-      font-family: var(--font-family-text);
-      font-size: 11px;
-      font-weight: var(--font-weight-medium);
-      color: #8e8e93;
-    }
-
-    .measure-bar__track {
-      height: 8px;
-      background: #e5e5ea;
-      border-radius: 4px;
-      position: relative;
-    }
-
-    .measure-bar__fill {
-      height: 100%;
-      border-radius: 4px;
-      background: #007aff;
-    }
-
-    /* ---- Map Labels ---- */
-    .map-label-hierarchy {
-      display: flex;
-      flex-direction: column;
-      gap: 0;
-      margin-bottom: 32px;
-    }
-
-    .map-label-row {
-      display: flex;
-      align-items: center;
-      padding: 14px 0;
-      border-bottom: 1px solid #f2f2f7;
-      gap: 24px;
-    }
-
-    .map-label-row:last-child { border-bottom: none; }
-
-    .map-label-row__meta {
-      flex: 0 0 200px;
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
-
-    .map-label-row__name {
-      font-family: var(--font-family-text);
-      font-size: 13px;
-      font-weight: var(--font-weight-semibold);
-      color: #1c1c1e;
-    }
-
-    .map-label-row__spec {
-      font-family: var(--font-family-text);
-      font-size: 11px;
-      color: #aeaeb2;
-    }
-
-    .map-label-row__sample {
-      flex: 1;
-      color: #1c1c1e;
-    }
-
-    .map-context {
-      display: flex;
-      gap: 16px;
-      margin-bottom: 32px;
-    }
-
-    .map-surface {
-      flex: 1;
-      border-radius: 16px;
-      padding: 40px 32px;
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-
-    .map-surface--light {
-      background: #f0ece1;
-      background-image:
-        radial-gradient(ellipse at 30% 40%, #dce8d0 0%, transparent 60%),
-        radial-gradient(ellipse at 70% 70%, #d6dce8 0%, transparent 50%);
-    }
-
-    .map-surface--dark {
-      background: #1a1a2e;
-      background-image:
-        radial-gradient(ellipse at 30% 40%, #1e2a1e 0%, transparent 60%),
-        radial-gradient(ellipse at 70% 70%, #1e1e2e 0%, transparent 50%);
-    }
-
-    .map-halo {
-      text-shadow:
-        -1px -1px 0 rgba(255,255,255,0.9),
-         1px -1px 0 rgba(255,255,255,0.9),
-        -1px  1px 0 rgba(255,255,255,0.9),
-         1px  1px 0 rgba(255,255,255,0.9),
-         0    2px 4px rgba(0,0,0,0.08);
-    }
-
-    .map-halo--dark {
-      text-shadow:
-        -1px -1px 0 rgba(0,0,0,0.7),
-         1px -1px 0 rgba(0,0,0,0.7),
-        -1px  1px 0 rgba(0,0,0,0.7),
-         1px  1px 0 rgba(0,0,0,0.7),
-         0    2px 4px rgba(0,0,0,0.3);
-    }
-
-    /* ---- Accessibility ---- */
-    .size-check {
-      display: flex;
-      flex-direction: column;
-      gap: 0;
-      margin-bottom: 32px;
-    }
-
-    .size-check__row {
-      display: flex;
-      align-items: center;
-      padding: 12px 0;
-      border-bottom: 1px solid #f2f2f7;
-      gap: 24px;
-    }
-
-    .size-check__row:last-child { border-bottom: none; }
-
-    .size-check__meta {
-      flex: 0 0 120px;
-      font-family: var(--font-family-text);
-      font-size: 13px;
-      font-weight: var(--font-weight-medium);
-      color: #1c1c1e;
-    }
-
-    .size-check__sample {
-      flex: 1;
-      color: #1c1c1e;
-    }
-
-    .size-check__status {
-      flex: 0 0 80px;
-      font-family: var(--font-family-text);
-      font-size: 12px;
-      font-weight: var(--font-weight-medium);
-      text-align: right;
-    }
-
-    .touch-target-demo {
-      display: flex;
-      gap: 24px;
-      align-items: center;
-      margin-bottom: 32px;
-    }
-
-    .touch-target-box {
-      width: 44px;
-      height: 44px;
-      border: 2px dashed #007aff;
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      flex-shrink: 0;
-    }
-
-    .touch-target-box__label {
-      font-family: "SF Mono", SFMono-Regular, ui-monospace, Menlo, monospace;
-      font-size: 10px;
-      color: #007aff;
-      white-space: nowrap;
-    }
-
-    .touch-target-demo__text {
-      font-family: var(--font-family-text);
-      font-size: 15px;
-      color: #636366;
-      line-height: 22px;
-    }
-
-    .contrast-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-      margin-bottom: 32px;
-    }
-
-    .contrast-card {
-      border-radius: 12px;
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .contrast-card__label-name {
-      font-family: var(--font-family-text);
-      font-size: 11px;
-      font-weight: var(--font-weight-semibold);
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-    }
-
-    .contrast-card__sample {
-      font-family: var(--font-family-text);
-      font-size: 17px;
-      line-height: 22px;
-    }
-
-    .contrast-card__ratio {
-      font-family: "SF Mono", SFMono-Regular, ui-monospace, Menlo, monospace;
-      font-size: 11px;
-    }
-
-    .dt-table {
-      width: 100%;
-      border-collapse: collapse;
-    }
-
-    .dt-table th {
-      font-family: var(--font-family-text);
-      font-size: 11px;
-      font-weight: var(--font-weight-semibold);
-      color: #aeaeb2;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      text-align: left;
-      padding: 0 0 12px;
-      border-bottom: 1px solid #e5e5ea;
-    }
-
-    .dt-table td {
-      font-family: "SF Mono", SFMono-Regular, ui-monospace, Menlo, monospace;
-      font-size: 12px;
-      color: #3a3a3c;
-      padding: 8px 12px 8px 0;
-      border-bottom: 1px solid #f2f2f7;
-    }
-
-    .dt-table td:first-child {
-      font-family: var(--font-family-text);
-      font-size: 13px;
-      font-weight: var(--font-weight-medium);
-      color: #1c1c1e;
-    }
-
-    .usage-hl {
-      color: #1c1c1e;
-      font-weight: var(--font-weight-medium);
-    }
-
-    .rule-box {
-      background: #f9f9fb;
-      border-radius: 12px;
-      padding: 20px 24px;
-      font-family: var(--font-family-text);
-      font-size: 15px;
-      line-height: 22px;
-      color: #636366;
-      max-width: 640px;
-    }
-
-    .rule-box strong {
-      color: #1c1c1e;
-      font-weight: var(--font-weight-semibold);
-    }
-
-  </style>
+  <link rel="stylesheet" href="styleguide.css">
 </head>
 <body>
-  <div class="page">
+  <div class="app-shell">
 
-    <!-- ============================================================
-         Sidebar Navigation
-         ============================================================ -->
-    <nav class="sidebar">
-      <a href="#"><img src="livemap-logomark.png" alt="Livemap" class="sidebar__logo"></a>
-
-      <div class="sidebar__search" id="sidebar-search">
-        <div class="sidebar__search-field">
-          <input class="sidebar__search-input" id="search-input" type="text" placeholder="Search…" autocomplete="off" spellcheck="false">
-          <svg class="sidebar__search-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6.5" cy="6.5" r="4.5"/><line x1="10" y1="10" x2="14" y2="14"/></svg>
-          <button class="sidebar__search-clear" id="search-clear" tabindex="-1" aria-label="Clear search">
-            <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="3" y1="3" x2="9" y2="9"/><line x1="9" y1="3" x2="3" y2="9"/></svg>
-          </button>
-        </div>
-        <div class="sidebar__search-bar">
-          <div class="sidebar__search-meta" id="search-meta"></div>
-          <div class="sidebar__search-nav" id="search-nav">
-            <button id="search-prev" aria-label="Previous match" disabled>
-              <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,8 6,4 10,8"/></svg>
-            </button>
-            <button id="search-next" aria-label="Next match" disabled>
-              <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,4 6,8 10,4"/></svg>
-            </button>
-          </div>
+    <aside class="app-sidebar" id="app-sidebar">
+      <div class="app-sidebar__brand" id="sidebar-toggle">
+        <div class="app-sidebar__brand-name">Livemap Design System</div>
+        <div class="app-sidebar__brand-version">v0.1</div>
+      </div>
+      <nav class="app-sidebar__nav" id="app-sidebar-nav"></nav>
+      <div class="app-sidebar__profile">
+        <div class="app-sidebar__profile-avatar">LM</div>
+        <div class="app-sidebar__profile-info">
+          <div class="app-sidebar__profile-name">Lena Meier</div>
+          <div class="app-sidebar__profile-role">Member</div>
         </div>
       </div>
+    </aside>
 
-      <ul class="sidebar__nav">
-        <li><a class="sidebar__link" href="#font-families">Font Families</a></li>
-        <li><a class="sidebar__link" href="#weight-scale">Weight Scale</a></li>
-        <li><a class="sidebar__link" href="#width-variants">Width Variants</a></li>
-        <li><a class="sidebar__link" href="#type-scale">iOS Type Scale</a></li>
-        <li><a class="sidebar__link" href="#emphasis">Emphasis</a></li>
-        <li><div class="sidebar__divider"></div></li>
-        <li><a class="sidebar__link" href="#text-colors">Text Colors</a></li>
-        <li><a class="sidebar__link" href="#tabular-figures">Numbers</a></li>
-        <li><a class="sidebar__link" href="#sf-mono">SF Mono</a></li>
-        <li><a class="sidebar__link" href="#uppercase">Uppercase</a></li>
-        <li><a class="sidebar__link" href="#truncation">Truncation</a></li>
-        <li><a class="sidebar__link" href="#map-labels">Map Labels</a></li>
-        <li><a class="sidebar__link" href="#accessibility">Accessibility</a></li>
-        <li><div class="sidebar__divider"></div></li>
-        <li><a class="sidebar__link" href="#chat-bubbles">Chat Bubbles</a></li>
-        <li><a class="sidebar__link" href="#timestamps">Timestamps</a></li>
-        <li><a class="sidebar__link" href="#navigation">Navigation</a></li>
-        <li><a class="sidebar__link" href="#states">States</a></li>
-        <li><a class="sidebar__link" href="#search">Search</a></li>
-        <li><a class="sidebar__link" href="#multilingual">Multilingual</a></li>
-        <li><a class="sidebar__link" href="#interactive">Interactive</a></li>
-        <li><div class="sidebar__divider"></div></li>
-        <li><a class="sidebar__link" href="#token-reference">Token Reference</a></li>
-        <li><a class="sidebar__link" href="#usage-notes">Usage Notes</a></li>
-      </ul>
-    </nav>
+    <div class="app-main">
+      <header class="app-header">
+        <div class="app-header__left">
+          <p class="app-header__title" id="header-title">Livemap Design System <span style="opacity: 0.5; margin-left: 4px;">v0.1</span></p>
+          <h1 class="app-header__heading" id="header-heading">Typography <span>/ SF Pro</span></h1>
+        </div>
+        <div class="app-header__right">
+          <div class="sidebar__search" id="sidebar-search">
+            <div class="sidebar__search-field">
+              <input class="sidebar__search-input" id="search-input" type="text" placeholder="Search…" autocomplete="off" spellcheck="false">
+              <svg class="sidebar__search-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6.5" cy="6.5" r="4.5"/><line x1="10" y1="10" x2="14" y2="14"/></svg>
+              <button class="sidebar__search-clear" id="search-clear" tabindex="-1" aria-label="Clear search">
+                <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="3" y1="3" x2="9" y2="9"/><line x1="9" y1="3" x2="3" y2="9"/></svg>
+              </button>
+            </div>
+            <div class="sidebar__search-bar">
+              <div class="sidebar__search-meta" id="search-meta"></div>
+              <div class="sidebar__search-nav" id="search-nav">
+                <button id="search-prev" aria-label="Previous match" disabled>
+                  <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,8 6,4 10,8"/></svg>
+                </button>
+                <button id="search-next" aria-label="Next match" disabled>
+                  <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,4 6,8 10,4"/></svg>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="platform-toggle" id="platform-toggle">
+            <button class="platform-toggle__btn is-active" data-platform="html">HTML</button>
+            <button class="platform-toggle__btn" data-platform="ios">iOS</button>
+            <button class="platform-toggle__btn" data-platform="android">Android</button>
+          </div>
+        </div>
+      </header>
 
-    <div class="main-content">
-
-    <!-- ============================================================
-         Header
-         ============================================================ -->
-    <header class="page-header">
-      <p class="page-title">Livemap Design System <span style="opacity: 0.5; margin-left: 4px;">v0.1</span></p>
-      <h1 class="page-heading">Typography <span>/ SF Pro</span></h1>
-    </header>
-
-
+      <div class="app-content" id="app-content">
+        <div class="content-panel" id="panel-typography">
     <!-- ============================================================
          1. Font Families
          ============================================================ -->
@@ -1468,47 +252,47 @@
 
       <div class="type-row">
         <div class="type-row__meta">
-          <span class="type-row__name">Large Title</span>
+          <span class="type-row__name" data-name-html="Display" data-name-ios="Large Title" data-name-android="Display Large">Display</span>
           <span class="type-row__spec">34 / 41 / Regular / +0.011em</span>
         </div>
-        <div class="type-row__sample type-large-title">Explore the map</div>
+        <div class="type-row__sample type-display">Explore the map</div>
       </div>
 
       <div class="type-row">
         <div class="type-row__meta">
-          <span class="type-row__name">Title 1</span>
+          <span class="type-row__name" data-name-html="Heading LG" data-name-ios="Title 1" data-name-android="Headline Large">Heading LG</span>
           <span class="type-row__spec">28 / 34 / Regular / +0.013em</span>
         </div>
-        <div class="type-row__sample type-title1">Nearby places</div>
+        <div class="type-row__sample type-heading-lg">Nearby places</div>
       </div>
 
       <div class="type-row">
         <div class="type-row__meta">
-          <span class="type-row__name">Title 2</span>
+          <span class="type-row__name" data-name-html="Heading MD" data-name-ios="Title 2" data-name-android="Headline Medium">Heading MD</span>
           <span class="type-row__spec">22 / 28 / Regular / +0.016em</span>
         </div>
-        <div class="type-row__sample type-title2">Saved locations</div>
+        <div class="type-row__sample type-heading-md">Saved locations</div>
       </div>
 
       <div class="type-row">
         <div class="type-row__meta">
-          <span class="type-row__name">Title 3</span>
+          <span class="type-row__name" data-name-html="Heading SM" data-name-ios="Title 3" data-name-android="Headline Small">Heading SM</span>
           <span class="type-row__spec">20 / 25 / Regular / +0.019em</span>
         </div>
-        <div class="type-row__sample type-title3">Route details</div>
+        <div class="type-row__sample type-heading-sm">Route details</div>
       </div>
 
       <div class="type-row">
         <div class="type-row__meta">
-          <span class="type-row__name">Headline</span>
+          <span class="type-row__name" data-name-html="Label" data-name-ios="Headline" data-name-android="Title Medium">Label</span>
           <span class="type-row__spec">17 / 22 / Semibold / -0.024em</span>
         </div>
-        <div class="type-row__sample type-headline">Current location</div>
+        <div class="type-row__sample type-label">Current location</div>
       </div>
 
       <div class="type-row">
         <div class="type-row__meta">
-          <span class="type-row__name">Body</span>
+          <span class="type-row__name" data-name-html="Body" data-name-ios="Body" data-name-android="Body Large">Body</span>
           <span class="type-row__spec">17 / 22 / Regular / -0.024em</span>
         </div>
         <div class="type-row__sample type-body">Biege rechts ab in die Bahnhofstrasse, dann weiter 200 Meter bis zur Kreuzung.</div>
@@ -1516,42 +300,42 @@
 
       <div class="type-row">
         <div class="type-row__meta">
-          <span class="type-row__name">Callout</span>
+          <span class="type-row__name" data-name-html="Detail" data-name-ios="Callout" data-name-android="Body Medium">Detail</span>
           <span class="type-row__spec">16 / 21 / Regular / -0.020em</span>
         </div>
-        <div class="type-row__sample type-callout">Estimated arrival in 12 minutes</div>
+        <div class="type-row__sample type-detail">Estimated arrival in 12 minutes</div>
       </div>
 
       <div class="type-row">
         <div class="type-row__meta">
-          <span class="type-row__name">Subheadline</span>
+          <span class="type-row__name" data-name-html="Small" data-name-ios="Subheadline" data-name-android="Body Small">Small</span>
           <span class="type-row__spec">15 / 20 / Regular / -0.016em</span>
         </div>
-        <div class="type-row__sample type-subheadline">3.2 km away</div>
+        <div class="type-row__sample type-small">3.2 km away</div>
       </div>
 
       <div class="type-row">
         <div class="type-row__meta">
-          <span class="type-row__name">Footnote</span>
+          <span class="type-row__name" data-name-html="Fine" data-name-ios="Footnote" data-name-android="Label Large">Fine</span>
           <span class="type-row__spec">13 / 18 / Regular / -0.006em</span>
         </div>
-        <div class="type-row__sample type-footnote">Last updated 2 minutes ago</div>
+        <div class="type-row__sample type-fine">Last updated 2 minutes ago</div>
       </div>
 
       <div class="type-row">
         <div class="type-row__meta">
-          <span class="type-row__name">Caption 1</span>
+          <span class="type-row__name" data-name-html="Micro" data-name-ios="Caption 1" data-name-android="Label Medium">Micro</span>
           <span class="type-row__spec">12 / 16 / Regular / 0</span>
         </div>
-        <div class="type-row__sample type-caption1">Map data provided by OpenStreetMap contributors</div>
+        <div class="type-row__sample type-micro">Map data provided by OpenStreetMap contributors</div>
       </div>
 
       <div class="type-row">
         <div class="type-row__meta">
-          <span class="type-row__name">Caption 2</span>
+          <span class="type-row__name" data-name-html="Nano" data-name-ios="Caption 2" data-name-android="Label Small">Nano</span>
           <span class="type-row__spec">11 / 13 / Regular / +0.006em</span>
         </div>
-        <div class="type-row__sample type-caption2">Coordinates: 47.3769, 8.5417</div>
+        <div class="type-row__sample type-nano">Coordinates: 47.3769, 8.5417</div>
       </div>
     </section>
 
@@ -1567,34 +351,34 @@
 
       <div class="emphasis-grid">
         <div class="emphasis-pair">
-          <div class="emphasis-pair__label">Large Title</div>
-          <div class="emphasis-pair__default type-large-title">Explore <span class="tag">Regular 400</span></div>
-          <div class="emphasis-pair__emphasized type-large-title emphasized">Explore <span class="tag">Bold 700</span></div>
+          <div class="emphasis-pair__label" data-name-html="Display" data-name-ios="Large Title" data-name-android="Display Large">Display</div>
+          <div class="emphasis-pair__default type-display">Explore <span class="tag">Regular 400</span></div>
+          <div class="emphasis-pair__emphasized type-display emphasized">Explore <span class="tag">Bold 700</span></div>
         </div>
         <div class="emphasis-pair">
-          <div class="emphasis-pair__label">Headline</div>
-          <div class="emphasis-pair__default type-headline">Location <span class="tag">Semibold 600</span></div>
-          <div class="emphasis-pair__emphasized type-headline emphasized">Location <span class="tag">Bold 700</span></div>
+          <div class="emphasis-pair__label" data-name-html="Label" data-name-ios="Headline" data-name-android="Title Medium">Label</div>
+          <div class="emphasis-pair__default type-label">Location <span class="tag">Semibold 600</span></div>
+          <div class="emphasis-pair__emphasized type-label emphasized">Location <span class="tag">Bold 700</span></div>
         </div>
         <div class="emphasis-pair">
-          <div class="emphasis-pair__label">Body</div>
+          <div class="emphasis-pair__label" data-name-html="Body" data-name-ios="Body" data-name-android="Body Large">Body</div>
           <div class="emphasis-pair__default type-body">Directions <span class="tag">Regular 400</span></div>
           <div class="emphasis-pair__emphasized type-body emphasized">Directions <span class="tag">Semibold 600</span></div>
         </div>
         <div class="emphasis-pair">
-          <div class="emphasis-pair__label">Callout</div>
-          <div class="emphasis-pair__default type-callout">Arrival <span class="tag">Regular 400</span></div>
-          <div class="emphasis-pair__emphasized type-callout emphasized">Arrival <span class="tag">Medium 500</span></div>
+          <div class="emphasis-pair__label" data-name-html="Detail" data-name-ios="Callout" data-name-android="Body Medium">Detail</div>
+          <div class="emphasis-pair__default type-detail">Arrival <span class="tag">Regular 400</span></div>
+          <div class="emphasis-pair__emphasized type-detail emphasized">Arrival <span class="tag">Medium 500</span></div>
         </div>
         <div class="emphasis-pair">
-          <div class="emphasis-pair__label">Footnote</div>
-          <div class="emphasis-pair__default type-footnote">Updated <span class="tag">Regular 400</span></div>
-          <div class="emphasis-pair__emphasized type-footnote emphasized">Updated <span class="tag">Semibold 600</span></div>
+          <div class="emphasis-pair__label" data-name-html="Fine" data-name-ios="Footnote" data-name-android="Label Large">Fine</div>
+          <div class="emphasis-pair__default type-fine">Updated <span class="tag">Regular 400</span></div>
+          <div class="emphasis-pair__emphasized type-fine emphasized">Updated <span class="tag">Semibold 600</span></div>
         </div>
         <div class="emphasis-pair">
-          <div class="emphasis-pair__label">Caption 1</div>
-          <div class="emphasis-pair__default type-caption1">Source <span class="tag">Regular 400</span></div>
-          <div class="emphasis-pair__emphasized type-caption1 emphasized">Source <span class="tag">Medium 500</span></div>
+          <div class="emphasis-pair__label" data-name-html="Micro" data-name-ios="Caption 1" data-name-android="Label Medium">Micro</div>
+          <div class="emphasis-pair__default type-micro">Source <span class="tag">Regular 400</span></div>
+          <div class="emphasis-pair__emphasized type-micro emphasized">Source <span class="tag">Medium 500</span></div>
         </div>
       </div>
     </section>
@@ -1918,7 +702,7 @@
         <div class="overline-demo">
           <div class="overline-demo__context">Section label pattern</div>
           <div class="type-overline" style="color: #8e8e93;">Livemap Design System</div>
-          <div class="type-title2" style="font-weight: 600; margin-top: 4px;">Typography</div>
+          <div class="type-heading-md" style="font-weight: 600; margin-top: 4px;">Typography</div>
         </div>
         <div class="overline-demo">
           <div class="overline-demo__context">Category tag</div>
@@ -1937,7 +721,7 @@
       <p style="font-family: var(--font-family-text); font-size: 11px; font-weight: 600; color: #aeaeb2; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 16px;">Small Caps</p>
       <div style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px;">
         <div class="type-body type-small-caps" style="font-size: 17px;">Open Monday through Saturday</div>
-        <div class="type-subheadline type-small-caps">Zürich &middot; Basel &middot; Bern &middot; Luzern</div>
+        <div class="type-small type-small-caps">Zürich &middot; Basel &middot; Bern &middot; Luzern</div>
       </div>
 
       <div class="rule-box">
@@ -1959,7 +743,7 @@
         <div class="truncation-demo">
           <div class="truncation-demo__label">Single-line truncation</div>
           <div class="truncation-demo__box" style="max-width: 320px;">
-            <div class="type-headline truncate">Schweizerisches Landesmuseum Zürich — Museumstrasse</div>
+            <div class="type-label truncate">Schweizerisches Landesmuseum Zürich — Museumstrasse</div>
           </div>
         </div>
         <div class="truncation-demo">
@@ -2140,7 +924,7 @@
       <!-- Contrast check -->
       <p style="font-family: var(--font-family-text); font-size: 11px; font-weight: 600; color: #aeaeb2; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 16px;">Contrast check</p>
       <div class="contrast-grid">
-        <div class="contrast-card" style="background: #fff; border: 1px solid #e5e5ea;">
+        <div class="contrast-card" style="background: #fff; border: 1px solid rgba(0,0,0,0.06);">
           <div class="contrast-card__label-name" style="color: #aeaeb2;">On white</div>
           <div class="contrast-card__sample" style="color: #1c1c1e;">Primary &mdash; #1c1c1e</div>
           <div class="contrast-card__ratio" style="color: #34c759;">~16.5:1</div>
@@ -2264,20 +1048,32 @@
       <div class="chat-demo">
         <div class="bubble-system">Heute, 14:32</div>
 
-        <div class="bubble-user">Wo ist der nächste Veloweg zum See?</div>
+        <div class="chat-msg chat-msg--user">
+          <div class="chat-avatar"></div>
+          <div class="bubble-user">Wo ist der nächste Veloweg zum See?</div>
+        </div>
         <div class="bubble-time bubble-time--right">14:32</div>
 
-        <div class="bubble-assistant">Der <strong>Seeuferweg</strong> beginnt in 350 m Richtung Norden. Er führt direkt am Zürichsee entlang.</div>
+        <div class="chat-msg chat-msg--assistant">
+          <div class="chat-avatar"></div>
+          <div class="bubble-assistant">Der <strong>Seeuferweg</strong> beginnt in 350 m Richtung Norden. Er führt direkt am Zürichsee entlang.</div>
+        </div>
         <div class="bubble-time bubble-time--left">14:32</div>
 
-        <div class="bubble-user">Zeig mir die Route mit <code>ETA</code></div>
+        <div class="chat-msg chat-msg--user">
+          <div class="chat-avatar"></div>
+          <div class="bubble-user">Zeig mir die Route mit <code>ETA</code></div>
+        </div>
         <div class="bubble-time bubble-time--right">14:33</div>
 
-        <div class="bubble-assistant" style="padding: 0; background: none;">
-          <div class="bubble-assistant chat-typing">
-            <div class="chat-typing__dot"></div>
-            <div class="chat-typing__dot"></div>
-            <div class="chat-typing__dot"></div>
+        <div class="chat-msg chat-msg--assistant">
+          <div class="chat-avatar"></div>
+          <div class="bubble-assistant" style="padding: 0; background: none;">
+            <div class="bubble-assistant chat-typing">
+              <div class="chat-typing__dot"></div>
+              <div class="chat-typing__dot"></div>
+              <div class="chat-typing__dot"></div>
+            </div>
           </div>
         </div>
 
@@ -2288,8 +1084,11 @@
         <div><strong>Body 17px</strong> for user and assistant messages. Inline <code>code</code> uses SF Mono 15px.</div>
         <div><strong>Caption1 12px</strong> for system messages (centered). <strong>Caption2 11px</strong> for timestamps (tertiary color).</div>
         <div><strong>Rule:</strong> Maximum bubble width ~280px to maintain readable line length on mobile.</div>
+        <div><strong>Avatars:</strong> 28px circles identify participants.</div>
       </div>
     </section>
+
+
 
 
     <!-- ============================================================
@@ -2422,7 +1221,7 @@
         <div>
           <p style="font-family: var(--font-family-text); font-size: 11px; font-weight: 600; color: #aeaeb2; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 16px;">Empty state</p>
           <div class="state-card state-card--centered">
-            <div class="type-title2" style="color: var(--color-label-secondary);">Keine Ergebnisse</div>
+            <div class="type-heading-md" style="color: var(--color-label-secondary);">Keine Ergebnisse</div>
             <div class="type-body" style="color: var(--color-label-secondary);">Versuche einen anderen Suchbegriff oder ändere die Filter.</div>
           </div>
         </div>
@@ -2448,7 +1247,7 @@
           <p style="font-family: var(--font-family-text); font-size: 11px; font-weight: 600; color: #aeaeb2; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 16px;">Success toast</p>
           <div class="state-toast">
             <div class="state-toast__icon">✓</div>
-            <span class="type-footnote" style="color: #fff;">Route gespeichert</span>
+            <span class="type-fine" style="color: #fff;">Route gespeichert</span>
           </div>
         </div>
 
@@ -2489,16 +1288,16 @@
       <p style="font-family: var(--font-family-text); font-size: 11px; font-weight: 600; color: #aeaeb2; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 16px;">Autocomplete results</p>
       <div class="search-autocomplete">
         <div class="search-autocomplete__row">
-          <div class="type-headline weight-regular"><span class="search-match">Bahn</span>hofstrasse</div>
-          <div class="type-footnote" style="color: var(--color-label-secondary);">8001 Zürich, Kreis 1</div>
+          <div class="type-label weight-regular"><span class="search-match">Bahn</span>hofstrasse</div>
+          <div class="type-fine" style="color: var(--color-label-secondary);">8001 Zürich, Kreis 1</div>
         </div>
         <div class="search-autocomplete__row">
-          <div class="type-headline weight-regular"><span class="search-match">Bahn</span>hofplatz</div>
-          <div class="type-footnote" style="color: var(--color-label-secondary);">8001 Zürich, Hauptbahnhof</div>
+          <div class="type-label weight-regular"><span class="search-match">Bahn</span>hofplatz</div>
+          <div class="type-fine" style="color: var(--color-label-secondary);">8001 Zürich, Hauptbahnhof</div>
         </div>
         <div class="search-autocomplete__row">
-          <div class="type-headline weight-regular"><span class="search-match">Bahn</span>hofquai</div>
-          <div class="type-footnote" style="color: var(--color-label-secondary);">8001 Zürich, Altstadt</div>
+          <div class="type-label weight-regular"><span class="search-match">Bahn</span>hofquai</div>
+          <div class="type-fine" style="color: var(--color-label-secondary);">8001 Zürich, Altstadt</div>
         </div>
       </div>
 
@@ -2506,11 +1305,11 @@
       <div style="display: flex; flex-direction: column; gap: 0; max-width: 400px; margin-bottom: 24px;">
         <div class="search-recent">
           <div class="search-recent__icon"></div>
-          <span class="type-subheadline" style="color: var(--color-label-secondary);">Zürich HB</span>
+          <span class="type-small" style="color: var(--color-label-secondary);">Zürich HB</span>
         </div>
         <div class="search-recent">
           <div class="search-recent__icon"></div>
-          <span class="type-subheadline" style="color: var(--color-label-secondary);">Bürkliplatz</span>
+          <span class="type-small" style="color: var(--color-label-secondary);">Bürkliplatz</span>
         </div>
       </div>
 
@@ -2518,7 +1317,7 @@
       <div style="max-width: 400px; margin-bottom: 32px;">
         <div class="type-overline" style="margin-bottom: 12px; color: #8e8e93;">Restaurants</div>
         <div class="type-overline" style="margin-bottom: 12px; color: #8e8e93;">Sehenswürdigkeiten</div>
-        <div class="type-footnote" style="color: var(--color-label-secondary);">Keine Ergebnisse für «Xyz»</div>
+        <div class="type-fine" style="color: var(--color-label-secondary);">Keine Ergebnisse für «Xyz»</div>
       </div>
 
       <div class="rule-box" style="display: flex; flex-direction: column; gap: 8px;">
@@ -2598,16 +1397,16 @@
       <p style="font-family: var(--font-family-text); font-size: 11px; font-weight: 600; color: #aeaeb2; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 16px;">Long compound words (German)</p>
       <div style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px; max-width: 480px;">
         <div style="display: flex; align-items: baseline; gap: 16px;">
-          <div class="type-headline" style="flex: 1;">Geschwindigkeitsbegrenzung</div>
-          <div class="type-caption1" style="color: #aeaeb2; flex: 0 0 auto;">26 characters</div>
+          <div class="type-label" style="flex: 1;">Geschwindigkeitsbegrenzung</div>
+          <div class="type-micro" style="color: #aeaeb2; flex: 0 0 auto;">26 characters</div>
         </div>
         <div style="display: flex; align-items: baseline; gap: 16px;">
-          <div class="type-headline" style="flex: 1;">Strassenverkehrsamt</div>
-          <div class="type-caption1" style="color: #aeaeb2; flex: 0 0 auto;">19 characters</div>
+          <div class="type-label" style="flex: 1;">Strassenverkehrsamt</div>
+          <div class="type-micro" style="color: #aeaeb2; flex: 0 0 auto;">19 characters</div>
         </div>
         <div style="display: flex; align-items: baseline; gap: 16px;">
-          <div class="type-headline" style="flex: 1;">Fussgängerübergang</div>
-          <div class="type-caption1" style="color: #aeaeb2; flex: 0 0 auto;">18 characters</div>
+          <div class="type-label" style="flex: 1;">Fussgängerübergang</div>
+          <div class="type-micro" style="color: #aeaeb2; flex: 0 0 auto;">18 characters</div>
         </div>
       </div>
 
@@ -2644,7 +1443,7 @@
 
         <div class="interactive-demo">
           <div class="interactive-demo__label">Tappable address</div>
-          <div class="type-subheadline" style="color: var(--color-tint-action); cursor: pointer;">Bahnhofstrasse 1, 8001 Zürich</div>
+          <div class="type-small" style="color: var(--color-tint-action); cursor: pointer;">Bahnhofstrasse 1, 8001 Zürich</div>
         </div>
 
         <div class="interactive-demo">
@@ -2696,86 +1495,86 @@
             <th style="width: 180px;">Class</th>
             <th style="width: 120px;">Size Token</th>
             <th style="width: 130px;">Leading Token</th>
-            <th>Tracking Token</th>
+            <th>Letter Spacing Token</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>Large Title</td>
-            <td><code>.type-large-title</code></td>
-            <td><code>--font-size-large-title</code></td>
-            <td><code>--line-height-large-title</code></td>
-            <td><code>--tracking-large-title</code></td>
+            <td data-name-html="Display" data-name-ios="Large Title" data-name-android="Display Large">Display</td>
+            <td><code>.type-display</code></td>
+            <td><code>--font-size-display</code></td>
+            <td><code>--line-height-display</code></td>
+            <td><code>--letter-spacing-display</code></td>
           </tr>
           <tr>
-            <td>Title 1</td>
-            <td><code>.type-title1</code></td>
-            <td><code>--font-size-title1</code></td>
-            <td><code>--line-height-title1</code></td>
-            <td><code>--tracking-title1</code></td>
+            <td data-name-html="Heading LG" data-name-ios="Title 1" data-name-android="Headline Large">Heading LG</td>
+            <td><code>.type-heading-lg</code></td>
+            <td><code>--font-size-heading-lg</code></td>
+            <td><code>--line-height-heading-lg</code></td>
+            <td><code>--letter-spacing-heading-lg</code></td>
           </tr>
           <tr>
-            <td>Title 2</td>
-            <td><code>.type-title2</code></td>
-            <td><code>--font-size-title2</code></td>
-            <td><code>--line-height-title2</code></td>
-            <td><code>--tracking-title2</code></td>
+            <td data-name-html="Heading MD" data-name-ios="Title 2" data-name-android="Headline Medium">Heading MD</td>
+            <td><code>.type-heading-md</code></td>
+            <td><code>--font-size-heading-md</code></td>
+            <td><code>--line-height-heading-md</code></td>
+            <td><code>--letter-spacing-heading-md</code></td>
           </tr>
           <tr>
-            <td>Title 3</td>
-            <td><code>.type-title3</code></td>
-            <td><code>--font-size-title3</code></td>
-            <td><code>--line-height-title3</code></td>
-            <td><code>--tracking-title3</code></td>
+            <td data-name-html="Heading SM" data-name-ios="Title 3" data-name-android="Headline Small">Heading SM</td>
+            <td><code>.type-heading-sm</code></td>
+            <td><code>--font-size-heading-sm</code></td>
+            <td><code>--line-height-heading-sm</code></td>
+            <td><code>--letter-spacing-heading-sm</code></td>
           </tr>
           <tr>
-            <td>Headline</td>
-            <td><code>.type-headline</code></td>
-            <td><code>--font-size-headline</code></td>
-            <td><code>--line-height-headline</code></td>
-            <td><code>--tracking-headline</code></td>
+            <td data-name-html="Label" data-name-ios="Headline" data-name-android="Title Medium">Label</td>
+            <td><code>.type-label</code></td>
+            <td><code>--font-size-label</code></td>
+            <td><code>--line-height-label</code></td>
+            <td><code>--letter-spacing-label</code></td>
           </tr>
           <tr>
-            <td>Body</td>
+            <td data-name-html="Body" data-name-ios="Body" data-name-android="Body Large">Body</td>
             <td><code>.type-body</code></td>
             <td><code>--font-size-body</code></td>
             <td><code>--line-height-body</code></td>
-            <td><code>--tracking-body</code></td>
+            <td><code>--letter-spacing-body</code></td>
           </tr>
           <tr>
-            <td>Callout</td>
-            <td><code>.type-callout</code></td>
-            <td><code>--font-size-callout</code></td>
-            <td><code>--line-height-callout</code></td>
-            <td><code>--tracking-callout</code></td>
+            <td data-name-html="Detail" data-name-ios="Callout" data-name-android="Body Medium">Detail</td>
+            <td><code>.type-detail</code></td>
+            <td><code>--font-size-detail</code></td>
+            <td><code>--line-height-detail</code></td>
+            <td><code>--letter-spacing-detail</code></td>
           </tr>
           <tr>
-            <td>Subheadline</td>
-            <td><code>.type-subheadline</code></td>
-            <td><code>--font-size-subheadline</code></td>
-            <td><code>--line-height-subheadline</code></td>
-            <td><code>--tracking-subheadline</code></td>
+            <td data-name-html="Small" data-name-ios="Subheadline" data-name-android="Body Small">Small</td>
+            <td><code>.type-small</code></td>
+            <td><code>--font-size-small</code></td>
+            <td><code>--line-height-small</code></td>
+            <td><code>--letter-spacing-small</code></td>
           </tr>
           <tr>
-            <td>Footnote</td>
-            <td><code>.type-footnote</code></td>
-            <td><code>--font-size-footnote</code></td>
-            <td><code>--line-height-footnote</code></td>
-            <td><code>--tracking-footnote</code></td>
+            <td data-name-html="Fine" data-name-ios="Footnote" data-name-android="Label Large">Fine</td>
+            <td><code>.type-fine</code></td>
+            <td><code>--font-size-fine</code></td>
+            <td><code>--line-height-fine</code></td>
+            <td><code>--letter-spacing-fine</code></td>
           </tr>
           <tr>
-            <td>Caption 1</td>
-            <td><code>.type-caption1</code></td>
-            <td><code>--font-size-caption1</code></td>
-            <td><code>--line-height-caption1</code></td>
-            <td><code>--tracking-caption1</code></td>
+            <td data-name-html="Micro" data-name-ios="Caption 1" data-name-android="Label Medium">Micro</td>
+            <td><code>.type-micro</code></td>
+            <td><code>--font-size-micro</code></td>
+            <td><code>--line-height-micro</code></td>
+            <td><code>--letter-spacing-micro</code></td>
           </tr>
           <tr>
-            <td>Caption 2</td>
-            <td><code>.type-caption2</code></td>
-            <td><code>--font-size-caption2</code></td>
-            <td><code>--line-height-caption2</code></td>
-            <td><code>--tracking-caption2</code></td>
+            <td data-name-html="Nano" data-name-ios="Caption 2" data-name-android="Label Small">Nano</td>
+            <td><code>.type-nano</code></td>
+            <td><code>--font-size-nano</code></td>
+            <td><code>--line-height-nano</code></td>
+            <td><code>--letter-spacing-nano</code></td>
           </tr>
         </tbody>
       </table>
@@ -2917,233 +1716,137 @@
       <p class="section-label">Usage Notes</p>
       <div style="display: flex; flex-direction: column; gap: 24px; max-width: 640px;">
         <div>
-          <p class="type-headline" style="margin-bottom: 4px;">Optical sizing</p>
+          <p class="type-label" style="margin-bottom: 4px;">Optical sizing</p>
           <p class="type-body" style="color: #636366;">
             SF Pro automatically adjusts letter shapes based on size via the <code>opsz</code> axis. At small sizes, letters are wider with more open counters for legibility. At large sizes, spacing tightens for elegance. Prefer <code>SF Pro</code> over explicit Display/Text cuts to let the browser handle this.
           </p>
         </div>
         <div>
-          <p class="type-headline" style="margin-bottom: 4px;">Tracking matters</p>
+          <p class="type-label" style="margin-bottom: 4px;">Tracking matters</p>
           <p class="type-body" style="color: #636366;">
             Apple's tracking values are carefully tuned per style. Display sizes use positive tracking (slightly open), while text sizes use negative tracking (slightly tight). Always apply the tracking token alongside size and weight.
           </p>
         </div>
         <div>
-          <p class="type-headline" style="margin-bottom: 4px;">Width variants for maps</p>
+          <p class="type-label" style="margin-bottom: 4px;">Width variants for maps</p>
           <p class="type-body" style="color: #636366;">
             Compressed and Condensed widths are especially useful for map labels, data-dense panels, and compact navigation where horizontal space is limited. Use <code>font-stretch</code> or the named CSS variable to access them.
           </p>
         </div>
         <div>
-          <p class="type-headline" style="margin-bottom: 4px;">Rounded for warmth</p>
+          <p class="type-label" style="margin-bottom: 4px;">Rounded for warmth</p>
           <p class="type-body" style="color: #636366;">
             SF Pro Rounded shares identical metrics with SF Pro but has softer stroke terminals. Use it for badges, tags, onboarding text, or any moment where the UI should feel approachable. Avoid mixing Rounded and default in the same text block.
           </p>
         </div>
         <div>
-          <p class="type-headline" style="margin-bottom: 4px;">Platform availability</p>
+          <p class="type-label" style="margin-bottom: 4px;">Platform availability</p>
           <p class="type-body" style="color: #636366;">
             SF Pro is pre-installed on macOS, iOS, iPadOS, watchOS, and tvOS. It is not available on Windows or Android. The CSS fallback stack (<code>-apple-system, BlinkMacSystemFont, system-ui, sans-serif</code>) ensures graceful degradation to each platform's system font.
           </p>
         </div>
       </div>
     </section>
+        </div>
 
-    </div><!-- /.main-content -->
+
+        <div class="content-panel" id="panel-tokens" hidden>
+          <div class="content-panel__placeholder">
+            <svg class="content-panel__placeholder-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 8C10.5 8 7 11.5 7 15s3.5 7 7 7"/><path d="M14 22c-3.5 0-7 3.5-7 7s3.5 7 7 7"/><path d="M34 8c3.5 0 7 3.5 7 7s-3.5 7-7 7"/><path d="M34 22c3.5 0 7 3.5 7 7s-3.5 7-7 7"/><line x1="20" y1="24" x2="28" y2="24"/>
+            </svg>
+            <p class="content-panel__placeholder-text">Design Tokens coming soon</p>
+          </div>
+        </div>
+
+        <div class="content-panel" id="panel-getting-started" hidden>
+          <div class="content-panel__placeholder">
+            <svg class="content-panel__placeholder-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M6 24h36M30 14l10 10-10 10"/><circle cx="12" cy="24" r="3.5" fill="currentColor" stroke="none"/>
+            </svg>
+            <p class="content-panel__placeholder-text">Getting Started coming soon</p>
+          </div>
+        </div>
+
+        <div class="content-panel" id="panel-colors" hidden>
+          <div class="content-panel__placeholder">
+            <svg class="content-panel__placeholder-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+              <circle cx="24" cy="24" r="18"/>
+              <circle cx="18" cy="18" r="3.5" fill="currentColor"/>
+              <circle cx="30" cy="16" r="3.5" fill="currentColor"/>
+              <circle cx="33" cy="27" r="3.5" fill="currentColor"/>
+              <circle cx="20" cy="30" r="3.5" fill="currentColor"/>
+            </svg>
+            <p class="content-panel__placeholder-text">Color system coming soon</p>
+          </div>
+        </div>
+
+        <div class="content-panel" id="panel-spacing" hidden>
+          <div class="content-panel__placeholder">
+            <svg class="content-panel__placeholder-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M8 8v32M40 8v32"/><path d="M8 24h32"/><path d="M14 18l-6 6 6 6"/><path d="M34 18l6 6-6 6"/>
+            </svg>
+            <p class="content-panel__placeholder-text">Spacing &amp; Layout coming soon</p>
+          </div>
+        </div>
+
+        <div class="content-panel" id="panel-elevation" hidden>
+          <div class="content-panel__placeholder">
+            <svg class="content-panel__placeholder-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="6" y="6" width="24" height="18" rx="3"/><rect x="18" y="24" width="24" height="18" rx="3"/>
+            </svg>
+            <p class="content-panel__placeholder-text">Elevation &amp; Borders coming soon</p>
+          </div>
+        </div>
+
+        <div class="content-panel" id="panel-motion" hidden>
+          <div class="content-panel__placeholder">
+            <svg class="content-panel__placeholder-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M6 38c8-8 12-28 36-28"/><circle cx="42" cy="10" r="3.5" fill="currentColor" stroke="none"/>
+            </svg>
+            <p class="content-panel__placeholder-text">Motion coming soon</p>
+          </div>
+        </div>
+
+        <div class="content-panel" id="panel-iconography" hidden>
+          <div class="content-panel__placeholder">
+            <svg class="content-panel__placeholder-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="24,4 30,18 44,20 34,30 36,44 24,38 12,44 14,30 4,20 18,18"/>
+            </svg>
+            <p class="content-panel__placeholder-text">Iconography coming soon</p>
+          </div>
+        </div>
+
+        <div class="content-panel" id="panel-components" hidden>
+          <div class="content-panel__placeholder">
+            <svg class="content-panel__placeholder-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="4" y="4" width="17" height="17" rx="2.5"/><rect x="27" y="4" width="17" height="17" rx="2.5"/><rect x="4" y="27" width="17" height="17" rx="2.5"/><rect x="27" y="27" width="17" height="17" rx="2.5"/>
+            </svg>
+            <p class="content-panel__placeholder-text">Components coming soon</p>
+          </div>
+        </div>
+
+        <div class="content-panel" id="panel-patterns" hidden>
+          <div class="content-panel__placeholder">
+            <svg class="content-panel__placeholder-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="4" y="4" width="40" height="10" rx="2.5"/><rect x="4" y="20" width="17" height="24" rx="2.5"/><rect x="27" y="20" width="17" height="24" rx="2.5"/>
+            </svg>
+            <p class="content-panel__placeholder-text">Patterns coming soon</p>
+          </div>
+        </div>
+
+        <div class="content-panel" id="panel-guidelines" hidden>
+          <div class="content-panel__placeholder">
+            <svg class="content-panel__placeholder-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M10 8h28v36H10z"/><path d="M16 18h16"/><path d="M16 26h10"/>
+            </svg>
+            <p class="content-panel__placeholder-text">Guidelines coming soon</p>
+          </div>
+        </div>
+      </div>
+    </div>
 
   </div>
-
-  <script>
-    // Highlight active sidebar link on scroll
-    (function () {
-      const links = document.querySelectorAll('.sidebar__link');
-      const sections = [];
-      links.forEach(function (link) {
-        var id = link.getAttribute('href').slice(1);
-        var el = document.getElementById(id);
-        if (el) sections.push({ id: id, el: el, link: link });
-      });
-
-      function update() {
-        var current = '';
-        for (var i = sections.length - 1; i >= 0; i--) {
-          if (sections[i].el.getBoundingClientRect().top <= 80) {
-            current = sections[i].id;
-            break;
-          }
-        }
-        links.forEach(function (l) { l.classList.remove('is-active'); });
-        if (current) {
-          var active = document.querySelector('.sidebar__link[href="#' + current + '"]');
-          if (active) active.classList.add('is-active');
-        }
-      }
-
-      window.addEventListener('scroll', update, { passive: true });
-      update();
-    })();
-
-    // ---- Instant search with highlighting ----
-    (function () {
-      var input = document.getElementById('search-input');
-      var clearBtn = document.getElementById('search-clear');
-      var container = document.getElementById('sidebar-search');
-      var meta = document.getElementById('search-meta');
-      var prevBtn = document.getElementById('search-prev');
-      var nextBtn = document.getElementById('search-next');
-      var content = document.querySelector('.main-content');
-
-      var marks = [];
-      var currentIdx = -1;
-      var debounceTimer = null;
-
-      // Remove all existing highlights
-      function clearHighlights() {
-        var existing = content.querySelectorAll('mark.search-hl');
-        for (var i = existing.length - 1; i >= 0; i--) {
-          var m = existing[i];
-          var parent = m.parentNode;
-          parent.replaceChild(document.createTextNode(m.textContent), m);
-          parent.normalize();
-        }
-        marks = [];
-        currentIdx = -1;
-      }
-
-      // Walk text nodes and wrap matches
-      function highlightMatches(query) {
-        clearHighlights();
-        if (!query || query.length < 2) {
-          updateMeta(0);
-          return;
-        }
-
-        var lowerQuery = query.toLowerCase();
-        var walker = document.createTreeWalker(content, NodeFilter.SHOW_TEXT, null);
-        var textNodes = [];
-
-        while (walker.nextNode()) {
-          var parent = walker.currentNode.parentNode;
-          if (parent.closest && parent.closest('script, style, mark.search-hl')) continue;
-          if (walker.currentNode.textContent.toLowerCase().indexOf(lowerQuery) !== -1) {
-            textNodes.push(walker.currentNode);
-          }
-        }
-
-        for (var i = 0; i < textNodes.length; i++) {
-          highlightTextNode(textNodes[i], lowerQuery);
-        }
-
-        marks = Array.from(content.querySelectorAll('mark.search-hl'));
-        updateMeta(marks.length);
-
-        if (marks.length > 0) {
-          goToMatch(0);
-        }
-      }
-
-      function highlightTextNode(textNode, lowerQuery) {
-        var text = textNode.textContent;
-        var lower = text.toLowerCase();
-        var idx = lower.indexOf(lowerQuery);
-        if (idx === -1) return;
-
-        var frag = document.createDocumentFragment();
-        var lastIdx = 0;
-
-        while (idx !== -1) {
-          if (idx > lastIdx) {
-            frag.appendChild(document.createTextNode(text.slice(lastIdx, idx)));
-          }
-          var mark = document.createElement('mark');
-          mark.className = 'search-hl';
-          mark.textContent = text.slice(idx, idx + lowerQuery.length);
-          frag.appendChild(mark);
-          lastIdx = idx + lowerQuery.length;
-          idx = lower.indexOf(lowerQuery, lastIdx);
-        }
-
-        if (lastIdx < text.length) {
-          frag.appendChild(document.createTextNode(text.slice(lastIdx)));
-        }
-
-        textNode.parentNode.replaceChild(frag, textNode);
-      }
-
-      function updateMeta(count) {
-        if (count === 0 && input.value.length >= 2) {
-          meta.textContent = 'No matches';
-        } else if (count > 0) {
-          meta.textContent = (currentIdx + 1) + ' of ' + count;
-        } else {
-          meta.innerHTML = '<kbd>/</kbd> to search';
-        }
-        prevBtn.disabled = count <= 1;
-        nextBtn.disabled = count <= 1;
-      }
-
-      function goToMatch(idx) {
-        if (marks.length === 0) return;
-        if (currentIdx >= 0 && currentIdx < marks.length) {
-          marks[currentIdx].classList.remove('search-hl--current');
-        }
-        currentIdx = ((idx % marks.length) + marks.length) % marks.length;
-        marks[currentIdx].classList.add('search-hl--current');
-        updateMeta(marks.length);
-        marks[currentIdx].scrollIntoView({ behavior: 'smooth', block: 'center' });
-      }
-
-      input.addEventListener('input', function () {
-        var q = input.value.trim();
-        container.classList.toggle('sidebar__search--has-query', q.length > 0);
-        clearTimeout(debounceTimer);
-        debounceTimer = setTimeout(function () {
-          highlightMatches(q);
-        }, 120);
-      });
-
-      clearBtn.addEventListener('click', function () {
-        input.value = '';
-        container.classList.remove('sidebar__search--has-query');
-        clearHighlights();
-        updateMeta(0);
-        input.focus();
-      });
-
-      prevBtn.addEventListener('click', function () {
-        goToMatch(currentIdx - 1);
-      });
-      nextBtn.addEventListener('click', function () {
-        goToMatch(currentIdx + 1);
-      });
-
-      input.addEventListener('keydown', function (e) {
-        if (e.key === 'Enter') {
-          e.preventDefault();
-          goToMatch(e.shiftKey ? currentIdx - 1 : currentIdx + 1);
-        }
-        if (e.key === 'Escape') {
-          input.value = '';
-          container.classList.remove('sidebar__search--has-query');
-          clearHighlights();
-          updateMeta(0);
-          input.blur();
-        }
-      });
-
-      // Global shortcut: "/" to focus search
-      document.addEventListener('keydown', function (e) {
-        if (e.key === '/' && !e.ctrlKey && !e.metaKey && !e.altKey) {
-          var tag = (e.target.tagName || '').toLowerCase();
-          if (tag === 'input' || tag === 'textarea' || e.target.isContentEditable) return;
-          e.preventDefault();
-          input.focus();
-          input.select();
-        }
-      });
-
-      updateMeta(0);
-    })();
-  </script>
+  <script src="styleguide.js"></script>
 </body>
 </html>
