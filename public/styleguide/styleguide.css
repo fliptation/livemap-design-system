@@ -1105,3 +1105,22 @@ html[data-theme="dark"] code {
 .ms-layer--base { background: var(--color-gray-5, #aeaeb2); color: var(--color-label, #1c1c1e); }
 .ms-layer--bottom { background: var(--color-fill-tertiary, rgba(0,0,0,0.04)); color: var(--color-label, #1c1c1e); }
 .flare-dark-preview { background: #1c1a1a; border-radius: 12px; padding: 24px; display: flex; flex-wrap: wrap; gap: 24px; justify-content: center; }
+
+/* ---- Home card decorations ---- */
+.home-card { position: relative; overflow: hidden; }
+.home-card__decor { position: absolute; top: 14px; right: 14px; pointer-events: none; opacity: 0.45; line-height: 1; }
+.home-card__decor--type { display: flex; flex-direction: column; align-items: flex-end; gap: 1px; font-size: 11px; font-weight: 600; color: var(--color-label); opacity: 0.3; }
+.home-card__decor--type span:first-child { font-family: "SF Pro", -apple-system, system-ui, sans-serif; }
+.home-card__decor--type span:last-child { font-family: "Google Sans", "Product Sans", sans-serif; font-weight: 400; font-size: 10px; }
+.home-card__decor--colors { display: flex; gap: 4px; }
+.home-card__decor--colors span { width: 10px; height: 10px; border-radius: 50%; }
+.home-card__decor--spacing { display: flex; align-items: flex-end; gap: 3px; opacity: 0.25; }
+.home-card__decor--spacing span { width: 3px; border-radius: 1px; background: var(--color-label); }
+.home-card__decor--elevation { width: 36px; height: 28px; box-shadow: var(--shadow-md); background: var(--color-surface); border-left: 1px solid var(--color-separator); border-bottom: 1px solid var(--color-separator); opacity: 0.6; top: 0; right: 0; border-radius: 0; }
+.home-card__decor--elevation::after { content: ""; position: absolute; bottom: 0; left: 0; width: 100%; height: 100%; border-radius: 0 0 0 10px; box-shadow: -2px 2px 8px rgba(0,0,0,0.1); border-left: 1px solid var(--color-separator); border-bottom: 1px solid var(--color-separator); }
+.home-card__decor--motion { opacity: 0.25; }
+.home-card__decor--motion svg { width: 32px; height: 32px; }
+.home-card__decor--icons { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2px; opacity: 0.22; color: var(--color-label); }
+.home-card__decor--icons svg { width: 12px; height: 12px; }
+.home-card__decor--map { width: 56px; height: 42px; border-radius: 6px; overflow: hidden; opacity: 0.35; }
+.home-card__decor--map svg { width: 100%; height: 100%; }
