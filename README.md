@@ -14,6 +14,10 @@ A static single-page styleguide covering:
 
 All design decisions are encoded as CSS custom properties in `public/tokens.css` — spacing on a 4pt grid, SF Pro type scale, semantic colors with dark mode, elevation shadows, motion curves, and more.
 
+## Tech stack
+
+Vanilla HTML, CSS, and JavaScript — no frameworks, no build step. Served as static files via [`serve`](https://github.com/vercel/serve).
+
 ## Project structure
 
 ```
