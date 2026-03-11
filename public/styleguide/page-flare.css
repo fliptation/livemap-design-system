@@ -24,10 +24,10 @@
 .flare-card::before {
   content: '';
   position: absolute;
-  bottom: -60%;
+  bottom: -20px;
   left: 50%;
-  width: 200%;
-  height: 200%;
+  width: 80%;
+  height: 60px;
   transform: translateX(-50%);
   background: conic-gradient(
     from 0deg,
@@ -39,8 +39,8 @@
     transparent 360deg
   );
   animation: flare-glow-spin 4s linear infinite;
-  opacity: 0.25;
-  filter: blur(40px);
+  opacity: 0.35;
+  filter: blur(20px);
   z-index: 0;
   pointer-events: none;
 }
