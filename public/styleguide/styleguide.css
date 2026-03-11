@@ -1161,10 +1161,12 @@ html[data-theme="dark"] code {
 .ms-callout strong { color: var(--color-label, #1c1c1e); }
 .ms-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }
 .ms-grid-item { display: flex; align-items: flex-start; gap: 12px; padding: 14px; background: var(--color-fill-tertiary, rgba(0,0,0,0.04)); border-radius: 10px; font-size: 13px; line-height: 1.5; }
-.ms-grid-item__icon { width: 32px; height: 32px; border-radius: 8px; background: var(--color-fill-secondary, rgba(0,0,0,0.06)); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 16px; }
+.ms-grid-item__icon { width: 32px; height: 32px; border-radius: 8px; background: var(--color-fill-secondary, rgba(0,0,0,0.06)); display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: var(--color-gray-2); }
+.ms-grid-item__icon svg { width: 16px; height: 16px; }
 .ms-grid-item strong { display: block; font-size: 13px; font-weight: 600; color: var(--color-label, #1c1c1e); margin-bottom: 2px; }
 .ms-grid-item span { color: var(--color-label-secondary, #636366); }
-.ms-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.ms-table { width: 100%; border-collapse: collapse; font-size: 13px; table-layout: fixed; }
+.ms-table th:first-child, .ms-table td:first-child { width: 40%; }
 .ms-table th { text-align: left; font-weight: 600; padding: 8px 12px; border-bottom: 2px solid var(--color-separator, rgba(0,0,0,0.08)); color: var(--color-label, #1c1c1e); }
 .ms-table td { padding: 8px 12px; border-bottom: 1px solid var(--color-separator, rgba(0,0,0,0.06)); color: var(--color-label-secondary, #636366); }
 .ms-table .ms-allowed { color: var(--color-system-green, #30D158); font-weight: 600; }
