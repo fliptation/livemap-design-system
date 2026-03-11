@@ -300,13 +300,19 @@
 }
 
 .res-embed {
-  min-width: min(500px, 85vw);
+  width: min(500px, 80vw);
+  min-width: min(500px, 80vw);
+  max-width: min(500px, 80vw);
   flex-shrink: 0;
   scroll-snap-align: start;
 }
 
-.res-embed .twitter-tweet {
+.res-embed .twitter-tweet,
+.res-embed .twitter-tweet-rendered,
+.res-embed iframe {
   margin: 0 !important;
+  max-width: 100% !important;
+  width: 100% !important;
 }
 
 
