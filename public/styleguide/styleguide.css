@@ -1110,23 +1110,24 @@ html[data-theme="dark"] code {
 /* ============================================================
    Flare & Serendipity — page styles
    ============================================================ */
+.flare-card-wrapper { position: relative; }
 .flare-card {
-  background: rgba(28, 28, 30, 0.82);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 16px;
-  padding: 16px;
+  background: rgba(22, 22, 24, 0.78);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 18px;
+  padding: 14px 14px 12px;
   min-width: 360px;
   color: #f5f5f7;
   position: relative;
+  overflow: visible;
 }
 .flare-card + .flare-card { margin-top: 16px; }
-.flare-header { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+.flare-header { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 10px; }
+.flare-header__content { flex: 1; min-width: 0; }
 .flare-header__wave { font-size: 16px; }
 .flare-header__label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: rgba(235, 235, 245, 0.5); }
 .flare-body__title { font-size: 16px; font-weight: 600; margin-bottom: 4px; color: #f5f5f7; }
-.flare-body__subtitle { font-size: 13px; color: rgba(235, 235, 245, 0.5); margin-bottom: 12px; }
+.flare-body__subtitle { font-size: 13px; color: rgba(235, 235, 245, 0.5); }
 .flare-avatars { display: flex; align-items: center; gap: 0; margin-bottom: 12px; }
 .flare-avatar { width: 34px; height: 34px; border-radius: 50%; border: 2px solid rgba(28, 28, 30, 0.82); background: #48484a; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 600; color: #f5f5f7; }
 .flare-avatar + .flare-avatar { margin-left: -8px; }

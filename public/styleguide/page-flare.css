@@ -2,64 +2,87 @@
    Flare & Serendipity — page styles
    ============================================================ */
 
+/* ---- Flare wrapper ---- */
+.flare-card-wrapper {
+  position: relative;
+}
+
+/* ---- Flare glow (conic-gradient spin) ---- */
+@property --flare-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+.flare-glow {
+  position: absolute;
+  inset: -2px;
+  background: conic-gradient(
+    from var(--flare-angle, 0deg),
+    transparent 0deg,
+    #E53E56 8%,
+    #f06b7d 16%,
+    transparent 24%,
+    transparent 100%
+  );
+  opacity: 0.6;
+  filter: blur(8px);
+  pointer-events: none;
+  border-radius: 20px;
+  animation: flare-spin 4s linear infinite;
+}
+
+@keyframes flare-spin {
+  100% { --flare-angle: 360deg; }
+}
+
+/* ---- Flare ambient (radial breathing glow) ---- */
+.flare-ambient {
+  position: absolute;
+  top: 8px;
+  bottom: -12px;
+  left: -4px;
+  right: -4px;
+  background: radial-gradient(ellipse at 50% 0, rgba(229, 62, 86, 0.35) 0, transparent 70%);
+  opacity: 0;
+  filter: blur(20px);
+  pointer-events: none;
+  border-radius: 24px;
+  animation: flare-ambient-breathe 3s ease-in-out infinite;
+}
+
+@keyframes flare-ambient-breathe {
+  0%, 100% { opacity: 0; transform: scale(1); }
+  50% { opacity: 0.45; transform: scale(1.02); }
+}
+
 /* ---- Flare card (notification preview) ---- */
 .flare-card {
-  background: rgba(28, 28, 30, 0.82);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 16px;
-  padding: 16px;
+  background: rgba(22, 22, 24, 0.78);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 18px;
+  padding: 14px 14px 12px;
   min-width: 360px;
   color: #f5f5f7;
   position: relative;
-}
-
-/* ---- Flare glow animation ---- */
-.flare-card > * {
-  position: relative;
-  z-index: 1;
-}
-
-.flare-card::before {
-  content: '';
-  position: absolute;
-  bottom: -16px;
-  left: 50%;
-  width: 70%;
-  height: 80px;
-  transform: translateX(-50%);
-  background: radial-gradient(ellipse at center, #E53E56 0%, #c0392b 30%, #FF9F0A 60%, transparent 100%);
-  animation: flare-glow-pulse 4s ease-in-out infinite;
-  opacity: 0.5;
-  filter: blur(24px);
-  z-index: 0;
-  pointer-events: none;
-}
-
-@keyframes flare-glow-pulse {
-  0%, 100% { opacity: 0.45; transform: translateX(-50%) scale(1); }
-  50% { opacity: 0.6; transform: translateX(-50%) scale(1.05); }
+  overflow: visible;
 }
 
 /* ---- Close button ---- */
 .flare-close {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  width: 24px;
-  height: 24px;
+  width: 26px;
+  height: 26px;
   border-radius: 50%;
   border: none;
   background: rgba(118, 118, 128, 0.2);
-  color: rgba(235, 235, 245, 0.5);
+  color: rgba(255, 255, 255, 0.3);
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 1;
+  flex-shrink: 0;
   padding: 0;
-  transition: background 0.15s;
+  transition: background 0.2s, transform 0.15s;
 }
 
 .flare-close:hover {
@@ -73,9 +96,14 @@
 /* ---- Flare header row ---- */
 .flare-header {
   display: flex;
-  align-items: center;
-  gap: 8px;
+  align-items: flex-start;
+  gap: 10px;
   margin-bottom: 10px;
+}
+
+.flare-header__content {
+  flex: 1;
+  min-width: 0;
 }
 
 .flare-header__wave {
@@ -101,7 +129,6 @@
 .flare-body__subtitle {
   font-size: 13px;
   color: rgba(235, 235, 245, 0.5);
-  margin-bottom: 12px;
 }
 
 /* ---- Flare avatars ---- */
@@ -354,6 +381,12 @@ html:not([data-theme="dark"]) .flare-close:hover {
   background: rgba(60, 60, 67, 0.2);
 }
 
-html:not([data-theme="dark"]) .flare-card::before {
-  opacity: 0.15;
+html:not([data-theme="dark"]) .flare-glow {
+  opacity: 0;
+  animation: none;
+}
+
+html:not([data-theme="dark"]) .flare-ambient {
+  animation: none;
+  opacity: 0.2;
 }
