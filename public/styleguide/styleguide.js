@@ -1981,4 +1981,23 @@
       }, 150);
     });
   }
+
+  // ==================================================================
+  // "NEW" badge on resource cards added today
+  // ==================================================================
+  var today = new Date();
+  var todayStr = today.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  });
+  document.querySelectorAll(".res-card__date").forEach(function (el) {
+    var text = el.textContent.replace(/^Added\s+/i, "").trim();
+    if (text === todayStr) {
+      var badge = document.createElement("span");
+      badge.className = "res-card__badge-new";
+      badge.textContent = "NEW";
+      el.closest(".res-card").appendChild(badge);
+    }
+  });
 })();

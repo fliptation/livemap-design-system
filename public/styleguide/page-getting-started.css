@@ -186,25 +186,13 @@
 /* ---- Resource cards ---- */
 .res-grid {
   display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: auto;
+  grid-template-columns: repeat(auto-fill, minmax(min(320px, 100%), 1fr));
   gap: var(--space-16);
   margin-bottom: var(--space-40);
 }
 
-@media (min-width: 480px) {
-  .res-grid { grid-template-columns: repeat(2, 1fr); }
-}
-
-@media (min-width: 768px) {
-  .res-grid { grid-template-columns: repeat(3, 1fr); }
-}
-
-@media (min-width: 1080px) {
-  .res-grid { grid-template-columns: repeat(4, 1fr); }
-}
-
 .res-card {
+  position: relative;
   display: grid;
   grid-row: span 5;
   grid-template-rows: subgrid;
@@ -216,6 +204,23 @@
   text-decoration: none;
   color: inherit;
   transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.res-card__badge-new {
+  position: absolute;
+  top: var(--space-8);
+  left: var(--space-8);
+  padding: 2px var(--space-8);
+  font-family: var(--font-family-text);
+  font-size: 10px;
+  font-weight: var(--font-weight-bold);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #fff;
+  background: var(--color-tint-action);
+  border-radius: var(--radius-sm);
+  z-index: 1;
+  pointer-events: none;
 }
 
 .res-card:hover {
@@ -269,6 +274,7 @@
   font-family: var(--font-family-text);
   font-size: var(--font-size-nano);
   color: var(--color-gray-3);
+  margin-top: var(--space-4);
 }
 
 .res-card__url {
@@ -280,19 +286,23 @@
 
 /* ---- Embed grid ---- */
 .res-embed-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: var(--space-16);
+  display: flex;
+  gap: var(--space-12);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
   margin-bottom: var(--space-40);
+  scrollbar-width: none;
 }
 
-@media (max-width: 680px) {
-  .res-embed-grid { grid-template-columns: 1fr; }
+.res-embed-grid::-webkit-scrollbar {
+  display: none;
 }
 
 .res-embed {
-  min-width: 0;
-  overflow: hidden;
+  min-width: min(500px, 85vw);
+  flex-shrink: 0;
+  scroll-snap-align: start;
 }
 
 .res-embed .twitter-tweet {
