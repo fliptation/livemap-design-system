@@ -24,29 +24,22 @@
 .flare-card::before {
   content: '';
   position: absolute;
-  bottom: -20px;
+  bottom: -16px;
   left: 50%;
-  width: 80%;
-  height: 60px;
+  width: 70%;
+  height: 80px;
   transform: translateX(-50%);
-  background: conic-gradient(
-    from 0deg,
-    transparent 0deg,
-    #E53E56 60deg,
-    #FF9F0A 120deg,
-    transparent 180deg,
-    #E53E56 240deg,
-    transparent 360deg
-  );
-  animation: flare-glow-spin 4s linear infinite;
-  opacity: 0.35;
-  filter: blur(20px);
+  background: radial-gradient(ellipse at center, #E53E56 0%, #c0392b 30%, #FF9F0A 60%, transparent 100%);
+  animation: flare-glow-pulse 4s ease-in-out infinite;
+  opacity: 0.5;
+  filter: blur(24px);
   z-index: 0;
   pointer-events: none;
 }
 
-@keyframes flare-glow-spin {
-  to { transform: translateX(-50%) rotate(1turn); }
+@keyframes flare-glow-pulse {
+  0%, 100% { opacity: 0.45; transform: translateX(-50%) scale(1); }
+  50% { opacity: 0.6; transform: translateX(-50%) scale(1.05); }
 }
 
 /* ---- Close button ---- */
