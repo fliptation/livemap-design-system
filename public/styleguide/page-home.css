@@ -72,9 +72,9 @@
 }
 
 .home-card__icon {
-  width: 40px;
-  height: 40px;
-  border-radius: var(--radius-md);
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-lg);
   background: var(--color-fill);
   display: flex;
   align-items: center;
@@ -84,8 +84,8 @@
 }
 
 .home-card__icon svg {
-  width: 20px;
-  height: 20px;
+  width: 28px;
+  height: 28px;
 }
 
 .home-card__body {
