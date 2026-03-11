@@ -30,6 +30,16 @@
         </button>
       </div>
       <nav class="app-sidebar__nav" id="app-sidebar-nav"></nav>
+      <div class="app-sidebar__actions" id="sidebar-actions">
+        <button class="theme-toggle" id="sidebar-theme-toggle" aria-label="Toggle dark mode">
+          <svg class="theme-toggle__icon theme-toggle__moon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13.5 8.5a5.5 5.5 0 0 1-7-7 5.5 5.5 0 1 0 7 7z"/></svg>
+          <svg class="theme-toggle__icon theme-toggle__sun" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="3"/><line x1="8" y1="1.5" x2="8" y2="3"/><line x1="8" y1="13" x2="8" y2="14.5"/><line x1="1.5" y1="8" x2="3" y2="8"/><line x1="13" y1="8" x2="14.5" y2="8"/><line x1="3.4" y1="3.4" x2="4.5" y2="4.5"/><line x1="11.5" y1="11.5" x2="12.6" y2="12.6"/><line x1="3.4" y1="12.6" x2="4.5" y2="11.5"/><line x1="11.5" y1="4.5" x2="12.6" y2="3.4"/></svg>
+        </button>
+        <button class="inspect-toggle" id="sidebar-inspect-toggle" aria-label="Toggle token inspector" aria-pressed="false">
+          <svg class="inspect-toggle__icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="3"/><line x1="8" y1="1" x2="8" y2="4"/><line x1="8" y1="12" x2="8" y2="15"/><line x1="1" y1="8" x2="4" y2="8"/><line x1="12" y1="8" x2="15" y2="8"/></svg>
+          Inspect
+        </button>
+      </div>
       <div class="app-sidebar__profile">
         <div class="app-sidebar__profile-avatar">LM</div>
         <div class="app-sidebar__profile-info">
@@ -38,9 +48,13 @@
         </div>
       </div>
     </aside>
+    <div class="app-sidebar-backdrop" id="sidebar-backdrop"></div>
 
     <div class="app-main">
       <header class="app-header">
+        <button class="app-mobile-menu" id="mobile-menu" aria-label="Open menu">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="3" y1="5" x2="17" y2="5"/><line x1="3" y1="10" x2="17" y2="10"/><line x1="3" y1="15" x2="17" y2="15"/></svg>
+        </button>
         <div class="app-header__left">
           <h1 class="app-header__heading" id="header-heading">Typography <span data-name-html="/ SF Pro" data-name-ios="/ SF Pro" data-name-android="/ Google Sans">/ SF Pro</span></h1>
         </div>
@@ -65,6 +79,9 @@
               </div>
             </div>
           </div>
+          <button class="app-mobile-search" id="mobile-search" aria-label="Search">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6.5" cy="6.5" r="4.5"/><line x1="10" y1="10" x2="14" y2="14"/></svg>
+          </button>
           <div class="platform-toggle" id="platform-toggle">
             <button class="platform-toggle__btn is-active" data-platform="html">HTML</button>
             <button class="platform-toggle__btn" data-platform="ios">iOS</button>
@@ -249,6 +266,15 @@
           <div class="home-card__body">
             <div class="home-card__title">Guidelines</div>
             <div class="home-card__desc">Accessibility, responsive design, voice & tone, i18n.</div>
+          </div>
+        </div>
+        <div class="home-card" data-home-page="resources">
+          <div class="home-card__icon">
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h5v5H3z"/><path d="M12 3h5v5h-5z"/><path d="M3 12h5v5H3z"/><line x1="14.5" y1="12" x2="14.5" y2="17"/><line x1="12" y1="14.5" x2="17" y2="14.5"/></svg>
+          </div>
+          <div class="home-card__body">
+            <div class="home-card__title">Resources</div>
+            <div class="home-card__desc">Inspiration, reading, and tools for the team.</div>
           </div>
         </div>
       </div>
@@ -7267,6 +7293,272 @@ FlareCard(style: .serendipity) {
           </section>
 
         </div>
+
+        <div class="content-page" id="page-resources" hidden>
+
+    <!-- ============================================================
+         Inspiration
+         ============================================================ -->
+    <section id="res-inspiration">
+      <p class="section-label">Inspiration</p>
+      <p class="section-note">Apps, map UIs, and design references the team admires.</p>
+
+      <button class="res-add-btn" data-section="inspiration">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="8" y1="3" x2="8" y2="13"/><line x1="3" y1="8" x2="13" y2="8"/></svg>
+        Add resource
+      </button>
+      <div class="res-form" data-section="inspiration" hidden>
+        <div class="res-form__fields">
+          <div class="comp-field"><label class="comp-label">Name</label><input class="comp-input res-form__name" type="text" placeholder="Resource name" required></div>
+          <div class="comp-field"><label class="comp-label">Description</label><input class="comp-input res-form__desc" type="text" placeholder="Brief description" required></div>
+          <div class="comp-field"><label class="comp-label">URL</label><input class="comp-input res-form__url" type="url" placeholder="https://..."></div>
+          <div class="comp-field"><label class="comp-label">Your name</label><input class="comp-input res-form__author" type="text" placeholder="Your name" required></div>
+        </div>
+        <div class="res-form__actions">
+          <button class="comp-btn comp-btn--primary comp-btn--sm res-form__save">Save</button>
+          <button class="comp-btn comp-btn--ghost comp-btn--sm res-form__cancel">Cancel</button>
+        </div>
+      </div>
+
+      <div class="res-grid">
+        <a class="res-card" href="https://developer.apple.com/design/human-interface-guidelines/maps" target="_blank" rel="noopener">
+          <img class="res-card__thumb" src="https://docs.developer.apple.com/tutorials/developer-og.jpg" alt="Apple HIG preview" referrerpolicy="no-referrer">
+          <div class="res-card__body">
+            <span class="res-card__name">Apple HIG — Maps</span>
+            <span class="res-card__desc">Apple's Human Interface Guidelines for Maps & Location. The gold standard for native map experiences on iOS.</span>
+            <span class="res-card__url">developer.apple.com</span>
+          </div>
+        </a>
+        <a class="res-card" href="https://m3.material.io/foundations/interaction/navigation" target="_blank" rel="noopener">
+          <img class="res-card__thumb" src="https://m3.material.io/static/assets/m3-social.jpg" alt="Material Design preview" referrerpolicy="no-referrer">
+          <div class="res-card__body">
+            <span class="res-card__name">Material Design — Nav</span>
+            <span class="res-card__desc">Google's navigation patterns and motion guidelines. Useful reference for cross-platform consistency.</span>
+            <span class="res-card__url">m3.material.io</span>
+          </div>
+        </a>
+        <a class="res-card" href="https://www.mapbox.com/design" target="_blank" rel="noopener">
+          <div class="res-card__placeholder"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></div>
+          <div class="res-card__body">
+            <span class="res-card__name">Mapbox Design</span>
+            <span class="res-card__desc">Mapbox's design resources, cartography guides, and map styling documentation.</span>
+            <span class="res-card__url">mapbox.com/design</span>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         Demos
+         ============================================================ -->
+    <section id="res-demos">
+      <p class="section-label">Demos</p>
+      <p class="section-note">Live prototypes and feature walkthroughs from the team.</p>
+
+      <button class="res-add-btn" data-section="demos">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="8" y1="3" x2="8" y2="13"/><line x1="3" y1="8" x2="13" y2="8"/></svg>
+        Add resource
+      </button>
+      <div class="res-form" data-section="demos" hidden>
+        <div class="res-form__fields">
+          <div class="comp-field"><label class="comp-label">Name</label><input class="comp-input res-form__name" type="text" placeholder="Resource name" required></div>
+          <div class="comp-field"><label class="comp-label">Description</label><input class="comp-input res-form__desc" type="text" placeholder="Brief description" required></div>
+          <div class="comp-field"><label class="comp-label">URL</label><input class="comp-input res-form__url" type="url" placeholder="https://..."></div>
+          <div class="comp-field"><label class="comp-label">Your name</label><input class="comp-input res-form__author" type="text" placeholder="Your name" required></div>
+        </div>
+        <div class="res-form__actions">
+          <button class="comp-btn comp-btn--primary comp-btn--sm res-form__save">Save</button>
+          <button class="comp-btn comp-btn--ghost comp-btn--sm res-form__cancel">Cancel</button>
+        </div>
+      </div>
+
+      <div class="res-grid">
+        <a class="res-card" href="https://livemap-production.up.railway.app/" target="_blank" rel="noopener">
+          <div class="res-card__placeholder"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></div>
+          <div class="res-card__body">
+            <span class="res-card__name">Livemap Production</span>
+            <span class="res-card__desc">Live production deployment of the Livemap application.</span>
+            <span class="res-card__url">livemap-production.up.railway.app</span>
+          </div>
+        </a>
+        <a class="res-card" href="https://livemap-prototype.netlify.app/" target="_blank" rel="noopener">
+          <div class="res-card__placeholder"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></div>
+          <div class="res-card__body">
+            <span class="res-card__name">Livemap Prototype</span>
+            <span class="res-card__desc">Latest prototype build for testing new features and interactions.</span>
+            <span class="res-card__url">livemap-prototype.netlify.app</span>
+          </div>
+        </a>
+      </div>
+
+    </section>
+
+    <!-- ============================================================
+         Tweets
+         ============================================================ -->
+    <section id="res-tweets">
+      <p class="section-label">Tweets</p>
+      <p class="section-note">Interesting tweets and threads we've bookmarked.</p>
+
+      <button class="res-add-btn" data-section="tweets">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="8" y1="3" x2="8" y2="13"/><line x1="3" y1="8" x2="13" y2="8"/></svg>
+        Add tweet
+      </button>
+      <div class="res-form" data-section="tweets" hidden>
+        <div class="res-form__fields">
+          <div class="comp-field"><label class="comp-label">Tweet URL</label><input class="comp-input res-form__tweet-url" type="url" placeholder="https://x.com/user/status/..." required></div>
+          <div class="comp-field"><label class="comp-label">Your name</label><input class="comp-input res-form__author" type="text" placeholder="Your name" required></div>
+        </div>
+        <div class="res-form__actions">
+          <button class="comp-btn comp-btn--primary comp-btn--sm res-form__save">Save</button>
+          <button class="comp-btn comp-btn--ghost comp-btn--sm res-form__cancel">Cancel</button>
+        </div>
+      </div>
+
+      <div class="res-embed-grid">
+        <div class="res-embed">
+          <blockquote class="twitter-tweet" data-dnt="true" data-theme="light" data-conversation="none"><p lang="en" dir="ltr">2. Conversational Search:<br><br>Discover new spots through AI-powered chat that delivers smart recommendations tailored to your queries. <a href="https://t.co/M7IdQRKjiT">pic.twitter.com/M7IdQRKjiT</a></p>&mdash; Priyank Ahuja (@ahuja_priyank) <a href="https://twitter.com/ahuja_priyank/status/2030545654737723901?ref_src=twsrc%5Etfw">March 8, 2026</a></blockquote>
+        </div>
+        <div class="res-embed">
+          <blockquote class="twitter-tweet" data-dnt="true" data-theme="light" data-conversation="none"><p lang="en" dir="ltr">Today we&#39;re launching Glaze 💠 — a brand new visual style for Raycast.<br><br>Glaze brings depth, dimension and physicality to every surface, icon and interaction. <a href="https://t.co/placeholder">pic.twitter.com/placeholder</a></p>&mdash; Raycast (@raycast) <a href="https://twitter.com/raycast/status/2029180822838759703">March 4, 2026</a></blockquote>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         Reading
+         ============================================================ -->
+    <section id="res-reading">
+      <p class="section-label">Reading</p>
+      <p class="section-note">Articles and resources on cartography, accessibility, design, color theory, and typography.</p>
+
+      <button class="res-add-btn" data-section="reading">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="8" y1="3" x2="8" y2="13"/><line x1="3" y1="8" x2="13" y2="8"/></svg>
+        Add resource
+      </button>
+      <div class="res-form" data-section="reading" hidden>
+        <div class="res-form__fields">
+          <div class="comp-field"><label class="comp-label">Name</label><input class="comp-input res-form__name" type="text" placeholder="Resource name" required></div>
+          <div class="comp-field"><label class="comp-label">Description</label><input class="comp-input res-form__desc" type="text" placeholder="Brief description" required></div>
+          <div class="comp-field"><label class="comp-label">URL</label><input class="comp-input res-form__url" type="url" placeholder="https://..."></div>
+          <div class="comp-field"><label class="comp-label">Your name</label><input class="comp-input res-form__author" type="text" placeholder="Your name" required></div>
+        </div>
+        <div class="res-form__actions">
+          <button class="comp-btn comp-btn--primary comp-btn--sm res-form__save">Save</button>
+          <button class="comp-btn comp-btn--ghost comp-btn--sm res-form__cancel">Cancel</button>
+        </div>
+      </div>
+
+      <div class="res-grid">
+        <a class="res-card" href="https://practicaltypography.com" target="_blank" rel="noopener">
+          <img class="res-card__thumb" src="https://practicaltypography.com/images/og-image.jpg" alt="Practical Typography preview" referrerpolicy="no-referrer">
+          <div class="res-card__body">
+            <span class="res-card__name">Practical Typography</span>
+            <span class="res-card__desc">Matthew Butterick's free online book covering the fundamentals of good typography for screens and print.</span>
+            <span class="res-card__url">practicaltypography.com</span>
+          </div>
+        </a>
+        <a class="res-card" href="https://colorandcontrast.com" target="_blank" rel="noopener">
+          <div class="res-card__placeholder"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></div>
+          <div class="res-card__body">
+            <span class="res-card__name">Color &amp; Contrast</span>
+            <span class="res-card__desc">Lea Verou's interactive guide to color spaces, perceptual contrast, and accessible color choices on the web.</span>
+            <span class="res-card__url">colorandcontrast.com</span>
+          </div>
+        </a>
+        <a class="res-card" href="https://developer.apple.com/videos/play/wwdc2023/10073/" target="_blank" rel="noopener">
+          <img class="res-card__thumb" src="https://devimages-cdn.apple.com/wwdc-services/images/D35E0E85-CCB6-41A1-B227-7995ECD83ED5/8127/8127_wide_250x141_2x.jpg" alt="WWDC Spatial Input preview" referrerpolicy="no-referrer">
+          <div class="res-card__body">
+            <span class="res-card__name">WWDC — Spatial Input</span>
+            <span class="res-card__desc">Apple's "Design for spatial input" session. Covers gesture design, depth, and interaction models for spatial computing.</span>
+            <span class="res-card__url">developer.apple.com</span>
+          </div>
+        </a>
+        <a class="res-card" href="https://www.youtube.com/watch?v=m6WMwSj_EbA&t=619s" target="_blank" rel="noopener">
+          <img class="res-card__thumb" src="https://i.ytimg.com/vi/m6WMwSj_EbA/hqdefault.jpg" alt="WWDC23 Live Activities preview" referrerpolicy="no-referrer">
+          <div class="res-card__body">
+            <span class="res-card__name">WWDC23 — Dynamic Live Activities</span>
+            <span class="res-card__desc">Apple's session on designing dynamic Live Activities. Covers layout, animation, and real-time update patterns.</span>
+            <span class="res-card__url">youtube.com</span>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         Tools
+         ============================================================ -->
+    <section id="res-tools">
+      <p class="section-label">Tools</p>
+      <p class="section-note">Contrast checkers, icon browsers, font testers, and other utilities the team uses daily.</p>
+
+      <button class="res-add-btn" data-section="tools">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="8" y1="3" x2="8" y2="13"/><line x1="3" y1="8" x2="13" y2="8"/></svg>
+        Add resource
+      </button>
+      <div class="res-form" data-section="tools" hidden>
+        <div class="res-form__fields">
+          <div class="comp-field"><label class="comp-label">Name</label><input class="comp-input res-form__name" type="text" placeholder="Resource name" required></div>
+          <div class="comp-field"><label class="comp-label">Description</label><input class="comp-input res-form__desc" type="text" placeholder="Brief description" required></div>
+          <div class="comp-field"><label class="comp-label">URL</label><input class="comp-input res-form__url" type="url" placeholder="https://..."></div>
+          <div class="comp-field"><label class="comp-label">Your name</label><input class="comp-input res-form__author" type="text" placeholder="Your name" required></div>
+        </div>
+        <div class="res-form__actions">
+          <button class="comp-btn comp-btn--primary comp-btn--sm res-form__save">Save</button>
+          <button class="comp-btn comp-btn--ghost comp-btn--sm res-form__cancel">Cancel</button>
+        </div>
+      </div>
+
+      <div class="res-grid">
+        <a class="res-card" href="https://webaim.org/resources/contrastchecker/" target="_blank" rel="noopener">
+          <div class="res-card__placeholder"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></div>
+          <div class="res-card__body">
+            <span class="res-card__name">WebAIM Contrast Checker</span>
+            <span class="res-card__desc">Quick foreground/background contrast ratio checker against WCAG AA and AAA thresholds.</span>
+            <span class="res-card__url">webaim.org</span>
+          </div>
+        </a>
+        <a class="res-card" href="https://developer.apple.com/sf-symbols/" target="_blank" rel="noopener">
+          <img class="res-card__thumb" src="https://developer.apple.com/news/images/og/sf-symbols-7-og.png" alt="SF Symbols preview" referrerpolicy="no-referrer">
+          <div class="res-card__body">
+            <span class="res-card__name">SF Symbols</span>
+            <span class="res-card__desc">Apple's icon library with 5,000+ symbols. Download the macOS app to browse, search, and export.</span>
+            <span class="res-card__url">developer.apple.com</span>
+          </div>
+        </a>
+        <a class="res-card" href="https://lucide.dev" target="_blank" rel="noopener">
+          <img class="res-card__thumb" src="https://lucide.dev/og.png" alt="Lucide Icons preview" referrerpolicy="no-referrer">
+          <div class="res-card__body">
+            <span class="res-card__name">Lucide Icons</span>
+            <span class="res-card__desc">Open-source icon set with consistent stroke width. Good for web prototypes and cross-platform fallbacks.</span>
+            <span class="res-card__url">lucide.dev</span>
+          </div>
+        </a>
+        <a class="res-card" href="https://pencil.dev" target="_blank" rel="noopener">
+          <img class="res-card__thumb" src="https://pencil.dev/og-image.png" alt="Pencil preview" referrerpolicy="no-referrer">
+          <div class="res-card__body">
+            <span class="res-card__name">Pencil</span>
+            <span class="res-card__desc">Free design tool with built-in AI collaboration. The team's primary tool for working with the Livemap design kit.</span>
+            <span class="res-card__url">pencil.dev</span>
+          </div>
+        </a>
+        <a class="res-card" href="https://paper.design" target="_blank" rel="noopener">
+          <img class="res-card__thumb" src="https://paper.design/opengraph-image.jpg" alt="Paper preview" referrerpolicy="no-referrer">
+          <div class="res-card__body">
+            <span class="res-card__name">Paper</span>
+            <span class="res-card__desc">Professional design tool for creating user interfaces. Compose designs on a 2D canvas with HTML-based workflow.</span>
+            <span class="res-card__url">paper.design</span>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- Toast notification for Quick Add -->
+    <div class="res-toast" id="res-toast" hidden>
+      Saved locally — copy the snippet and paste it into <code>index.html</code> to make it permanent.
+    </div>
+
+        </div>
       </div>
     </div>
 
@@ -7304,6 +7596,7 @@ FlareCard(style: .serendipity) {
     </button>
   </div>
 
+  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
   <script src="styleguide.js"></script>
   <script src="inspector.js"></script>
 </body>

@@ -294,6 +294,20 @@ body {
   margin: var(--space-8) var(--space-16);
 }
 
+/* Sidebar actions (theme + inspect — mobile only) */
+.app-sidebar__actions {
+  display: none;
+  align-items: center;
+  gap: var(--space-8);
+  padding: var(--space-12) var(--space-16);
+  border-top: 1px solid var(--color-separator-subtle);
+  flex-shrink: 0;
+}
+
+.app-sidebar.is-collapsed .app-sidebar__actions {
+  display: none;
+}
+
 /* Sidebar profile footer */
 .app-sidebar__profile {
   display: flex;
@@ -836,6 +850,10 @@ html[data-theme="dark"] .app-sidebar__profile {
   border-top-color: rgba(255, 255, 255, 0.05);
 }
 
+html[data-theme="dark"] .app-sidebar__actions {
+  border-top-color: rgba(255, 255, 255, 0.05);
+}
+
 html[data-theme="dark"] .nav-divider {
   background: rgba(255, 255, 255, 0.05);
 }
@@ -1125,3 +1143,363 @@ html[data-theme="dark"] code {
 .home-card__decor--icons svg { width: 12px; height: 12px; }
 .home-card__decor--map { width: 56px; height: 42px; border-radius: 6px; overflow: hidden; opacity: 0.35; }
 .home-card__decor--map svg { width: 100%; height: 100%; }
+
+/* ==========================================================================
+   Responsive — Mobile Menu & Layout
+   ========================================================================== */
+
+/* ---- Mobile hamburger button (hidden on desktop) ---- */
+.app-mobile-menu {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: none;
+  background: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  color: var(--color-label-secondary);
+  padding: 0;
+  flex-shrink: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.app-mobile-menu:hover {
+  color: var(--color-label);
+}
+
+/* ---- Sidebar backdrop overlay ---- */
+.app-sidebar-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 99;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.app-sidebar-backdrop.is-visible {
+  display: block;
+}
+
+html[data-theme="dark"] .app-sidebar-backdrop {
+  background: rgba(0, 0, 0, 0.55);
+}
+
+/* ---- Mobile search icon button (hidden on desktop) ---- */
+.app-mobile-search {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: var(--color-fill);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  color: var(--color-gray);
+  padding: 0;
+  flex-shrink: 0;
+  transition: color 0.15s, background 0.15s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.app-mobile-search:hover {
+  color: var(--color-label-secondary);
+}
+
+.app-header.search-open .app-mobile-search {
+  color: var(--color-tint-action);
+  background: rgba(0, 122, 255, 0.1);
+}
+
+html[data-theme="dark"] .app-header.search-open .app-mobile-search {
+  background: rgba(10, 132, 255, 0.15);
+}
+
+/* ---- Tablet breakpoint (max-width: 768px) ---- */
+@media (max-width: 768px) {
+  /* Sidebar → fixed slide-in drawer */
+  .app-sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 280px;
+    transform: translateX(-100%);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 100;
+    box-shadow: none;
+  }
+
+  .app-sidebar.is-open {
+    transform: translateX(0);
+    box-shadow: 4px 0 24px rgba(0, 0, 0, 0.15);
+  }
+
+  /* Override desktop "collapsed" state on mobile — always full-width */
+  .app-sidebar.is-collapsed {
+    width: 280px;
+  }
+  .app-sidebar.is-collapsed .app-sidebar__brand-text {
+    opacity: 1;
+    width: auto;
+    flex: 1;
+  }
+  .app-sidebar.is-collapsed .app-sidebar__brand {
+    justify-content: flex-start;
+    padding-left: var(--space-16);
+    padding-right: var(--space-8);
+  }
+  .app-sidebar.is-collapsed .nav-item__label {
+    opacity: 1;
+  }
+  .app-sidebar.is-collapsed .nav-subitems {
+    display: block;
+  }
+  .app-sidebar.is-collapsed .nav-section-label {
+    opacity: 1;
+  }
+  .app-sidebar.is-collapsed .app-sidebar__profile-info {
+    opacity: 1;
+    overflow: visible;
+    width: auto;
+  }
+  .app-sidebar.is-collapsed .app-sidebar__toggle svg {
+    transform: none;
+  }
+
+  /* Hide desktop collapse toggle on mobile */
+  .app-sidebar__toggle {
+    display: none;
+  }
+
+  /* Show hamburger */
+  .app-mobile-menu {
+    display: flex;
+  }
+
+  /* Header */
+  .app-header {
+    padding: var(--space-16) var(--space-20);
+    align-items: center;
+    gap: var(--space-12);
+    position: relative;
+  }
+
+  .app-header__left {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .app-header__title {
+    display: none;
+  }
+
+  .app-header__heading {
+    font-size: 22px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .app-header__right {
+    gap: var(--space-8);
+  }
+
+  /* Hide header theme & inspect toggles — they live in the sidebar on mobile */
+  .app-header .theme-toggle,
+  .app-header .inspect-toggle {
+    display: none;
+  }
+
+  /* Show sidebar actions bar */
+  .app-sidebar__actions {
+    display: flex;
+  }
+  .app-sidebar.is-collapsed .app-sidebar__actions {
+    display: flex;
+  }
+
+  .platform-toggle__btn {
+    padding: var(--space-4) var(--space-10);
+    font-size: var(--font-size-nano);
+  }
+
+  /* Mobile search: icon in header, expandable bar below */
+  .app-mobile-search {
+    display: flex;
+  }
+
+  .sidebar__search {
+    display: none;
+  }
+
+  .app-header.search-open .sidebar__search {
+    display: block;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    padding: var(--space-12) var(--space-20);
+    background: var(--color-surface-secondary);
+    border-bottom: 1px solid var(--color-separator);
+    z-index: 10;
+  }
+
+  .app-header.search-open .sidebar__search-bar {
+    position: static;
+    padding-top: var(--space-8);
+  }
+
+  /* Content area */
+  .content-page {
+    padding: 0 var(--space-20) 60vh;
+  }
+
+  /* Section spacing */
+  section {
+    margin-top: var(--space-48);
+  }
+
+  /* Tables: allow horizontal scroll */
+  .token-table,
+  .ms-table,
+  .flare-spec-table,
+  .gs-tools-list {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Home grid: smaller cards on tablet */
+  .home-grid {
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  }
+
+  /* Dark-strip (component previews on dark bg) */
+  .dark-strip {
+    padding: var(--space-20);
+    border-radius: var(--radius-lg);
+  }
+
+  /* Typography page: stack type rows */
+  .type-row {
+    flex-direction: column;
+    gap: var(--space-12);
+  }
+  .type-row__meta {
+    flex: none;
+  }
+  .emphasis-grid {
+    grid-template-columns: 1fr;
+  }
+  .contrast-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Components page: fluid width inputs & cards */
+  .comp-input,
+  .comp-textarea,
+  .comp-select,
+  .comp-card {
+    max-width: 240px;
+    width: 100%;
+  }
+
+  /* Map page: collapse grids */
+  .map-principles {
+    grid-template-columns: 1fr 1fr;
+  }
+  .map-surfaces-demo {
+    grid-template-columns: 1fr 1fr;
+  }
+  .map-overlay-grid {
+    grid-template-columns: 1fr;
+  }
+  .map-label-row {
+    flex-wrap: wrap;
+  }
+
+  /* Elevation page: fluid shadow cards */
+  .token-shadow-card {
+    width: 100%;
+    max-width: 180px;
+  }
+
+  /* Motion page: single-column grids */
+  .token-easing-grid,
+  .token-transition-grid {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  }
+
+  /* Tokens page: flex rows wrap */
+  .token-label-row,
+  .token-spacing-row {
+    flex-wrap: wrap;
+  }
+  .token-label-row__info {
+    flex: 1 1 140px;
+  }
+}
+
+/* ---- Narrow mobile breakpoint (max-width: 480px) ---- */
+@media (max-width: 480px) {
+  .app-header {
+    padding: var(--space-12) var(--space-16);
+    gap: var(--space-8);
+  }
+
+  .app-header__heading {
+    font-size: 18px;
+  }
+
+  .platform-toggle {
+    display: none;
+  }
+
+  .content-page {
+    padding: 0 var(--space-16) 60vh;
+  }
+
+  /* Section label + note */
+  .section-note {
+    font-size: var(--font-size-small);
+  }
+
+  /* Home grid: single column */
+  .home-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+
+  /* Principles grid */
+  .gs-principles-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Flare dark preview */
+  .flare-dark-preview {
+    padding: var(--space-16);
+    gap: var(--space-16);
+  }
+
+  /* Map page: single-column grids */
+  .map-principles,
+  .map-surfaces-demo {
+    grid-template-columns: 1fr;
+  }
+
+  /* Components: full-width inputs */
+  .comp-input,
+  .comp-textarea,
+  .comp-select,
+  .comp-card {
+    max-width: 100%;
+  }
+
+  /* Type rows: reduce gap */
+  .type-row {
+    gap: var(--space-8);
+  }
+}

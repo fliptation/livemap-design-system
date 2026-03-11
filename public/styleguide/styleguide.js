@@ -247,6 +247,19 @@
         { id: "gl-i18n", label: "Internationalization" },
       ],
     },
+    {
+      id: "resources",
+      label: "Resources",
+      page: "resources",
+      enabled: true,
+      children: [
+        { id: "res-inspiration", label: "Inspiration" },
+        { id: "res-demos", label: "Demos" },
+        { id: "res-tweets", label: "Tweets" },
+        { id: "res-reading", label: "Reading" },
+        { id: "res-tools", label: "Tools" },
+      ],
+    },
   ];
 
   var PAGE_CONFIG = {
@@ -318,6 +331,11 @@
       heading: "Guidelines",
       subtitle: "",
     },
+    resources: {
+      title: "Livemap Design System",
+      heading: "Resources",
+      subtitle: "",
+    },
   };
 
   // ---- State ----
@@ -360,6 +378,9 @@
             return;
           }
           switchPage(item.page);
+          if (!(item.children && item.children.length > 0)) {
+            closeMobileSidebar();
+          }
         });
         sidebarNav.appendChild(label);
 
@@ -375,6 +396,7 @@
             a.textContent = child.label;
             a.addEventListener("click", function (e) {
               e.preventDefault();
+              closeMobileSidebar();
               var target = document.getElementById(child.id);
               if (target) {
                 var page = document.getElementById("page-" + activePage);
@@ -409,6 +431,9 @@
           return;
         }
         switchPage(item.page);
+        if (!(item.children && item.children.length > 0)) {
+          closeMobileSidebar();
+        }
       });
       sidebarNav.appendChild(div);
 
@@ -430,6 +455,7 @@
             a.textContent = child.label;
             a.addEventListener("click", function (e) {
               e.preventDefault();
+              closeMobileSidebar();
               var target = document.getElementById(child.id);
               if (target) {
                 var page = document.getElementById("page-" + activePage);
@@ -483,6 +509,11 @@
       pages[i].hidden = pages[i].id !== "page-" + pageId;
     }
 
+    // Re-render Twitter embeds when resources page becomes visible
+    if (pageId === "resources" && window.twttr && window.twttr.widgets) {
+      window.twttr.widgets.load(document.getElementById("page-resources"));
+    }
+
     // Update header
     var config = PAGE_CONFIG[pageId];
     if (config) {
@@ -521,6 +552,9 @@
         ? ""
         : "none";
 
+    // Close mobile search on navigation (sidebar handled by callers)
+    closeMobileSearch();
+
     // Scroll to top
     appContent.scrollTop = 0;
   }
@@ -529,6 +563,7 @@
     var pageId = getPageFromURL() || "home";
     if (pageId !== activePage) {
       switchPage(pageId, true);
+      closeMobileSidebar();
     }
   });
 
@@ -537,12 +572,101 @@
     sidebar.classList.toggle("is-collapsed");
   });
 
+  // ---- Mobile menu ----
+  var mobileMenuBtn = document.getElementById("mobile-menu");
+  var sidebarBackdrop = document.getElementById("sidebar-backdrop");
+
+  function closeMobileSidebar() {
+    sidebar.classList.remove("is-open");
+    sidebarBackdrop.classList.remove("is-visible");
+    document.body.style.overflow = "";
+  }
+
+  function openMobileSidebar() {
+    sidebar.classList.add("is-open");
+    sidebarBackdrop.classList.add("is-visible");
+    document.body.style.overflow = "hidden";
+  }
+
+  if (mobileMenuBtn) {
+    mobileMenuBtn.addEventListener("click", function () {
+      if (sidebar.classList.contains("is-open")) {
+        closeMobileSidebar();
+      } else {
+        openMobileSidebar();
+      }
+    });
+  }
+
+  if (sidebarBackdrop) {
+    sidebarBackdrop.addEventListener("click", closeMobileSidebar);
+  }
+
+  // Close mobile sidebar on Escape key
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && sidebar.classList.contains("is-open")) {
+      closeMobileSidebar();
+    }
+  });
+
+  // ---- Mobile search toggle ----
+  var mobileSearchBtn = document.getElementById("mobile-search");
+  var appHeader = document.querySelector(".app-header");
+  var searchInput = document.getElementById("search-input");
+
+  function closeMobileSearch() {
+    if (appHeader) appHeader.classList.remove("search-open");
+  }
+
+  if (mobileSearchBtn && appHeader) {
+    mobileSearchBtn.addEventListener("click", function () {
+      var isOpen = appHeader.classList.toggle("search-open");
+      if (isOpen && searchInput) {
+        searchInput.focus();
+      }
+    });
+  }
+
+  // Close mobile search on Escape
+  document.addEventListener("keydown", function (e) {
+    if (
+      e.key === "Escape" &&
+      appHeader &&
+      appHeader.classList.contains("search-open")
+    ) {
+      closeMobileSearch();
+    }
+  });
+
+  // ---- Sidebar action proxies (mobile) ----
+  // Forward sidebar duplicate buttons to the header originals
+  var sidebarThemeToggle = document.getElementById("sidebar-theme-toggle");
+  var headerThemeToggle = document.getElementById("theme-toggle");
+  if (sidebarThemeToggle && headerThemeToggle) {
+    sidebarThemeToggle.addEventListener("click", function () {
+      headerThemeToggle.click();
+    });
+  }
+
+  var sidebarInspectToggle = document.getElementById("sidebar-inspect-toggle");
+  var headerInspectToggle = document.getElementById("inspect-toggle");
+  if (sidebarInspectToggle && headerInspectToggle) {
+    sidebarInspectToggle.addEventListener("click", function () {
+      headerInspectToggle.click();
+      // Sync the active state
+      var isActive = headerInspectToggle.classList.contains("is-active");
+      sidebarInspectToggle.classList.toggle("is-active", isActive);
+      sidebarInspectToggle.setAttribute("aria-pressed", String(isActive));
+    });
+  }
+
   // ---- Brand click → home ----
   var sidebarBrand = document.getElementById("sidebar-brand");
   if (sidebarBrand) {
     sidebarBrand.style.cursor = "pointer";
     sidebarBrand.addEventListener("click", function () {
       switchPage("home");
+      closeMobileSidebar();
     });
   }
 
@@ -1857,4 +1981,350 @@
       }, 150);
     });
   }
+
+  // ==================================================================
+  // Quick Add Resources
+  // ==================================================================
+  var RES_STORAGE_KEY = "livemap-ds-resources";
+  var RES_AUTHOR_KEY = "livemap-ds-resource-author";
+
+  // Section id → grid container mapping
+  var SECTION_MAP = {
+    inspiration: "res-inspiration",
+    demos: "res-demos",
+    tweets: "res-tweets",
+    reading: "res-reading",
+    tools: "res-tools",
+  };
+
+  function resLoad() {
+    try {
+      return JSON.parse(localStorage.getItem(RES_STORAGE_KEY)) || [];
+    } catch (e) {
+      return [];
+    }
+  }
+
+  function resSave(entries) {
+    localStorage.setItem(RES_STORAGE_KEY, JSON.stringify(entries));
+  }
+
+  function resExtractDomain(url) {
+    if (!url) return "";
+    try {
+      return new URL(url).hostname.replace(/^www\./, "");
+    } catch (e) {
+      return url;
+    }
+  }
+
+  function resEsc(str) {
+    var d = document.createElement("div");
+    d.textContent = str;
+    return d.innerHTML;
+  }
+
+  function resBuildSnippet(entry) {
+    if (entry.section === "tweets") {
+      return (
+        '        <div class="res-embed">\n' +
+        '          <blockquote class="twitter-tweet" data-dnt="true" data-theme="light" data-conversation="none"><a href="' +
+        resEsc(entry.tweetUrl) +
+        '"></a></blockquote>\n' +
+        "        </div>"
+      );
+    }
+    var href = entry.url
+      ? ' href="' + resEsc(entry.url) + '" target="_blank" rel="noopener"'
+      : "";
+    var tag = entry.url ? "a" : "div";
+    var urlLine = entry.url
+      ? '\n            <span class="res-card__url">' +
+        resEsc(resExtractDomain(entry.url)) +
+        "</span>"
+      : "";
+    return (
+      "        <" +
+      tag +
+      ' class="res-card"' +
+      href +
+      ">\n" +
+      '          <div class="res-card__placeholder"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></div>\n' +
+      '          <div class="res-card__body">\n' +
+      '            <span class="res-card__name">' +
+      resEsc(entry.name) +
+      "</span>\n" +
+      '            <span class="res-card__desc">' +
+      resEsc(entry.desc) +
+      "</span>" +
+      urlLine +
+      "\n" +
+      '            <span class="res-card__author">' +
+      resEsc(entry.addedBy) +
+      "</span>\n" +
+      "          </div>\n" +
+      "        </" +
+      tag +
+      ">"
+    );
+  }
+
+  function resRenderCard(entry) {
+    var tag = entry.url ? "a" : "div";
+    var card = document.createElement(tag);
+    card.className = "res-card res-card--local";
+    if (entry.url) {
+      card.href = entry.url;
+      card.target = "_blank";
+      card.rel = "noopener";
+    }
+
+    var urlHtml = entry.url
+      ? '<span class="res-card__url">' +
+        resEsc(resExtractDomain(entry.url)) +
+        "</span>"
+      : "";
+
+    card.innerHTML =
+      '<div class="res-card__placeholder"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></div>' +
+      '<div class="res-card__body">' +
+      '<span class="res-card__name">' +
+      resEsc(entry.name) +
+      "</span>" +
+      '<span class="res-card__desc">' +
+      resEsc(entry.desc) +
+      "</span>" +
+      urlHtml +
+      '<span class="res-card__author">' +
+      resEsc(entry.addedBy) +
+      "</span>" +
+      '<span class="res-local-badge">local</span>' +
+      "</div>" +
+      '<button class="res-copy-btn" title="Copy HTML snippet" type="button">' +
+      '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>' +
+      "</button>";
+
+    // Copy button handler
+    var copyBtn = card.querySelector(".res-copy-btn");
+    copyBtn.addEventListener("click", function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      var snippet = resBuildSnippet(entry);
+      navigator.clipboard.writeText(snippet).then(function () {
+        copyBtn.innerHTML =
+          '<span style="font-size:11px;font-weight:600;color:var(--color-tint-positive)">Done</span>';
+        setTimeout(function () {
+          copyBtn.innerHTML =
+            '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>';
+        }, 1500);
+      });
+    });
+
+    return card;
+  }
+
+  function resRenderTweet(entry) {
+    var wrap = document.createElement("div");
+    wrap.className = "res-embed res-embed--local";
+    wrap.style.position = "relative";
+    wrap.innerHTML =
+      '<blockquote class="twitter-tweet" data-dnt="true" data-theme="light" data-conversation="none"><a href="' +
+      resEsc(entry.tweetUrl) +
+      '"></a></blockquote>' +
+      '<span class="res-local-badge" style="margin-top:var(--space-8)">local</span>' +
+      '<button class="res-copy-btn" title="Copy HTML snippet" type="button">' +
+      '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>' +
+      "</button>";
+
+    var copyBtn = wrap.querySelector(".res-copy-btn");
+    copyBtn.addEventListener("click", function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      var snippet = resBuildSnippet(entry);
+      navigator.clipboard.writeText(snippet).then(function () {
+        copyBtn.innerHTML =
+          '<span style="font-size:11px;font-weight:600;color:var(--color-tint-positive)">Done</span>';
+        setTimeout(function () {
+          copyBtn.innerHTML =
+            '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>';
+        }, 1500);
+      });
+    });
+
+    return wrap;
+  }
+
+  function resRenderAll() {
+    var entries = resLoad();
+    // Clear previously rendered local cards and embeds
+    document
+      .querySelectorAll(".res-card--local, .res-embed--local")
+      .forEach(function (el) {
+        el.remove();
+      });
+    var needsTweetLoad = false;
+    entries.forEach(function (entry) {
+      var sectionId = SECTION_MAP[entry.section];
+      if (!sectionId) return;
+      var section = document.getElementById(sectionId);
+      if (!section) return;
+      if (entry.section === "tweets") {
+        var grid = section.querySelector(".res-embed-grid");
+        if (!grid) return;
+        grid.appendChild(resRenderTweet(entry));
+        needsTweetLoad = true;
+      } else {
+        var grid = section.querySelector(".res-grid");
+        if (!grid) return;
+        grid.appendChild(resRenderCard(entry));
+      }
+    });
+    if (needsTweetLoad && window.twttr && window.twttr.widgets) {
+      window.twttr.widgets.load();
+    }
+  }
+
+  function resToast() {
+    var toast = document.getElementById("res-toast");
+    if (!toast) return;
+    toast.hidden = false;
+    // Force reflow
+    toast.offsetHeight;
+    toast.classList.add("is-visible");
+    setTimeout(function () {
+      toast.classList.remove("is-visible");
+      setTimeout(function () {
+        toast.hidden = true;
+      }, 350);
+    }, 5000);
+  }
+
+  // Wire up add buttons
+  document.querySelectorAll(".res-add-btn").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var section = btn.getAttribute("data-section");
+      var form = document.querySelector(
+        '.res-form[data-section="' + section + '"]',
+      );
+      if (!form) return;
+      form.hidden = false;
+      btn.hidden = true;
+      // Pre-fill author from localStorage
+      var savedAuthor = localStorage.getItem(RES_AUTHOR_KEY) || "";
+      var authorInput = form.querySelector(".res-form__author");
+      if (authorInput && !authorInput.value) {
+        authorInput.value = savedAuthor;
+      }
+      var firstInput =
+        form.querySelector(".res-form__tweet-url") ||
+        form.querySelector(".res-form__name");
+      if (firstInput) firstInput.focus();
+    });
+  });
+
+  // Wire up cancel buttons
+  document.querySelectorAll(".res-form__cancel").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var form = btn.closest(".res-form");
+      if (!form) return;
+      form.hidden = true;
+      var section = form.getAttribute("data-section");
+      var addBtn = document.querySelector(
+        '.res-add-btn[data-section="' + section + '"]',
+      );
+      if (addBtn) addBtn.hidden = false;
+    });
+  });
+
+  // Wire up save buttons
+  document.querySelectorAll(".res-form__save").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var form = btn.closest(".res-form");
+      if (!form) return;
+
+      var section = form.getAttribute("data-section");
+      var authorInput = form.querySelector(".res-form__author");
+      var addedBy = authorInput.value.trim();
+      var entry;
+
+      if (section === "tweets") {
+        var tweetUrlInput = form.querySelector(".res-form__tweet-url");
+        var tweetUrl = tweetUrlInput.value.trim();
+
+        if (!tweetUrl || !addedBy) {
+          [tweetUrlInput, authorInput].forEach(function (inp) {
+            if (!inp.value.trim()) {
+              inp.classList.add("comp-input--error");
+              setTimeout(function () {
+                inp.classList.remove("comp-input--error");
+              }, 1500);
+            }
+          });
+          return;
+        }
+
+        entry = {
+          section: section,
+          tweetUrl: tweetUrl,
+          addedBy: addedBy,
+          timestamp: Date.now(),
+        };
+
+        tweetUrlInput.value = "";
+      } else {
+        var nameInput = form.querySelector(".res-form__name");
+        var descInput = form.querySelector(".res-form__desc");
+        var urlInput = form.querySelector(".res-form__url");
+
+        var name = nameInput.value.trim();
+        var desc = descInput.value.trim();
+        var url = urlInput.value.trim();
+
+        if (!name || !desc || !addedBy) {
+          [nameInput, descInput, authorInput].forEach(function (inp) {
+            if (!inp.value.trim()) {
+              inp.classList.add("comp-input--error");
+              setTimeout(function () {
+                inp.classList.remove("comp-input--error");
+              }, 1500);
+            }
+          });
+          return;
+        }
+
+        entry = {
+          section: section,
+          name: name,
+          desc: desc,
+          url: url,
+          addedBy: addedBy,
+          timestamp: Date.now(),
+        };
+
+        nameInput.value = "";
+        descInput.value = "";
+        urlInput.value = "";
+      }
+
+      var entries = resLoad();
+      entries.push(entry);
+      resSave(entries);
+
+      // Remember author
+      localStorage.setItem(RES_AUTHOR_KEY, addedBy);
+      // Keep author for next add
+
+      form.hidden = true;
+      var addBtn = document.querySelector(
+        '.res-add-btn[data-section="' + section + '"]',
+      );
+      if (addBtn) addBtn.hidden = false;
+
+      resRenderAll();
+      resToast();
+    });
+  });
+
+  // Render on load
+  resRenderAll();
 })();
