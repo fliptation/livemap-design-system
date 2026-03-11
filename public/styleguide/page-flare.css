@@ -382,11 +382,9 @@ html:not([data-theme="dark"]) .flare-close:hover {
 }
 
 html:not([data-theme="dark"]) .flare-glow {
-  opacity: 0;
-  animation: none;
+  opacity: 0.4;
 }
 
 html:not([data-theme="dark"]) .flare-ambient {
-  animation: none;
-  opacity: 0.2;
+  opacity: 0.15;
 }
